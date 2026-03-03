@@ -1,0 +1,60 @@
+{
+    "name": "NAME OF THE COURSE",
+    "type": "module",
+    "description": "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA.",
+    "license": "CC-BY-4.0",
+    "author": "YOUR NAME",
+    "homepage": "https://synosys.github.io/YOUR_COURSE_NAME", 
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dirkbrockmann/YOUR_REPO_NAME.git",
+        "version": "1.0.0"
+    },
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "deploy": "astro build && gh-pages -d dist --dotfiles",
+        "commit": "git add -A && git commit -m \"chore: update $(date -u +'%Y-%m-%dT%H:%M:%SZ')\" || echo 'Nothing to commit'",
+        "push": "npm run commit && git push origin main",
+        "publish": "npm run push && npm run deploy"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^4.3.6",
+        "@astrojs/react": "^4.4.0",
+        "@astrojs/rss": "^4.0.12",
+        "@astrojs/sitemap": "^3.6.0",
+        "@fontsource-variable/eb-garamond": "^5.2.7",
+        "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+        "@fontsource-variable/inter": "^5.2.5",
+        "@fontsource-variable/newsreader": "^5.2.6",
+        "@tailwindcss/vite": "^4.0.17",
+        "@types/react": "^19.1.5",
+        "@types/react-dom": "^19.1.5",
+        "astro": "^5.14.1",
+        "d3": "^7.9.0",
+        "d3-widgets": "^2.1.6",
+        "install": "^0.13.0",
+        "katex": "^0.16.22",
+        "lattices": "^1.0.16",
+        "lodash-es": "^4.17.21",
+        "marked": "^15.0.11",
+        "network_explorer": "^0.0.2",
+        "npm": "^11.4.1",
+        "qrcode": "^1.5.4",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "rehype-katex": "^7.0.1",
+        "remark-math": "^6.0.0",
+        "sharp": "^0.34.1",
+        "tailwindcss": "^4.0.17"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.16",
+        "gh-pages": "^6.3.0",
+        "prettier": "^3.5.3",
+        "prettier-plugin-tailwindcss": "^0.6.11"
+    }
+}

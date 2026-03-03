@@ -1,0 +1,80 @@
+---
+title: TL;DR - Course Information
+seo:
+  title: TL;DR - Course Information
+  description: Get a quick overview of the course structure, key topics, and essential resources.
+---
+import Figure from "../../components/Figure.astro";
+import MarginNote from "../../components/MarginNote/Note.astro";
+import courseConfig from '../../data/course-config.json';
+
+Here's a summary of the key parameters of the Module **Introduction to Complex Systems** 
+(M0500-31W20)
+that is offered as part of the Bachelor Degree program Molecular
+Biology and Biotechnology at TU Dresden as an elective compulsory module.
+
+
+
+## Course Details
+
+The course has three components: 
+
+1. **Lecture** ({courseConfig.lecture.days} {courseConfig.lecture.time}) 
+2. **Seminar** ({courseConfig.seminar.days} {courseConfig.seminar.time}) 
+3. **Lab Course** (Block course, 2 weeks in {courseConfig.lab.start} - {courseConfig.lab.end}, {courseConfig.lab.time}).
+
+
+### Lecture
+<MarginNote>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10037.512579074284!2d13.704058246542708!3d51.02763625024674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709c5940abd1f4f%3A0x490d22e2ee6850c8!2sGeorg-Schumann-Stra%C3%9Fe%207a%2C%2001069%20Dresden!5e0!3m2!1sde!2sde!4v1743796057106!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+Lecture, Seminar and the Lab Course will be held at Georg-Schumann-Str. 7a at the Center Synergy
+of Systems (SynoSys).
+</MarginNote>
+
+- **Name:** {courseConfig.lecture.name}
+- **Starting date:** {courseConfig.lecture.start}
+- **End date:** {courseConfig.lecture.end}
+- **Number of sessions:** {courseConfig.lecture.sessions}
+- **Date & Time:** {courseConfig.lecture.days}, {courseConfig.lecture.time}
+- **Location:** {courseConfig.location}
+- **Language:** {courseConfig.language}
+- **Max. number of participants:** {courseConfig.maxParticipants}
+- **Instructor:** {courseConfig.instructors.lecture.join(", ")}
+
+### Seminar
+
+- **Name:** {courseConfig.seminar.name}
+- **Starting date:** {courseConfig.seminar.start}
+- **End date:** {courseConfig.seminar.end}
+- **Number of sessions:** {courseConfig.seminar.sessions}
+- **Date & Time:** {courseConfig.seminar.days}, {courseConfig.seminar.time}
+- **Location:** {courseConfig.location}
+- **Language:** {courseConfig.language}
+- **Max. number of participants:** {courseConfig.maxParticipants}
+- **Instructor:** {courseConfig.instructors.seminar.join(", ")}
+
+### Lab Course
+
+The lab course is a two week block course
+
+- **Name:** {courseConfig.lab.name}
+- **Starting date:** {courseConfig.lab.start}
+- **End date:** {courseConfig.lab.end}
+- **Number of sessions:** {courseConfig.lab.sessions}
+- **Date & Time:** {courseConfig.lab.days}, {courseConfig.lab.time}
+- **Location:** {courseConfig.location}
+- **Language:** {courseConfig.language}
+- **Max. number of participants:** {courseConfig.maxParticipants}
+- **Instructor:** {courseConfig.instructors.lab.join(", ")}
+
+## Grading
+
+The final grade for the course will be based on these performance parameters:
+
+<ol>
+  {courseConfig.grading.map((item, idx) => (
+    <li key={idx}>{item.type} ({item.weight}%)</li>
+  ))}
+</ol>
+
+
