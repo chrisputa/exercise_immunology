@@ -1,0 +1,48 @@
+---
+const { 
+  src,
+  id,
+  ratio = '16/9',
+  autoplay = false,
+  margin = false
+} = Astro.props;
+---
+
+<figure class={margin ? 'm-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6' : 'm-0'}>
+
+  {
+    !margin && (
+        <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6">
+            <slot />
+        </figcaption>
+    )
+  }
+
+  <div class="relative w-full" style=`aspect-ratio: ${ratio};`>
+    <video
+      id={id}
+      src={src}
+      class="w-full h-full"
+      muted
+      playsinline
+      autoplay={autoplay}
+      loop
+    ></video>
+
+    <!-- Play/Pause Button -->
+    <button
+      onclick={`
+        const v = document.getElementById('${id}');
+        if(v.paused) { v.play(); this.textContent='⏸'; } 
+        else { v.pause(); this.textContent='▶'; }
+      `}
+      class="absolute bottom-4 left-4 bg-black/0 text-black p-2 rounded font-mono text-2xl"
+    >
+      {autoplay ? '⏸' : '▶'}
+    </button>
+  </div>
+
+  <figcaption class={margin ? 'block px-6 md:px-0 my-4' : 'block md:hidden px-6 my-4'}>
+    <slot />
+  </figcaption>
+</figure>

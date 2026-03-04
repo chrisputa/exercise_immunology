@@ -26,6 +26,7 @@ import Figure from "../../components/Figure.astro";
 import Quote from "../../components/Quote.astro";
 
 import ShinyWidget from "../../components/ShinyWidget.astro";
+import VideoTutorial from "../../components/VideoTutorial.astro";
 
 
 ## This is the landing page.
@@ -48,6 +49,15 @@ ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 A summary of the key parameters of the course 
 (structure, schedule, location, etc.) is provided
 in the [TL;DR](/tldr) section.
+
+<VideoTutorial
+    id="video-tutorial-test-app"
+    src="/src/assets/videos/test_app.mp4"
+    autoplay={true}
+    ratio="16/9"
+>
+  Tutorial zur Anwendung der Shiny-App.
+</VideoTutorial>
 
 ## What is this course about?
 
