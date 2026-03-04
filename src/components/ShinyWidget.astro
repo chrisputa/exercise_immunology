@@ -1,0 +1,29 @@
+---
+const { src, id, width = '100%', height = '500px', margin = false, className = 'shiny-widget' } = Astro.props;
+---
+
+<figure class={margin ? 'm-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6 not-prose' : 'm-0 not-prose my-12'}>
+    {
+        !margin && (
+            <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6">
+                <slot />
+            </figcaption>
+        )
+    }
+
+    <!-- iFrame slot -->
+    <div id={id} class={className}>
+        <iframe 
+            src={src} 
+            width={width} 
+            height={height} 
+            style="border: none;" 
+            loading="lazy"
+        ></iframe>
+    </div>
+
+    <!-- Slot for the caption (mobile view) -->
+    <figcaption class={margin ? 'block px-6 md:px-0 my-0 pt-2' : 'block md:hidden px-6 my-4'}>
+        <slot />
+    </figcaption>
+</figure>

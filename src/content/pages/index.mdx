@@ -25,6 +25,8 @@ import tippingpoint from '../../assets/generated/tippingpoint_transparent.png';
 import Figure from "../../components/Figure.astro";
 import Quote from "../../components/Quote.astro";
 
+import ShinyWidget from "../../components/ShinyWidget.astro";
+
 
 ## This is the landing page.
 
@@ -33,6 +35,15 @@ Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetu
 Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. 
 Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula 
 ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+
+<ShinyWidget 
+    id="shiny-test-app" 
+    src="https://spomed.svwiswp05.uni-jena.de/shiny/test_app/" 
+    width="100%" 
+    height="150px"
+>
+    Dieses interaktive Widget ist ein Beispiel für die Integration einer Shiny-App.
+</ShinyWidget>
 
 A summary of the key parameters of the course 
 (structure, schedule, location, etc.) is provided
