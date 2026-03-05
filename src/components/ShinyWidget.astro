@@ -1,5 +1,12 @@
 ---
-const { src, id, width = '100%', height = '500px', margin = false, className = 'shiny-widget' } = Astro.props;
+const { 
+    src, 
+    id = `shiny-widget-${Math.random().toString(36).substr(2, 9)}`,
+    width = '100%', 
+    height = '500px', 
+    margin = false, 
+    className = 'shiny-widget' 
+} = Astro.props;
 ---
 
 <figure class={margin ? 'm-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6 not-prose' : 'm-0 not-prose my-12'}>

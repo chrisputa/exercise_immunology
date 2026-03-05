@@ -34,11 +34,13 @@ const justifyItems =
   : 'justify-items-stretch';
 
 const heightClass = fullHeight ? 'h-full' : '';
+
+const columns = typeof cols === 'string' ? cols : `repeat(${cols}, minmax(0, 1fr))`
 ---
 <div
   class={`grid ${heightClass} ${gapClass} ${itemsAlign} ${justifyItems} ${className}`}
   style={`
-    grid-template-columns: repeat(${cols}, minmax(0, 1fr));
+    grid-template-columns: ${columns};
     grid-template-rows: repeat(${rows}, 1fr);
   `}
 >

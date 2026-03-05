@@ -1,0 +1,24 @@
+---
+const { 
+    src, 
+    id = `shiny-widget-${Math.random().toString(36).substr(2, 9)}`,
+    width = '100%', 
+    height = '500px',
+    class: className = '',
+} = Astro.props;
+---
+
+<figure class={`not-prose my-4 ${className}`}>
+
+    <!-- iFrame slot -->
+    <div id={id} class={className}>
+        <iframe 
+            src={src} 
+            width={width} 
+            height={height} 
+            style="border: none;" 
+            loading="lazy"
+        ></iframe>
+    </div>
+
+</figure>
