@@ -4,6 +4,7 @@ const {
   id = `shiny-widget-${Math.random().toString(36).substr(2, 9)}`,
   ratio = '16/9',
   autoplay = false,
+  button_color = 'black',
   margin = false
 } = Astro.props;
 ---
@@ -37,6 +38,7 @@ const {
         else { v.pause(); this.textContent='▶'; }
       `}
       class="absolute bottom-4 left-4 bg-black/0 text-black p-2 rounded font-mono text-2xl"
+      style={`color: ${button_color}; background-color: rgba(128,128,128,0.3);`}
     >
       {autoplay ? '⏸' : '▶'}
     </button>
@@ -46,3 +48,14 @@ const {
     <slot />
   </figcaption>
 </figure>
+
+<script is:inline>
+  const video = document.getElementById('{id}');
+  const btn = document.getElementById('{id}-btn');
+
+  if (video && !{loop}) {
+    video.addEventListener('ended', () => {
+      btn.textContent = '▶';
+    });
+  }
+</script>
