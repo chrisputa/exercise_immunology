@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Editor/formatter configs
 .prettierrc
+
+# resources
+resources/
