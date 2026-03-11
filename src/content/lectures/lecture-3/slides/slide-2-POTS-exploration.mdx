@@ -1,0 +1,40 @@
+---
+title: Test Widget
+publishDate: 2026-03-11
+order: 2
+hidden: false
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import ShinyWidget from "../../../../components/slide-kit/ShinyWidget.astro";
+
+
+# POTS Exploration
+
+<TwoCol ratio="1:2" gapClass="gap-12" class="mx-12 my-8" align="center" >
+
+  <div slot="left">
+
+    ### Überschrift
+    - **Info 1**
+    - **Info mit längerem Text 2**
+    - **Info 3**
+    - **Info 4**
+    - **Info 5**
+    - **Info 6**
+
+  </div>
+
+  <div slot="right" class="overflow-hidden">
+
+    <div class="scale-[1.1] origin-top-left w-[22%]">
+        <ShinyWidget
+            src="https://spomed.svwiswp05.uni-jena.de/Immunewidget_POTS_exploration/" 
+            width="1200px" 
+            height="550px"
+        />
+    </div>
+
+  </div>
+
+</TwoCol>
