@@ -8,7 +8,7 @@ export async function getStaticPaths() {
     const tutorials = (await getCollection('tutorials')).sort(sortItemsByDateDesc);
 
     return tutorials.map((tutorial) => ({
-        params: { id: tutorial.id },
+        params: { tutorial: tutorial.id },
         props: {
             tutorial
         }
@@ -20,10 +20,10 @@ type Props = {
 };
 
 const { tutorial } = Astro.props;
-const { title, seo } = tutorial.data;
+const { title, publishDate,seo } = tutorial.data;
 const { Content } = await render(tutorial);
 ---
 
-<PageLayout title={title} seo={seo} showHeader={false}>
+<PageLayout title={title} seo={seo} showHeader={false} publishDate={publishDate}>
     <Content components={{ a: Link }} />
 </PageLayout>

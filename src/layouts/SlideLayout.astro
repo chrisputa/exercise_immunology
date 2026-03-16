@@ -4,9 +4,10 @@ import SlideNav from '../components/slide-kit/SlideNav.astro';
 
 export interface Props {
   title: string;
-  lecture: string;
+  context: string;
   description?: string;
-  lectureHref: string;
+  backHref: string;
+  backLabel?: string;
   startHref: string;
   prevHref?: string;
   nextHref?: string;
@@ -18,9 +19,10 @@ export interface Props {
 
 const {
   title,
-  lecture,
+  context,
   description = '',
-  lectureHref,
+  backHref,
+  backLabel = 'Lecture',
   startHref,
   prevHref,
   nextHref,
@@ -45,7 +47,7 @@ const {
               <slot />
             </div>
           </div>
-          <SlideNav slideNumber={slideNumber} totalSlides={totalSlides} isDraft={isDraft} isHidden={isHidden} lectureHref={lectureHref} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
+          <SlideNav slideNumber={slideNumber} totalSlides={totalSlides} isDraft={isDraft} isHidden={isHidden} backHref={backHref} backLabel={backLabel} startHref={startHref} prevHref={prevHref} nextHref={nextHref} />
         </div>
       </div>
     </div>

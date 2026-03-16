@@ -4,29 +4,29 @@ import SlideLayout from '../../../../layouts/SlideLayout.astro';
 import { parseSlideId } from '../../../../utils/slide-path.ts';
 import Link from '../../../../components/Link.astro';
 
-type SlideEntry = CollectionEntry<'slides'>;
+type SlideEntry = CollectionEntry<'tutorialSlides'>;
 
 export async function getStaticPaths() {
   
 
-  const slides = await getCollection('slides');
+  const slides = await getCollection('tutorialSlides');
   const filtered = slides.filter(s => {
     if (!import.meta.env.DEV && (s.data.draft || s.data.hidden)) return false;
     return true;
   });
   return filtered.map((entry) => {
-    const { lecture, slide } = parseSlideId(entry.id);
-    return { params: { lecture, slide }, props: { entry } };
+    const { lecture: tutorial, slide } = parseSlideId(entry.id);
+    return { params: { tutorial, slide }, props: { entry } };
   });
 }
 
 const { entry }:{ entry: SlideEntry } = Astro.props;
 const { Content } = await render(entry);
 
-const { lecture, slide: current } = parseSlideId(entry.id);
+const { lecture: tutorial, slide: current } = parseSlideId(entry.id);
 
-// Fetch only this lecture's slides directly; mirror filtering used in getStaticPaths
-const all = await getCollection('slides', ({ id }) => parseSlideId(id).lecture === lecture)
+// Fetch only this tutorial's slides directly; mirror filtering used in getStaticPaths
+const all = await getCollection('tutorialSlides', ({ id }) => parseSlideId(id).lecture === tutorial)
   .then(arr => arr.filter(s => {
     if (!import.meta.env.DEV && (s.data.draft || s.data.hidden)) return false;
     return true;
@@ -63,8 +63,9 @@ const isHidden = !!entry.data.hidden && import.meta.env.DEV;
 ---
 <SlideLayout
   title={title}
-  context={lecture}
+  context={tutorial}
   backHref="../../"
+  backLabel="Tutorial"
   startHref={startHref}
   prevHref={prevHref}
   nextHref={nextHref}

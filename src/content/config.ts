@@ -23,7 +23,7 @@ const pages = defineCollection({
 });
 
 const tutorials = defineCollection({
-    loader: glob({pattern: '**/*.{md,mdx}', base: './src/content/tutorials'}),
+    loader: glob({pattern: '**/index.{md,mdx}', base: './src/content/tutorials'}),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -33,16 +33,15 @@ const tutorials = defineCollection({
     })
 });
 
-const blog = defineCollection({
-    loader: glob({pattern: '**/*.{md,mdx}', base: './src/content/blog'}),
-    schema: z.object({
-        title: z.string(),
-        description: z.string().optional(),
-        publishDate: z.coerce.date(),
-        updatedDate: z.coerce.date().optional(),
-        tags: z.array(z.string()).default([]),
-        seo: seoSchema.optional()
-    })
+const tutorialSlides = defineCollection({
+  loader: glob({ pattern: '**/slides/*.{md,mdx}', base: './src/content/tutorials' }),
+  schema: z.object({
+    title: z.string().optional(),
+    order: z.number().optional(),
+    draft: z.boolean().optional(),
+    hidden: z.boolean().optional(),
+    seo: seoSchema.optional(),
+  }),
 });
 
 const exam = defineCollection({
@@ -82,4 +81,4 @@ const slides = defineCollection({
   }),
 });
 
-export const collections = { slides, blog, pages, lectures, tutorials , exam};
+export const collections = { slides, tutorialSlides, pages, lectures, tutorials , exam};

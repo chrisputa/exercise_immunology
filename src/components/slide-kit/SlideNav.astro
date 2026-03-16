@@ -3,7 +3,8 @@ import SlideCounter from './SlideCounter.astro';
 
 
 export interface Props {
-  lectureHref: string;
+  backHref: string;
+  backLabel?: string;
   startHref: string;
   prevHref?: string;
   nextHref?: string;
@@ -13,7 +14,7 @@ export interface Props {
   isDraft?: boolean;
   isHidden?: boolean;
 }
-const { lectureHref, startHref, prevHref, nextHref, class: className = '', slideNumber, totalSlides, isDraft = false, isHidden = false } = Astro.props;
+const { backHref, backLabel = 'Lecture', startHref, prevHref, nextHref, class: className = '', slideNumber, totalSlides, isDraft = false, isHidden = false } = Astro.props;
 ---
 <nav
   id="slide-nav"
@@ -28,9 +29,9 @@ const { lectureHref, startHref, prevHref, nextHref, class: className = '', slide
   ) : null}
   <a
     id="lecture-link"
-    href={lectureHref}
+    href={backHref}
     class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
-  >Lecture</a>
+  >{backLabel}</a>
   <SlideCounter slideNumber={slideNumber} totalSlides={totalSlides} />
   <a
     id="start-link"
@@ -60,7 +61,7 @@ const { lectureHref, startHref, prevHref, nextHref, class: className = '', slide
 
 <script is:inline>
   (() => {
-    const lecture = document.getElementById('lecture-link');
+    const back = document.getElementById('lecture-link');
     const start = document.getElementById('start-link');
     const prev = document.getElementById('prev-link');
     const next = document.getElementById('next-link');
@@ -91,9 +92,9 @@ const { lectureHref, startHref, prevHref, nextHref, class: className = '', slide
       } else if (e.key === 'Home' && start) {
         e.preventDefault();
         location.assign(start.getAttribute('href'));
-      } else if (e.key === 'Escape' && lecture) {
+      } else if (e.key === 'Escape' && back) {
         e.preventDefault();
-        location.assign(lecture.getAttribute('href'));
+        location.assign(back.getAttribute('href'));
       }
     });
   })();
