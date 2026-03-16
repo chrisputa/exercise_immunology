@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fig. 1.19 – Dendritic Cells Initiate Adaptive Immune Responses</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f7fb;
+      padding: 36px 28px 40px;
+      color: #1a2340;
+    }
+
+    /* ── Title block ── */
+    .fig-title {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a2340;
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+    .fig-number {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #6b7a99;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    /* ── Main layout ── */
+    .diagram {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      max-width: 1000px;
+      margin: 0 auto 32px;
+    }
+
+    /* ── Stage boxes ── */
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 240px;
+      flex-shrink: 0;
+    }
+
+    .stage-header {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .stage-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.09);
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      border-top: 4px solid;
+    }
+
+    /* ── Stage color themes ── */
+    .stage-1 .stage-header { background: #c05621; }
+    .stage-1 .stage-card   { border-color: #c05621; }
+
+    .stage-2 .stage-header { background: #2b6cb0; }
+    .stage-2 .stage-card   { border-color: #2b6cb0; }
+
+    .stage-3 .stage-header { background: #276749; }
+    .stage-3 .stage-card   { border-color: #276749; }
+
+    /* ── Cell image illustrations ── */
+    .cell-img-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cell-img {
+      width: 100%;
+      max-width: 200px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .cell-img-credit {
+      font-size: 0.60rem;
+      color: #a0aec0;
+      font-style: italic;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Process labels ── */
+    .process-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .tag {
+      font-size: 0.70rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .tag-orange { background: #fff0e6; color: #c05621; border: 1px solid #fbd0b3; }
+    .tag-blue   { background: #ebf2fa; color: #2b6cb0; border: 1px solid #c3d9f0; }
+    .tag-green  { background: #e6f4ed; color: #276749; border: 1px solid #b2d8c4; }
+
+    .stage-desc {
+      font-size: 0.73rem;
+      color: #4a5568;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    /* ── Arrows between stages ── */
+    .arrow-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 44px; /* offset for header height */
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .arrow-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #8896b3;
+      text-align: center;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .arrow-shaft {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #cbd2e0, #a0aec0);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .arrow-shaft::after {
+      content: '';
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 10px solid #a0aec0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+    }
+
+    /* ── Caption box ── */
+    .caption-box {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      border-left: 5px solid #2b6cb0;
+      padding: 16px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .caption-box p {
+      font-size: 0.80rem;
+      color: #4a5568;
+      line-height: 1.65;
+    }
+
+    .caption-box strong {
+      color: #1a2340;
+    }
+
+    /* ── Source ── */
+    .source {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.70rem;
+      color: #a0aec0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fig-title">Dendritic Cells Initiate Adaptive Immune Responses</div>
+  <p class="fig-number">Fig. 1.19 &nbsp;|&nbsp; Murphy K &amp; Weaver C (2016). <em>Janeway's Immunobiology</em>, 9th edn. Garland Science.</p>
+
+  <div class="diagram">
+
+    <!-- ════ STAGE 1 ════ -->
+    <div class="stage stage-1">
+      <div class="stage-header">① Peripheral Tissue</div>
+      <div class="stage-card">
+
+        <!-- Immature DC image -->
+        <div class="cell-img-wrap">
+          <img class="cell-img" src="DC1.png" alt="Immature Dendritic Cell in Peripheral Tissue"/>
+          <span class="cell-img-credit">Created with BioRender.com</span>
+        </div>
+
+        <div class="process-tags">
+          <div class="tag tag-orange">Macropinocytosis</div>
+          <div class="tag tag-orange">Receptor-mediated Endocytosis</div>
+          <div class="tag tag-orange">PRR / PAMP recognition</div>
+        </div>
+        <div class="stage-desc">
+          Immature dendritic cells <strong>reside in peripheral tissues</strong> and continuously sample the environment by engulfing pathogens and their antigens.
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 1 -->
+    <div class="arrow-col">
+      <div class="arrow-label">Lymphatics</div>
+      <div class="arrow-shaft"></div>
+    </div>
+
+    <!-- ════ STAGE 2 ════ -->
+    <div class="stage stage-2">
+      <div class="stage-header">② Migration &amp; Maturation</div>
+      <div class="stage-card">
+
+        <!-- Migrating DC image -->
+        <div class="cell-img-wrap">
+          <img class="cell-img" src="DC2.png" alt="Dendritic Cell Migrating via Lymphatics"/>
+          <span class="cell-img-credit">Created with BioRender.com</span>
+        </div>
+
+        <div class="process-tags">
+          <div class="tag tag-blue">Migration via Lymphatics</div>
+          <div class="tag tag-blue">Antigen Processing</div>
+          <div class="tag tag-blue">MHC Peptide Loading</div>
+        </div>
+        <div class="stage-desc">
+          PRR activation drives <strong>migration through lymphatic vessels</strong> to regional lymph nodes. During transit the DC matures: phagocytosis ceases; antigen is processed and loaded onto MHC molecules.
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 2 -->
+    <div class="arrow-col">
+      <div class="arrow-label">Lymph Node</div>
+      <div class="arrow-shaft"></div>
+    </div>
+
+    <!-- ════ STAGE 3 ════ -->
+    <div class="stage stage-3">
+      <div class="stage-header">③ Lymph Node – T Cell Activation</div>
+      <div class="stage-card">
+
+        <!-- Lymph Node T cell activation image -->
+        <div class="cell-img-wrap">
+          <img class="cell-img" src="DC3.png" alt="Mature Dendritic Cell Activating Naive T Cells in Lymph Node"/>
+          <span class="cell-img-credit">Created with BioRender.com</span>
+        </div>
+
+        <div class="process-tags">
+          <div class="tag tag-green">Antigen Presentation (MHC)</div>
+          <div class="tag tag-green">Co-stimulatory Molecules</div>
+          <div class="tag tag-green">T Cell Proliferation &amp; Differentiation</div>
+        </div>
+        <div class="stage-desc">
+          Fully <strong>mature, non-phagocytic dendritic cells</strong> present antigen–MHC complexes alongside co-stimulatory molecules, activating naive T cells and driving <strong>lymphocyte proliferation and differentiation</strong>.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .diagram -->
+
+  <!-- Caption -->
+  <div class="caption-box">
+    <p>
+      <strong>Fig. 1.19 — Dendritic cells initiate adaptive immune responses.</strong>
+      Immature dendritic cells residing in a tissue take up pathogens and their antigens by <em>macropinocytosis</em> and by <em>receptor-mediated endocytosis</em>.
+      They are stimulated by recognition of the presence of pathogens to migrate through the lymphatics to regional lymph nodes,
+      where they arrive as fully mature nonphagocytic dendritic cells that express both antigen and the <em>co-stimulatory molecules</em>
+      necessary to activate a naive T cell that recognizes the antigen.
+      Thus the dendritic cells stimulate <strong>lymphocyte proliferation and differentiation</strong>.
+    </p>
+  </div>
+
+  <p class="source">Source: Murphy K &amp; Weaver C (2016). <em>Janeway's Immunobiology</em>, 9th edn., Chapter 1. Garland Science. | DendriticCells.pdf, Fig. 1.19</p>
+
+</body>
+</html>

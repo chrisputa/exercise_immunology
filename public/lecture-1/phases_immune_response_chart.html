@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phases of the Immune Response</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f6fa;
+      padding: 32px 24px;
+      color: #1a2340;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1a2340;
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7a99;
+      margin-bottom: 32px;
+    }
+
+    /* ── Timeline header ── */
+    .timeline-wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .time-axis {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      margin-bottom: 6px;
+    }
+
+    .time-axis-spacer { /* left column placeholder */ }
+
+    .time-labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4px;
+      font-size: 0.72rem;
+      color: #8896b3;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Section headers ── */
+    .section-header {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      align-items: center;
+      margin: 14px 0 6px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #fff;
+      width: fit-content;
+    }
+
+    .section-label.innate   { background: #e05a2b; }
+    .section-label.adaptive { background: #2b6cb0; }
+    .section-label.memory   { background: #276749; }
+
+    .section-divider {
+      height: 2px;
+      border-radius: 2px;
+      margin-left: 8px;
+    }
+    .section-divider.innate   { background: #e05a2b33; }
+    .section-divider.adaptive { background: #2b6cb033; }
+    .section-divider.memory   { background: #27674933; }
+
+    /* ── Row ── */
+    .phase-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+
+    .phase-label {
+      font-size: 0.78rem;
+      line-height: 1.3;
+      color: #2d3a5c;
+      padding-right: 12px;
+    }
+
+    .bar-track {
+      position: relative;
+      height: 36px;
+      background: #e8ecf4;
+      border-radius: 8px;
+      overflow: visible;
+    }
+
+    /* tick lines inside track */
+    .bar-track::before,
+    .bar-track::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: #cbd2e0;
+      z-index: 0;
+    }
+    .bar-track::before { left: 25%; }
+    .bar-track::after  { left: 50%; }
+
+    .tick-75 {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: #cbd2e0;
+      left: 75%;
+      z-index: 0;
+    }
+
+    .bar {
+      position: absolute;
+      top: 5px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 9px;
+      font-size: 0.69rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 1;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+      transition: opacity 0.15s;
+      cursor: default;
+    }
+
+    .bar:hover { opacity: 0.88; }
+
+    /* Innate shades */
+    .bar.innate-1 { background: linear-gradient(90deg, #e05a2b, #f07d50); }
+
+    /* Adaptive shades – slightly different blues */
+    .bar.adaptive-1 { background: linear-gradient(90deg, #2b6cb0, #4a90d9); }
+    .bar.adaptive-2 { background: linear-gradient(90deg, #2563a8, #4585cf); }
+    .bar.adaptive-3 { background: linear-gradient(90deg, #1e5499, #3d7bc6); }
+    .bar.adaptive-4 { background: linear-gradient(90deg, #1a4a8a, #3672bc); }
+    .bar.adaptive-5 { background: linear-gradient(90deg, #163f7a, #2f68b0); }
+    .bar.adaptive-6 { background: linear-gradient(90deg, #1a4a8a, #3672bc); }
+
+    /* Memory */
+    .bar.memory-1 { background: linear-gradient(90deg, #276749, #38a169); }
+
+    /* onset dot */
+    .onset-dot {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #1a2340;
+      z-index: 2;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.78rem;
+      color: #4a5568;
+    }
+
+    .legend-swatch {
+      width: 28px;
+      height: 14px;
+      border-radius: 4px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #1a2340;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* ── Source note ── */
+    .source {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.71rem;
+      color: #a0aec0;
+    }
+
+    /* ── Axis labels below track ── */
+    .axis-ticks {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      margin-top: 4px;
+    }
+
+    .axis-tick-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .axis-tick {
+      font-size: 0.66rem;
+      color: #8896b3;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="timeline-wrap">
+
+  <h1>Phases of the Immune Response</h1>
+  <p class="subtitle">Source: Murphy K &amp; Weaver C (2016). <em>Janeway's Immunobiology</em>, 9th edn. Garland Science.</p>
+
+  <!-- Time axis header -->
+  <div class="time-axis">
+    <div class="time-axis-spacer"></div>
+    <div class="time-labels">
+      <span>Minutes</span>
+      <span>Hours</span>
+      <span>Days</span>
+      <span>Weeks</span>
+      <span>Lifelong</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ INNATE ═══════════════ -->
+  <div class="section-header">
+    <span class="section-label innate">Innate Immune Response</span>
+    <div class="section-divider innate"></div>
+  </div>
+
+  <!-- Row 1: Inflammation / phagocytosis -->
+  <div class="phase-row">
+    <div class="phase-label">Inflammation, complement activation, phagocytosis &amp; pathogen destruction</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <!-- onset: minutes (≈ left edge), duration: days (≈ 25%) -->
+      <div class="onset-dot" style="left: 1%;"></div>
+      <div class="bar innate-1" style="left: 1%; width: 25%;">Minutes → Days</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ADAPTIVE ═══════════════ -->
+  <div class="section-header">
+    <span class="section-label adaptive">Adaptive Immune Response</span>
+    <div class="section-divider adaptive"></div>
+  </div>
+
+  <!-- Row 2: DC–T cell interaction -->
+  <div class="phase-row">
+    <div class="phase-label">DC–T cell interaction: antigen recognition, adhesion, co-stimulation, T cell proliferation &amp; differentiation</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <!-- onset: hours (~12%), duration: days -->
+      <div class="onset-dot" style="left: 12%;"></div>
+      <div class="bar adaptive-1" style="left: 12%; width: 26%;">Hours → Days</div>
+    </div>
+  </div>
+
+  <!-- Row 3: B cell activation -->
+  <div class="phase-row">
+    <div class="phase-label">Activation of antigen-specific B cells</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <div class="onset-dot" style="left: 12%;"></div>
+      <div class="bar adaptive-2" style="left: 12%; width: 26%;">Hours → Days</div>
+    </div>
+  </div>
+
+  <!-- Row 4: Effector & memory T cells -->
+  <div class="phase-row">
+    <div class="phase-label">Formation of effector and memory T cells</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <!-- onset: days (~25%), duration: weeks (~50%) -->
+      <div class="onset-dot" style="left: 25%;"></div>
+      <div class="bar adaptive-3" style="left: 25%; width: 25%;">Days → Weeks</div>
+    </div>
+  </div>
+
+  <!-- Row 5: T–B interaction / germinal centers / antibody -->
+  <div class="phase-row">
+    <div class="phase-label">T–B cell interaction, germinal centers, plasma cells, memory B cells &amp; antibody production</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <div class="onset-dot" style="left: 25%;"></div>
+      <div class="bar adaptive-4" style="left: 25%; width: 25%;">Days → Weeks</div>
+    </div>
+  </div>
+
+  <!-- Row 6: Emigration -->
+  <div class="phase-row">
+    <div class="phase-label">Emigration of effector lymphocytes from peripheral lymphoid organs</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <!-- onset: few days (~30%), duration: weeks -->
+      <div class="onset-dot" style="left: 30%;"></div>
+      <div class="bar adaptive-5" style="left: 30%; width: 25%;">A few days → Weeks</div>
+    </div>
+  </div>
+
+  <!-- Row 7: Pathogen elimination -->
+  <div class="phase-row">
+    <div class="phase-label">Elimination of pathogen by effector cells and antibody</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <div class="onset-dot" style="left: 30%;"></div>
+      <div class="bar adaptive-6" style="left: 30%; width: 25%;">A few days → Weeks</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MEMORY ═══════════════ -->
+  <div class="section-header">
+    <span class="section-label memory">Immunological Memory</span>
+    <div class="section-divider memory"></div>
+  </div>
+
+  <!-- Row 8: Memory maintenance -->
+  <div class="phase-row">
+    <div class="phase-label">Maintenance of memory B &amp; T cells, serum/mucosal antibodies. Protection against reinfection</div>
+    <div class="bar-track">
+      <div class="tick-75"></div>
+      <!-- onset: days to weeks (~30–50%), duration: lifelong (to right edge) -->
+      <div class="onset-dot" style="left: 30%;"></div>
+      <div class="bar memory-1" style="left: 30%; width: 68%;">Days to Weeks → Lifelong</div>
+    </div>
+  </div>
+
+  <!-- Axis ticks -->
+  <div class="axis-ticks">
+    <div></div>
+    <div class="axis-tick-row">
+      <span class="axis-tick">0</span>
+      <span class="axis-tick">¼</span>
+      <span class="axis-tick">½</span>
+      <span class="axis-tick">¾</span>
+      <span class="axis-tick">→</span>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: linear-gradient(90deg,#e05a2b,#f07d50);"></div>
+      <span>Innate Response</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: linear-gradient(90deg,#2b6cb0,#4a90d9);"></div>
+      <span>Adaptive Response</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: linear-gradient(90deg,#276749,#38a169);"></div>
+      <span>Immunological Memory</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot"></div>
+      <span>Onset of phase</span>
+    </div>
+  </div>
+
+  <p class="source">Data from <em>PhasesImmuneResponse.pdf</em> (Murphy &amp; Weaver 2016, Fig. 1.7)</p>
+
+</div>
+</body>
+</html>

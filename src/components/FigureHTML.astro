@@ -1,0 +1,25 @@
+---
+const { src, height = '480px', margin = false } = Astro.props;
+---
+
+<figure class={margin ? 'm-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6' : 'm-0'}>
+    {
+        !margin && (
+            <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6">
+                <slot />
+            </figcaption>
+        )
+    }
+
+    <iframe
+        src={src}
+        style={`height: ${height};`}
+        class="w-full border-0 rounded"
+        loading="lazy"
+        title="Figure"
+    />
+
+    <figcaption class={margin ? 'block px-6 md:px-0 my-4' : 'block md:hidden px-6 my-4'}>
+        <slot />
+    </figcaption>
+</figure>
