@@ -1,0 +1,41 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  iframeSrc: string;
+  showHeader?: boolean;
+}
+
+const { title, iframeSrc, showHeader = false } = Astro.props;
+const frameId = 'frame-' + Math.random().toString(36).slice(2);
+---
+
+<BaseLayout title={title} showHeader={showHeader}>
+  <article class="mb-16 sm:mb-24">
+    <header class="mb-8">
+      <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{title}</h1>
+    </header>
+    <div class="w-full">
+      <iframe
+        id={frameId}
+        src={iframeSrc}
+        style="height: 500px;"
+        class="w-full border-0 rounded"
+        loading="lazy"
+        title={title}
+      />
+      <div class="prose sm:prose-lg mt-4">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<script define:vars={{ frameId }}>
+  const iframe = document.getElementById(frameId);
+  iframe.addEventListener('load', () => {
+    const height = iframe.contentDocument?.documentElement.scrollHeight;
+    if (height) iframe.style.height = height + 'px';
+  });
+</script>
