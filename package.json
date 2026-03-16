@@ -1,13 +1,13 @@
 {
-    "name": "NAME OF THE COURSE",
+    "name": "exercise-immunology",
     "type": "module",
-    "description": "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA.",
+    "description": "",
     "license": "CC-BY-4.0",
-    "author": "YOUR NAME",
-    "homepage": "https://synosys.github.io/YOUR_COURSE_NAME", 
+    "author": "CHRISTIAN PUTA",
+    "homepage": "https://synosys.github.io/exercise-immunology", 
     "repository": {
         "type": "git",
-        "url": "https://github.com/dirkbrockmann/YOUR_REPO_NAME.git",
+        "url": "https://github.com/chrisputa/exercise_immunology",
         "version": "1.0.0"
     },
     "scripts": {

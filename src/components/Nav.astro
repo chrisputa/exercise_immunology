@@ -33,6 +33,8 @@ const navLinks = siteConfig.headerNavLinks || [];
                             <NavLink
                                 class="uppercase text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base"
                                 href={link.href}
+                                target={link.target}
+                                rel={link.rel}
                             >
                                 {link.text}
                             </NavLink>

@@ -10,8 +10,7 @@
   "maxParticipants": "NUMBER OF MAXIMUM PARTICIPANTS",
   "instructors": {
     "lecture": ["INSTRUCTOR 1", "INSTRUCTOR 2", "INSTRUCTOR 3"],
-    "seminar": ["INSTRUCTOR 4", "INSTRUCTOR 5"],
-    "lab": ["INSTRUCTOR 6", "INSTRUCTOR 7", "INSTRUCTOR 8"]
+    "seminar": ["INSTRUCTOR 4", "INSTRUCTOR 5"]
   },
   "lecture": {
     "name": "OFFICIAL COURSE NUMBER AND NAME OF THE LECTURE",
@@ -28,14 +27,6 @@
     "sessions": "NUMBER OF SESSIONS, E.G., 12",
     "days": "DAYS OF THE WEEK, E.G., Wednesdays & Thursdays",
     "time": "TIME OF THE SEMINAR, E.G., 18:30 - 20:00"
-  },
-  "lab": {
-    "name": "OFFICIAL COURSE NUMBER AND NAME OF THE LAB COURSE",
-    "start": "START DATE OF THE LAB COURSE, E.G., Monday, Jan. 5th, 2026",
-    "end": "END DATE OF THE LAB COURSE, E.G., Thursday, Jan. 15th, 2026",
-    "sessions": "NUMBER OF SESSIONS, E.G., 8",
-    "days": "DAYS OF THE WEEK, E.G., Mon., Tue., Wed., Thu.",
-    "time": "TIME OF THE LAB COURSE, E.G., 10:00 - 17:00"
   },
   "grading": [
     { "type": "EXAM", "weight": 50 },
