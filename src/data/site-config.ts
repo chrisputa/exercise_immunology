@@ -1,13 +1,6 @@
 // import this alway
 import type {ImageMetadata} from 'astro:assets'; // always import this
 
-// an image for the course
-
-import {default as courseImg} from '../assets/complexity.png'; 
-
-// image of the instructor
-import authorImg from '../assets/dirk.png';
-
 // dark logo, this is auto-generated from ../assets/logo.png, you can replace it with your own dark logo if you want, but make sure to keep the same name and path
 import logoDark from '../assets/generated/logo_dark.png';
 
