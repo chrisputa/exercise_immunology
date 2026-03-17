@@ -2,19 +2,9 @@
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
-# Lecture Template 
+# Exercise Immunology 
 
-This repo is a template for building a site for a course, lecture or class using
-astro and a bunch of components.
-
-
-# Before using this template:
-
-you need to configure it. There are a bunch of files that you need to adapt
-
-## `pachage.json`
-
-add your information, replace the CAPITALIZED STUFF WITH YOUR INFORMATION
+This repository contains the content for the course "Exercise Immunology". It includes lecture notes, tutorials, and interactive dashboards on topics relevant to the field of exercise immunology.
 
 # Developer Notes
 
