@@ -21,12 +21,13 @@ type Props = {
 };
 
 const { dashboard } = Astro.props;
-const { title, seo, iframeSrc } = dashboard.data;
+const { title, seo, iframeSrc, iframeWidth, iframeHeight, iframeScale } = dashboard.data;
 const { Content } = await render(dashboard);
 ---
 
 {iframeSrc ? (
-    <DashboardLayout title={title} iframeSrc={iframeSrc}>
+    <DashboardLayout title={title} iframeSrc={iframeSrc} 
+    iframeWidth={iframeWidth} iframeHeight={iframeHeight} iframeScale={iframeScale}>
         <Content components={{ a: Link }} />
     </DashboardLayout>
 ) : (

@@ -30,6 +30,9 @@ const dashboards = defineCollection({
         publishDate: z.coerce.date(),
         draft: z.boolean().optional(),
         iframeSrc: z.string().optional(),
+        iframeWidth: z.number().optional(),
+        iframeHeight: z.number().optional(),
+        iframeScale: z.number().optional(),
         seo: seoSchema.optional()
     })
 });

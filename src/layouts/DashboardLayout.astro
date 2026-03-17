@@ -7,7 +7,9 @@ export interface Props {
   showHeader?: boolean;
 }
 
-const { title, iframeSrc, showHeader = false } = Astro.props;
+const { title, iframeSrc, showHeader = false, iframeWidth = 1000, iframeHeight = 720, iframeScale = 1 } = Astro.props;
+const scaledWidth  = Math.round(iframeWidth  * iframeScale);
+const scaledHeight = Math.round(iframeHeight * iframeScale);
 const frameId = 'frame-' + Math.random().toString(36).slice(2);
 ---
 
@@ -16,13 +18,14 @@ const frameId = 'frame-' + Math.random().toString(36).slice(2);
     <header class="mb-8">
       <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{title}</h1>
     </header>
-    <div class="w-full">
+    <div style={`width: ${scaledWidth}px; height: ${scaledHeight}px; overflow: hidden;`}>
       <iframe
         id={frameId}
         src={iframeSrc}
-        style="height: 500px;"
-        class="w-full border-0 rounded"
-        loading="lazy"
+        width={iframeWidth}
+        height={iframeHeight}
+        style={`transform: scale(${iframeScale}); transform-origin: top left; border: none; display: block;`}
+        scrolling="no"
         title={title}
       />
       <div class="prose sm:prose-lg mt-4">
@@ -31,11 +34,3 @@ const frameId = 'frame-' + Math.random().toString(36).slice(2);
     </div>
   </article>
 </BaseLayout>
-
-<script define:vars={{ frameId }}>
-  const iframe = document.getElementById(frameId);
-  iframe.addEventListener('load', () => {
-    const height = iframe.contentDocument?.documentElement.scrollHeight;
-    if (height) iframe.style.height = height + 'px';
-  });
-</script>
