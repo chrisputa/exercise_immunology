@@ -4,49 +4,45 @@ seo:
   title: TL;DR - Course Information
   description: Get a quick overview of the course structure, key topics, and essential resources.
 ---
-import Figure from "../../components/Figure.astro";
-import MarginNote from "../../components/MarginNote/Note.astro";
-import courseConfig from '../../data/course-config.json';
 
-Here's a summary of the key parameters of the Module **Introduction to Complex Systems** 
-(M0500-31W20)
-that is offered as part of the Bachelor Degree program Molecular
-Biology and Biotechnology at TU Dresden as an elective compulsory module.
-
+Here’s a summary of the key parameters of the Module **Advances in Sports Medicine and Health Promotion II** (VSM II) 
+that is offered as part of the Bachelor Degree program Bachelor of Science Sportwissenschaft Performance and Health 
+at Friedrich-Schiller-University Jena.
 
 
 ## Course Details
 
 The course has three components: 
 
-1. **Lecture** ({courseConfig.lecture.days} {courseConfig.lecture.time}) 
+1. Lectures
+2. Interactive Dashboards
+3. Tutorials
 
 
 ### Lecture
-<MarginNote>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10037.512579074284!2d13.704058246542708!3d51.02763625024674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709c5940abd1f4f%3A0x490d22e2ee6850c8!2sGeorg-Schumann-Stra%C3%9Fe%207a%2C%2001069%20Dresden!5e0!3m2!1sde!2sde!4v1743796057106!5m2!1sde!2sde" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-Lecture and the Lab Course will be held at Georg-Schumann-Str. 7a at the Center Synergy
-of Systems (SynoSys).
-</MarginNote>
 
-- **Name:** {courseConfig.lecture.name}
-- **Starting date:** {courseConfig.lecture.start}
-- **End date:** {courseConfig.lecture.end}
-- **Number of sessions:** {courseConfig.lecture.sessions}
-- **Date & Time:** {courseConfig.lecture.days}, {courseConfig.lecture.time}
-- **Location:** {courseConfig.location}
-- **Language:** {courseConfig.language}
-- **Max. number of participants:** {courseConfig.maxParticipants}
-- **Instructor:** {courseConfig.instructors.lecture.join(", ")}
+- **Name:** Exercise Immunology (VSM II)
+- **Starting date:** Friday, April, 10th, 2026
+- **End date:** Friday, July, 10th, 2026
+- **Number of sessions:** 14
+- **Location:** CZS3 HS6
+- **Language:** German, English
+
+### Interactive Dashboards
+- HTML/JS-based interactive dashboards are mandatory to use as learning tools
+
+### Tutorials
+- The Shiny/Python-based App PExOL Easy Plot is an essential learning tool
+
 
 ## Grading
 
-The final grade for the course will be based on these performance parameters:
+Prerequisite for admission to the module examination:
+- To achieve the learning objectives of this module, regular attendance at the module's seminars and exercises is required.
+- Regular attendance is defined as missing no more than 15 percent of the class time in any given session.
 
-<ol>
-  {courseConfig.grading.map((item, idx) => (
-    <li key={idx}>{item.type} ({item.weight}%)</li>
-  ))}
-</ol>
-
-
+Module examination (VSM II) in the form of three parts:
+- Exercise Immunology (written exam, 30 min, pass/fail)
+- Exercise Immunology (presentation/proposal, 50%)
+- Applied Sports Medicine (presentation in the form of a practical teaching demonstration, 50%)
+- Each module part must be passed

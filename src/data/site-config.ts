@@ -7,9 +7,6 @@ import logoDark from '../assets/generated/logo_dark.png';
 // light logo
 import logoLight from '../assets/logo.png';
 
-// import course config, contains information about the course
-import courseConfig from './course-config.json'; 
-
 
 export type Image = {
     src: ImageMetadata;
@@ -72,7 +69,6 @@ const siteConfig: SiteConfig = {
     website: 'https://immunenotes.github.io/',
     base: '/exercise-immunology/',
     title: 'Exercise Immunology',
-    email: courseConfig.email,
     author: {
         name: 'Christian Puta',
         url: 'https://immunenotes.github.io/'
