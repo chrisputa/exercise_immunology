@@ -107,6 +107,10 @@ const siteConfig: SiteConfig = {
             href: '/lectures'
         },
         {
+            text: 'Dashboards',
+            href: '/dashboards'
+        },
+        {
             text: 'Tutorials',
             href: '/tutorials'
         },

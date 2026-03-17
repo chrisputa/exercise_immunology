@@ -1,0 +1,36 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Link from '../../components/Link.astro';
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
+import { sortItemsByDateDesc } from '../../utils/data-utils';
+
+export async function getStaticPaths() {
+    const dashboards = (await getCollection('dashboards')).sort(sortItemsByDateDesc);
+
+    return dashboards.map((dashboard) => ({
+        params: { id: dashboard.id },
+        props: {
+            dashboard
+        }
+    }));
+}
+
+type Props = {
+    dashboard: CollectionEntry<'dashboards'>;
+};
+
+const { dashboard } = Astro.props;
+const { title, seo, iframeSrc } = dashboard.data;
+const { Content } = await render(dashboard);
+---
+
+{iframeSrc ? (
+    <DashboardLayout title={title} iframeSrc={iframeSrc}>
+        <Content components={{ a: Link }} />
+    </DashboardLayout>
+) : (
+    <PageLayout title={title} seo={seo} showHeader={false}>
+        <Content components={{ a: Link }} />
+    </PageLayout>
+)}

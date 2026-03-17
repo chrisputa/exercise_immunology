@@ -22,6 +22,18 @@ const pages = defineCollection({
     })
 });
 
+const dashboards = defineCollection({
+    loader: glob({pattern: '**/*.{md,mdx}', base: './src/content/dashboards'}),
+    schema: z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        publishDate: z.coerce.date(),
+        draft: z.boolean().optional(),
+        iframeSrc: z.string().optional(),
+        seo: seoSchema.optional()
+    })
+});
+
 const tutorials = defineCollection({
     loader: glob({pattern: '**/index.{md,mdx}', base: './src/content/tutorials'}),
     schema: z.object({
@@ -81,4 +93,4 @@ const slides = defineCollection({
   }),
 });
 
-export const collections = { slides, tutorialSlides, pages, lectures, tutorials , exam};
+export const collections = { slides, tutorialSlides, pages, lectures, dashboards, tutorials , exam};
