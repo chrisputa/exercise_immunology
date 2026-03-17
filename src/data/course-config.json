@@ -9,8 +9,7 @@
   "email": "COURSE EMAIL ADDRESS",
   "maxParticipants": "NUMBER OF MAXIMUM PARTICIPANTS",
   "instructors": {
-    "lecture": ["INSTRUCTOR 1", "INSTRUCTOR 2", "INSTRUCTOR 3"],
-    "seminar": ["INSTRUCTOR 4", "INSTRUCTOR 5"]
+    "lecture": ["INSTRUCTOR 1", "INSTRUCTOR 2", "INSTRUCTOR 3"]
   },
   "lecture": {
     "name": "OFFICIAL COURSE NUMBER AND NAME OF THE LECTURE",
@@ -19,14 +18,6 @@
     "sessions": "NUMBER OF SESSIONS, E.G., 16",
     "days": "DAYS OF THE WEEK, E.G., Mondays & Tuesdays",
     "time": "TIME OF THE LECTURE, E.G., 18:30 - 20:00"
-  },
-  "seminar": {
-    "name": "OFFICIAL COURSE NUMBER AND NAME OF THE SEMINAR",
-    "start": "START DATE OF THE SEMINAR, E.G., Wednesday, Nov. 26th, 2025",
-    "end": "END DATE OF THE SEMINAR, E.G., Thursday, Jan. 15th, 2026",
-    "sessions": "NUMBER OF SESSIONS, E.G., 12",
-    "days": "DAYS OF THE WEEK, E.G., Wednesdays & Thursdays",
-    "time": "TIME OF THE SEMINAR, E.G., 18:30 - 20:00"
   },
   "grading": [
     { "type": "EXAM", "weight": 50 },

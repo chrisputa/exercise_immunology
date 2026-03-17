@@ -107,10 +107,6 @@ const siteConfig: SiteConfig = {
             href: '/lectures'
         },
         {
-            text: 'Seminar',
-            href: '/seminar'
-        },
-        {
             text: 'Tutorials',
             href: '/tutorials'
         },
