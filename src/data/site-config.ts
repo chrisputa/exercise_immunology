@@ -66,12 +66,12 @@ const siteConfig: SiteConfig = {
         src: logoDark.src,
         alt: 't-cell logo dark'
     },
-    website: 'https://immunenotes.github.io/',
+    website: 'https://chrisputa.github.io/',
     base: '/exercise-immunology/',
     title: 'Exercise Immunology',
     author: {
         name: 'Christian Puta',
-        url: 'https://immunenotes.github.io/'
+        url: 'https://chrisputa.github.io/'
     },
     subtitle: '',
     description: '',
