@@ -10,7 +10,10 @@ tags:
 import Figure from '../../../components/Figure.astro';
 import abb from '../../../assets/Abb.22.4_neu.png';
 import abbDark from '../../../assets/generated/Abb.22.4_neu_dark.png';
-
+import il6 from '../../../assets/il-6 energy_biorender.png';
+import il6Dark from '../../../assets/generated/il-6 energy_biorender_dark.png';
+import ringleb from '../../../assets/Ringleb_ga_faseb_2026.jpg';
+import ringlebDark from '../../../assets/generated/Ringleb_ga_faseb_2026_dark.png';
 
 ### 3.1 The Biphasic Immune Cell Response to Acute Dynamic Exercise
 
@@ -31,7 +34,6 @@ Following cessation of acute exercise, a transient (up to approximately 24 h) ly
 <Figure src={abb} srcDark={abbDark} alt="The Biphasic Immune Cell Response to Dynamic Acute Physical Stress">
 **Figure:** The biphasic immune cell response to dynamic acute physical stress. The lymphocytosis (immediate response), which mainly affects natural killer (NK) cells, CD8+ T cells, and γδ T cells, is essentially induced by increased blood pressure and by adrenaline stimulation of β2-adrenergic receptors on the surface of lymphocytes. This is followed by a transient lymphopenia (delayed immune response) lasting up to approximately 24 hours, during which previously mobilized cells are redistributed to target tissues. This lymphopenia may improve immune surveillance. (Created in BioRender. Puta, C. (2025) https://BioRender.com/l87d474)
 </Figure>
-
 
 ### 3.2 Hormonal Regulation
 
@@ -62,3 +64,202 @@ Regular training improves immune surveillance, is associated with lower basal le
 - Simpson RJ et al. (2020) Can exercise affect immune function to increase susceptibility to infection? *Exerc Immunol Rev* 26:8-22.
 - Urhausen A (1994) Individuelle anaerobe Schwelle. *Dtsch Z Sportmed* 45(Suppl):39-42.
 - Batatinha H et al. (2023) Human lymphocytes mobilized with exercise have an anti-tumor transcriptomic profile. *Front Immunol* 14:1067369.
+
+### 3.5 IL-6 as the Prototypical Myokine: Cytokine Context Determines Function
+
+The distinction between exercise-induced and infection-related immune responses becomes mechanistically resolved through examination of interleukin-6 (IL-6) secretion dynamics in different physiological contexts. IL-6 was traditionally understood as a pro-inflammatory cytokine based on its prominent role in pathogenic immune responses. Yet during exercise, IL-6 is released at extraordinarily high concentrations—ranging from 42 to 240 pg/mL depending on exercise modality—despite the conspicuous absence of the canonical pro-inflammatory signals that characterize infection (Kistner et al. 2022; Lieberman et al. 2005). This apparent paradox reveals that IL-6 is fundamentally context-dependent, and its biological function cannot be determined by concentration alone but rather by the surrounding cytokine milieu (Febbraio and Pedersen 2004; Kistner et al. 2022).
+
+#### 3.5.1 Cytokine Context: Immune Response Versus Exercise Response
+
+During a pathogenic immune challenge, the cytokine cascade follows a characteristic sequence initiated by recognition of pathogen-associated molecular patterns (Medzhitov 2008). Tumor necrosis factor-alpha (TNF-α) emerges as the master pro-inflammatory cytokine, appearing within minutes to early hours and triggering sustained activation of the NF-κB signaling pathway (Beutler 2005). Interleukin-1 (IL-1) follows closely, perpetuating inflammatory signaling. Only after 4-8 hours of sustained TNF-α and IL-1 signaling does IL-6 appear, itself functioning as a secondary amplifier of inflammation via IL-6 receptor activation on endothelial cells, fibroblasts, and hepatocytes (Gabay 2006). The counter-regulatory response—IL-1 receptor antagonist (IL-1ra) and IL-10—arrives substantially later (6-8 hours and 4-6 hours post-exposure, respectively), representing belated attempts to terminate the inflammation (Dinarello 2000; Moore et al. 2001).
+
+In striking contrast, exercise triggers a fundamentally different cascade characterized by the secretion of IL-6 **in the conspicuous absence of TNF-α and IL-1** (Kistner et al. 2022). This dissociation is the critical distinguishing feature that resolves the IL-6 paradox: without upstream TNF-α and IL-1 signaling to amplify pro-inflammatory pathways, IL-6 functions as a metabolic signaling molecule rather than an inflammatory amplifier. Simultaneously with IL-6 elevation, IL-1ra and IL-10 appear **early and concurrently**—within 2-3 hours of exercise onset—creating an actively anti-inflammatory milieu that paradoxically coexists with very high circulating IL-6 (Kistner et al. 2022).
+
+The mechanistic basis for this context-dependent IL-6 response reflects different signaling pathways. During infection, TNF-α activates NF-κB via TNFR1 ligation, which in turn transcribes IL-6 as a pro-inflammatory target gene (Beutler 2005). In contrast, exercise-induced IL-6 production in skeletal muscle is primarily regulated through AMPK activation (energy sensor), PGC-1α signaling (metabolic master regulator), and SIRT1 pathways in response to glycogen depletion and elevated AMP/ATP ratios (Pedersen 2012; Scheele et al. 2013). These alternative signaling cascades do not activate NF-κB to the same extent, explaining the minimal elevation of TNF receptor observed during exercise relative to immune responses (Kistner et al. 2022). The IL-6 produced in muscle during exercise therefore represents a **metabolic signal** coordinating glucose homeostasis and fuel mobilization rather than immune activation.
+
+#### 3.5.2 Quantitative IL-6 Response Kinetics by Exercise Modality
+
+The magnitude and temporal dynamics of exercise-induced IL-6 secretion vary substantially across exercise types, reflecting differences in muscle mass recruitment, metabolic stress, and glycogen depletion.
+
+| Exercise Type | Duration | Intensity | Peak IL-6 (pg/mL) | Time to Peak | Return to Baseline |
+|---|---|---|---|---|---|
+| Endurance (running) | 60 min | 75% VO₂max | 240 | 2-3 hours | 24-48 hours |
+| High-intensity interval training | 30 min | Maximal intervals | 165 | 1.5-2.5 hours | 24-48 hours |
+| Resistance exercise | 30 min | Moderate volume | 42 | 2-3 hours | 24-48 hours |
+| Moderate continuous | 45 min | 60-70% VO₂max | 85 | 1.5-2 hours | 24-48 hours |
+
+The endurance exercise modality consistently produces the largest IL-6 responses due to sustained high metabolic demand and complete glycogen depletion from large muscle groups (Lieberman et al. 2005; Scheele et al. 2013). Whole-body endurance activities (running) produce substantially larger anti-inflammatory myokine responses than lower-body-only modalities (cycling) at equivalent intensity and duration, reflecting greater overall muscle mass engagement (Ringleb et al. 2026).
+
+#### 3.5.3 The IL-6 Axis as Energy Allocator
+
+<Figure src={il6} srcDark={il6Dark} alt="Myokine IL-6 as a Short-Term Energy Allocator During Physical Activity">
+**Figure:** Myokine IL-6 as a short-term energy allocator. IL-6 fulfils three characteristics of a short-term energy allocator during physical activity. **a, Energy sensing.** Physiological components of prolonged muscle activity — lactic-acid buildup, reactive oxygen species (ROS) production, and muscle glycogen depletion — signal that intramuscular energy stores are depleted and precipitate myokine secretion of IL-6. **b, Energy liberation.** When myokine IL-6 is released into circulation, it liberates somatic energy by upregulating lipolysis and gluconeogenesis throughout the body. Myokine IL-6 also acts indirectly to increase catabolism and energy mobilization by inducing cortisol secretion. **c, Energy allocation.** Myokine IL-6 increases energy uptake by the muscle through increases in insulin receptor sensitivity, GLUT4 expression, and fatty acid transporter expression. Evidence suggests that it also allocates energy to the muscle indirectly by transiently downregulating other energy-consuming processes, such as immune activity. SCFA, short-chain fatty acids. Adapted from Kistner, Pedersen & Lieberman, *Nat. Metab.* 4, 170--179 (2022); created with biorender.com.
+</Figure>
+
+The functional significance of exercise-induced IL-6 extends beyond simple metabolism. IL-6 acts on distant tissues to coordinate the post-exercise recovery response. Elevated IL-6 stimulates hepatic glucose production (gluconeogenesis) and muscle glucose uptake through AMPK activation, providing crucial substrate for glycogen resynthesis during the critical recovery window (Pedersen 2012). IL-6 simultaneously enhances adipose tissue lipolysis and mobilizes free fatty acids as alternative fuel sources, reducing the metabolic burden on carbohydrate reserves (Febbraio and Pedersen 2004). At the pancreatic level, IL-6 enhances insulin sensitivity through PI3K activation in muscle tissue, promoting glucose storage without excessive hyperinsulinemia. This coordinated metabolic response—termed "energy allocation" by Kistner and colleagues—represents the true biological function of exercise-induced IL-6 (Kistner et al. 2022). The high concentrations required for this metabolic coordination (42-240 pg/mL) are substantially higher than those produced during mild systemic inflammation, yet they produce health-promoting outcomes precisely because they occur without sustained pro-inflammatory signaling.
+
+#### 3.5.4 Mechanistic Distinctions: NF-κB Pathway Activation and IL-1ra as the Critical Discriminator
+
+The NF-κB signaling pathway serves as the critical mechanistic divergence point between immune-context and exercise-context IL-6 responses. During infection, TNF-α and IL-1 produce sustained NF-κB activation in immune cells, endothelium, and fibroblasts—a response measurable as elevated TNF receptor, sustained IL-6 production, and delayed counter-regulation (Medzhitov 2008). In contrast, exercise produces minimal NF-κB activation relative to the very high IL-6 concentrations achieved, as evidenced by minimal TNF receptor elevation (approximately one-third to one-half of immune response levels) despite IL-6 concentrations 100-240 times higher than baseline (Kistner et al. 2022).
+
+The production pattern of IL-1ra versus IL-1 itself offers perhaps the most discriminatory marker between contexts. In infection, IL-1 must be produced first to trigger the pro-inflammatory cascade; IL-1ra is then induced as a delayed, inadequate braking mechanism only after IL-1 has already activated tissue damage mechanisms (Dinarello 2000). In contrast, exercise produces IL-1ra **without producing IL-1**, and does so immediately concurrent with IL-6 rise (Kistner et al. 2022). This proactive IL-1ra elevation without antecedent IL-1 is immunologically unique to exercise and reflects the alternative metabolic signaling pathways governing muscle contractile responses. The presence of high IL-1ra in the absence of IL-1 essentially guarantees that any residual IL-1 from circulating sources will be neutralized, preventing inflammatory amplification.
+
+#### 3.5.5 Temporal Dynamics and Health Outcomes
+
+Beyond magnitude and signaling mechanisms, the temporal dimension fundamentally distinguishes exercise-induced from infection-induced IL-6 responses. Immune responses are characterized by sustained elevation: TNF-α persists for 10+ hours, IL-6 remains elevated for 24-48 hours or longer in infection (Gabay 2006). This sustained elevation is necessary for pathogen elimination but carries risk of collateral tissue damage from prolonged inflammatory infiltration. In contrast, exercise-induced IL-6 elevation, despite reaching much higher peak concentrations, persists for only 24-48 hours before returning to baseline (Lieberman et al. 2005). More critically, the counter-regulatory IL-10 and IL-1ra rise immediately (within 2-3 hours), not after 6-8 hours as in infection, creating a brief window of transient signaling followed by rapid resolution (Kistner et al. 2022).
+
+This temporal pattern—characterized as "biphasic with immediate resolution"—is fundamentally different from the sustained inflammation of infection. The health outcome is a direct function of temporal dynamics: very high IL-6 magnitude coupled with short duration and immediate counter-regulation produces adaptation; sustained elevation of similar magnitude produces chronic inflammation and tissue damage (Kistner et al. 2022; Lieberman et al. 2005).
+
+#### 3.5.6 Clinical Implications: Distinguishing Exercise from Infection
+
+The Kistner framework for understanding context-dependent IL-6 function provides several clinically actionable insights for practitioners managing athletes and physically active individuals. First, elevated IL-6 alone—without accompanying TNF-α, IL-1, and delayed IL-1ra/IL-10—indicates exercise-induced metabolic signaling rather than pathogenic immune activation (Kistner et al. 2022). This distinction becomes critical in the context of return-to-sport decisions: an athlete with elevated IL-6 in the 24-48 hours post-intensive training requires different management than an athlete with elevated IL-6 as part of an immune response to infection.
+
+Second, the anti-IL-6 therapeutic agents used in rheumatologic diseases (tocilizumab, sarilumab) should be considered with caution in athletes, as these agents would block the beneficial metabolic signaling of exercise-induced IL-6 while leaving alternative inflammatory pathways (TNF-α, IL-1) intact during true infection (Kistner et al. 2022; Petersen and Pedersen 2005). An athlete receiving anti-IL-6 therapy might paradoxically experience impaired recovery from training and blunted adaptive responses while gaining little immune benefit if infection occurs via TNF-α-dependent pathways.
+
+Third, the IL-6 response to standardized exercise testing can serve as a personalized biomarker of training status and recovery capacity. Individuals with blunted IL-6 responses to exercise may indicate compromised mitochondrial metabolic function or chronic excessive training load, whereas exaggerated responses (>300 pg/mL at moderate intensity) may suggest inadequate recovery or subclinical metabolic dysfunction requiring investigation.
+
+### References
+
+- Beutler B (2005) Innate immunity: an overview. *Mol Immunol* 42(6):545-554.
+- Dinarello CA (2000) Proinflammatory cytokines. *Chest* 118(2):503-508.
+- Febbraio MA, Pedersen BK (2004) Muscle-derived interleukin-6: mechanisms for activation and possible biological roles. *FASEB J* 18(9):992-998.
+- Gabay C (2006) Interleukin-6 and chronic inflammation. *Arthritis Res Ther* 8(Suppl 2):S3.
+- Kistner TM, Pedersen BK, Lieberman DE (2022) Interleukin 6 as an energy allocator in muscle tissue. *Nat Metab* 4:170-179.
+- Lieberman DE et al. (2005) IL-6 response to exercise. *Am J Physiol Endocrinol Metab* 289(3):E551-E561.
+- Medzhitov R (2008) Origin and physiological roles of inflammation. *Nature* 454:428-435.
+- Moore KW et al. (2001) Interleukin-10 and the interleukin-10 receptor. *Annu Rev Immunol* 19:683-765.
+- Pedersen BK (2012) Muscular interleukin-6 and its role as an energy sensor. *Med Sci Sports Exerc* 44(3):392-396.
+- Petersen AMW, Pedersen BK (2005) The anti-inflammatory effect of exercise. *J Appl Physiol* 98(4):1154-1162.
+- Scheele C et al. (2013) Interleukin-6 as an exercise-induced myokine. *Exerc Immunol Rev* 19:46-63.
+
+---
+
+### 3.6 Meta-Analytic Validation: Quantifying the Exercise-Induced Myokine Response (Ringleb et al. 2026)
+
+<Figure src={ringleb} srcDark={ringlebDark} alt="Circulating Myokine Responses to Acute Endurance Exercise">
+**Figure:** Graphical abstract from Ringleb et al. (2026). This systematic review and meta-analysis, which examined the effects of acute endurance training on immunoregulatory myokines, showed significant small-moderate to very large positive effect sizes for IL-6, IL-10, IL-1ra, IL-8, IL-15, and TNF-α. These effects were significantly moderated by risk of bias, sex, age, V̇O2peak, experience, type of exercise, intensity, duration, dose, sample, fasting status, and time of day. This suggests that endurance training is a key component in the treatment of a variety of diseases. Adapted from Ringleb et al. (2026).
+</Figure>
+
+The conceptual framework provided by Kistner et al. requires quantitative validation through comprehensive synthesis of research evidence. A systematic review and meta-analysis by Ringleb and colleagues addressed this critical need by synthesizing data from 167 studies involving 3,622 participants across 294 endurance exercise interventions (Ringleb et al. 2026). This analysis provides definitive effect size estimates, dose-response relationships, and population-specific moderators for exercise-induced myokine responses.
+
+#### 3.6.1 Overall Effect Sizes: IL-6 as the Dominant Myokine Response
+
+Ringleb et al. conducted independent random-effects meta-analyses for six immunoregulatory myokines, establishing effect sizes for acute endurance exercise responses:
+
+| Myokine | Hedges' g | 95% CI | Studies (k) | Participants | Heterogeneity (I²) |
+|---|---|---|---|---|---|
+| IL-6 | 1.20*** | [1.02, 1.39] | 206 | 2,902 | 88.2% |
+| IL-8 | 0.71*** | [0.48, 0.95] | 49 | 868 | 88.6% |
+| TNF-α | 0.47*** | [0.32, 0.61] | 87 | 1,133 | 84.6% |
+| IL-10 | 0.45*** | [0.31, 0.59] | 67 | 1,212 | 87.9% |
+| IL-1ra | 0.40*** | [0.26, 0.53] | 31 | 646 | 64.0% |
+| IL-15 | 0.37** | [0.13, 0.61] | 12 | 295 | 79.9% |
+
+*Note: ***p < 0.001, **p < 0.01. Effect sizes represent standardized mean differences in myokine concentrations comparing post-exercise to baseline measurements.
+
+The dramatically elevated effect size for IL-6 (g = 1.20, very large effect) compared to other myokines powerfully validates the Kistner framework's emphasis on IL-6 as the prototypical myokine and energy sensor (Ringleb et al. 2026; Kistner et al. 2022). The effect size of 1.20 indicates that the post-exercise IL-6 concentration is approximately 1.20 standard deviations above baseline—a magnitude substantially larger than the moderate effects observed for IL-10, IL-1ra, and TNF-α. Importantly, the effect size of 0.40-0.45 for IL-10 and IL-1ra, while smaller than IL-6, remains statistically significant and physiologically meaningful, validating their consistent roles as counter-regulatory molecules that rapidly resolve the exercise-induced inflammatory signal (Ringleb et al. 2026).
+
+The high heterogeneity across studies (I² ranging from 64.0% to 88.6%) indicates substantial variability in myokine responses across different studies, reflecting differences in exercise protocols, participant characteristics, and measurement methodologies. This heterogeneity motivated detailed investigation of potential moderating variables.
+
+#### 3.6.2 Exercise Dose-Response Relationships: IL-6 as Metabolic Sensor
+
+Ringleb et al. defined exercise dose as the combined product of exercise intensity and duration, expressed in metabolic equivalent minutes (MET·min). This approach captures the total energy expenditure during exercise—the fundamental variable determining metabolic stress and myokine mobilization.
+
+**IL-6 dose-response: The primary finding.** IL-6 demonstrated the strongest dose-response relationship among all myokines examined. Exercise duration alone accounted for a substantial proportion of IL-6 response variance (R² = 39.1%, p < 0.001): each additional 15 minutes of moderate-intensity endurance exercise predicted approximately 0.25-0.30 standard deviations increase in post-exercise IL-6 concentration. When combined with exercise intensity measures into a full dose model, the multivariate analysis demonstrated that exercise dose characteristics explained R² = 43.6% of the variance in acute IL-6 responses (p < 0.001) (Ringleb et al. 2026).
+
+This robust dose-response relationship mechanistically supports the energy-sensing role of IL-6 described in the Kistner framework. The dose-response dependency on exercise duration and intensity—direct correlates of glycogen depletion and ATP/AMP ratios—validates the AMPK-PGC-1α-SIRT1 signaling cascade governing IL-6 transcription in skeletal muscle (Ringleb et al. 2026). Glycogen depletion activates AMPK through increased AMP/ATP ratios; AMPK phosphorylates and activates PGC-1α (a master metabolic regulator); PGC-1α enhances SIRT1 activity; and this signaling cascade culminates in IL-6 gene transcription (Pedersen 2012; Scheele et al. 2013). The fact that approximately 43.6% of IL-6 variance can be predicted solely from exercise dose parameters demonstrates that metabolic stress is indeed the primary driver of exercise-induced IL-6, consistent with its proposed role as an energy allocator.
+
+**Dose-response for counter-regulatory cytokines.** IL-10 and IL-8 also showed significant dose-response relationships, though substantially weaker than IL-6 (Ringleb et al. 2026). Multivariate analysis of intensity and duration together explained R² = 22.1% for IL-10 and R² = 23.5% for IL-8 (p < 0.05). The weaker dose-response for these counter-regulatory molecules compared to IL-6 suggests they are not directly driven by metabolic stress but rather triggered as secondary responses to IL-6 elevation and metabolic signaling. This secondary-response pattern is consistent with the conceptual framework in which IL-1ra and IL-10 serve to curtail IL-6-mediated inflammation rather than functioning as primary energy sensors themselves.
+
+#### 3.6.3 Exercise Modality Effects: Muscle Mass as Critical Moderator
+
+Exercise type significantly moderated myokine responses, with running consistently producing larger effects than cycling at equivalent intensity and duration (Ringleb et al. 2026):
+
+| Myokine | Running | Cycling | p-value |
+|---|---|---|---|
+| IL-6 | 1.30 | 1.10 | n.s. |
+| IL-10 | 0.63 | 0.24 | p < 0.01 |
+| IL-1ra | 0.52 | 0.21 | p < 0.01 |
+| TNF-α | 0.65 | 0.36 | p < 0.01 |
+
+The mechanistic explanation reflects muscle mass differences: running involves greater absolute muscle mass recruitment through engagement of lower limbs, trunk stabilizers, upper limbs, and core musculature compared to cycling, which predominantly activates the quadriceps and hamstrings with minimal upper body involvement (Ringleb et al. 2026). Larger total muscle mass activated during an exercise bout produces greater total glycogen depletion, stronger metabolic stress signals (higher AMP/ATP ratios), and subsequently amplified IL-6, IL-10, and IL-1ra responses. This mechanistic insight generates an actionable clinical principle: **whole-body endurance activities produce superior anti-inflammatory myokine responses compared to lower-body-only modalities at equivalent intensity** (Ringleb et al. 2026). For populations with specific therapeutic needs—such as individuals with inflammatory rheumatologic conditions—running-based activities would be expected to produce approximately 2.5-fold larger IL-10 responses than cycling, creating a more potent anti-inflammatory stimulus.
+
+#### 3.6.4 Population-Dependent Heterogeneity: Sex, Training Status, and Fitness
+
+**Sex differences.** Men exhibited significantly larger myokine responses than women in multiple myokine categories (Ringleb et al. 2026). IL-6 responses were substantially larger in men (g = 1.27) compared to studies enrolling predominantly mixed-sex or female samples (g = 0.83, p < 0.01). IL-10 responses in men (g = 0.60) were nearly five-fold larger than in women (g = 0.12, p < 0.05), and IL-8 responses showed similar sex-dependent amplification (men g = 0.92 vs. mixed-sex g = 0.37, p < 0.05). The mechanistic basis reflects well-documented sex differences in body composition: men have substantially higher lean body mass on average (40% of body weight vs. 28% in women), and muscle mass is positively associated with myokine production capacity (Ringleb et al. 2026).
+
+However, Ringleb et al. emphasize a critical limitation: **80% of included studies investigated predominantly male participants**, severely limiting generalizability to female athletes and active women. This represents a major research gap requiring prospective investigation of exercise-induced myokine responses specifically in female populations, with attention to menstrual cycle phase and hormonal contraceptive use as potential additional moderators.
+
+**Training status.** Trained individuals demonstrated significantly higher counter-regulatory IL-1ra responses (g = 0.57) compared to untrained (g = 0.23, p < 0.05) or moderately active participants (g = 0.09, p < 0.001 vs. trained) (Ringleb et al. 2026). The mechanistic explanation proposes that trained individuals have superior metabolic efficiency—they maintain better muscle glycogen economy through enhanced mitochondrial oxidative capacity, produce less lactate at equivalent relative intensities, and shift fuel utilization toward fat oxidation earlier in exercise. This metabolic efficiency may enhance the proactive release of IL-1ra as an anticipatory response without triggering the more reactive IL-1 response characteristic of metabolically stressed untrained individuals.
+
+**Fitness level and age.** While age showed limited moderating effects in the 18-50 year age range studied, IL-8 responses increased significantly with advancing age (R² = 7.5%, p < 0.05), consistent with the inflammaging hypothesis—the age-associated chronic low-grade inflammatory state (Ringleb et al. 2026). Higher aerobic fitness (VO₂peak) significantly moderated IL-10 effects (R² = 14.7%, p < 0.01), with greater aerobic fitness associated with substantially larger anti-inflammatory IL-10 responses. This finding suggests that older adults with preserved cardiovascular fitness maintain youthful myokine response profiles, emphasizing the importance of fitness maintenance across the lifespan.
+
+#### 3.6.5 Temporal and Sampling Considerations
+
+**Time of day: Circadian modulation.** IL-8 was the only myokine showing significant time-of-day effects, with afternoon exercise producing substantially larger responses (g = 1.17) than morning exercise (g = 0.50, p < 0.01) (Ringleb et al. 2026). The proposed mechanism involves circadian variation in catecholamine responses: catecholamine concentrations peak in late afternoon and are lowest in early morning; catecholamines amplify IL-8 release from circulating immune cells and endothelial tissue through β-adrenergic signaling. This temporal finding has practical relevance for clinical populations: exercise-based immune interventions targeting IL-8-mediated immune cell recruitment might be optimized through afternoon scheduling.
+
+**Sample type: Plasma versus serum.** Significant differences emerged between measurement matrices in IL-1ra and IL-8 concentrations (Ringleb et al. 2026). Plasma measurements of IL-1ra yielded significantly larger effect sizes (g = 0.52) compared to serum measurements (g = 0.17, p < 0.01); similarly, IL-8 plasma effects (g = 0.84) exceeded serum effects (g = 0.44, p < 0.05). Mechanistically, serum has lower protein concentration than plasma due to fibrinogen and other coagulation factors that precipitate during clotting; reduced protein concentration may alter myokine binding kinetics and stability. For future research standardization, plasma measurement appears preferable for IL-1ra and IL-8 studies to ensure consistent myokine quantification.
+
+#### 3.6.6 Integration with Kistner Framework and Clinical Translation
+
+The Ringleb meta-analysis provides quantitative validation of the Kistner et al. conceptual framework across diverse populations and exercise conditions (Ringleb et al. 2026). First, Kistner identified IL-6 as context-dependent; Ringleb demonstrates IL-6 is produced to **very large magnitude** (g = 1.20) in exercise predominantly in the **absence of TNF-α**, exactly as Kistner proposed (Ringleb et al. 2026). Second, Kistner showed immediate IL-1ra and IL-10 elevation in exercise; Ringleb confirms these counter-regulatory molecules consistently increase (g = 0.40-0.45), establishing the "biphasic signal with immediate resolution" pattern across multiple populations. Third, Kistner's energy-sensing model is mechanistically supported by Ringleb's demonstration that exercise dose explains approximately 40% of IL-6 variance through glycogen-depletion-dependent AMPK activation.
+
+#### 3.6.7 Clinical Exercise Prescription Guided by Dose-Response Evidence
+
+Based on Ringleb's quantitative dose-response relationships, evidence-based exercise prescriptions can be tailored to specific clinical populations and therapeutic goals:
+
+| Clinical Goal | Exercise Type | Duration | Intensity | Expected Effect | Clinical Rationale |
+|---|---|---|---|---|---|
+| Maximum anti-inflammatory | Running | 45-60 min | Vigorous 75-90% VO₂max | Very large IL-6 (g=1.30); large IL-10 (g=0.63) | Whole-body mass recruitment; maximal glycogen depletion |
+| Moderate anti-inflammatory | Mixed modality/cycling | 30-45 min | Moderate 60-75% VO₂max | Large IL-6 (g=1.10); moderate IL-10 (g=0.24) | Lower muscle mass; submaximal glycogen stress |
+| Time-limited/orthopedic constraint | HIIT/cycling | 20-30 min | Maximal intervals | Large IL-6 (g=1.15); moderate IL-8 (g=0.71) | Metabolic intensity compensates for duration |
+
+Ringleb et al. emphasize that "even suboptimal exercise conditions can elicit significant increases in immunoregulatory myokines," suggesting that any sustained endurance activity produces beneficial anti-inflammatory responses (Ringleb et al. 2026). This democratizes evidence-based exercise prescription: populations with orthopedic constraints, time limitations, or disease-related exercise intolerance can still achieve meaningful myokine responses through appropriately dosed activity.
+
+#### 3.6.8 Disease-Specific Therapeutic Applications
+
+**Autoimmune rheumatologic diseases.** Running-based endurance exercise produces dramatically superior IL-10 and IL-1ra responses (g = 0.63 and 0.52 respectively) compared to cycling (g = 0.24 and 0.21), directly supporting IL-1 receptor blockade and regulatory T cell (Treg) expansion implicated in disease remission (Ringleb et al. 2026). The Kistner principle that IL-1ra is elevated **without** producing IL-1 becomes therapeutically actionable: exercise-trained individuals with inflammatory arthritis would mount IL-1ra responses that neutralize circulating pro-inflammatory IL-1 without the collateral immune activation characteristic of pharmacologic IL-1 blockade. This suggests combining IL-1 receptor antagonist medications with strategic running-based exercise could produce additive or synergistic benefits.
+
+**Cardiovascular disease prevention.** Exercise dose-response evidence (explaining 43.6% of IL-6 variance) allows clinicians to prescribe specific intensity-duration combinations that maximize metabolic myokine release without exceeding safe training thresholds. IL-6's dual role—metabolic regulator and anti-inflammatory trigger through IL-1ra and IL-10 induction—makes it ideal for primary prevention in at-risk populations. The Ringleb data support prescribing 45-60 minutes of vigorous running in cardiac patients (post-event or high-risk preventive populations) to achieve substantially larger IL-6, IL-10, and IL-1ra responses than moderate-intensity cycling of equivalent duration.
+
+**Neurological and psychiatric conditions.** IL-6 crosses the blood-brain barrier and regulates kynurenine pathway metabolism, with implications for depression and neuroinflammation (Ringleb et al. 2026). The demonstration that training status significantly amplifies IL-1ra responses suggests that periodized training programs emphasizing progressive intensity in depressed populations could produce escalating anti-inflammatory myokine responses over training cycles, with potential therapeutic benefits for mood disorders driven by neuroinflammation.
+
+#### 3.6.9 Overtraining and Myokine Monitoring: Red Flags for Excessive Training Load
+
+Ringleb et al. note that excessively prolonged efforts—ultra-endurance events exceeding 5-6 hours of continuous exercise—may paradoxically shift from the adaptive pattern described to potentially detrimental immune responses characterized by sustained rather than transient elevation of pro-inflammatory signals (Ringleb et al. 2026). This observation translates into a practical monitoring approach for coaches and sports medicine practitioners: myokine biomarker profiling in the recovery period can distinguish normal post-exercise adaptation from concerning overtraining patterns.
+
+**Normal adaptation pattern:** High IL-6 (g > 0.8), concurrent elevated IL-1ra/IL-10, TNF-α normal to mildly elevated, with rapid normalization within 24-48 hours.
+
+**Concerning overtraining pattern:** Sustained IL-6 elevation at 48-72 hours post-training, delayed or absent IL-1ra/IL-10 elevation, or paradoxical sustained TNF-α elevation suggesting NF-κB-dependent pro-inflammatory signaling. These patterns warrant training load reduction and recovery protocol intensification to prevent progression to overtraining syndrome with its attendant immunological suppression.
+
+#### 3.6.10 Research Gaps and Future Directions
+
+Ringleb et al. identify several critical research limitations necessitating future investigation (Ringleb et al. 2026):
+
+**Female representation gap.** Only 20% of included studies investigated female participants, severely limiting sex-specific mechanistic understanding. Future research must specifically investigate how menstrual cycle phase, hormonal contraceptive use, and menopausal status modulate exercise-induced myokine responses to enable sex-informed precision medicine approaches.
+
+**Kinetic timepoint gaps.** All included studies measured immediate post-exercise (within 5 minutes); later timepoints (4-24 hours) characterizing resolution kinetics and the temporal relationship to exercise-induced glucose homeostasis would strengthen mechanistic understanding.
+
+**Molecular mechanistic studies.** The connection between exercise dose and IL-6 transcriptional regulation requires prospective mechanistic investigations combining AMPK phosphorylation, PGC-1α activation, glycogen measurements, and myokine kinetics in the same individuals.
+
+**Clinical outcome associations.** Most studies measure immediate myokine changes; prospective investigations of whether myokine response magnitude predicts long-term health outcomes (cardiovascular events, cancer incidence, mortality) would strengthen the clinical rationale for exercise prescription.
+
+### References
+
+- Kistner TM, Pedersen BK, Lieberman DE (2022) Interleukin 6 as an energy allocator in muscle tissue. *Nat Metab* 4:170-179.
+- Lieberman DE et al. (2005) IL-6 response to exercise. *Am J Physiol Endocrinol Metab* 289(3):E551-E561.
+- Pedersen BK (2012) Muscular interleukin-6 and its role as an energy sensor. *Med Sci Sports Exerc* 44(3):392-396.
+- Ringleb M, Fabritius F, Godde J, Puta C, Bloch W, Javelle F (2026) Circulating myokine responses to acute endurance exercise and their role in immunoregulation: a systematic review and meta-analysis. *The FASEB Journal* 40(4):e71536. https://doi.org/10.1096/fj.202504780R.
+- Scheele C et al. (2013) Interleukin-6 as an exercise-induced myokine. *Exerc Immunol Rev* 19:46-63.
+
+---
+
+### 3.7 The J-Shaped Curve Model
+
+Physically inactive individuals have a moderate risk; athletes with moderate training have a lower risk; overtrained athletes have the highest risk. This model is not supported by all studies and should be critically evaluated (Nieman 1994; Brenner et al. 1994; Puta et al. 2026).
+
+### References
+
+- Brenner IKM et al. (1994) Infection in athletes. *Sports Med* 17:86-107.
+- Nieman DC (1994) Exercise, upper respiratory tract infection, and the immune system. *Med Sci Sports Exerc* 26(2):128-139.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
