@@ -80,17 +80,6 @@ const siteConfig: SiteConfig = {
             text: 'Home',
             href: '/'
         },
-
-        {
-            text: 'TL;DR',
-            href: '/tldr'
-        },
-        {
-            text: 'Blog',
-            href: 'https://immunenotes.github.io/',
-            target: '_blank',
-            rel: 'noopener noreferrer'
-        },
         {
             text: 'Lectures',
             href: '/lectures'
