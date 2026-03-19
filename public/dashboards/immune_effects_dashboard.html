@@ -919,5 +919,12 @@ new Chart(cellCtx, {
 });
 </script>
 
+<script>
+  const ro = new ResizeObserver(entries => {
+    const h = entries[0].contentRect.height;
+    window.parent.postMessage({ type: 'iframeResize', height: h }, '*');
+  });
+  ro.observe(document.documentElement);
+</script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+---
+title: Detecting POTS in Post-COVID Patients Using Wearable Technology
+description: Introduces the use of wearable device data for the algorithmic detection of postural orthostatic tachycardia syndrome (POTS) in post-COVID-19 patients, covering the study design, core methodology, and key findings of a proof-of-concept study.
+publishDate: '2026-06-05'
+draft: false
+tags:
+  - Lecture
+---
+
+### Background and Motivation
+
+Wearable devices like smartwatches provide continuous, 24/7 health monitoring that traditional clinical methods cannot match. Gabriel et al. (2026) explores whether that data stream can be used to detect **postural orthostatic tachycardia syndrome (POTS)** in patients with post-COVID-19 condition — a promising application at the intersection of digital health and post-infectious disease research.
+
+POTS is characterized by an abnormal increase in heart rate when a person moves from lying down to standing. Symptoms include dizziness, palpitations, fatigue, and exercise intolerance. Diagnosis traditionally requires controlled clinical tests such as the head-up-tilt test, NASA Lean test or active standing test.
+
+### Study Design and Data
+
+The study drew on data from the **WATCH study** (a telemedicine trial for post-COVID-19 patients in Thuringia, Germany). An observation cohort of **264 participants** was formed, ensuring data was collected without the influence of the study's active intervention. Participants wore almost exclusively Garmin devices, which recorded heart rate and sleep parameters continuously over 8–16 weeks, yielding a total of **15,308 analyzed get-up events**.
+
+### The Core Method: Data-Driven Active Standing Test
+
+The key innovation was algorithmically identifying each participant's **get-up time** — the moment they transitioned from lying to a standing position — using the heart rate increase around the wearable-detected sleep offset. Around each get-up time, two 10-minute windows were compared:
+
+- **Pre-interval**: the sustained minimum heart rate (a proxy for the supine resting rate)
+- **Post-interval**: the sustained maximum heart rate (a proxy for the orthostatic rate)
+
+A single event was flagged as POTS-positive if the difference was ≥ 30 bpm and the post-interval maximum was ≥ 90 bpm, following established clinical criteria  (Raj et al. 2020).
+
+Because a single measurement has limited validity, the authors also developed criteria for **POTS detection over time**: using at least 10 get-up events, a mean heart rate increase ≥ 25 bpm, a mean post-interval maximum ≥ 85 bpm, and at least one individually qualifying event. This approach acknowledges the chronic nature of POTS and the need to account for day-to-day physiological fluctuations across multiple measurements.
+
+### Key Findings
+
+Overall, **36% of participants** were classified as having POTS — consistent with prior post-COVID literature reporting rates between 31% (Bjornson et al. 2025) and 36.2% (Wang et al. 2025). Participants with POTS showed significantly higher heart rates both in the supine position (+3.00 bpm on average) and in the orthostatic position (+8.59 bpm), confirming a pattern already established in the clinical literature.
+
+Two demographic patterns emerged clearly:
+
+- **Gender**: POTS was detected in 40.7% of female participants versus only 22.9% of males — roughly twice as common in women.
+- **Age**: Participants under 60 had a POTS rate of 39.1%, compared to 26.9% in those aged 60 and above.
+
+Both findings align with existing research on POTS epidemiology.
+
+### Takeaway
+
+This proof-of-concept demonstrates that passively collected wearable data can feasibly detect POTS in a post-COVID population without requiring dedicated clinical testing. The method is scalable, home-based, and can even be applied retroactively to existing wearable datasets. By aggregating data across multiple days, it also inherently reduces the influence of intraindividual day-to-day variability — a known challenge in orthostatic assessment. Compared to conventional clinical testing, the absence of external stress factors and the highly standardized conditions of the morning get-up routine further contribute to a more reliable assessment environment.
+
+However, certain limitations remain, most notably the inability to account for blood pressure, which means orthostatic hypotension cannot be ruled out in individual cases. Overall, the study makes a compelling case that wearable technology has a meaningful role to play in the detection and monitoring of autonomic disorders such as POTS.
+
+[→ Interactive Dashboard](/dashboards/dd-ast-exploration) - Exploration of POTS Data: Data-driven Active Standing Test
+
+### References
+- Björnson, M. et al. Prevalence and clinical impact of postural orthostatic tachycardia syndrome in highly symptomatic long covid. Circ. Arrhythmia Electrophysiol. 18, e013629 (2025).
+- Raj, S. R. et al. Canadian cardiovascular society position statement on postural orthostatic tachycardia syndrome (pots) and related disorders of chronic orthostatic intolerance. Can. J. Cardiol. 36, 357–372 (2020).
+- Wang, C. et al. The prevalence of orthostatic intolerance, postural orthostatic tachycardia syndrome and orthostatic hypotension in post-acute sequelae of covid-19. Front. Cardiovasc. Medicine 12, 1679252 (2025).
