@@ -1,0 +1,40 @@
+---
+title: Tutorial Open App
+publishDate: 2026-03-19
+order: 2
+hidden: false
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+
+
+# Open app and load data
+
+<TwoCol ratio="1:2" gapClass="gap-12" class="mx-12 my-8" align="center" >
+
+  <div slot="left">
+
+    ### Steps
+    - Open the **PExOL_Easy_Plot** app
+    - Select **Start**
+    - Load **File** (xlsx or csv)
+
+  </div>
+
+  <div slot="right">
+
+    <Video
+      src="/src/assets/videos/2_Tutorial_Open.mp4"
+      controls={true}
+      autoplay={true}
+      loop={false}
+      audio={false}
+      class="max-w-[100%] mx-auto"          
+      mediaClass="w-full"
+      videoClass="w-full h-full"    
+    />
+
+  </div>
+
+</TwoCol>

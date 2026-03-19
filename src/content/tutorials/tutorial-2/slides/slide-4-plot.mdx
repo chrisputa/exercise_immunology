@@ -1,0 +1,39 @@
+---
+title: Tutorial Plot
+publishDate: 2026-03-19
+order: 4
+hidden: false
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+
+
+# Edit and download plot
+
+<TwoCol ratio="1:2" gapClass="gap-12" class="mx-12 my-8" align="center" >
+
+  <div slot="left">
+
+    ### Steps
+    - Edit **Plot**, by selecting the desired settings
+    - Download the plot as an image via **Download**
+
+  </div>
+
+  <div slot="right">
+
+    <Video
+      src="/src/assets/videos/3_Tutorial_Plot.mp4"
+      controls={true}
+      autoplay={true}
+      loop={false}
+      audio={false}
+      class="max-w-[100%] mx-auto"          
+      mediaClass="w-full"
+      videoClass="w-full h-full"    
+    />
+
+  </div>
+
+</TwoCol>

@@ -1,0 +1,41 @@
+---
+title: Tutorial Log In
+publishDate: 2026-03-19
+order: 2
+hidden: false
+---
+
+import TwoCol from '../../../../components/slide-kit/TwoCol.astro';
+import Video from '../../../../components/slide-kit/Video.astro';
+
+
+# Page view and login
+
+<TwoCol ratio="1:2" gapClass="gap-12" class="mx-12 my-8" align="center" >
+
+  <div slot="left">
+
+    ### Steps
+    - Access URL:  
+      https://spomed.svwiswp05.uni-jena.de
+    - Select **Log In**
+    - Enter **login details**
+
+  </div>
+
+  <div slot="right">
+
+    <Video
+      src="/src/assets/videos/1_Tutorial_Login.mp4"
+      controls={true}
+      autoplay={true}
+      loop={false}
+      audio={false}
+      class="max-w-[100%] mx-auto"          
+      mediaClass="w-full"
+      videoClass="w-full h-full"    
+    />
+
+  </div>
+
+</TwoCol>
