@@ -1,13 +1,15 @@
 ---
 title: The Biphasic Immune Cell Response to Acute Dynamic Exercise and the Immune Cell Response to Regular Physical Activity
-description: Description is missing.
+description: Describes the biphasic immune cell response to acute dynamic exercise in mechanistic detail — lymphocytosis, lymphopenia, hormonal regulation via the SNS and HPA axis, intensity dependence — and contrasts this with the immunological adaptations induced by regular physical activity, including myokine release and the J-shaped risk model.
 publishDate: '2026-04-24'
 draft: false
 tags:
   - Lecture
 ---
 
-import FigureHTML from '../../../components/FigureHTML.astro';
+import Figure from '../../../components/Figure.astro';
+import abb from '../../../assets/Abb.22.4_neu.png';
+import abbDark from '../../../assets/generated/Abb.22.4_neu_dark.png';
 
 
 ### 3.1 The Biphasic Immune Cell Response to Acute Dynamic Exercise
@@ -26,6 +28,11 @@ Acute exercise preferentially mobilizes subsets of CD8⁺ T cells with anti-tumo
 
 Following cessation of acute exercise, a transient (up to approximately 24 h) lymphopenia occurs, during which previously mobilized cells are redirected to target tissues. The nadir is reached approximately 45 min to 2 h post-exercise (**30--50% below baseline**). Simultaneously, neutrophils increase through cortisol-mediated recruitment (neutrophilia). According to current knowledge, this lymphopenia is interpreted as a phase of **heightened immune surveillance** (Campbell and Turner 2018; Simpson et al. 2020; Puta et al. 2026).
 
+<Figure src={abb} srcDark={abbDark} alt="The Biphasic Immune Cell Response to Dynamic Acute Physical Stress">
+**Figure:** The biphasic immune cell response to dynamic acute physical stress. The lymphocytosis (immediate response), which mainly affects natural killer (NK) cells, CD8+ T cells, and γδ T cells, is essentially induced by increased blood pressure and by adrenaline stimulation of β2-adrenergic receptors on the surface of lymphocytes. This is followed by a transient lymphopenia (delayed immune response) lasting up to approximately 24 hours, during which previously mobilized cells are redistributed to target tissues. This lymphopenia may improve immune surveillance. (Created in BioRender. Puta, C. (2025) https://BioRender.com/l87d474)
+</Figure>
+
+
 ### 3.2 Hormonal Regulation
 
 The stress hormones epinephrine, norepinephrine, and cortisol are particularly relevant for the biphasic response. At exercise intensities above the individual anaerobic threshold (IAT), an overproportional increase in epinephrine concentration occurs -- this point represents a physiological, hormonal, and immunological **breakpoint**. Cortisol secretion depends on exercise intensity and duration; during ultra-endurance exercise, increases can exceed 10-fold (Puta et al. 2026; Urhausen 1994).
@@ -40,9 +47,18 @@ Regular moderate physical activity is associated with improved immunity and anti
 
 Regular training improves immune surveillance, is associated with lower basal levels of proinflammatory cytokines and higher NK cell cytotoxicity, reduces T cell senescence, and promotes their diversity (Fiuza-Luces et al. 2023).
 
-### 3.5 The J-Shaped Curve Model
+[→ Interactive Dashboard](/dashboards/immune-effects) - Immune Effects of Exercise
 
-Physically inactive individuals have a moderate risk; athletes with moderate training have a lower risk; overtrained athletes have the highest risk. This model is not supported by all studies and should be critically evaluated (Nieman 1994; Brenner et al. 1994; Puta et al. 2026).
+### References
 
-### Interactive Dashboard
-[Dashboard](/dashboards/immune-response) - Immune Response of Acute and Regular Exercise
+- Campbell JP, Turner JE (2018) Debunking the myth of exercise-induced immune suppression. *Front Immunol* 9:648.
+- Campbell JP et al. (2009) Acute exercise mobilises CD8+ T lymphocytes. *Brain Behav Immun* 23(6):767-775.
+- Fiuza-Luces C et al. (2023) The effect of physical exercise on anticancer immunity. *Nat Rev Immunol*.
+- Gabriel H, Kindermann W (1997a) The acute immune response to exercise. *Sports Med* 24:73-98.
+- Gabriel H, Kindermann W (1997b) Training and immune system. *Dtsch Z Sportmed* 48(Suppl):1-8.
+- Murphy K, Weaver C (2016) *Janeway's Immunobiology*, 9th edn. Garland Science.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
+- Simpson RJ et al. (2015) Exercise and the regulation of immune functions. *Prog Mol Biol Transl Sci* 135:355-380.
+- Simpson RJ et al. (2020) Can exercise affect immune function to increase susceptibility to infection? *Exerc Immunol Rev* 26:8-22.
+- Urhausen A (1994) Individuelle anaerobe Schwelle. *Dtsch Z Sportmed* 45(Suppl):39-42.
+- Batatinha H et al. (2023) Human lymphocytes mobilized with exercise have an anti-tumor transcriptomic profile. *Front Immunol* 14:1067369.
