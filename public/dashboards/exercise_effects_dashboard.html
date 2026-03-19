@@ -89,6 +89,9 @@
       padding: 26px 30px 18px;
       margin-bottom: 16px;
       position: relative;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ── Legend ── */
@@ -219,7 +222,7 @@
 
 <!-- ── Chart ── -->
 <div class="chart-wrap">
-  <canvas id="mainChart" height="380"></canvas>
+  <canvas id="mainChart"></canvas>
   <div class="no-data-msg" id="no-data-msg">No data available for the selected combination.<br>Try switching to <strong>Unadjusted</strong> or enabling a category.</div>
 </div>
 
@@ -385,37 +388,8 @@ const overlayPlugin = {
     ctx.restore();
   },
 
-  // SD bands
-  afterDatasetsDraw(chart) {
-    const {ctx, scales:{x,y}} = chart;
-    chart.data.datasets.forEach((ds, i) => {
-      if (!ds._sd || !chart.isDatasetVisible(i)) return;
-      const pts = ds.data.filter(p => p !== null);
-      const sds = ds._sd.filter(s => s !== null);
-      if (pts.length < 2) return;
-
-      ctx.save();
-      ctx.beginPath();
-      let started = false;
-      // upper edge forward
-      pts.forEach((pt, j) => {
-        const px = x.getPixelForValue(pt.x);
-        const py = y.getPixelForValue(pt.y + sds[j]);
-        if (!started) { ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
-      });
-      // lower edge backward
-      [...pts].reverse().forEach((pt, j) => {
-        const ri = pts.length - 1 - j;
-        const px = x.getPixelForValue(pt.x);
-        const py = y.getPixelForValue(pt.y - sds[ri]);
-        ctx.lineTo(px, py);
-      });
-      ctx.closePath();
-      ctx.fillStyle = hexToRgba(ds.borderColor, 0.13);
-      ctx.fill();
-      ctx.restore();
-    });
-  }
+  // SD bands — disabled
+  afterDatasetsDraw(chart) { }
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -427,6 +401,8 @@ const myChart = new Chart(canvas, {
   data: { datasets: [] },
   options: {
     responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 16 / 9,
     animation: { duration: 250 },
     interaction: { mode: 'index', intersect: false },
     scales: {
@@ -448,6 +424,7 @@ const myChart = new Chart(canvas, {
         }
       },
       y: {
+        position: 'left',
         grid: {
           color: ctx => ctx.tick.value === 0 ? 'rgba(74,85,104,0.55)' : 'rgba(160,174,192,0.22)',
           lineWidth: ctx => ctx.tick.value === 0 ? 1.5 : 1
@@ -457,6 +434,17 @@ const myChart = new Chart(canvas, {
           display: true,
           text: '% Change from Pre-Exercise Baseline',
           font: { size: 11, weight: '600' }, color: '#8896b3', padding: { bottom: 6 }
+        }
+      },
+      y2: {
+        position: 'right',
+        display: false,
+        grid: { drawOnChartArea: false },
+        ticks: { font: { size: 10 }, color: '#c05621' },
+        title: {
+          display: true,
+          text: 'Trace Elements',
+          font: { size: 11, weight: '600' }, color: '#c05621', padding: { bottom: 6 }
         }
       }
     },
@@ -541,6 +529,7 @@ function buildDatasets() {
       _key:                key,
       _isAdj:              isAdj,
       _decimals:           decimals,
+      yAxisID:             p.cat === 'trace' ? 'y2' : 'y',
       borderColor:         p.color,
       backgroundColor:     'transparent',
       borderWidth:         2.2,
@@ -564,17 +553,37 @@ function updateChart() {
   const datasets = buildDatasets();
   myChart.data.datasets = datasets;
 
-  const yAxis = myChart.options.scales.y;
+  const yAxis  = myChart.options.scales.y;
+  const y2Axis = myChart.options.scales.y2;
+
+  // Check if trace elements are visible in the current dataset
+  const hasTrace    = datasets.some(d => d._cat === 'trace');
+  const hasNonTrace = datasets.some(d => d._cat !== 'trace');
 
   if (displayMode === 'pct') {
     yAxis.title.text = '% Change from Pre-Exercise Baseline';
     yAxis.ticks.callback = v => `${v > 0 ? '+' : ''}${v}%`;
     delete yAxis.min; delete yAxis.max;
+
+    // In % mode, both axes use same scale (% change)
+    y2Axis.display = hasTrace;
+    y2Axis.title.text = '% Change — Trace Elements';
+    y2Axis.ticks.callback = v => `${v > 0 ? '+' : ''}${v}%`;
+    delete y2Axis.min; delete y2Axis.max;
   } else {
-    yAxis.title.text = 'Absolute Value (note: different units per parameter)';
+    yAxis.title.text = hasNonTrace ? 'Metabolic / Inflammatory' : 'Absolute Value';
     yAxis.ticks.callback = v => v >= 1000 ? `${(v/1000).toFixed(1)}k` : `${v}`;
     delete yAxis.min; delete yAxis.max;
+
+    // In absolute mode, trace elements use separate right axis with their own scale
+    y2Axis.display = hasTrace;
+    y2Axis.title.text = 'Trace Elements (µg/L · mg/L)';
+    y2Axis.ticks.callback = v => v >= 1000 ? `${(v/1000).toFixed(1)}k` : `${v}`;
+    delete y2Axis.min; delete y2Axis.max;
   }
+
+  // Hide left axis if only trace elements shown
+  yAxis.display = hasNonTrace || !hasTrace;
 
   const noData = datasets.length === 0 || datasets.every(d => d.data.every(p => p === null));
   document.getElementById('no-data-msg').style.display = noData ? 'block' : 'none';
