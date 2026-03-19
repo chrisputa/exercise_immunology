@@ -1,14 +1,19 @@
 ---
 title: Essential Components of the Immune System - Innate and Adaptive Immunity and the Chronological Immune Response to Viral Infections
-description: Description is missing.
+description: Establishes the immunological foundations - the structure and cellular components of the innate and adaptive immune systems, the chronological immune response to viral infections, the role of dendritic cells, NK cells, and lymphocytes, and the principles of laboratory diagnostics at three levels of complexity.
 publishDate: '2026-04-10'
 draft: false
 tags:
   - Lecture
 ---
 
-import FigureHTML from '../../../components/FigureHTML.astro';
-
+import Figure from '../../../components/Figure.astro';
+import phases from '../../../assets/lecture-1/Figure1_phases_immune_response.png';
+import phasesDark from '../../../assets/generated/Figure1_phases_immune_response_dark.png';
+import dendritic from '../../../assets/lecture-1/Figure2_Dendritic Cells Carry Antigen Into the Lymph Nodes for T Cell Priming _sw.png';
+import dendriticDark from '../../../assets/generated/Figure2_Dendritic Cells Carry Antigen Into the Lymph Nodes for T Cell Priming _sw_dark.png';
+import nk_cells from '../../../assets/lecture-1/fig_nk_cells.png';
+import nk_cellsDark from '../../../assets/generated/fig_nk_cells_dark.png';
 
 ### 1.1 The Immune System as a Health Resource
 
@@ -47,9 +52,9 @@ Activation of sensor cells leads to the production of various **mediators**, par
 
 This phase overview illustrates that the innate immune response reacts within minutes, while the adaptive immune response requires days to fully develop. Crucially, the adaptive immune response can eliminate infections far more efficiently than the innate immune response alone due to its exquisite specificity (Murphy and Weaver 2016).
 
-<FigureHTML src="/exercise-immunology/lecture-1/phases_immune_response_chart.html" height="790px">
-  *Phases of the Immune Response - A Gantt-Style Timeline Chart*
-</FigureHTML>
+<Figure src={phases} srcDark={phasesDark} alt="Phases of the Immune Response">
+**Figure:** Phases of the Immune Response -- Gantt-Style Timeline Chart. The innate immune response (black) is initiated within minutes; the adaptive response (dark grey) develops over days to weeks; immunological memory (medium grey, dotted) can persist lifelong. Onset dots mark the beginning of each phase. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
+</Figure>
 
 ### 1.5 Dendritic Cells -- Key Cells of the Adaptive Immune Response
 
@@ -59,9 +64,9 @@ Recognition of pathogen-associated molecular patterns (PAMPs) by PRRs stimulates
 
 As antigen-presenting cells (APCs), mature dendritic cells stimulate the proliferation and differentiation of T lymphocytes in lymph nodes. The activation of naive T lymphocytes by dendritic cells thus represents an essential first step in virtually all adaptive immune responses. While macrophages and B cells can also function as APCs under certain circumstances, dendritic cells are the specialized initiators of adaptive immunity (Murphy and Weaver 2016; Puta et al. 2026).
 
-<FigureHTML src="/exercise-immunology/lecture-1/dendritic_cells_fig1_19.html" height="910px">
-  *Dendritic Cells Initiate the Adaptive Immune Response*
-</FigureHTML>
+<Figure src={dendritic} srcDark={dendriticDark} alt="Dendritic Cells Carry Antigen Into the Lymph Nodes for T Cell Priming">
+**Figure:** Dendritic cells initiate adaptive immune responses. Immature dendritic cells in peripheral tissue take up pathogens via macropinocytosis and receptor-mediated endocytosis, then migrate to regional lymph nodes where they mature and activate naive T cells via antigen presentation and co-stimulatory molecules. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
+</Figure>
 
 ### 1.6 Natural Killer Cells (NK Cells) -- Early Cellular Defense
 
@@ -88,9 +93,9 @@ NK cells serve to contain viral infections while the adaptive immune system gene
 
 Furthermore, NK cells produce TNF-α, GM-CSF, and the chemokines CCL3, CCL4, and CCL5 in addition to IFN-γ, contributing to the recruitment and activation of macrophages. IFN-γ from NK cells directly activates macrophages and influences the differentiation of CD4 T cells into the proinflammatory T~H~1 subset (Murphy and Weaver 2016).
 
-<FigureHTML src="/exercise-immunology/lecture-1/NK_cells_fig3_38.html" height="980px">
-  *NK Cells and the Host Response to Virus Infection*
-</FigureHTML>
+<Figure src={nk_cells} srcDark={nk_cellsDark} alt="NK Cells and the Host Response to Virus Infection">
+**Figure:** NK cells are an early component of the host response to virus infection. IFN-α/IFN-β and cytokines (black, solid) are produced first, followed by NK-cell killing (dark grey, dashed); T-cell killing (medium grey, dotted) peaks later as the adaptive response matures. Virus titer (light grey, dash-dot) rises then falls once adaptive immunity is established. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
+</Figure>
 
 ### 1.7 Innate Lymphoid Cells (ILCs) -- Relatives of NK Cells
 
@@ -139,3 +144,14 @@ To prevent the inflammatory response from overshooting, the organism self-regula
 - Level 1: Erythrocyte sedimentation rate, complete blood count, C-reactive protein, urinalysis
 - Level 2: Monocyte subpopulations, T cell subpopulations, pathogen-specific immunoglobulins
 - Level 3: In vitro functional tests, molecular biology tests, complement factors
+
+### References
+
+- Baumann H, Gauldie J (1994) The acute phase response. *Immunol Today* 15(2):74-80.
+- Cupps TR, Fauci AS (1982) Corticosteroid-mediated immunoregulation in man. *Immunol Rev* 65:133-155.
+- Goldsby RA et al. (2003) *Immunology*, 5th edn. W.H. Freeman.
+- Hope JL, Bradley LM (2021) Lessons in antiviral immunity. *Science* 371:464-465.
+- Murphy K, Weaver C (2016) *Janeway's Immunobiology*, 9th edn. Garland Science.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
+- Rich RR et al. (2012) *Clinical Immunology*, 4th edn.
+- Sette A, Crotty S (2021) Adaptive immunity to SARS-CoV-2 and COVID-19. *Cell* 184(4):861-880.
