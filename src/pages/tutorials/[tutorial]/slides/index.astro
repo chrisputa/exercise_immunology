@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   // group by tutorial
   const byTutorial = new Map<string, SlideEntry[]>();
   for (const s of slides) {
-    const { tutorial } = parseSlideId(s.id);
+    const { lecture: tutorial } = parseSlideId(s.id);
     (byTutorial.get(tutorial) ?? byTutorial.set(tutorial, []).get(tutorial)!).push(s);
   }
 
