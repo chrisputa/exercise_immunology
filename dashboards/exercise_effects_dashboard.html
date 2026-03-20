@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise Effects — Blood & Serum Parameters (Simon et al. 2026)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f7fb;
+      padding: 28px 32px 40px;
+      color: #1a2340;
+    }
+
+    .fig-title {
+      text-align: center;
+      font-size: 1.10rem;
+      font-weight: 700;
+      color: #1a2340;
+      margin-bottom: 4px;
+    }
+    .fig-subtitle {
+      text-align: center;
+      font-size: 0.80rem;
+      color: #6b7a99;
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 28px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .control-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #8896b3;
+    }
+    .btn-row { display: flex; gap: 6px; }
+
+    .btn {
+      padding: 6px 15px;
+      border-radius: 20px;
+      border: 2px solid;
+      background: transparent;
+      font-size: 0.77rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .btn:hover { opacity: 0.82; }
+
+    /* Category colours */
+    .btn.metabolic    { border-color: #276749; color: #276749; }
+    .btn.metabolic.on { background: #276749; color: #fff; }
+
+    .btn.inflam    { border-color: #2b6cb0; color: #2b6cb0; }
+    .btn.inflam.on { background: #2b6cb0; color: #fff; }
+
+    .btn.trace    { border-color: #c05621; color: #c05621; }
+    .btn.trace.on { background: #c05621; color: #fff; }
+
+    /* Neutral toggle (adj / display) */
+    .btn.neutral    { border-color: #6b7a99; color: #6b7a99; }
+    .btn.neutral.on { background: #6b7a99; color: #fff; }
+
+    /* ── Chart card ── */
+    .chart-wrap {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 3px 18px rgba(0,0,0,0.09);
+      padding: 26px 30px 18px;
+      margin-bottom: 16px;
+      position: relative;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      justify-content: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 12px 20px;
+      margin-bottom: 16px;
+      min-height: 42px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.74rem;
+      color: #2d3a5c;
+      cursor: pointer;
+      user-select: none;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: opacity 0.15s;
+    }
+    .legend-item:hover { opacity: 0.72; }
+    .legend-item.hidden { opacity: 0.35; text-decoration: line-through; }
+    .legend-swatch {
+      width: 26px;
+      height: 4px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Category badges ── */
+    .cat-badge {
+      font-size: 0.64rem;
+      padding: 1px 6px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .cat-metabolic    { background: #c6f6d5; color: #276749; }
+    .cat-inflammatory { background: #bee3f8; color: #2b6cb0; }
+    .cat-trace        { background: #fbd38d; color: #c05621; }
+
+    /* ── Caption ── */
+    .caption-box {
+      background: #fff;
+      border-left: 5px solid #2b6cb0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.76rem;
+      color: #4a5568;
+      line-height: 1.65;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .caption-box strong { color: #1a2340; }
+
+    /* ── No-data message ── */
+    .no-data-msg {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8896b3;
+      padding: 60px 20px;
+      display: none;
+    }
+
+    /* ── Adjustment info banner ── */
+    .adj-info {
+      display: none;
+      background: #fffaf0;
+      border: 1px solid #fbd38d;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.76rem;
+      color: #744210;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .adj-info.visible { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="fig-title">Effects of Acute Physical Exercise on Blood and Serum Parameters</div>
+<p class="fig-subtitle">Table 3 — Unadjusted and hemoconcentration-adjusted values | Simon R et al. (2026), <em>J Trace Elem Med Biol</em> 94:127828</p>
+
+<!-- ── Controls ── -->
+<div class="controls">
+
+  <div class="control-group">
+    <span class="control-label">Category</span>
+    <div class="btn-row">
+      <button class="btn metabolic on"  id="btn-metabolic"    onclick="toggleCat('metabolic',this)">Metabolic</button>
+      <button class="btn inflam on"     id="btn-inflammatory" onclick="toggleCat('inflammatory',this)">Inflammatory</button>
+      <button class="btn trace on"      id="btn-trace"        onclick="toggleCat('trace',this)">Trace Elements</button>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <span class="control-label">Adjustment</span>
+    <div class="btn-row">
+      <button class="btn neutral on" id="btn-unadj" onclick="setAdj('unadj')">Unadjusted</button>
+      <button class="btn neutral"    id="btn-adj"   onclick="setAdj('adj')">Adjusted</button>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <span class="control-label">Display</span>
+    <div class="btn-row">
+      <button class="btn neutral on" id="btn-pct" onclick="setDisplay('pct')">% Change</button>
+      <button class="btn neutral"    id="btn-abs" onclick="setDisplay('abs')">Absolute</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Adjusted info banner ── -->
+<div class="adj-info" id="adj-info">
+  ⚠ <strong>Adjusted mode:</strong> Only post-exercise values (0, 30, 60 min) shown — adjusted for hemoconcentration per Alis et al.
+  Parameters without adjusted values (NLR, Free&nbsp;Zinc) are hidden. Dashed lines ◆ = adjusted.
+  % Change is relative to the unadjusted pre-exercise baseline.
+</div>
+
+<!-- ── Chart ── -->
+<div class="chart-wrap">
+  <canvas id="mainChart"></canvas>
+  <div class="no-data-msg" id="no-data-msg">No data available for the selected combination.<br>Try switching to <strong>Unadjusted</strong> or enabling a category.</div>
+</div>
+
+<!-- ── Legend ── -->
+<div class="legend" id="legend"></div>
+
+<!-- ── Caption ── -->
+<div class="caption-box">
+  <strong>Figure — Effects of a 1-minute sit-to-stand test (STST) on blood and serum parameters.</strong>
+  Twenty healthy participants (10♀, 10♂, aged 21–28 years). Blood was drawn at
+  pre-exercise (−10 min) and post-exercise (0, 30, 60 min).
+  <strong>Shaded amber area</strong> = exercise period (1 min STST; −1 min to 0 min post-exercise).
+  Shaded bands = ±1 SD. <em>% Change</em> = relative to unadjusted pre-exercise baseline.
+  <em>Adjusted</em> values corrected for plasma-volume change (hemoconcentration) per Alis et al.
+  Parameters without adjusted values (NLR, Free Zinc) are omitted in adjusted mode.
+  <br><br>
+  WBC = white blood cells; GRA = granulocytes; LYM = lymphocytes;
+  NLR = neutrophil-to-lymphocyte ratio; SII = systemic immune-inflammation index;
+  SIRI = systemic inflammation response index; SELENOP = selenoprotein P; fZn = free zinc.
+  <br>
+  Source: Simon R et al. (2026). <em>J Trace Elem Med Biol</em> 94:127828.
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// DATA  (mean, SD at pre/t0/t30/t60)  — from Table 3
+// ══════════════════════════════════════════════════════════════
+const PARAMS = {
+  // ── METABOLIC ────────────────────────────────────────────
+  glucose: {
+    label:'Glucose', unit:'mmol/L', cat:'metabolic', color:'#276749',
+    unadj:{ pre:[5.5,0.4],  t0:[5.6,0.3],  t30:[5.3,0.2],  t60:[5.2,0.3]  },
+    adj:  { pre:null,       t0:[5.3,0.4],  t30:[5.4,0.3],  t60:[5.2,0.3]  }
+  },
+  lactate: {
+    label:'Lactate', unit:'mmol/L', cat:'metabolic', color:'#52b788',
+    unadj:{ pre:[0.68,0.20], t0:[5.6,1.4],  t30:[1.6,0.7],  t60:[0.90,0.23] },
+    adj:  { pre:null,        t0:[5.3,1.3],  t30:[1.7,0.7],  t60:[0.91,0.23] }
+  },
+
+  // ── INFLAMMATORY ──────────────────────────────────────────
+  wbc: {
+    label:'WBC', unit:'10⁹/L', cat:'inflammatory', color:'#2b6cb0',
+    unadj:{ pre:[5.7,1.3], t0:[8.2,1.9], t30:[5.3,1.3], t60:[5.5,1.2] },
+    adj:  { pre:null,      t0:[7.7,1.7], t30:[5.4,1.4], t60:[5.6,1.3] }
+  },
+  gra: {
+    label:'GRA', unit:'10⁹/L', cat:'inflammatory', color:'#4299e1',
+    unadj:{ pre:[3.3,1.1], t0:[4.0,1.3], t30:[3.0,1.0], t60:[3.3,1.0] },
+    adj:  { pre:null,      t0:[3.8,1.2], t30:[3.1,1.1], t60:[3.3,1.1] }
+  },
+  lym: {
+    label:'LYM', unit:'10⁹/L', cat:'inflammatory', color:'#f72585',
+    unadj:{ pre:[2.1,0.5], t0:[3.6,1.1], t30:[1.7,0.5], t60:[1.8,0.4] },
+    adj:  { pre:null,      t0:[3.3,0.9], t30:[1.7,0.5], t60:[1.8,0.4] }
+  },
+  nlr: {
+    label:'NLR', unit:'ratio', cat:'inflammatory', color:'#553c9a',
+    unadj:{ pre:[1.7,0.6], t0:[1.2,0.5], t30:[1.9,0.7], t60:[1.9,0.6] },
+    adj:  null  // no adjusted values
+  },
+  sii: {
+    label:'SII', unit:'index', cat:'inflammatory', color:'#805ad5',
+    unadj:{ pre:[298,135], t0:[216,82],  t30:[330,139], t60:[299,110] },
+    adj:  { pre:null,      t0:[204,79],  t30:[339,150], t60:[305,117] }
+  },
+  siri: {
+    label:'SIRI', unit:'index', cat:'inflammatory', color:'#b794f4',
+    unadj:{ pre:[0.65,0.30], t0:[0.77,0.39], t30:[0.75,0.39], t60:[0.79,0.32] },
+    adj:  { pre:null,        t0:[0.72,0.37], t30:[0.77,0.40], t60:[0.80,0.34] }
+  },
+
+  // ── TRACE ELEMENTS ────────────────────────────────────────
+  selenium: {
+    label:'Selenium', unit:'µg/L', cat:'trace', color:'#c05621',
+    unadj:{ pre:[48.8,11.8], t0:[51.5,12.3], t30:[47.9,11.3], t60:[48.0,11.2] },
+    adj:  { pre:null,        t0:[45.8,10.4], t30:[49.4,10.8], t60:[49.1,11.5] }
+  },
+  selenop: {
+    label:'SELENOP', unit:'mg/L', cat:'trace', color:'#dd6b20',
+    unadj:{ pre:[4.0,1.0], t0:[4.0,1.1], t30:[3.9,1.0], t60:[4.1,1.1] },
+    adj:  { pre:null,      t0:[3.5,0.9], t30:[4.0,1.0], t60:[4.2,1.1] }
+  },
+  zinc: {
+    label:'Zinc', unit:'µg/L', cat:'trace', color:'#f6ad55',
+    unadj:{ pre:[670,83],  t0:[739,101], t30:[675,86],  t60:[663,80]  },
+    adj:  { pre:null,      t0:[661,104], t30:[698,94],  t60:[680,89]  }
+  },
+  freeZinc: {
+    label:'Free Zinc (fZn)', unit:'µg/L', cat:'trace', color:'#faa307',
+    unadj:{ pre:[0.047,0.009], t0:[0.052,0.009], t30:[0.049,0.009], t60:[0.046,0.007] },
+    adj:  null  // no adjusted values
+  },
+  copper: {
+    label:'Copper', unit:'µg/L', cat:'trace', color:'#9b2226',
+    unadj:{ pre:[728,212],  t0:[767,212],  t30:[732,201],  t60:[718,216]  },
+    adj:  { pre:null,       t0:[687,204],  t30:[758,214],  t60:[736,222]  }
+  },
+  iron: {
+    label:'Iron', unit:'µg/L', cat:'trace', color:'#6a040f',
+    unadj:{ pre:[1287,459], t0:[1858,753], t30:[1450,333], t60:[1688,536] },
+    adj:  { pre:null,       t0:[1650,646], t30:[1504,367], t60:[1733,587] }
+  }
+};
+
+const X_TIMES = [-10, 0, 30, 60];
+const X_KEYS  = ['pre','t0','t30','t60'];
+
+// ══════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════
+let activeCats  = new Set(['metabolic','inflammatory','trace']);
+let adjType     = 'unadj';   // 'unadj' | 'adj'
+let displayMode = 'pct';     // 'pct'   | 'abs'
+let hiddenLines = new Set();  // param keys hidden via legend click
+
+// ══════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════
+function hexToRgba(hex, a) {
+  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+// ══════════════════════════════════════════════════════════════
+// EXERCISE-ZONE + ERROR-BAND PLUGIN
+// ══════════════════════════════════════════════════════════════
+const overlayPlugin = {
+  id: 'overlay',
+
+  // Exercise zone: fill -1 to 0
+  beforeDatasetsDraw(chart) {
+    const {ctx, chartArea:{top,bottom,left,right}, scales:{x}} = chart;
+    const xMinus1 = x.getPixelForValue(-1);
+    const xZero   = x.getPixelForValue(0);
+    if (xMinus1 === undefined || xZero === undefined) return;
+
+    ctx.save();
+    // Amber fill
+    ctx.fillStyle = 'rgba(251,191,36,0.20)';
+    ctx.fillRect(xMinus1, top, xZero - xMinus1, bottom - top);
+    // Left edge
+    ctx.beginPath();
+    ctx.moveTo(xMinus1, top); ctx.lineTo(xMinus1, bottom);
+    ctx.strokeStyle = 'rgba(194,120,3,0.35)';
+    ctx.lineWidth = 1; ctx.setLineDash([4,3]); ctx.stroke();
+    // Right edge (exercise end = 0 min)
+    ctx.beginPath();
+    ctx.moveTo(xZero, top); ctx.lineTo(xZero, bottom);
+    ctx.strokeStyle = 'rgba(194,120,3,0.80)';
+    ctx.lineWidth = 1.5; ctx.setLineDash([5,4]); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Label
+    ctx.font = 'bold 9px Segoe UI, Arial, sans-serif';
+    ctx.fillStyle = '#c27803';
+    ctx.textAlign = 'center';
+    const midX = (xMinus1 + xZero) / 2;
+    ctx.save(); ctx.translate(midX, top + 42); ctx.rotate(-Math.PI/2);
+    ctx.fillText('STST', 0, 0);
+    ctx.restore();
+
+    ctx.restore();
+  },
+
+  // SD bands — disabled
+  afterDatasetsDraw(chart) { }
+};
+
+// ══════════════════════════════════════════════════════════════
+// CHART
+// ══════════════════════════════════════════════════════════════
+const canvas = document.getElementById('mainChart');
+const myChart = new Chart(canvas, {
+  type: 'line',
+  data: { datasets: [] },
+  options: {
+    responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 16 / 9,
+    animation: { duration: 250 },
+    interaction: { mode: 'index', intersect: false },
+    scales: {
+      x: {
+        type: 'linear',
+        min: -13, max: 66,
+        afterBuildTicks: axis => {
+          axis.ticks = [{value:-10},{value:0},{value:30},{value:60}];
+        },
+        ticks: {
+          callback: v => ({'-10':'Pre\n(−10 min)','0':'Post\n0 min','30':'Post\n30 min','60':'Post\n60 min'}[v] || ''),
+          font: { size: 10 }, color: '#4a5568', maxRotation: 0
+        },
+        grid: { color: 'rgba(160,174,192,0.22)' },
+        title: {
+          display: true,
+          text: 'Time relative to exercise (min)',
+          font: { size: 11, weight: '600' }, color: '#4a5568', padding: { top: 8 }
+        }
+      },
+      y: {
+        position: 'left',
+        grid: {
+          color: ctx => ctx.tick.value === 0 ? 'rgba(74,85,104,0.55)' : 'rgba(160,174,192,0.22)',
+          lineWidth: ctx => ctx.tick.value === 0 ? 1.5 : 1
+        },
+        ticks: { font: { size: 10 }, color: '#8896b3' },
+        title: {
+          display: true,
+          text: '% Change from Pre-Exercise Baseline',
+          font: { size: 11, weight: '600' }, color: '#8896b3', padding: { bottom: 6 }
+        }
+      },
+      y2: {
+        position: 'right',
+        display: false,
+        grid: { drawOnChartArea: false },
+        ticks: { font: { size: 10 }, color: '#c05621' },
+        title: {
+          display: true,
+          text: 'Trace Elements',
+          font: { size: 11, weight: '600' }, color: '#c05621', padding: { bottom: 6 }
+        }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(26,35,64,0.92)',
+        titleFont: { size: 11, weight: '600' }, bodyFont: { size: 10 },
+        padding: 10,
+        callbacks: {
+          title: items => {
+            const v = items[0].parsed.x;
+            return v === -10 ? 'Pre-exercise (−10 min)' : `Post-exercise (${v} min)`;
+          },
+          label: item => {
+            const ds   = item.dataset;
+            const tag  = ds._isAdj ? ' [adj]' : '';
+            if (displayMode === 'pct') {
+              const sign = item.parsed.y >= 0 ? '+' : '';
+              return ` ${ds.label}${tag}: ${sign}${item.parsed.y.toFixed(1)}%`;
+            } else {
+              return ` ${ds.label}${tag}: ${item.parsed.y.toFixed(ds._decimals)} ${ds._unit}`;
+            }
+          }
+        }
+      }
+    }
+  },
+  plugins: [overlayPlugin]
+});
+
+// ══════════════════════════════════════════════════════════════
+// BUILD DATASETS
+// ══════════════════════════════════════════════════════════════
+function buildDatasets() {
+  const isAdj = adjType === 'adj';
+
+  // Adjusted = only 3 post-exercise timepoints; unadjusted = all 4
+  const iterKeys  = isAdj ? ['t0','t30','t60'] : ['pre','t0','t30','t60'];
+  const iterTimes = isAdj ? [0, 30, 60]        : [-10, 0, 30, 60];
+
+  return Object.entries(PARAMS).flatMap(([key, p]) => {
+    if (!activeCats.has(p.cat)) return [];
+    if (hiddenLines.has(key))   return [];
+
+    // Adjusted: need p.adj to exist; otherwise skip this parameter
+    if (isAdj && !p.adj) return [];
+    const src = isAdj ? p.adj : p.unadj;
+
+    // Pre-exercise reference: always unadjusted pre (= true baseline before exercise)
+    const preRef  = p.unadj.pre ? p.unadj.pre[0] : null;
+    const decimals = !preRef ? 2 : preRef < 1 ? 3 : preRef < 10 ? 2 : preRef < 100 ? 1 : 0;
+
+    const points = [], sdArr = [];
+
+    iterKeys.forEach((k, i) => {
+      const val = src[k];
+      const t   = iterTimes[i];
+
+      if (!val) { return; }   // skip missing values entirely (no null placeholder)
+
+      const mean = val[0], sd = val[1];
+
+      if (displayMode === 'pct') {
+        if (!preRef) return;
+        points.push({ x: t, y: +((mean / preRef - 1) * 100).toFixed(2) });
+        sdArr.push(+((sd   / preRef)       * 100).toFixed(2));
+      } else {
+        points.push({ x: t, y: mean });
+        sdArr.push(sd);
+      }
+    });
+
+    if (points.length === 0) return [];
+
+    return [{
+      label:               p.label,
+      data:                points,
+      _sd:                 sdArr,
+      _unit:               p.unit,
+      _cat:                p.cat,
+      _key:                key,
+      _isAdj:              isAdj,
+      _decimals:           decimals,
+      yAxisID:             p.cat === 'trace' ? 'y2' : 'y',
+      borderColor:         p.color,
+      backgroundColor:     'transparent',
+      borderWidth:         2.2,
+      borderDash:          isAdj ? [6, 3] : [],   // dashed line for adjusted
+      pointRadius:         4.5,
+      pointHoverRadius:    7,
+      pointStyle:          isAdj ? 'rectRot' : 'circle',  // diamond for adjusted
+      pointBackgroundColor: p.color,
+      pointBorderColor:    '#fff',
+      pointBorderWidth:    1.5,
+      tension:             0.35,
+      spanGaps:            false
+    }];
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+// UPDATE CHART
+// ══════════════════════════════════════════════════════════════
+function updateChart() {
+  const datasets = buildDatasets();
+  myChart.data.datasets = datasets;
+
+  const yAxis  = myChart.options.scales.y;
+  const y2Axis = myChart.options.scales.y2;
+
+  // Check if trace elements are visible in the current dataset
+  const hasTrace    = datasets.some(d => d._cat === 'trace');
+  const hasNonTrace = datasets.some(d => d._cat !== 'trace');
+
+  if (displayMode === 'pct') {
+    yAxis.title.text = '% Change from Pre-Exercise Baseline';
+    yAxis.ticks.callback = v => `${v > 0 ? '+' : ''}${v}%`;
+    delete yAxis.min; delete yAxis.max;
+
+    // In % mode, both axes use same scale (% change)
+    y2Axis.display = hasTrace;
+    y2Axis.title.text = '% Change — Trace Elements';
+    y2Axis.ticks.callback = v => `${v > 0 ? '+' : ''}${v}%`;
+    delete y2Axis.min; delete y2Axis.max;
+  } else {
+    yAxis.title.text = hasNonTrace ? 'Metabolic / Inflammatory' : 'Absolute Value';
+    yAxis.ticks.callback = v => v >= 1000 ? `${(v/1000).toFixed(1)}k` : `${v}`;
+    delete yAxis.min; delete yAxis.max;
+
+    // In absolute mode, trace elements use separate right axis with their own scale
+    y2Axis.display = hasTrace;
+    y2Axis.title.text = 'Trace Elements (µg/L · mg/L)';
+    y2Axis.ticks.callback = v => v >= 1000 ? `${(v/1000).toFixed(1)}k` : `${v}`;
+    delete y2Axis.min; delete y2Axis.max;
+  }
+
+  // Hide left axis if only trace elements shown
+  yAxis.display = hasNonTrace || !hasTrace;
+
+  const noData = datasets.length === 0 || datasets.every(d => d.data.every(p => p === null));
+  document.getElementById('no-data-msg').style.display = noData ? 'block' : 'none';
+  canvas.style.display = noData ? 'none' : 'block';
+
+  myChart.update();
+  buildLegend();
+}
+
+// ══════════════════════════════════════════════════════════════
+// LEGEND
+// ══════════════════════════════════════════════════════════════
+const catClass = { metabolic:'cat-metabolic', inflammatory:'cat-inflammatory', trace:'cat-trace' };
+const catLabel = { metabolic:'Metabolic', inflammatory:'Inflammatory', trace:'Trace Elements' };
+
+function buildLegend() {
+  const container = document.getElementById('legend');
+  container.innerHTML = '';
+  const isAdj = adjType === 'adj';
+
+  // Group by category for ordered display
+  const byCategory = {};
+  Object.entries(PARAMS).forEach(([key, p]) => {
+    if (!activeCats.has(p.cat)) return;
+    if (isAdj && !p.adj) return; // skip if no adj data
+    if (!byCategory[p.cat]) byCategory[p.cat] = [];
+    byCategory[p.cat].push([key, p]);
+  });
+
+  Object.entries(byCategory).forEach(([cat, entries]) => {
+    // Category heading
+    const head = document.createElement('span');
+    head.className = `cat-badge ${catClass[cat]}`;
+    head.textContent = catLabel[cat];
+    container.appendChild(head);
+
+    entries.forEach(([key, p]) => {
+      const item = document.createElement('div');
+      item.className = 'legend-item' + (hiddenLines.has(key) ? ' hidden' : '');
+      item.onclick = () => {
+        if (hiddenLines.has(key)) hiddenLines.delete(key);
+        else if (Object.keys(PARAMS).filter(k => activeCats.has(PARAMS[k].cat) && !hiddenLines.has(k) && !(adjType==='adj'&&!PARAMS[k].adj)).length > 1) {
+          hiddenLines.add(key);
+        }
+        updateChart();
+      };
+      const swatch = document.createElement('div');
+      swatch.className = 'legend-swatch';
+      // Dashed look for adjusted
+      if (isAdj) {
+        swatch.style.background = 'none';
+        swatch.style.borderBottom = `3px dashed ${p.color}`;
+        swatch.style.height = '0';
+        swatch.style.marginBottom = '5px';
+      } else {
+        swatch.style.background = p.color;
+      }
+
+      const lbl = document.createElement('span');
+      const adjSuffix = isAdj ? ' ◆' : '';
+      lbl.textContent = `${p.label}${adjSuffix}${p.unit ? ' (' + p.unit + ')' : ''}`;
+
+      item.appendChild(swatch);
+      item.appendChild(lbl);
+      container.appendChild(item);
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+// CONTROL HANDLERS
+// ══════════════════════════════════════════════════════════════
+function toggleCat(cat, btn) {
+  const wouldBeActive = !activeCats.has(cat);
+  const activeCount = activeCats.size;
+  if (!wouldBeActive && activeCount <= 1) return; // keep at least one
+
+  if (wouldBeActive) { activeCats.add(cat);    btn.classList.add('on'); }
+  else               { activeCats.delete(cat); btn.classList.remove('on'); }
+  updateChart();
+}
+
+function setAdj(type) {
+  adjType = type;
+  document.getElementById('btn-unadj').classList.toggle('on', type === 'unadj');
+  document.getElementById('btn-adj').classList.toggle('on',   type === 'adj');
+  document.getElementById('adj-info').classList.toggle('visible', type === 'adj');
+  updateChart();
+}
+
+function setDisplay(mode) {
+  displayMode = mode;
+  document.getElementById('btn-pct').classList.toggle('on', mode === 'pct');
+  document.getElementById('btn-abs').classList.toggle('on', mode === 'abs');
+  updateChart();
+}
+
+// ── Initial render ────────────────────────────────────────────
+updateChart();
+</script>
+
+<script>
+  const ro = new ResizeObserver(entries => {
+    const h = entries[0].contentRect.height;
+    window.parent.postMessage({ type: 'iframeResize', height: h }, '*');
+  });
+  ro.observe(document.documentElement);
+</script>
+</body>
+</html>

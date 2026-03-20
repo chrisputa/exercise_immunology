@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lecture 8 — Standardised Evaluation of Immunological Stress</title>
+  <style>
+    *{ box-sizing:border-box; margin:0; padding:0; }
+
+    body{
+      font-family:'Segoe UI',Arial,sans-serif;
+      background:#f5f7fb;
+      padding:28px 32px 40px;
+      color:#1a2340;
+    }
+
+    /* ── Header ── */
+    .fig-title{
+      text-align:center; font-size:1.10rem; font-weight:700;
+      color:#1a2340; margin-bottom:4px;
+    }
+    .fig-subtitle{
+      text-align:center; font-size:0.88rem; color:#6b7a99;
+      font-style:italic; margin-bottom:6px;
+    }
+    .fig-source{
+      text-align:center; font-size:0.80rem; color:#8896b3; margin-bottom:22px;
+    }
+
+    /* ── Tabs ── */
+    .tabs{
+      display:flex; gap:0; justify-content:center;
+      margin-bottom:22px; border-bottom:2px solid #cbd5e0;
+    }
+    .tab{
+      padding:10px 28px; font-size:0.90rem; font-weight:600;
+      border:none; background:transparent; cursor:pointer;
+      color:#8896b3; border-bottom:3px solid transparent;
+      margin-bottom:-2px; transition:all 0.2s; font-family:inherit;
+      white-space:nowrap;
+    }
+    .tab.active{ color:#2b6cb0; border-bottom-color:#2b6cb0; }
+    .tab:hover:not(.active){ color:#4a5568; }
+
+    /* ── Panels ── */
+    .panel{ display:none; }
+    .panel.active{ display:block; }
+
+    /* ── Card (matches exercise parameters chart) ── */
+    .card{
+      background:#fff; border-radius:14px;
+      box-shadow:0 3px 18px rgba(0,0,0,0.09);
+      padding:26px 30px 18px; margin-bottom:18px;
+      max-width:1100px; margin-left:auto; margin-right:auto;
+    }
+    .card-title{
+      font-size:0.95rem; font-weight:700; color:#1a2340;
+      margin-bottom:14px; border-bottom:2px solid #e2e8f0; padding-bottom:7px;
+    }
+
+    /* ── Section label ── */
+    .slabel{
+      font-size:0.72rem; font-weight:700; text-transform:uppercase;
+      letter-spacing:0.10em; color:#8896b3; margin-bottom:4px;
+    }
+
+    /* ════════════════════════════════════
+       TAB 1 — DIFFERENTIATION
+    ════════════════════════════════════ */
+    .pathway-row{
+      display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    }
+    .pathway-card{
+      border-radius:10px; padding:14px 16px; cursor:pointer;
+      transition:transform 0.15s, box-shadow 0.15s;
+      border-top:4px solid;
+    }
+    .pathway-card:hover{ transform:translateY(-2px); box-shadow:0 5px 16px rgba(0,0,0,0.12); }
+    .pathway-card.open .pw-detail{ display:block; }
+    .pw-title{ font-size:0.90rem; font-weight:700; line-height:1.3; }
+    .pw-sub{ font-size:0.78rem; color:#5a6785; margin-top:3px; }
+    .pw-detail{
+      display:none; margin-top:9px; padding-top:8px;
+      border-top:1px solid #e2e8f0;
+    }
+    .pw-row{ display:flex; gap:6px; margin-bottom:4px; align-items:flex-start; }
+    .pw-key{ font-size:0.78rem; font-weight:700; min-width:90px; flex-shrink:0; }
+    .pw-val{ font-size:0.78rem; color:#4a5568; line-height:1.5; }
+
+    /* Comparison table */
+    .diff-table{ width:100%; border-collapse:collapse; font-size:0.82rem; }
+    .diff-table th{
+      padding:8px 12px; font-size:0.78rem; font-weight:700;
+      text-align:left; color:#fff; background:#2d4070;
+    }
+    .diff-table th:first-child{ background:#1a2340; }
+    .diff-table td{ padding:8px 12px; border-bottom:1px solid #e8edf4; vertical-align:top; }
+    .diff-table tr:hover td{ background:#f7fafc; cursor:default; }
+    .diff-table .param{ font-weight:600; color:#1a2340; }
+    .ex-val{ color:#2b6cb0; }
+    .inf-val{ color:#c53030; }
+    .ex-hdr{ background:#ebf4ff !important; }
+    .inf-hdr{ background:#fff5f5 !important; }
+
+    /* ════════════════════════════════════
+       TAB 2 — ASSESSMENT
+    ════════════════════════════════════ */
+    /* Neck-check flowchart */
+    .flow{
+      background:#fff; border-radius:9px; padding:10px 12px;
+      display:flex; flex-direction:column; align-items:center; gap:0;
+    }
+    .flow-node{
+      width:100%; max-width:480px;
+      border-radius:8px; padding:9px 16px;
+      text-align:center; font-size:0.84rem; font-weight:600;
+      line-height:1.4;
+    }
+    .fn-q { background:#ebf4ff; border:2px solid #2b6cb0; color:#1a2340; }
+    .fn-stop{ background:#fff5f5; border:2px solid #c53030; color:#c53030; }
+    .fn-ok  { background:#f0fff4; border:2px solid #276749; color:#276749; }
+    .fn-warn{ background:#fffaf0; border:2px solid #c05621; color:#c05621; }
+    .fn-next{ background:#faf5ff; border:2px solid #805ad5; color:#805ad5; }
+
+    .flow-arrow{
+      display:flex; align-items:center; gap:6px;
+      font-size:0.76rem; font-weight:700; color:#718096;
+      margin:3px 0;
+    }
+    .flow-arrow-line{
+      width:2px; height:12px; background:#cbd5e0; flex-shrink:0;
+    }
+    .flow-branches{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px; width:100%; max-width:480px;
+    }
+    .flow-branch{ display:flex; flex-direction:column; align-items:center; gap:2px; }
+    .branch-label{
+      font-size:0.76rem; font-weight:700; padding:2px 9px; border-radius:8px;
+    }
+    .bl-yes{ background:#c6f6d5; color:#276749; }
+    .bl-no { background:#fed7d7; color:#c53030; }
+
+    /* Instruments grid */
+    .instr-grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:6px;
+    }
+    .instr-card{
+      background:#fff; border-radius:10px; padding:12px 14px;
+      border-left:4px solid; cursor:pointer;
+      transition:box-shadow 0.15s;
+    }
+    .instr-card:hover{ box-shadow:0 3px 12px rgba(0,0,0,0.10); }
+    .instr-card.open .instr-detail{ display:block; }
+    .instr-name{ font-size:0.84rem; font-weight:700; line-height:1.3; }
+    .instr-abbr{ font-size:0.76rem; color:#8896b3; }
+    .instr-detail{
+      display:none; font-size:0.78rem; color:#4a5568; line-height:1.5;
+      margin-top:7px; padding-top:7px; border-top:1px solid #f0f4f8;
+    }
+
+    /* Symptom diff table */
+    .sdiff-table{ width:100%; border-collapse:collapse; font-size:0.80rem; }
+    .sdiff-table th{
+      padding:7px 10px; font-size:0.76rem; font-weight:700;
+      text-align:left; color:#fff;
+    }
+    .sdiff-table td{ padding:7px 10px; border-bottom:1px solid #f0f4f8; }
+    .sdiff-table tr:hover td{ background:#f7fafc; }
+
+    /* ════════════════════════════════════
+       TAB 3 — DIAGNOSTICS
+    ════════════════════════════════════ */
+    /* Diagnostic pyramid */
+    .pyramid{ display:flex; flex-direction:column; gap:4px; }
+    .pyr-level{
+      display:flex; align-items:center; gap:10px;
+      border-radius:10px; padding:12px 16px; cursor:pointer;
+      transition:transform 0.13s, box-shadow 0.13s;
+      border-left:5px solid;
+    }
+    .pyr-level:hover{ transform:translateX(3px); box-shadow:0 3px 12px rgba(0,0,0,0.10); }
+    .pyr-level.open .pyr-detail{ display:block; }
+    .pyr-num{
+      font-size:1.3rem; font-weight:800; min-width:32px;
+      text-align:center; flex-shrink:0;
+    }
+    .pyr-content{ flex:1; }
+    .pyr-title{ font-size:0.88rem; font-weight:700; }
+    .pyr-hint{ font-size:0.78rem; color:#718096; }
+    .pyr-arrow{ font-size:0.78rem; color:#a0aec0; flex-shrink:0; }
+    .pyr-detail{
+      display:none; margin-top:8px; padding-top:7px;
+      border-top:1px solid rgba(255,255,255,0.4);
+      font-size:0.78rem; line-height:1.6; color:#2d3748;
+    }
+    .pyr-detail ul{ margin:4px 0 0 14px; }
+    .pyr-detail li{ margin-bottom:3px; }
+
+    /* Algorithm B steps */
+    .algo-steps{ display:flex; flex-direction:column; gap:3px; }
+    .algo-step{
+      display:flex; align-items:flex-start; gap:10px;
+      background:#fff; border-radius:10px; padding:10px 14px;
+    }
+    .step-num{
+      width:26px; height:26px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.80rem; font-weight:800; color:#fff;
+    }
+    .step-text{ font-size:0.82rem; color:#2d3748; line-height:1.5; }
+    .step-text strong{ color:#1a2340; }
+
+    /* Checklist table */
+    .chk-table{ width:100%; border-collapse:collapse; font-size:0.80rem; }
+    .chk-table th{
+      background:#2d4070; color:#fff; padding:8px 10px;
+      font-size:0.78rem; font-weight:700; text-align:left;
+    }
+    .chk-table td{ padding:8px 10px; border-bottom:1px solid #e8edf4; vertical-align:middle; }
+    .chk-table tr:hover td{ background:#f0f4f8; }
+    .chk-table .domain{ font-weight:600; color:#2d4070; }
+    .chk-table .threshold{ color:#c53030; font-weight:600; }
+    .chk-dot{ width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:5px; }
+
+    /* ── Footer / Source ── */
+    .footer{
+      max-width:1100px; margin:10px auto 0;
+      padding:10px 14px; font-size:0.76rem; color:#8896b3;
+      text-align:center; line-height:1.5;
+    }
+    .footer a{ color:#2b6cb0; text-decoration:none; }
+
+    /* ── Utilities ── */
+    .badge{
+      display:inline-block; font-size:0.72rem; font-weight:700;
+      padding:2px 9px; border-radius:10px; margin-left:5px;
+    }
+    .up{ color:#276749; font-weight:700; }
+    .dn{ color:#c53030; font-weight:700; }
+    .card-white{
+      background:#fff; border-radius:10px; padding:12px 14px;
+    }
+  </style>
+</head>
+<body>
+
+<p class="fig-title">Standardised Evaluation of Immunological Stress</p>
+<p class="fig-subtitle">Standardisierte Evaluation von Symptomen und Zeichen belastungsinduzierter und infektbasierter immunologischer Stressregulation</p>
+<p class="fig-source">Lecture 8 &middot; Exercise Immunology</p>
+
+<!-- ── Tabs ── -->
+<div class="tabs">
+  <button class="tab active" onclick="showTab('diff')">Differentiation</button>
+  <button class="tab" onclick="showTab('assess')">Assessment</button>
+  <button class="tab" onclick="showTab('diag')">Diagnostics</button>
+</div>
+
+<!-- ══════════════ TAB 1: DIFFERENTIATION ══════════════ -->
+<div class="panel active" id="panel-diff">
+
+  <!-- Two pathway cards -->
+  <div class="card">
+    <div class="card-title">Two Pathways of Immunological Stress — click to expand</div>
+    <div class="pathway-row">
+
+      <div class="pathway-card" style="background:#ebf4ff;border-color:#2b6cb0;" onclick="toggleCard(this)">
+        <div class="pw-title" style="color:#2b6cb0;">Exercise-Induced Stress</div>
+            <div class="pw-sub">Belastungsinduziert</div>
+            <div class="pw-detail">
+              <div class="pw-row"><span class="pw-key" style="color:#2b6cb0;">Trigger</span><span class="pw-val">Mechanical load, catecholamines, cortisol</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#2b6cb0;">Onset</span><span class="pw-val">Acute, load-dependent, reproducible</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#2b6cb0;">Hallmark</span><span class="pw-val">Lymphocytosis → lymphopenia; ↑NK cytotoxicity; neutrophilia</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#2b6cb0;">Hormones</span><span class="pw-val">Adrenaline (SNS), cortisol (HPA)</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#2b6cb0;">Resolution</span><span class="pw-val">Adequate rest and nutrition; &lt;24 h (acute)</span></div>
+            </div>
+          </div>
+
+      <div class="pathway-card" style="background:#fff5f5;border-color:#c53030;" onclick="toggleCard(this)">
+        <div class="pw-title" style="color:#c53030;">Infection-Based Stress</div>
+            <div class="pw-sub">Infektbasiert</div>
+            <div class="pw-detail">
+              <div class="pw-row"><span class="pw-key" style="color:#c53030;">Trigger</span><span class="pw-val">Pathogen recognition via PRRs/PAMPs, cytokine cascade</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#c53030;">Onset</span><span class="pw-val">Variable, often insidious, not load-related</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#c53030;">Hallmark</span><span class="pw-val">Fever, persistent neutrophilia, ↑CRP, ↑IL-6, ↑TNF</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#c53030;">Hormones</span><span class="pw-val">IL-1, IL-6, TNF, IFN-α/β, cortisol</span></div>
+              <div class="pw-row"><span class="pw-key" style="color:#c53030;">Resolution</span><span class="pw-val">Pathogen clearance, immunological memory; days–weeks</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  <!-- Comparison table -->
+  <div class="card">
+    <div class="card-title">Differential Diagnostic Comparison</div>
+    <div style="padding:0;overflow:hidden;border-radius:10px;">
+      <table class="diff-table">
+        <thead>
+          <tr>
+            <th style="width:32%;">Parameter</th>
+            <th class="ex-hdr" style="color:#2b6cb0;background:#ebf4ff;">Exercise-Induced</th>
+            <th class="inf-hdr" style="color:#c53030;background:#fff5f5;">Infection-Based</th>
+          </tr>
+        </thead>
+            <tbody>
+              <tr title="Muscle soreness localization"><td class="param">Muscle soreness</td><td class="ex-val">Focal, load-specific</td><td class="inf-val">Diffuse, no load relation</td></tr>
+              <tr title="Fatigue characteristics"><td class="param">Fatigue</td><td class="ex-val">Post-exertional; resolves with rest</td><td class="inf-val">Persistent; worsened by exertion</td></tr>
+              <tr title="Resting heart rate morning measurement"><td class="param">Resting HR</td><td class="ex-val">Mild ↑, load-dependent</td><td class="inf-val">≥ +7 bpm above individual baseline</td></tr>
+              <tr title="Body temperature"><td class="param">Fever</td><td class="ex-val">Absent</td><td class="inf-val">≥ 37.5–38.5 °C</td></tr>
+              <tr title="Serum C-reactive protein"><td class="param">CRP</td><td class="ex-val">&lt; 5 mg/L (after moderate exercise)</td><td class="inf-val">↑↑ often &gt; 20 mg/L in ARTI</td></tr>
+              <tr title="Blood count differential"><td class="param">Lymphocytes</td><td class="ex-val">↓ post-exercise; normalises &lt;24 h</td><td class="inf-val">↓↓ persistent; altered differential</td></tr>
+              <tr title="Neutrophil-to-lymphocyte ratio"><td class="param">NLR / SII / SIRI</td><td class="ex-val">Transient biphasic pattern</td><td class="inf-val">Persistently elevated</td></tr>
+              <tr title="Effect on sports performance"><td class="param">Performance loss</td><td class="ex-val">Functional, reversible</td><td class="inf-val">Systemic, prolonged</td></tr>
+            </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /panel-diff -->
+
+<!-- ══════════════ TAB 2: ASSESSMENT ══════════════ -->
+<div class="panel" id="panel-assess">
+
+  <!-- Neck-check -->
+  <div class="card">
+    <div class="card-title">Neck-Check Decision Algorithm</div>
+        <div class="flow">
+          <div class="flow-node fn-q">Acute symptoms during training or competition?</div>
+          <div class="flow-arrow"><div class="flow-arrow-line"></div></div>
+
+          <div class="flow-node fn-q">Fever ≥ 37.5 °C, or below-neck symptoms,<br>or systemic features (myalgia, dyspnoea, lymphadenopathy)?</div>
+
+          <div class="flow-branches" style="margin-top:4px;">
+            <div class="flow-branch">
+              <span class="branch-label bl-yes">YES</span>
+              <div style="width:2px;height:10px;background:#c53030;margin:1px auto;"></div>
+              <div class="flow-node fn-stop">STOP training<br>Medical evaluation required</div>
+              <div style="width:2px;height:8px;background:#805ad5;margin:2px auto;"></div>
+              <div class="flow-node fn-next" style="font-size:0.80rem;">Level 1 diagnostics<br>CBC · CRP · CK</div>
+            </div>
+            <div class="flow-branch">
+              <span class="branch-label bl-no">NO — above-neck only</span>
+              <div style="width:2px;height:10px;background:#276749;margin:1px auto;"></div>
+              <div class="flow-node fn-warn">Reduce intensity ≤ 60% VO₂max<br>Monitor 24–48 h</div>
+              <div style="width:2px;height:8px;background:#276749;margin:2px auto;"></div>
+              <div class="flow-node fn-ok" style="font-size:0.80rem;">Symptom-free after 48 h?<br>→ Gradual return to normal training</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Assessment instruments -->
+  <div class="card">
+    <div class="card-title">Validated Assessment Instruments — click for detail</div>
+    <div class="instr-grid">
+
+          <div class="instr-card" style="border-color:#c53030;" onclick="toggleCard(this)">
+            <div class="instr-name" style="color:#c53030;">WURSS-21 / WURSS-11</div>
+            <div class="instr-abbr">Wisconsin Upper Respiratory Symptom Survey</div>
+            <div class="instr-detail">Quantitative 0–7 scale for cold/ARTI symptoms (sneezing, nasal congestion, sore throat, cough, headache, myalgia). Tracks severity + functional impact on sport. Supports the neck-check rule. Score ≥ 7/session → medical review.</div>
+          </div>
+
+          <div class="instr-card" style="border-color:#2b6cb0;" onclick="toggleCard(this)">
+            <div class="instr-name" style="color:#2b6cb0;">Session-RPE × Duration</div>
+            <div class="instr-abbr">Internal Training Load Index</div>
+            <div class="instr-detail">Athlete-perceived exertion (Borg CR10) multiplied by session duration in minutes. Acute:chronic workload ratio > 1.5 indicates immunological vulnerability. Enables weekly load monitoring without instrumentation.</div>
+          </div>
+
+          <div class="instr-card" style="border-color:#276749;" onclick="toggleCard(this)">
+            <div class="instr-name" style="color:#276749;">TQR Scale (1–20)</div>
+            <div class="instr-abbr">Total Quality of Recovery</div>
+            <div class="instr-detail">Mirror image of RPE applied to recovery. Score &lt;13 indicates insufficient recovery → training load reduction advised. Combines sleep quality, nutritional recovery, mental recovery, and physical readiness.</div>
+          </div>
+
+          <div class="instr-card" style="border-color:#805ad5;" onclick="toggleCard(this)">
+            <div class="instr-name" style="color:#805ad5;">POMS / POMS-Brief</div>
+            <div class="instr-abbr">Profile of Mood States</div>
+            <div class="instr-detail">Detects characteristic overreaching/overtraining cluster: ↑tension, ↑depression, ↑anger, ↑fatigue, ↓vigour. Inversion of the healthy "iceberg profile" is a sensitive early marker. Overlaps with prodromal phase of acute infections.</div>
+          </div>
+
+          <div class="instr-card" style="border-color:#c05621;" onclick="toggleCard(this)">
+            <div class="instr-name" style="color:#c05621;">DALDA</div>
+            <div class="instr-abbr">Daily Analysis of Life Demands for Athletes</div>
+            <div class="instr-detail">Composite athlete stress questionnaire covering training load, sleep, nutrition, muscle soreness, mood, and life stress. Distinguishes sources of stress from symptoms of distress. Useful for longitudinal monitoring across both exercise and infection-related stressors.</div>
+          </div>
+
+          <div class="instr-card" style="border-color:#4a5568;" onclick="toggleCard(this)">
+            <div class="instr-name" style="color:#4a5568;">Morning HR + HRV</div>
+            <div class="instr-abbr">Autonomic–Immune Tone Index</div>
+            <div class="instr-detail">Morning resting HR ≥ +7 bpm above individual baseline is a sensitive early marker of both inadequate recovery AND subclinical infection. HRV (RMSSD) reduction reflects sympathetic dominance associated with both overtraining and early infection. Simple, non-invasive, daily monitoring.</div>
+          </div>
+
+    </div>
+  </div>
+
+</div><!-- /panel-assess -->
+
+<!-- ══════════════ TAB 3: DIAGNOSTICS ══════════════ -->
+<div class="panel" id="panel-diag">
+
+  <!-- Three-tier diagnostics -->
+  <div class="card">
+    <div class="card-title">Tiered Laboratory Diagnostic Approach — click level for tests</div>
+        <div class="pyramid">
+
+          <div class="pyr-level" style="background:#ebf4ff;border-color:#2b6cb0;" onclick="toggleCard(this)">
+            <div class="pyr-num" style="color:#2b6cb0;">1</div>
+            <div class="pyr-content">
+              <div class="pyr-title" style="color:#2b6cb0;">Level 1 — Screening
+                <span class="badge" style="background:#dbeafe;color:#2b6cb0;">Field &amp; Practice</span>
+              </div>
+              <div class="pyr-hint">Indicated for any symptomatic athlete</div>
+              <div class="pyr-detail">
+                <ul>
+                  <li>Differential blood count: WBC, GRA, LYM, monocytes</li>
+                  <li>Calculated indices: <strong>NLR</strong>, <strong>SII</strong>, <strong>SIRI</strong></li>
+                  <li>C-reactive protein (CRP) &amp; ESR</li>
+                  <li>Resting HR / HRV (autonomic–immune tone)</li>
+                  <li>Urinalysis</li>
+                  <li style="color:#c05621;font-weight:600;">Avoid sampling within 2 h of exercise (trace elements, NLR)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="pyr-arrow">▼</div>
+          </div>
+
+          <div class="pyr-level" style="background:#f0fff4;border-color:#276749;" onclick="toggleCard(this)">
+            <div class="pyr-num" style="color:#276749;">2</div>
+            <div class="pyr-content">
+              <div class="pyr-title" style="color:#276749;">Level 2 — Extended Diagnostics
+                <span class="badge" style="background:#c6f6d5;color:#276749;">Indicated by Level 1</span>
+              </div>
+              <div class="pyr-hint">Level 1 abnormalities or persistent symptoms</div>
+              <div class="pyr-detail">
+                <ul>
+                  <li><strong>Trace element panel:</strong> Se, SELENOP, total Zn, free Zn (fZn), Cu, Fe, ferritin, transferrin saturation — adjust for hemoconcentration (Alis method)</li>
+                  <li>CK, AST/ALT, creatinine, LDH — muscle vs. hepatic/renal differentiation</li>
+                  <li>Pathogen-specific serology / PCR where clinically indicated</li>
+                  <li>Thyroid function (TSH) for chronic fatigue presentations</li>
+                  <li>Troponin I/T if myocardial involvement suspected</li>
+                </ul>
+              </div>
+            </div>
+            <div class="pyr-arrow">▼</div>
+          </div>
+
+          <div class="pyr-level" style="background:#faf5ff;border-color:#805ad5;" onclick="toggleCard(this)">
+            <div class="pyr-num" style="color:#805ad5;">3</div>
+            <div class="pyr-content">
+              <div class="pyr-title" style="color:#805ad5;">Level 3 — Specialised Immunology
+                <span class="badge" style="background:#e9d8fd;color:#805ad5;">Persistent / Severe</span>
+              </div>
+              <div class="pyr-hint">Recurrent infections, prolonged symptoms, post-infectious sequelae</div>
+              <div class="pyr-detail">
+                <ul>
+                  <li><strong>NK cell subpopulations</strong> (CD56⁺, CD16⁺) and cytotoxic function (in vitro)</li>
+                  <li><strong>T cell repertoire:</strong> CD4⁺/CD8⁺ ratio; memory, effector, senescent subsets</li>
+                  <li>Complement factors C3, C4</li>
+                  <li><strong>Salivary IgA</strong> — validated marker of mucosal immunity / URTI susceptibility</li>
+                  <li>Lymphocyte proliferation assay; oxidative burst (neutrophil function)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="pyr-arrow">▼</div>
+          </div>
+
+        </div>
+      </div>
+
+  <!-- Return-to-sport algorithm B -->
+  <div class="card">
+    <div class="card-title">Return-to-Sport Clearance — 5-Step Protocol</div>
+        <div class="algo-steps">
+          <div class="algo-step">
+            <div class="step-num" style="background:#c53030;">1</div>
+            <div class="step-text"><strong>Minimum rest:</strong> 10 days post-diagnosis incl. ≥ 3 consecutive symptom-free days. Asymptomatic: ≥ 3 days rest after positive test.</div>
+          </div>
+          <div class="algo-step">
+            <div class="step-num" style="background:#c05621;">2</div>
+            <div class="step-text"><strong>Clinical exam:</strong> Vital signs · lymphatic system · cardiopulmonary auscultation · resting ECG · neuromuscular assessment</div>
+          </div>
+          <div class="algo-step">
+            <div class="step-num" style="background:#276749;">3</div>
+            <div class="step-text"><strong>Level 1 labs:</strong> CBC, CRP, CK · Troponin if cardiac symptoms · Echocardiography if new cardiac finding</div>
+          </div>
+          <div class="algo-step">
+            <div class="step-num" style="background:#2b6cb0;">4</div>
+            <div class="step-text"><strong>Graded return (5 steps, min. 24 h each):</strong> Rest → Light aerobic → Moderate aerobic → Sport-specific → Full training → Competition</div>
+          </div>
+          <div class="algo-step">
+            <div class="step-num" style="background:#805ad5;">5</div>
+            <div class="step-text"><strong>Post-COVID / prolonged course:</strong> No progressive training programmes · Monitor for post-exertional malaise (PEM) · Specialist referral if indicated</div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Evaluation checklist -->
+  <div class="card">
+    <div class="card-title">Field Evaluation Checklist</div>
+    <div style="padding:0;overflow:hidden;border-radius:10px;">
+          <table class="chk-table">
+            <thead>
+              <tr>
+                <th style="width:28%;">Domain</th>
+                <th style="width:30%;">Tool</th>
+                <th style="width:42%;">Threshold / Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="domain"><span class="chk-dot" style="background:#2b6cb0;"></span>Wellbeing</td><td>TQR scale (1–20)</td><td class="threshold">TQR &lt; 13 → reduce load</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#c53030;"></span>URTI symptoms</td><td>WURSS-11 (0–7/item)</td><td class="threshold">Score ≥ 7/session → medical review</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#276749;"></span>Training load</td><td>Session-RPE × min</td><td class="threshold">Acute:chronic &gt; 1.5 → caution</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#2b6cb0;"></span>Resting HR</td><td>Morning measurement</td><td class="threshold">≥ +7 bpm above baseline → rest</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#805ad5;"></span>Mood</td><td>POMS brief</td><td class="threshold">Iceberg inversion → overreaching alert</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#c53030;"></span>Temperature</td><td>Oral / tympanic</td><td class="threshold">≥ 37.5 °C → rest; ≥ 38.5 °C → physician</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#276749;"></span>Lab Level 1</td><td>CBC, CRP, CK</td><td class="threshold">CRP &gt; 5 mg/L + symptoms → referral</td></tr>
+              <tr><td class="domain"><span class="chk-dot" style="background:#c05621;"></span>Trace elements</td><td>Se, Zn, Cu, Fe</td><td class="threshold">Interpret relative to exercise timing</td></tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+</div><!-- /panel-diag -->
+
+<!-- ── Footer ── -->
+<div class="footer">
+  Puta C et al. (2025). <em>Kompendium der Sportmedizin.</em>
+  <a href="https://doi.org/10.1007/978-3-662-68883-0" target="_blank">doi:10.1007/978-3-662-68883-0</a>
+  &nbsp;|&nbsp; Simon R et al. (2026). <em>J Trace Elem Med Biol</em> 94:127828
+  &nbsp;|&nbsp; Schwellnus M et al. (2022). <em>Br J Sports Med.</em>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function toggleCard(el) {
+  const wasOpen = el.classList.contains('open');
+  // Close siblings if inside a shared parent grid
+  const parent = el.closest('.pathway-row,.pyramid,.instr-grid');
+  if (parent) parent.querySelectorAll('.open').forEach(c => {
+    if (c !== el) {
+      c.classList.remove('open');
+      const a = c.querySelector('.pyr-arrow');
+      if (a) a.textContent = '▼';
+    }
+  });
+  el.classList.toggle('open', !wasOpen);
+  const arrow = el.querySelector('.pyr-arrow');
+  if (arrow) arrow.textContent = el.classList.contains('open') ? '▲' : '▼';
+}
+</script>
+
+<script>
+  const ro = new ResizeObserver(entries => {
+    const h = entries[0].contentRect.height;
+    window.parent.postMessage({ type: 'iframeResize', height: h }, '*');
+  });
+  ro.observe(document.documentElement);
+</script>
+</body>
+</html>

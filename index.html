@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en" class="antialiased break-words"> <head><!-- High Priority Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exercise Immunology | Exercise Immunology</title><meta name="generator" content="Astro v5.18.0"><!-- Fonts --><link rel="preload" as="font" type="font/woff2" href="/exercise-immunology/_astro/inter-latin-wght-normal.Dx4kXJAl.woff2" crossorigin="anonymous"><link rel="preload" as="font" type="font/woff2" href="/exercise-immunology/_astro/newsreader-latin-wght-normal.CCVVNp6i.woff2" crossorigin="anonymous"><!-- Low Priority Global Metadata --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS"><!-- Page Metadata --><link rel="canonical" href="https://chrisputa.github.io/exercise-immunology/"><meta name="description" content="This is the landing page of Exercise Immunology."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://chrisputa.github.io/exercise-immunology/"><meta property="og:title" content="Exercise Immunology | Exercise Immunology"><meta property="og:description" content="This is the landing page of Exercise Immunology."><!-- X/Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://chrisputa.github.io/exercise-immunology/"><meta property="twitter:title" content="Exercise Immunology | Exercise Immunology"><meta property="twitter:description" content="This is the landing page of Exercise Immunology."><script>
+  (function () {
+    try {
+      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+      const getStored = () => localStorage.getItem('theme');
+      const apply = (dark) => {
+        document.documentElement.classList.toggle('dark', !!dark);
+        if (typeof syncWidgetDarkMode === 'function') syncWidgetDarkMode(!!dark);
+      };
+
+      // Persisted preference; default to 'light'
+      const pref = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('dark', pref === 'dark');
+
+      // Optional: keep in sync if you add a theme toggle elsewhere
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+          document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+        }
+      });
+
+      // Initial apply: stored preference wins, else system
+      const stored = getStored();
+      apply(stored ? stored === 'dark' : mql.matches);
+
+      // Follow system changes only when no stored preference
+      if (!stored) mql.addEventListener('change', (e) => apply(e.matches));
+
+      // React to changes from other tabs/windows
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') apply(e.newValue === 'dark');
+      });
+
+      // Re-apply after Astro client-side transitions
+      document.addEventListener('astro:after-swap', () => {
+        const s = getStored();
+        apply(s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      });
+    } catch {}
+  })();
+</script><!-- <ClientRouter /> --><link rel="stylesheet" href="/exercise-immunology/_astro/index.lCqd0BUL.css">
+<style>/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0}}}@media (max-width:767px){.menu[data-astro-cid-dmqpwcec]{visibility:hidden;opacity:0;width:calc(100% + 1.25rem)}.menu[data-astro-cid-dmqpwcec].is-visible{visibility:visible;opacity:1;transition:opacity .25s cubic-bezier(.4,0,.2,1) .2s}.menu-toggle-icon[data-astro-cid-dmqpwcec]{transition:width .1s cubic-bezier(.4,0,.2,1) .3s}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]{width:calc(var(--spacing,.25rem)*0);transition:width .1s cubic-bezier(.4,0,.2,1)}.menu-toggle-icon[data-astro-cid-dmqpwcec]:before,.menu-toggle-icon[data-astro-cid-dmqpwcec]:after{top:calc(var(--spacing,.25rem)*0);height:1px;width:calc(var(--spacing,.25rem)*6);transform-origin:50%;--tw-translate-x: -50% ;translate:var(--tw-translate-x)var(--tw-translate-y);content:"";background-color:currentColor;transition:rotate .2s cubic-bezier(.4,0,.2,1),margin .2s cubic-bezier(.4,0,.2,1) .2s;position:absolute;left:50%}.menu-toggle-icon[data-astro-cid-dmqpwcec]:before{margin-top:calc(var(--spacing,.25rem)*-1.5)}.menu-toggle-icon[data-astro-cid-dmqpwcec]:after{margin-top:calc(var(--spacing,.25rem)*1.5)}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:before,.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:after{margin-top:calc(var(--spacing,.25rem)*0);transition:margin .2s cubic-bezier(.4,0,.2,1) .1s,rotate .2s cubic-bezier(.4,0,.2,1) .3s}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:before{rotate:45deg}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:after{rotate:-45deg}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}
+</style></head> <body class="bg-main text-main sm:px-14"> <div class="flex flex-col min-h-screen px-4 md:px-8 "> <nav class="min-h-10  w-full max-w-5xl mx-auto pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8" data-astro-cid-dmqpwcec> <div class="w-full  mx-auto relative" data-astro-cid-dmqpwcec> <button class="menu-toggle cursor-pointer w-8 h-8 -ml-1 flex items-center justify-center relative z-30 md:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items" data-astro-cid-dmqpwcec> <span class="menu-toggle-icon w-6 h-px relative bg-current" data-astro-cid-dmqpwcec></span> </button> <ul id="menu-items" class="menu flex flex-wrap gap-6 items-center max-md:flex-col max-md:gap-1 max-md:absolute max-md:-top-2.5 max-md:-left-2.5 max-md:max-w-64 max-md:px-3 max-md:pt-16 max-md:pb-10 max-md:z-20 max-md:bg-main max-md:border max-md:border-dashed max-md:border-main" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec> <a href="/" data-astro-cid-dmqpwcec> <img src="/exercise-immunology/_astro/logo.BOxXENlm.png" alt="t-cell logo" class="max-h-12  dark:hidden" data-astro-cid-dmqpwcec> <img src="/exercise-immunology/_astro/logo_dark.CQjdzMrG.png" alt="t-cell logo dark" class="max-h-12 hidden dark:block" data-astro-cid-dmqpwcec> </a> </li> <li class="py-1 " data-astro-cid-dmqpwcec> <a class="uppercase text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href="/exercise-immunology/" data-astro-cid-dmqpwcec="true">Home</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="uppercase text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href="/exercise-immunology/lectures" data-astro-cid-dmqpwcec="true">Lectures</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="uppercase text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href="/exercise-immunology/dashboards" data-astro-cid-dmqpwcec="true">Dashboards</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="uppercase text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href="/exercise-immunology/tutorials" data-astro-cid-dmqpwcec="true">Tutorials</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="uppercase text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base" href="/exercise-immunology/contact" data-astro-cid-dmqpwcec="true">Contact</a> </li> </ul> </div> <!-- <div class="absolute right-0 top-3 z-10 md:top-8">
+        <a href="/">
+            <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12 block dark:hidden" />
+            <img src={siteConfig.logoDark.src} alt={siteConfig.logoDark.alt || ''} class="max-h-12 hidden dark:block" />
+        </a>
+    </div> --> </nav>  <script type="module">function n(){const s=document.querySelector(".menu"),e=document.querySelector(".menu-toggle");e?.addEventListener("click",()=>{const t=e.getAttribute("aria-expanded")==="true";e.classList.toggle("is-active"),e.setAttribute("aria-expanded",t?"false":"true"),e.setAttribute("aria-label",t?"Open Menu":"Close Menu"),s?.classList.toggle("is-visible")})}n();document.addEventListener("astro:after-swap",n);</script>  <main class="grow w-full max-w-5xl mx-auto ">  <article class="mb-16 sm:mb-24"> <header class="mb-8"> <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">Exercise Immunology</h1>  </header> <div class="max-w-none prose sm:prose-lg">  <h2 id="aims-and-scope">Aims and scope</h2>
+<p>This lecture series addresses the bidirectional relationship between physical exercise and immune system function, integrating current evidence from exercise immunology, sports medicine, and micronutrient research. The overarching aim is to provide students and practitioners with a scientifically grounded, clinically applicable understanding of how the immune system responds to exercise stress, infection, and training load — and how these responses can be systematically evaluated and managed.</p>
+<h2 id="course-details">Course Details</h2>
+<p>Here’s a summary of the key parameters of the Module <strong>Advances in Sports Medicine and Health Promotion II</strong> (VSM II)
+that is offered as part of the Bachelor Degree program Bachelor of Science Sportwissenschaft Performance and Health
+at Friedrich-Schiller-University Jena.</p>
+<p>The course has three components:</p>
+<ol>
+<li>Lectures</li>
+<li>Interactive Dashboards</li>
+<li>Tutorials</li>
+</ol>
+<h3 id="lecture">Lecture</h3>
+<ul>
+<li><strong>Name:</strong> Exercise Immunology (VSM II)</li>
+<li><strong>Starting date:</strong> Friday, April, 10th, 2026</li>
+<li><strong>End date:</strong> Friday, July, 10th, 2026</li>
+<li><strong>Number of sessions:</strong> 14</li>
+<li><strong>Location:</strong> CZS3 HS6</li>
+<li><strong>Language:</strong> German, English</li>
+</ul>
+<h3 id="interactive-dashboards">Interactive Dashboards</h3>
+<ul>
+<li>HTML/JS-based interactive dashboards are mandatory to use as learning tools</li>
+</ul>
+<h3 id="tutorials">Tutorials</h3>
+<ul>
+<li>The Shiny/Python-based App PExOL Easy Plot is an essential learning tool</li>
+</ul>
+<h2 id="grading">Grading</h2>
+<p>Prerequisite for admission to the module examination:</p>
+<ul>
+<li>To achieve the learning objectives of this module, regular attendance at the module’s seminars and exercises is required.</li>
+<li>Regular attendance is defined as missing no more than 15 percent of the class time in any given session.</li>
+</ul>
+<p>Module examination (VSM II) in the form of three parts:</p>
+<ul>
+<li>Exercise Immunology (written exam, 30 min, pass/fail)</li>
+<li>Exercise Immunology (presentation/proposal, 50%)</li>
+<li>Applied Sports Medicine (presentation in the form of a practical teaching demonstration, 50%)</li>
+<li>Each module part must be passed</li>
+</ul>
+<h2 id="moodle">Moodle</h2>
+<p>The moodle course site for this course can be accessed via the following link: <a href="https://moodle.uni-jena.de/course/view.php?id=76479">Moodle Course</a></p>  </div> </article>  </main> <footer class="w-full max-w-5xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14"> <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1"> <a class="font-serif hover:underline hover:underline-offset-2" href="/exercise-immunology/contact">Contact</a><a class="font-serif hover:underline hover:underline-offset-2" href="/exercise-immunology/terms">Terms</a> </div> <div class="pt-6 flex flex-col gap-4 border-t border-dashed border-main">  <p class="text-sm">
+&copy; 2026&nbsp;<a class="hover:underline hover:underline-offset-2" href="/">Christian Puta</a>. All rights
+            reserved.
+</p> </div> </footer> </div> </body></html>
