@@ -67,7 +67,7 @@ const siteConfig: SiteConfig = {
         alt: 't-cell logo dark'
     },
     website: 'https://chrisputa.github.io/',
-    base: '/exercise-immunology/',
+    base: '/exercise_immunology/',
     title: 'Exercise Immunology',
     author: {
         name: 'Christian Puta',

@@ -1,10 +1,10 @@
 {
-    "name": "exercise-immunology",
+    "name": "exercise_immunology",
     "type": "module",
     "description": "",
     "license": "CC-BY-4.0",
     "author": "CHRISTIAN PUTA",
-    "homepage": "https://chrisputa.github.io/exercise-immunology", 
+    "homepage": "https://chrisputa.github.io/exercise_immunology", 
     "repository": {
         "type": "git",
         "url": "https://github.com/chrisputa/exercise_immunology",
