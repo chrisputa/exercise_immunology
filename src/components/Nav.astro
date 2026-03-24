@@ -23,7 +23,7 @@ const navLinks = siteConfig.headerNavLinks || [];
                     class="menu flex flex-wrap gap-6 items-center max-md:flex-col max-md:gap-1 max-md:absolute max-md:-top-2.5 max-md:-left-2.5 max-md:max-w-64 max-md:px-3 max-md:pt-16 max-md:pb-10 max-md:z-20 max-md:bg-main max-md:border max-md:border-dashed max-md:border-main"
                 >
                     <li>
-                        <a href="/">
+                        <a href={import.meta.env.BASE_URL}>
                         <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12  dark:hidden" />
                         <img src={siteConfig.logoDark.src} alt={siteConfig.logoDark.alt || ''} class="max-h-12 hidden dark:block" />
                     </a>
