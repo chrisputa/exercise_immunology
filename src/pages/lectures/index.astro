@@ -5,7 +5,13 @@ import LecturePreview from '../../components/LecturePreview.astro';
 import ListLayout from '../../layouts/ListLayout.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 
-const lectures = (await getCollection('lectures')).filter((lecture) => !lecture.data.draft).sort(sortItemsByDateDesc);
+const lectures = (await getCollection('lectures'))
+  .filter((lecture) => !lecture.data.draft)
+  .sort((a, b) => {
+    const numA = parseInt(a.id.match(/\d+/)?.[0] ?? '0');
+    const numB = parseInt(b.id.match(/\d+/)?.[0] ?? '0');
+    return numA - numB;
+  });
 const preamble = await getEntry('pages', 'lectures');
 const title = preamble?.data?.title ?? 'Lectures';
 const image = (preamble?.data as any)?.image;
@@ -22,7 +28,7 @@ const { Content } = preamble ? await render(preamble) : { Content: () => '' };
         {lectures.map((lecture, i) => (
             <LecturePreview
                 lecture={lecture}
-                sequence={lectures.length - i} 
+                sequence={i + 1}
                 class="mb-10 sm:mb-12"
             />
         ))}
