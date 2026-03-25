@@ -7,6 +7,10 @@ tags:
   - Lecture
 ---
 
+import Figure from '../../../components/Figure.astro';
+import jcurve from '../../../assets/jcurve_nieman2019_bw.png';
+import jcurveDark from '../../../assets/generated/jcurve_nieman2019_bw_dark.png';
+
 
 ### 2.1 Epidemiology of Respiratory Infections
 
@@ -14,31 +18,332 @@ Common colds, flu-like infections, and true influenza are, alongside gastrointes
 
 The classic transmission routes are droplet infections. Bacterial infections frequently follow viral infections due to impairment of the mucous membrane by the viral infection. Fungal infections occur only in immunocompromised individuals (Puta et al. 2026).
 
+It is estimated that acute respiratory tract infections (ARTI) are caused by viruses in over 80% of cases. The most common viruses infecting athletes are the same as those in the general population and include rhinoviruses, non-SARS coronaviruses, influenza A and B, and respiratory syncytial virus (RSV) (Schwellnus et al. 2022).
+
+#### 2.1.1 Historical Context of Exercise Immunology Research
+
+Exercise immunology emerged as a distinct scientific discipline in the late twentieth century, with approximately 90% of all publications appearing after 1990 (Nieman and Wentz 2019). However, the earliest observations date to 1902, when Larrabee noted that white blood cell differential counts in Boston Marathon runners paralleled those seen in certain disease states (Larrabee 1902).
+
+Four broad research periods can be distinguished: (1) 1900--1979, characterised by basic immune cell counts in exercising subjects; (2) 1980--1989, with the advent of flow cytometry and the first systematic investigations linking exercise to acute respiratory illness; (3) 1990--2009, when the field expanded to include nutritional immunology, exercise and aging, and inflammatory cytokine responses; and (4) 2010 to present, marked by multi-omics approaches, metabolomics, and personalised exercise immunology (Nieman and Wentz 2019).
+
+Notably, a 1984 review published in JAMA in preparation for the Los Angeles Olympic Games concluded that there was "no clear experimental or clinical evidence that exercise will alter the frequency or severity of human infections" (Simon 1984) — a conclusion that motivated the subsequent decades of targeted research that now provides a far more nuanced picture.
+
 ### 2.2 Symptom Characterization: Early and Late Symptoms
 
 Sneezing reaches its highest values within the first two days after infection and then declines. Coughing, in contrast, increases continuously and can persist for up to 3 weeks. Additional symptoms include: nasal congestion, sinus pain, watery eyes, and headaches. Approximately 50% of affected individuals exhibit muscle and joint pain (Puta et al. 2026; Barrett et al. 2002, 2005).
+
+#### 2.2.1 Detailed Organ-Specific Symptom Catalogue
+
+A comprehensive organ-by-organ classification of URTI symptoms aids differential diagnosis and supports the "neck check" rule used in return-to-sport decisions (Puta et al. 2026, Tab. 22.5):
+
+| Body region | Signs and symptoms |
+|---|---|
+| Head/Forehead | Headache, dizziness |
+| Eyes | Swollen, watery, itching, painful or burning eyes |
+| Nose | Nasal congestion (impaired nasal breathing), sniffling ("runny nose"), partial or complete loss of smell |
+| Ears | Blocked ears (impaired hearing), earache or pressure on ears |
+| Mouth/Throat/Neck | Hoarseness, sore throat, tonsillar swelling/redness/coating, difficulty swallowing, painful anterior cervical lymph nodes, toothache, partial or complete loss of taste, blue lips or oral mucosa (cyanosis) |
+| Face | Sensation of congestion or swelling in the facial area, facial pain (mainly upper jaw and forehead), unusual facial pallor, increased discomfort when bending the head forward |
+
+This level of clinical detail is essential for sports medicine practitioners making training and competition decisions. Knowing these symptoms by body region helps differentiate URTI from other conditions such as allergies, sinusitis, or early manifestations of systemic infection.
 
 ### 2.3 Cytokines and Acute Phase Response
 
 The proinflammatory cytokines IL-1 and IL-6 are most significant for fever. Cytokines can cross the blood-brain barrier and, in interaction with the vagus nerve, influence temperature regulation via the hypothalamus. Psychological effects include malaise, attention deficits, mood changes, and altered social interaction (Leon 2002; Mahoney and Ball 2002; Smith et al. 1998).
 
+#### 2.3.1 Immunometabolism: The Exercise-Induced Perturbation in Metabolites
+
+In athletes exercising intensely for more than 2 hours, significant increases in at least 300 identified metabolites can be measured as body glycogen stores are depleted. There is an extensive increase in numerous and varied lipid superpathway metabolites, including oxidised derivatives called oxylipins (Nieman and Wentz 2019).
+
+Exercise-induced muscle tissue injury and inflammation elicit a strong innate immune response involving granulocytes, monocytes, and macrophages. Immune-specific proteins are produced to regulate the innate immune response, with oxylipins playing a key role in initiating, mediating, and resolving this process. Most of the expressed immune-related proteins — including lysozyme C, neutrophil elastase, defensin 1, proteins S100-A8/A12, cathelicidin antimicrobial peptide, α-actinin-1, and profilin-1 — are involved with pathogen defense, immune cell chemotaxis, and locomotion (Nieman and Wentz 2019; Markworth et al. 2016).
+
+This profound, exercise-induced perturbation in metabolites, lipid mediators, and proteins more than likely has a direct influence on immune function, decreasing the capacity of immune cells to increase oxygen consumption rates after activation. This concept is termed **immunometabolism** (Nieman and Wentz 2019).
+
+#### 2.3.2 Immune Cell Metabolic Capacity and Transient Dysfunction
+
+In response to an immunological challenge such as exercise stress, immune cells must engage in growth and proliferation to generate effector cells that produce specific molecules such as cytokines and proteins. This immune activation is associated with substantial oxygen and biosynthetic demands. Immune cells must engage in metabolic reprogramming to generate sufficient energy (Nieman and Wentz 2019).
+
+Preliminary data support that immune cell metabolic capacity is decreased during recovery from physiologically demanding bouts of intensive exercise, resulting in transient immune dysfunction. Immunonutrition support — especially increased intake of carbohydrate and polyphenols — has been shown to counter these exercise-induced decrements in immune cell metabolic capacity (Nieman and Wentz 2019; Nieman et al. 2018).
+
 ### 2.4 Respiratory Infections and Competitive Sports
 
-Respiratory infections represent, alongside injuries, the most frequent cause of training and competition absences in competitive sports. Acute respiratory tract infections (ARTI) are a common reason for physician visits among athletes -- during Olympic competitions, they account for approximately 50% of medical consultations. The overall incidence is approximately 1.8 infections per athlete per year with an average symptom duration of 7.1 days (Schwellnus et al. 2022; Snyders et al. 2022).
+Respiratory infections represent, alongside injuries, the most frequent cause of training and competition absences in competitive sports. Acute respiratory tract infections (ARTI) are a common reason for physician visits among athletes — during Olympic competitions, they account for approximately 50% of medical consultations. The overall incidence is approximately 1.8 infections per athlete per year with an average symptom duration of 7.1 days (Schwellnus et al. 2022; Snyders et al. 2022).
+
+#### 2.4.1 Epidemiological Evidence from Major Sporting Events
+
+A substantial body of epidemiological research has established the link between heavy exertion and elevated URTI risk in athletes (Nieman and Wentz 2019):
+
+| Study | Population | Key finding |
+|---|---|---|
+| Peters and Bateman (1983) | 141 ultramarathon runners vs. 124 controls | Illness incidence 2× higher in runners after 56-km race (33% vs. 15%) |
+| Nieman et al. (1990b) | 2,311 marathon runners (Los Angeles Marathon) | Illness incidence 6× higher in finishers vs. non-running controls (13% vs. 2%); runners training ≥97 km/week vs. &lt;32 km/week at higher URTI risk |
+| Heath et al. (1991) | 530 runners | Running >780 km/year increased risk of URTI (odds ratio 2.0) |
+| Konig et al. (2000) | 852 German athletes | Illness incidence 2× higher in endurance sports (OR = 2.2); 2× higher with stress (OR = 2.0); nearly 2× with sleep deprivation (OR = 1.7) |
+| Spence et al. (2007) | 20 elite, 30 recreational, 20 sedentary | Illness incidence 4× higher in elite athletes and 2× greater in sedentary controls vs. recreational athletes |
+| Engebretsen et al. (2010) | 27,245 elite athletes at Olympic Games (2010--2012) | Illness incidence 5--18%; risk factor: female sex |
+| Drew et al. (2017) | 132 elite athletes preparing for Olympics | Illness symptoms in 100% of athletes (46% upper respiratory); risk factors: female sex, low energy availability |
+
+The IOC and IAAF initiated acute illness surveillance systems revealing that 2--18% of elite athletes experience illness episodes during international competition events, with higher proportions for females and those engaging in endurance events (Schwellnus et al. 2022; Nieman and Wentz 2019).
+
+#### 2.4.2 Risk Factors for Illness in Athletes
+
+Numerous factors beyond training load modulate infection risk in athletes. These can be categorised based on Puta et al. (2026, Tab. 22.3) and Nieman and Wentz (2019):
+
+- Insufficient physical and psychological recovery
+- Excessive training volume, duration, and intensity
+- Too frequent high-intensity anaerobic training (e.g. intensive interval training)
+- Infections, premature return to sport after infections, allergies
+- Altitude training camps
+- Psychological distress
+- Malnutrition or unbalanced nutrition before, during, and after training
+- Insufficient sleep duration, sleep quality, and irregularity
+- Insufficient consideration of the female menstrual cycle in training load management
+- Female sex
+- High levels of depression or anxiety
+- International travel across several time zones
+- Participation in competitive events especially during winter months
+- Rapid weight loss and crash diets
+
+The mismatch between current load and current load capacity is a key determinant. The subjective assessment by athlete, coach, and supervising physician regarding the scope and intensity of training loads must consider changing circumstances such as health status (Puta et al. 2026).
+
+#### 2.4.3 Performance Consequences of URTI in Athletes
+
+The decrease in exercise performance after a URTI can last 2--4 days. Runners who start an endurance race despite systemic URTI symptoms are 2--3 times less likely to complete the race (Nieman and Wentz 2019). Paralympic athletes have unique pre-existing medical conditions that predispose them to an increased risk of illness, with incidence rates of 10.0--13.2 episodes per 1000 athlete-days in Summer and 18.7 per 1000 athlete-days in Winter Paralympic Games (Nieman and Wentz 2019).
+
+Since the emergence of SARS-CoV-2 in late 2019, it has been documented that infection with SARS-CoV-2, compared with a common ARTI, is associated with more symptoms during the acute illness as well as a significantly longer time span until return to play (on average 30 days for SARS-CoV-2 vs. 10 days for ARTI in general; Hull et al. 2022; Schwellnus et al. 2021). Krzywanski et al. (2022) reported that 88% of athletes infected with SARS-CoV-2 were impaired in their training and lost an average of 8.1 training days.
+
+#### 2.4.4 Return to Sport After Mild/Moderate COVID-19: Recommendations and Immunological Rationale
+
+Since the initial emergence of SARS-CoV-2, the relationship between acute respiratory infection and sport has gained a new dimension of clinical relevance. Even though widespread acquired immunity has reached an endemic state, the continued evolution of variants means that understanding the immunological time course remains essential for sports medicine practitioners (Puta et al. 2026; Schwellnus et al. 2022).
+
+**Characterisation of symptoms and immunological response to COVID-19**
+
+The immunological response to SARS-CoV-2 infection follows a characteristic temporal sequence (Puta et al. 2026; Sette and Crotty 2021; Tay et al. 2020):
+
+**Minutes to approximately 2 days after infection (before symptom onset):** SARS-CoV-2 initiates infection by binding its spike protein's receptor-binding domain to the angiotensin-converting enzyme 2 (ACE2) receptor on host cells. The early innate immune response involves activation of neutrophils and monocytes through recognition of pathogen-associated or damage-associated molecular patterns within hours of infection. Resident macrophages, epithelial cells, and infiltrating cells of the innate immune system simultaneously produce chemokines and proinflammatory cytokines (IL-6, TNF, IL-1, IFNs) to create an antiviral environment and recruit additional leukocytes to the site of infection (Sette and Crotty 2021; Hope and Bradley 2021; Tay et al. 2020). The systemic rise in proinflammatory cytokine levels is responsible for the induction of "sickness behaviour" and the typical symptoms such as fever, headache, and myalgia that emerge in the first days of COVID-19 (Kelley et al. 2003; Schwellnus et al. 2022).
+
+**The acute adaptive effector response (up to approximately 10 days after symptom onset):** The first SARS-CoV-2-specific helper T cells (CD4⁺) can be detected 2--4 days after symptom onset, accompanied by a somewhat later pronounced cytotoxic T cell response (CD8⁺) (Sette and Crotty 2021). B cell expansion takes longer, with IgM and IgA antibodies first detectable 5--7 days after symptom onset and IgG antibodies 7--10 days after symptom onset. By days 6--10, the number of adaptive effector cells has reached a level sufficient to control the viral infection, with the viral load peaking around days 5--6 and approximately 90% of individuals seroconverting by day 10 through orchestrated T and B cell responses (Tay et al. 2020; Sette and Crotty 2021). Notably, a rapid SARS-CoV-2-specific CD4⁺ T cell response in acute COVID-19 has been associated with mild illness and accelerated viral clearance, whereas a conspicuous prolonged absence of SARS-CoV-2-specific CD4⁺ T cells has been associated with severe or fatal COVID-19 (Braun et al. 2020; Tan et al. 2021).
+
+**Immunological memory:** Following viral elimination, a small number of T cells form memory T cell pools that peak within 2 weeks but remain detectable more than 100 days after infection (Hope and Bradley 2021). B cells similarly differentiate into memory cells and long-lived plasma cells. This virus-specific immunological memory facilitates faster viral clearance upon second antigen contact. Accordingly, reinfections or breakthrough infections tend to be associated with milder illness and better clinical outcomes, and the clinical course of disease is generally milder in individuals who have acquired immunity through vaccination (Puhach et al. 2023; Hope and Bradley 2021).
+
+**Return to sport after SARS-CoV-2 infection — current recommendations**
+
+Athletes with mild to moderate COVID-19 symptoms should observe a training pause until complete clinical recovery and symptom resolution (Burgstahler and Niess 2021; Steinacker et al. 2022). The consensus statement by Steinacker et al. (2022), based on 18 synthesised articles and expert opinion, recommends the following graduated approach:
+
+- **Mild illness:** Training may resume after 3 consecutive symptom-free days.
+- **Asymptomatic infection:** Training should be paused for at least 3 days after diagnosis.
+- **Competition return:** Competitions should not be resumed until at least 10 symptom-free days have passed and the athlete is free of complaints and tolerating progressive load increases (Steinacker et al. 2022).
+
+Elliott et al. (2022) have further stratified these recommendations based on symptom presentation. In particular, athletes with symptoms of the lower airways ("below the neck") are recommended an initial rest period of at least 5 days, whereas athletes with symptoms confined to the upper airways ("above the neck") may continue light activities without complete exercise cessation (Elliott et al. 2022).
+
+From an immunobiological perspective, it appears advisable to find a balance between previously recommended longer rest periods and newer, more abbreviated approaches. Considering the important time windows of acute innate and adaptive immune infection regulation, **resuming activities after 10 days of rest, followed by at least 3 consecutive symptom-free days, appears to be a prudent approach** (Puta et al. 2026; Haunhorst et al. 2023a).
+
+This conservative recommendation is supported by several considerations: resumption of sporting activities during the acute infection regulation period could jeopardise viral clearance, the resolution of inflammation, and long-term athletic performance (Haunhorst et al. 2023b). Exercise-induced redistribution of effector lymphocytes mediated by catecholamine signalling, and energy allocation to working musculature via IL-6 release, could be relevant in this context (Campbell and Turner 2018; Kistner et al. 2022). Furthermore, silent hypoxia has been reported as a common feature of acute COVID-19, attributable to renin-angiotensin system dysfunction following ACE2 binding by the spike protein. Additional oxygen deficit through intensive physical exertion may consequently lead to cardiopulmonary complications (Fajloun et al. 2023).
+
+**Clinical staging and medical investigations**
+
+The return to training and competition should be staged according to WHO guidelines as asymptomatic, mild, moderate, severe, and critical (Steinacker et al. 2022; NIH 2024):
+
+| Severity | Clinical criteria | Symptom characterisation |
+|---|---|---|
+| Mild | Various signs and symptoms of COVID-19 (e.g. fever, cough, sore throat, malaise, headache, muscle pain, loss of smell/taste) but no dyspnoea or abnormal chest findings | Subfebrile temperature (&lt;38.5°C), mild cough, sore throat, mild malaise, no dyspnoea and no subjective cardiac complaints. Mild sniffles ≤3 days considered symptom-free; if persisting longer, classified as mild symptom |
+| Moderate | Lower airway involvement on clinical assessment or imaging, SpO₂ ≥94% | Pronounced malaise (fatigue symptoms), dyspnoea at rest, higher fever (>38.5°C), headache, muscle/joint/limb pain, nausea or diarrhoea. Persistent cough ≥3 days also classified as moderate |
+| Severe | SpO₂ &lt;94%, PaO₂/FiO₂ &lt;300 mmHg, respiratory rate >30/min, or lung infiltrates >50% | Hospitalisation required, up to intensive care |
+| Critical | Respiratory failure, septic shock, and/or multi-organ dysfunction | Intensive care required |
+
+Elliott et al. (2020, 2022) recommend that athletes with a complicated clinical course should undergo monitoring of inflammatory markers (e.g. C-reactive protein), respiratory function assessment (spirometry), and renal function evaluation. Steinacker et al. (2022) add that pulmonary function tests should be performed when clinical findings point to bronchial constriction or dyspnoea at rest or during exertion. Medical examinations should be considered for athletes wishing to return to competition earlier than 10 days after symptom onset, and should include a medical history, physical examination, laboratory diagnostics (differential blood count, CRP, transaminases, CK, creatinine, and troponin if cardiac complaints are present), and a resting ECG (Steinacker et al. 2022). Myocardial or pulmonary conditions may even require regular annual follow-up including ECG, echocardiography, and arterial blood gas analysis (Halle et al. 2021).
+
+**Post-COVID condition: special considerations for return to sport**
+
+Persistent cardiac symptoms during the medical evaluation process should prompt further investigations (Gluckman et al. 2022). If none of the investigations yields abnormal results and no other symptoms persist beyond 4 weeks after symptom onset, one of the described graduated return-to-sport protocols may be applied. Persistent symptoms suggestive of a post-COVID condition — such as acute exercise intolerance and post-exertional symptom exacerbation (PEM) — can represent a challenge for general physical activities and require specialised medical and sports-scientific supervision (Zhang et al. 2025; Petek et al. 2022). A recent study showed that elite athletes with post-COVID condition experienced reduced quality of life, poorer competitive performance levels, and altered training parameters, independent of sex, and that mild ongoing inflammation based on CRP levels was associated with self-reported cardiac and flu-like symptoms (Zhang et al. 2025). Latest findings suggest that the pathophysiological basis may involve tissue hypoxia and hypoperfusion due to microcirculatory disturbances, microcoagulation, morphological changes in red blood cells, vasoactive autoantibodies, and persistent immune activation (Altmann et al. 2023; Haunhorst et al. 2022; Haunhorst et al. 2024). Based on current knowledge and experience with myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS), no progressive training programmes can currently be recommended for post-COVID condition (Puta et al. 2026).
 
 ### 2.5 Infection Foci as a Cause of Infection Susceptibility
 
-In addition to allergies, infection foci can be a cause of athletes' susceptibility to infection. Particular attention should be paid to potential organ-related secondary diseases (heart, kidneys, liver, spleen) to make vital diagnoses such as myocarditis in a timely manner (Puta et al. 2026).
+In addition to allergies, infection foci can be a cause of athletes' susceptibility to infection. The search for infection foci in the area of the teeth or the upper airways is an ever-recurring task in sports medicine practice. Besides obvious and visible entry-point infections, other infectious causes in the dental area should be clarified through dental examinations. In addition to sinus infections (which can often only be diagnosed through specialist examinations), chronic tonsillitis with purulent discharge and lymph node swelling in the submandibular region represents a relatively frequent source of infection foci (Puta et al. 2026).
+
+Particular attention should be paid to potential organ-related secondary diseases (heart, kidneys, liver, spleen) to make vital diagnoses such as myocarditis in a timely manner (Puta et al. 2026).
+
+### 2.6 The J-Curve Model: Infection Frequency and the Exercise Workload Continuum
+
+The majority of infections in athletes are so-called banal infections with irritations in the nasopharynx, runny nose, impaired nasal breathing, and mild sore throat. General symptoms such as limb pain, chills, and fever generally do not occur (Puta et al. 2026).
+
+#### 2.6.1 The J-Curve Model (Nieman 1994)
+
+To illustrate the relationship between sport and upper respiratory tract infection frequency, the model of the "J-shaped" curve is used (Nieman 1994; Puta et al. 2026). This model proposes three strata along the exercise workload continuum:
+
+- **Sedentary individuals** (too little activity): medium/average risk of URTI.
+- **Moderate, individually appropriate exercise**: lowest risk of infection — the protective "sweet spot." Athletes with a moderate, individually non-overtaxing training volume have a lower risk of illness.
+- **Heavy/excessive exercise** (too much): highest risk. Overtrained athletes and those performing single exhaustive bouts carry the highest risk.
+
+The model also illustrates the inverse relationship between immunity and infection frequency: as physical activity increases from sedentary to moderate levels, immunity rises and infection frequency drops. Beyond the moderate range into excessive exercise, immunity declines and infection frequency rises sharply. This dual visualisation was termed the "Immunfisch" (immune fish) by Puta et al. (2026, Abb. 22.7) because the combined curves resemble the outline of a fish.
+
+<Figure src={jcurve} srcDark={jcurveDark} alt="J-curve nieman">
+**Figure:** The curve follows the shape described in Nieman & Wentz (2019): URTI risk is **reduced ~40–50%** in the moderate exercise zone compared to sedentary individuals, then rises sharply with heavy exertion to **2–6× above normal** — matching the values cited in the paper for post-race illness incidence.
+</Figure>
+
+#### 2.6.2 Supporting Epidemiological Evidence
+
+The J-curve model is supported by evidence from both randomised controlled trials and prospective epidemiological studies (Nieman and Wentz 2019):
+
+**Randomised controlled trials demonstrating that moderate exercise reduces URTI:**
+
+- Nieman et al. (1990a): 36 mildly obese sedentary women randomised to 15 weeks of moderate walking (45 min/day × 5 days/week) experienced fewer days with illness symptoms (5.1 ± 1.2 days) compared to controls (10.8 ± 2.3 days).
+- Chubak et al. (2006): 115 postmenopausal women randomised to 1 year of moderate exercise showed an illness incidence of 30% vs. 48% in controls, with a three-fold decreased risk in the final 3 months.
+- Barrett et al. (2012, 2018): 373 older adults randomised to 8 weeks of moderate sustained exercise demonstrated proportional reductions in URTI incidence (14%), days-of-illness (23%), and global severity (31%) compared with controls.
+
+Collectively, these randomised clinical trials (8 weeks to 1 year in length) demonstrate that moderate exercise programmes reduce URTI incidence and duration, with magnitudes of reduction (typically 40--50%) that exceed those reported for most medications and supplements (Nieman and Wentz 2019).
+
+**Epidemiological studies confirming the protective effect of moderate activity:**
+
+- Nieman et al. (2011): 1,002 adults followed for 12 weeks — the number of days with URTI was 43% lower in those exercising ≥5 days/week (≥20 min aerobic exercise) compared to sedentary individuals (≤1 day/week), and 46% lower when comparing highest vs. lowest fitness tertile.
+- Weighted mean across studies: 28% reduced URTI rates in high vs. low physical activity and fitness groups (Nieman and Wentz 2019).
+
+#### 2.6.3 Critical Appraisal of the J-Curve Model
+
+Several important caveats apply to the J-curve model (Puta et al. 2026; Nieman and Wentz 2019):
+
+- The IOC consensus group (Schwellnus et al. 2016) provided support for the J-curve model but cautioned that the right side of the model may not apply to elite athletes at the highest level, where high training loads are not consistently associated with an increased risk of illness.
+- Elite athletes may perceive (and report) mild infection symptoms more readily than untrained individuals, introducing reporting bias in questionnaire-based studies (Brenner et al. 1994).
+- Beyond training volume and intensity, numerous other factors modulate the immune system and must be considered (see the comprehensive risk factor list in Section 2.4.2).
+- Individual cases can deviate from the general trend. The J-curve represents a population-level didactic model, not an individual prediction tool (Puta et al. 2026).
+- The direct connection between exercise-induced immune changes and actual infection risk has not yet been fully established and will require long-term studies with large cohorts using clinically confirmed infections rather than self-reported symptoms (Nieman and Wentz 2019; Simpson et al. 2020).
+
+Nevertheless, the J-curve illustrates the relationship between sport and upper respiratory tract infections in its basic tendency and represents a didactically effective model (Puta et al. 2026).
+
+### 2.7 Clinical Benefits of the Exercise-Immune Relationship
+
+#### 2.7.1 Reduced Systemic Inflammation in Physically Active and Lean Individuals
+
+Each exercise bout causes transient increases in total white blood cells, granulocyte-related proteins, and a variety of plasma cytokines including IL-6, IL-8, IL-10, IL-18, IL-1 receptor antagonist, granulocyte colony stimulating factor, and monocyte chemoattractant protein 1. Over time, the summation of these transient responses produces an anti-inflammatory phenotype (Nieman and Wentz 2019).
+
+Physically fit individuals have lower resting levels of inflammatory biomarkers: serum CRP shows a 4.4-fold difference between obese individuals (mean BMI 31.7) and endurance athletes (mean BMI 23.0); plasma IL-6 shows a 1.3-fold difference (Nieman and Wentz 2019). The upper tertiles of fitness and exercise frequency are associated with reduced numbers of days with URTI: a 46% reduction for the highest vs. lowest fitness tertile and a 43% reduction for the highest vs. lowest exercise frequency tertile (Nieman et al. 2011).
+
+The persistent increase in inflammation biomarkers in physically inactive individuals is defined as chronic or systemic inflammation and is linked with multiple disorders and diseases including obesity, arthritis, atherosclerosis, cardiovascular disease, chronic kidney disease, liver disease, metabolic syndrome, insulin resistance, type 2 diabetes mellitus, sarcopenia, osteoporosis, and various types of cancers (Nieman and Wentz 2019; Gleeson et al. 2011).
+
+#### 2.7.2 Exercise-Immune Linkages to Reduced Chronic Disease
+
+There is increasing evidence that the circulation surge in cells of the innate immune system with each exercise bout, together with the anti-inflammatory and antioxidant effect of exercise training, has a summation effect over time in modulating tumorigenesis, atherosclerosis, and other disease processes. Exercise training counters the disease process by stimulating many cellular and molecular changes throughout body tissues that promote anti-inflammatory and antioxidant responses and augment immunosurveillance (Nieman and Wentz 2019; Fiuza-Luces et al. 2023).
+
+#### 2.7.3 Exercise, Gut Function, and the Microbiome
+
+The gut microbiota influences human health and immune function, in part through the fermentation of indigestible food components in the large intestine. Recent studies indicate that exercise and physical fitness diversify the gut microbiota, enhancing the number of benign microbial communities. More human research is needed to establish whether the positive linkage between long-term exercise training and a diverse microbiome translates to improved immune function (Nieman and Wentz 2019).
+
+### 2.8 Nutritional Countermeasures to Exercise-Induced Immune Changes
+
+#### 2.8.1 Carbohydrates Attenuate Post-Exercise Inflammation
+
+A consistent finding is that carbohydrate intake during prolonged and intense exercise (whether from 6--8% beverages or sugar-dense fruits such as bananas) is associated with higher blood glucose and insulin levels, lower plasma stress hormones (epinephrine and cortisol), diminished fatty acid mobilisation and oxidation, and reduced inflammation as measured by a variety of biomarkers including skeletal muscle IL-6 and IL-8 mRNA, blood neutrophil and monocyte cell counts, and cytokines such as IL-6, IL-1ra, and IL-10 (Nieman and Wentz 2019; Nieman et al. 1998a, 1998b).
+
+A carbohydrate intake of at least 30 g per hour can attenuate the rise in cortisol and adrenaline concentration during prolonged endurance exercise. In 2.5-hour runs, placebo-controlled comparisons showed that substitution with a 6% carbohydrate beverage significantly reduced the acute inflammatory response, with particular attenuation of interleukin-6, which plays a central role in the acute inflammatory response to exercise (Nieman et al. 1998a, 1998b; Puta et al. 2026). The effect of carbohydrate ingestion in attenuating post-exercise inflammation is strong (approximately 30--40%), especially when contrasted with water-only intake in overnight-fasted athletes (Nieman and Wentz 2019).
+
+The stress hormone response (cortisol, epinephrine, norepinephrine) to prolonged continuous endurance activity is dependent on carbohydrate substitution, as demonstrated by a systematic review by Christ et al. (2024). This represents an effective nutritional strategy before and during exercise to attenuate the rise in cortisol and adrenaline levels (Puta et al. 2026; Christ et al. 2024).
+
+#### 2.8.2 Polyphenols Counter Exercise-Induced Immune Changes
+
+Polyphenols, in particular flavonoids, have attracted attention owing to their bioactivity and related health benefits. Gut-derived phenolics circulate throughout the body after increased polyphenol intake, exerting a variety of bioactive effects that are important to athletes including anti-inflammatory, antiviral, antioxidative, and immune cell signalling effects (Nieman and Wentz 2019).
+
+Evolving data support the intake of fruits such as dates, raisins, and bananas by athletes during training to provide the sugars and polyphenols that exert anti-inflammatory influences (Nieman and Wentz 2019; Nieman et al. 2018).
+
+#### 2.8.3 Micronutrients and Trace Elements
+
+Iron occupies a special role among minerals due to the ease of detecting deficiency and its clinical relevance. Endurance athletes — especially adolescent and young adult females — are most at risk for developing manifest iron deficiency. A laboratory screen is recommended at regular intervals, at minimum annually, for preventive reasons (Haymes and Rebstock 1989; Puta et al. 2026).
+
+Regarding trace elements important for immune defence (selenium, zinc, copper), establishing valid correlations between infection frequency and supplementation is currently difficult. A total intake within the recommended dietary guidelines of the Deutsche Gesellschaft für Ernährung (DGE 1997) can be considered safe. Zinc acetate lozenges at doses up to 75 mg/day have been shown to positively influence the course of beginning cold symptoms, though no data specific to the intersection of infection and sport currently exist (Hemila et al. 2017; Puta et al. 2026).
+
+A general supplementation with antioxidant vitamins for athletes cannot be recommended with adequate energy availability. In problematic cases, substitution with antioxidant vitamins (Pro-Vitamin A, Vitamin C, Vitamin E) during infection-prone seasons may be considered (Puta et al. 2026).
+
+### 2.9 Strategies for Athletes to Minimise the Risk of Impaired Immune Function
+
+The following strategies are derived from Puta et al. (2026, Sections 22.6--22.7) and Nieman and Wentz (2019) and are designed to help reduce the impairment of immune function:
+
+#### 2.9.1 Training and Competition Load Management
+
+1. Avoid very long training sessions (>2 h).
+2. Reduce psychological stress and develop appropriate coping strategies.
+3. Monitor mood, stress, and anxiety.
+4. Knowledge of the relationship between exercise intensity, volume, and activation of the sympathetic nervous system and the hypothalamic-pituitary-adrenal axis. Factors that strongly influence the stress hormone response include: fasting, low glycogen stores, dehydration, heat, cold, altitude, psychological stress, and sleep deficit.
+5. Ensure adequate sleep duration (~8 h) and sleep regularity.
+6. Avoid crash diets and rapid weight loss.
+7. Avoid/minimise contact with sick persons (adults and children).
+8. Knowledge and implementation of hygiene rules (especially oral hygiene 2× daily) and disinfection techniques (hand disinfection).
+9. Do not share drinking bottles, towels, cutlery, etc.
+10. Avoid touching hands in the nasal and oral area.
+11. Knowledge of warning signs and symptoms of infections of the upper airways and of overtraining.
+
+#### 2.9.2 Nutritional Strategies for Infection-Prone Athletes
+
+A thorough nutritional counselling for infection-prone athletes should be conducted to identify and eliminate one-sided or unfavourable dietary patterns. Nutritional protocols (analogue or digital) can be used to gain insight into potential weaknesses in nutrition in the context of exercise, training, and sport (Puta et al. 2026).
+
+The most targeted measure for promoting immunity is active vaccination. Vaccination status should be reviewed according to generally accepted criteria, including for foreign travel. Passive immunisation through administration of immunoglobulins should generally be preferred over active vaccination (Puta et al. 2026).
+
+Consume a well-balanced diet with sufficient energy to maintain a healthy weight, with a focus on grains, fruits, and vegetables to provide sufficient carbohydrate and polyphenols. Consider the knowledge that when taking into account the necessary recovery times and appropriate structuring of subsequent training sessions and a suitable nutritional strategy, no increased infection susceptibility results (Nieman and Wentz 2019; Puta et al. 2026).
 
 ### References
 
-- Barrett B et al. (2002) The Wisconsin upper respiratory symptom survey. *J Fam Pract* 51:265.
-- Barrett B et al. (2005) Symptom assessment and characterization of upper respiratory tract infection. In: Eccles R, Weber O (eds) *Common Cold*. Birkhäuser Verlag.
+- Altmann DM, Whettlock EM, Liu S, Arachchillage DJ, Boyton RJ (2023) The immunology of long COVID. *Nat Rev Immunol* 23(10):618-634.
+- Barrett B, Locken K, Maberry R, Schwamman J, Brown R et al. (2002) The Wisconsin upper respiratory symptom survey (WURSS): a new research instrument for assessing the common cold. *J Fam Pract* 51:265.
+- Barrett B, Brown R, Mundt M, Safdar N, Dye L et al. (2005) The Wisconsin upper respiratory symptom survey is responsive, reliable, and valid. *J Clin Epidemiol* 58:609-617.
+- Barrett B et al. (2012) Meditation or exercise for preventing acute respiratory infection: a randomized controlled trial. *Ann Fam Med* 10(4):337-346.
+- Barrett B et al. (2018) Meditation or exercise for preventing acute respiratory infection (MEPARI-2): a randomized controlled trial. *PLoS One* 13(6):e0197778.
+- Braun J, Loyal L, Frentsch M et al. (2020) SARS-CoV-2-reactive T cells in healthy donors and patients with COVID-19. *Nature* 587(7833):270-274.
+- Brenner IK, Shek PN, Shephard RJ (1994) Infection in athletes. *Sports Med* 17(2):86-107.
+- Burgstahler C, Niess AM (2021) Return to Sports nach COVID-19. *Sports Orthop Traumatol* 37:249-254.
+- Campbell JP, Turner JE (2018) Debunking the myth of exercise-induced immune suppression: redefining the impact of exercise on immunological health across the lifespan. *Front Immunol* 9:648.
+- Christ T, Ringleb M, Haunhorst S, Fennen L, Jordan PM, Wagner H, Puta C (2024) The acute effects of pre- and mid-exercise carbohydrate ingestion on the immunoregulatory stress hormone release in experienced endurance athletes -- a systematic review. *Front Sports Act Living* 26(6):1264814.
+- Chubak J et al. (2006) Moderate-intensity exercise reduces the incidence of colds among postmenopausal women. *Am J Med* 119(11):937-942.
+- DGE (1997) Empfehlungen für die Nährstoffzufuhr. Frankfurt.
+- Drew M et al. (2017) Prevalence of illness, poor mental health and sleep quality and low energy availability prior to the 2016 Summer Olympic Games. *Br J Sports Med* 52(1):47-53.
 - Eccles R (2005) Understanding the symptoms of the common cold and influenza. *Lancet Infect Dis* 5:718-725.
+- Elliott N, Martin R, Heron N, Elliott J, Grimstead D, Biswas A (2020) Infographic. Graduated return to play guidance following COVID-19 infection. *Br J Sports Med* 54(19):1174-1175.
+- Elliott N, Biswas A, Heron N, Ranson C, Hull J, Martin R, Elliott J (2022) Graduated return to play after SARS-CoV-2 infection -- what have we learned and why we've updated the guidance. *Br J Sports Med* 56(1):4-11.
+- Engebretsen L et al. (2010) Sports injuries and illnesses during the Winter Olympic Games 2010. *Br J Sports Med* 44:772-780.
+- Fajloun Z, Abi Khattar Z, Kovacic H, Legros C, Sabatier JM (2023) Why do athletes develop very severe or fatal forms of COVID after intense exercise following SARS-CoV-2 infection or anti-covid vaccination? *Infect Disord Drug Targets* 23(4):e110123212563.
+- Fiuza-Luces C, Valenzuela PL, Galvez BG, Ramirez M, Lopez-Soto A, Simpson RJ, Lucia A (2023) The effect of physical exercise on anticancer immunity. *Nat Rev Immunol*.
+- Gleeson M, Bishop NC, Stensel DJ, Lindley MR, Mastana SS et al. (2011) The anti-inflammatory effects of exercise: mechanisms and implications for the prevention and treatment of disease. *Nat Rev Immunol* 11:607-615.
+- Gluckman TJ, Bhave NM, Allen LA et al. (2022) ACC Expert Consensus Decision Pathway on Cardiovascular Sequelae of COVID-19 in Adults. *J Am Coll Cardiol* 79(17):1717-1756.
+- Halle M, Bloch W, Niess AM, Predel H, Reinsberger C, Scharhag J, Steinacker J, Wolfarth B, Scherr J, Niebauer J (2021) Exercise and sports after COVID-19 -- guidance from a clinical perspective. *Transl Sports Med* 4:310-318.
+- Haunhorst S, Bloch W, Wagner H, Ellert C, Kruger K, Vilser DC, Finke K, Reuken P, Pletz MW, Stallmach A, Puta C (2022) Long COVID: a narrative review of the clinical aftermaths of COVID-19 with a focus on the putative pathophysiology and aspects of physical activity. *Oxf Open Immunol* 3(1):iqac006.
+- Haunhorst S, Bloch W, Drube S, Baumgarten S, Pletz MW, Gabriel HHW, Puta C (2023a) Current re- to sports recommendations after non-severe COVID-19 from an exercise immunology perspective: a scoping review. *Sports Orthop Traumatol*.
+- Haunhorst S, Bloch W, Puta C (2023b) Recovery and the immune system. In: Kellmann M, Beckmann J (Hrsg) The importance of recovery for physical and mental health: negotiating the effects of under-recovery. Routledge.
+- Haunhorst S, Dudziak D, Scheibenbogen C et al. (2024) Towards an understanding of physical activity-induced post-exertional malaise: Insights into microvascular alterations and immunometabolic interactions in post-COVID condition and myalgic encephalomyelitis/chronic fatigue syndrome. *Infection* 53(1):1-13.
+- Haymes EM, Rebstock S (1989) Iron loss in runners during exercise. *Sports Med* 7(5):277-285.
+- Heath GW et al. (1991) Exercise and the incidence of upper respiratory tract infections. *Med Sci Sports Exerc* 23(2):152-157.
+- Hemila H, Fitzgerald JT, Petrus EJ, Prasad A (2017) Zinc acetate lozenges may improve the recovery rate of common cold patients: an individual patient data meta-analysis. *Open Forum Infect Dis* 4(2):ofx059.
+- Hope JL, Bradley LM (2021) Lessons in antiviral immunity. *Science* 371(6528):464-465.
+- Hull JH, Wootten M, Moghal M et al. (2022) Clinical patterns, recovery time and prolonged impact of COVID-19 illness in international athletes: the UK experience. *Br J Sports Med* 56(1):4-11.
 - Johnston SL, Holgate ST (1996) Epidemiology of viral respiratory infections. In: Myint S, Taylor-Robinson D (eds) *Viral and other infections of the human respiratory tract*. Chapman & Hall.
-- Leon LR (2002) Cytokine regulation of fever. *J Appl Physiol* 92:2648-2655.
-- Mahoney T, Ball P (2002) Common respiratory tract infections as psychological entities. *Aust Psychol* 37:86-94.
+- Kelley KW, Bluthe RM, Dantzer R, Zhou JH, Shen WH, Johnson RW, Broussard SR (2003) Cytokine-induced sickness behavior. *Brain Behav Immun* 17(Suppl 1):S112-S118.
+- Kistner TM, Pedersen BK, Lieberman DE (2022) Interleukin 6 as an energy allocator in muscle tissue. *Nat Metab* 4(2):170-179.
+- Konig D et al. (2000) Upper respiratory tract infection in athletes: influence of lifestyle, type of sport, training effort, and immunostimulant intake. *Exerc Immunol Rev* 6:102-120.
+- Krzywanski J, Mikulski T, Krysztofiak H et al. (2022) Elite athletes with COVID-19 -- Predictors of the course of disease. *J Sci Med Sport* 25(1):9-14.
+- Larrabee RC (1902) Leucocytosis after violent exercise. *J Med Res* 7:76-82.
+- Leon LR (2002) Invited review: cytokine regulation of fever: studies using gene knockout mice. *J Appl Physiol* 92:2648-2655.
+- Mahoney T, Ball P (2002) Common respiratory tract infections as psychological entities: a review of the mood and performance effects of being ill. *Aust Psychol* 37:86-94.
+- Markworth JF et al. (2016) Emerging roles of pro-resolving lipid mediators in immunological and adaptive responses to exercise-induced muscle injury. *Exerc Immunol Rev* 22:110-134.
+- NIH (2024) COVID-19 Treatment Guidelines Panel. Coronavirus Disease 2019 (COVID-19) Treatment Guidelines. National Institutes of Health.
+- Nieman DC (1994) Exercise, upper respiratory tract infection, and the immune system. *Med Sci Sports Exerc* 26(2):128-139.
+- Nieman DC, Wentz LM (2019) The compelling link between physical activity and the body's defense system. *J Sport Health Sci* 8(3):201-217.
+- Nieman DC et al. (1990a) The effects of moderate exercise training on natural killer cells and acute upper respiratory tract infections. *Int J Sports Med* 11(6):467-473.
+- Nieman DC et al. (1990b) Infectious episodes in runners before and after the Los Angeles Marathon. *J Sports Med Phys Fitness* 30(3):316-328.
+- Nieman DC, Brindley Gardner HE et al. (1998a) Carbohydrate affects natural killer cell redistribution but not activity after running. *Med Sci Sports Exerc* 29:1318-1324.
+- Nieman DC, Nehlsen-Cannarella SL et al. (1998b) Influence of mode and carbohydrate on the cytokine response to heavy exertion. *Med Sci Sports Exerc* 30(5):671-678.
+- Nieman DC et al. (2011) Upper respiratory tract infection is reduced in physically fit and active adults. *Br J Sports Med* 45(12):987-992.
+- Nieman DC et al. (2018) Metabolomics-based analysis of banana and pear ingestion on exercise performance and recovery. *J Proteome Res* 14(12):5367-5377.
+- Petek BJ, Moulson N, Baggish AL et al. (2022) ORCCA Investigators. Prevalence and clinical implications of persistent or exertional cardiopulmonary symptoms following SARS-CoV-2 infection in 3597 collegiate athletes. *Br J Sports Med* 56(16):913-918.
+- Peters EM, Bateman ED (1983) Ultramarathon running and upper respiratory tract infections: an epidemiological survey. *S Afr Med J* 64:582-584.
+- Puhach O, Meyer B, Eckerle I (2023) SARS-CoV-2 viral load and shedding kinetics. *Nat Rev Microbiol* 21(3):147-161.
 - Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
-- Schwellnus M et al. (2022) IOC consensus statement on acute respiratory illness in athletes. *Br J Sports Med*.
-- Smith A et al. (1998) Effects of the common cold on mood and performance. *Psychoneuroendocrinology* 23:733-739.
-- Snyders C et al. (2022) Acute respiratory illness and return to sport. *Br J Sports Med* 56(4):223-231.
+- Puta C, Haunhorst S, Bloch W (2021) Post-akutes COVID-19 ("long-COVID"): Andauernde Symptome, mögliche Ursachen und symptomgeleitetes post-akut COVID-19 Management zur Wiedererlangung der körperlichen Leistungsfähigkeit (Scoping Review). *Sports Orthop Traumatol* 37:214-225.
+- Schwellnus M, Sewry N, Snyders C et al. (2016) How much is too much? IOC consensus statement on load in sport and risk of illness. *Br J Sports Med* 50:1043-1052.
+- Schwellnus M, Sewry N, Snyders C et al. (2021) Symptom cluster is associated with prolonged return-to-play in symptomatic athletes with acute respiratory illness (including COVID-19). *Br J Sports Med* 55(20):1144-1152.
+- Schwellnus M, Adami PE, Bougault V et al. (2022) International Olympic Committee (IOC) consensus statement on acute respiratory illness in athletes part 1: acute respiratory infections. *Br J Sports Med*.
+- Sette A, Crotty S (2021) Adaptive immunity to SARS-CoV-2 and COVID-19. *Cell* 184(4):861-880.
+- Simon HB (1984) The immunology of exercise: a brief review. *JAMA* 252(19):2735-2738.
+- Simpson RJ, Campbell JP, Gleeson M, Kruger K, Nieman DC, Pyne DB, Turner JE, Walsh NP (2020) Can exercise affect immune function to increase susceptibility to infection? *Exerc Immunol Rev* 26:8-22.
+- Smith A, Thomas M, Kent J, Nicholson K (1998) Effects of the common cold on mood and performance. *Psychoneuroendocrinology* 23:733-739.
+- Snyders C, Pyne DB, Sewry N, Hull JH, Kaulback K, Schwellnus M (2022) Acute respiratory illness and return to sport: a systematic review and meta-analysis by a subgroup of the IOC consensus on 'acute respiratory illness in the athlete'. *Br J Sports Med* 56(4):223-231.
+- Spence L et al. (2007) Incidence, etiology, and symptomatology of upper respiratory illness in elite athletes. *Med Sci Sports Exerc* 39(4):577-586.
+- Steinacker JM, Schellenberg J, Bloch W et al. (2022) Recommendations for return-to-sport after COVID-19: expert consensus. *Dtsch Z Sportmed* 73.
+- Tan AT, Linster M, Tan CW et al. (2021) Early induction of functional SARS-CoV-2-specific T cells associates with rapid viral clearance and mild disease in COVID-19 patients. *Cell Rep* 34(6):108728.
+- Tay MZ, Poh CM, Renia L, MacAry PA, Ng LFP (2020) The trinity of COVID-19: immunity, inflammation and intervention. *Nat Rev Immunol* 20(6):363-374.
+- Zhang B, Grau M, Puta C, Arvidsson D, Arz M, Bocker J et al. (2025) Post-COVID-19 Condition in Track and Field Master Athletes: Severity, Symptoms, and Associations With Quality of Life and C-Reactive Protein Levels. *Scand J Med Sci Sports* 35(7):e70106.
