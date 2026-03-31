@@ -8,6 +8,16 @@ tags:
 ---
 
 import Figure from '../../../components/Figure.astro';
+import fig1 from '../../../assets/figure1_Homeostasis_Immune_color.png';
+import fig1Dark from '../../../assets/generated/figure1_Homeostasis_Immune_color_dark.png';
+import fig2 from '../../../assets/figure2_ID40_Heart_rate.png';
+import fig2Dark from '../../../assets/figure2_ID40_Heart_rate.png';
+import fig3 from '../../../assets/figure3_ID40_Ventilation.png';
+import fig3Dark from '../../../assets/figure3_ID40_Ventilation.png';
+import fig4 from '../../../assets/figure4_homeostasis_timecourse_bw.png';
+import fig4Dark from '../../../assets/generated/figure4_homeostasis_timecourse_bw_dark.png';
+import fig5 from '../../../assets/figure5_hormesis_doseresponse_bw.png';
+import fig5Dark from '../../../assets/generated/figure5_hormesis_doseresponse_bw_dark.png';
 import biphasic from '../../../assets/Figure4_Biphasic.png';
 import biphasicDark from '../../../assets/generated/Figure4_Biphasic_dark.png';
 import il6 from '../../../assets/Figure5_IL6_bw.png';
@@ -15,11 +25,159 @@ import il6Dark from '../../../assets/generated/Figure5_IL6_bw_dark.png';
 import ringleb from '../../../assets/Figure6_Ringleb_ga_faseb_2026.jpg';
 import ringlebDark from '../../../assets/generated/Figure6_Ringleb_ga_faseb_2026_dark.png';
 
-### 3.1 The Biphasic Immune Cell Response to Acute Dynamic Exercise
+### 3.1 Short-Term Balancing of Homeostasis
+
+#### 3.1.1 Concept of Homeostasis
+
+<Figure src={fig1} srcDark={fig1Dark} alt="Homeostasis">
+**Figure 1 - Homeostasis refers to the dynamic equilibrium of the internal environment, maintained through regulatory mechanisms that counteract disturbances. Physical activity is a significant disturbance to homeostasis, triggering rapid regulatory responses.**
+</Figure>
+
+#### 3.1.2 Acute Responses to Exercise
+
+Acute physical stress, for example through physical activity, leads to a disruption of homeostasis. 
+The disruption of homeostasis is rebalanced by physiological mechanisms and
+returns to a state of rest. For example, physical exertion leads to increased breathing in
+order to absorb more oxygen. In order for the oxygen in the blood to be transported to
+the muscles, the blood circulation must be increased. In order for the blood circulation to
+increase, the duration of the heartbeats must be shortened with a simultaneous increase
+in the stroke volume. In order to increase ventilation, the depth of the breath and
+the respiratory rate must be increased. The increase in circulation and ventilation leads
+to increased oxygen intake in the organism. Ventilation and duration of heart beats are typical 
+physiological parameters to describe the functions of the respiratory and cardiovascular
+system
+
+When the organism engages in physical activity, multiple physiological systems are activated simultaneously:
+
+*Cardiovascular Response*
+- **Heart rate increases** to deliver more oxygen and nutrients to working muscles.
+- **Stroke volume increases** — the heart pumps more blood per beat.
+- **Blood pressure rises** — systolic increases more than diastolic.
+- **Blood flow redistribution** — 20–25 % of cardiac output at rest goes to muscles; during exercise, this increases to 85–90 %.
+
+<Figure src={fig2} srcDark={fig2Dark} alt="Heart rate">
+**Figure 2 & 3 - Example for acute disturbance of the homeostasis by acute physical stress. Heart rate and ventilation increase during exercise and return after the end of the exercise. Light blue lines: Physical rest before exercise, red lines: Incremental graded maximal cycle ergometer exercise, dark blue lines: physical rest after the end of exercise.**
+</Figure>
+<Figure src={fig3} srcDark={fig3Dark} alt="Ventilation"/>
+
+*Respiratory Response*
+- **Breathing frequency increases** to enhance gas exchange.
+- **Tidal volume increases** — greater volume of air per breath.
+- **Minute ventilation (V̇E) increases** proportionally to exercise intensity.
+- **V̇O₂ increases** — more oxygen is extracted from inhaled air.
+
+*Metabolic Response*
+- **ATP demand increases** — muscle contractions require rapid ATP regeneration.
+- **Substrate utilization shifts** — at low intensities, fats dominate; at high intensities, carbohydrates predominate.
+- **Lactate production increases** — anaerobic metabolism becomes significant above the anaerobic threshold.
+- **Hormone secretion increases** — catecholamines, cortisol, and glucagon mobilize energy substrates.
+
+*Temperature Regulation*
+- **Core body temperature rises** due to metabolic heat production.
+- **Sweating increases** — the primary mechanism for heat dissipation during exercise.
+- **Skin blood flow increases** — facilitates heat loss to the environment.
+
+#### 3.1.3 Recovery and Return to Baseline
+
+Upon cessation of exercise, the organism enters a **recovery phase** characterized by:
+
+1. **Gradual reduction in heart rate and breathing rate** — occurs in stages (fast and slow phases).
+2. **Restoration of muscle glycogen** — aided by insulin sensitivity and GLUT4 translocation.
+3. **Lactate clearance** — lactate is oxidized in slow-twitch fibers and the liver.
+4. **Hormonal normalization** — stress hormones return to baseline; anabolic hormones increase.
+5. **EPOC (Excess Post-Exercise Oxygen Consumption)** — elevated metabolic rate persisting after exercise, fueling recovery processes.
+
+**Practical insight:** The recovery phase is critical. Regular physical activity improves the efficiency of these regulatory mechanisms, reducing the time required to return to baseline and enhancing overall homeostatic stability.
+
+---
+
+### 3.2 Homeostasis and Hormesis
+
+#### 3.2.1 From Homeostatic Regulation to Hormetic Adaptation
+
+The acute physiological responses described in Section 2 restore internal equilibrium through negative feedback — a process canonically attributed to Claude Bernard and Walter Cannon [2]. However, the observation that repeated exercise bouts lead not merely to restoration of the original baseline but to a *higher* functional set-point demands a second explanatory framework: **hormesis** [3, 4].
+
+Hormesis describes the biphasic dose-response relationship in which low-to-moderate doses of a stressor produce beneficial effects opposite to those observed at high doses [3]. In exercise physiology, this means that the very inflammatory mediators serving as homeostatic error signals — IL-6, reactive oxygen species (ROS), NF-κB — simultaneously function as dose-dependent adaptive triggers when present at appropriate magnitudes and durations [4].
+
+More formally, "hormesis refers to adaptive responses of biological systems to moderate environmental or self-imposed challenges through which the system improves its functionality and/or tolerance to more severe challenges. In other words, hormesis is a coordinated response of cells and organisms to an imposed or intrinsically generated challenge that involves multiple integrative signal-transduction processes, each of which is quantitatively hormetic, to coordinate a final holistic response" [15].
+
+#### 3.2.2 Hormetic Stress Response
+
+Skeletal muscle and the broader physiological system perpetually encounter intrinsic mechanical and metabolic challenges imposed by physical activity. To cope with exercise-induced stressors — including mechanical loading, metabolic perturbation, oxidative stress, hypoxia, muscle damage, and thermal stress arising from sustained exertion — living organisms have evolved adaptive, protective training responses. At the molecular, cellular, and whole-organism levels, these responses share common regulatory features collectively termed 'exercise stress' and rely on evolutionarily conserved, exercise-responsive transcriptional networks [16]. The pattern of exercise-induced adaptations is dictated not only by the specific type of training stimulus (e.g., resistance, endurance, or concurrent exercise) but also by its intensity, frequency, and duration — variables central to exercise programming. Each of these factors, alone or in combination, can transiently disrupt physiological homeostasis and impair functional capacity. Sub-maximal training loads, however, elicit beneficial adaptive responses — including muscle hypertrophy, mitochondrial biogenesis, and improved cardiovascular function — that attenuate the physiological cost of subsequent bouts of the same or related exercise stress. This dose-dependent, biphasic adaptive property is known as 'hormesis' [15, 16]. A hallmark of exercise-induced hormesis is that the adaptive response to a given exercise stressor can extend cross-protective effects against future, and apparently unrelated, forms of physiological stress. The architecture of the exercise-responsive transcriptional network, whereby distinct modes of training regulate overlapping profiles of effector genes — including those encoding heat shock proteins, pro- and anti-inflammatory immune responses, antioxidant enzymes, and angiogenic factors — provides a compelling mechanistic explanation for this phenomenon [16].
+
+<Figure src={fig4} srcDark={fig4Dark} alt="Homeostasis time-course">
+**Figure 4 — Homeostasis time-course: the IL-6 peak, delayed IL-10/IL-1Ra counter-response, functional capacity dip, and the set-point reference line, with annotated phase zones.**
+</Figure>
+
+<Figure src={fig5} srcDark={fig5Dark} alt="Hormesis dose-response">
+**Figure 5 — Hormesis dose-response: the full J-curve (URTI risk), bell-shaped adaptive benefit, and monotonically rising inflammatory load, with the three dose zones (sub-threshold / hormetic / overload) shaded.**
+</Figure>
+
+#### 3.2.3 The Dual Identity of Inflammatory Mediators
+
+The juxtaposition of homeostasis and hormesis reveals that the same molecular entities serve different functional roles depending on dose and context [5]:
+
+- **Interleukin-6 (IL-6)** functions as a homeostatic error signal communicating perturbation magnitude to the hypothalamus and liver, yet simultaneously acts as a myokine with insulin-sensitising, lipolytic, and anti-inflammatory properties that drive long-term adaptation [6].
+- **Reactive oxygen species (ROS)** act as homeostatic damage markers activating NF-κB-driven repair programs at low concentrations, while simultaneously triggering Nrf2-mediated antioxidant upregulation through a hormetic pathway [7].
+- **NF-κB** activates both pro-inflammatory gene targets (TNF-α, IL-1β, COX-2) and protective ones (antioxidant enzymes, anti-apoptotic factors), with the net outcome determined by the intensity and duration of its activation [5].
+
+#### 3.2.4 Molecular Mediators of the Hormetic Response
+
+At the molecular level, the hormetic response to exercise is mediated by overlapping stress-response pathways [3, 4]:
+
+- **Nrf2** (nuclear factor erythroid 2-related factor 2): activated by exercise-generated ROS; drives the transcription of antioxidant enzymes (SOD, catalase, glutathione peroxidase) and phase II detoxification enzymes.
+- **PGC-1α** (peroxisome proliferator-activated receptor gamma coactivator 1-alpha): activated by AMP/ATP ratio, intracellular calcium, and ROS; orchestrates mitochondrial biogenesis, fibre type transition, and VEGF-driven angiogenesis.
+- **Heat-shock proteins (HSPs)**, particularly HSP70 and HSP90: upregulated in response to thermal and oxidative stress; act as molecular chaperones protecting structural and contractile proteins.
+- **Autophagy induction**: exercise activates AMPK-mediated autophagy, clearing dysfunctional organelles and misfolded proteins, contributing to cellular quality control.
+
+A crucial insight is that complete suppression of inflammation — for example through NSAIDs or antioxidants immediately post-exercise — may blunt the adaptive signal and attenuate training-induced gains [8, 9].
+
+#### 3.2.5 Biphasic Dose-Response and the J-Curve of Immune Function
+
+The hormesis framework organises the exercise dose-response into three operationally distinct zones [5, 10]:
+
+1. **Sub-threshold zone** (sedentary to light activity): insufficient stimulus for meaningful adaptive programming.
+2. **Hormetic zone** (moderate to vigorous exercise): net adaptive benefit peaks; URTI risk falls approximately 38 % below population average [10]; Nrf2 and PGC-1α pathways are maximally activated.
+3. **Overload zone** (extreme training load): inflammatory load overwhelms adaptive reserves; immune suppression ensues consistent with the open-window hypothesis [10, 11].
+
+The J-curve of upper respiratory tract infection (URTI) risk across the exercise intensity spectrum, first articulated by Nieman [10], is the most widely cited empirical anchor for the hormetic dose-response in exercise immunology. At the moderate exercise level, URTI risk reaches its nadir; at the heavy-to-extreme transition, URTI risk exceeds the sedentary baseline, marking the operational equivalent of the hormetic toxicity threshold.
+
+#### 3.2.6 Complementary Temporal Scales
+
+Homeostasis and hormesis are not competing theories but complementary descriptions of the same biology at different temporal scales [5]:
+
+- In the **acute window (0–24 h post-exercise)**, the homeostatic frame predominates: the organism's priority is to restore internal equilibrium through negative feedback.
+- In the **sub-acute and chronic adaptation window (24 h to multiple training cycles)**, the hormetic frame becomes operative: if the inflammatory signal was of appropriate magnitude and the resolution phase was complete, molecular memory — in the form of elevated Nrf2 target gene expression, increased mitochondrial density, and epigenetic modification of stress-response promoters — shifts the set-point upward (supercompensation).
+
+| Dimension | Homeostasis framework | Hormesis framework |
+|---|---|---|
+| Primary signal role of IL-6/ROS | Error signal (perturbation magnitude) | Adaptive stimulus (dose-dependent trigger) |
+| Feedback direction | Negative (corrective) | Forward at low dose; negative at overload |
+| Set-point outcome | Preserved at baseline | Elevated (supercompensation) |
+| Dose-response shape | Linear / monotonic resolution | Biphasic / inverted-U |
+| Inflammation framing | Perturbation to be resolved | Necessary adaptive trigger |
+| Key regulatory node | IL-10 axis, HPA cortisol | Nrf2, PGC-1α, HSPs, autophagy |
+| Optimal treatment strategy | Anti-inflammatory resolution support | Preserve signal; avoid premature blunting |
+| Failure mode | Unresolved chronic inflammation | Overtraining / immunosuppression |
+
+*Table 1. Mechanistic contrast between homeostasis and hormesis frameworks applied to exercise-induced inflammation (adapted from [5]).*
+
+#### 3.2.7  Pathological Contexts: ME/CFS, Long COVID, and Post-Exertional Malaise
+
+In populations with myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) and Long COVID, post-exertional malaise (PEM) represents a pathological exaggeration of the post-exercise inflammatory state [12, 13]. Within the dual-framework model, PEM can be conceptualised as a combination of two discrete abnormalities [5]:
+
+1. **Failure of homeostatic resolution**: the counter-regulatory response (IL-10, IL-1Ra) is either insufficient, delayed, or overridden by persistent upstream activation, leaving the inflammatory perturbation unresolved beyond 24–48 h.
+2. **Right-shift or inversion of the hormetic dose-response curve**: the threshold between the sub-threshold and overload zones narrows critically, such that exercise doses producing adaptive benefits in healthy individuals fall within or above the overload zone for the affected individual.
+
+This model provides a theoretical basis for the observation that graded exercise therapy (GET) — predicated on the homeostatic assumption that graduated perturbations will lead to adaptive set-point elevation — is not only ineffective but actively harmful in ME/CFS, because the hormetic adaptive machinery is unavailable or compromised [5, 12, 13].
+
+**Practical insight:** Homeostasis governs the immediate inflammatory resolution following exercise, while hormesis explains the long-term adaptive gains. Recognising their complementary nature is essential for optimal exercise prescription — particularly in clinical populations where resolution capacity may be impaired and the hormetic dose-response curve may be critically altered.
+
+### 3.3 The Biphasic Immune Cell Response to Acute Dynamic Exercise
 
 In humans, acute dynamic exercise of ≥ 20--60 min duration or high-intensity intermittent exercise induces a biphasic immunological response, particularly of lymphocytes (Puta et al. 2026; Campbell and Turner 2018).
 
-#### 3.1.1 Phase 1 -- Immediate Response (Lymphocytosis)
+#### 3.3.1 Phase 1 -- Immediate Response (Lymphocytosis)
 
 The initial reaction is characterized by a pronounced lymphocytosis primarily affecting natural killer cells (NK cells), whose blood values increase **8--10-fold** above baseline. CD8⁺ T cells and γδ T cells increase 2--3-fold, and neutrophils approximately 2-fold. Mobilization is primarily initiated by stimulation of β₂-adrenergic receptors by epinephrine (Campbell et al. 2009; Fiuza-Luces et al. 2023; Puta et al. 2026).
 
@@ -27,23 +185,23 @@ This exercise-induced NK cell mobilization utilizes the same cytotoxic mechanism
 
 Acute exercise preferentially mobilizes subsets of CD8⁺ T cells with anti-tumor transcriptional profiles and CD3⁺CD56⁺ NK-T-like cells. Highly differentiated subsets (effector memory cells) are preferentially mobilized over less differentiated T cells (Batatinha et al. 2023; Simpson et al. 2015).
 
-#### 3.1.2 Phase 2 -- Delayed Immune Response (Lymphopenia)
+#### 3.3.2 Phase 2 -- Delayed Immune Response (Lymphopenia)
 
 Following cessation of acute exercise, a transient (up to approximately 24 h) lymphopenia occurs, during which previously mobilized cells are redirected to target tissues. The nadir is reached approximately 45 min to 2 h post-exercise (**30--50% below baseline**). Simultaneously, neutrophils increase through cortisol-mediated recruitment (neutrophilia). According to current knowledge, this lymphopenia is interpreted as a phase of **heightened immune surveillance** (Campbell and Turner 2018; Simpson et al. 2020; Puta et al. 2026).
 
 <Figure src={biphasic} srcDark={biphasicDark} alt="The Biphasic Immune Cell Response to Dynamic Acute Physical Stress">
-**Figure:** The biphasic immune cell response to dynamic acute physical stress. The lymphocytosis (immediate response), which mainly affects natural killer (NK) cells, CD8+ T cells, and γδ T cells, is essentially induced by increased blood pressure and by adrenaline stimulation of β2-adrenergic receptors on the surface of lymphocytes. This is followed by a transient lymphopenia (delayed immune response) lasting up to approximately 24 hours, during which previously mobilized cells are redistributed to target tissues. This lymphopenia may improve immune surveillance. (Created in BioRender. Puta, C. (2025) https://BioRender.com/l87d474)
+**Figure 6:** The biphasic immune cell response to dynamic acute physical stress. The lymphocytosis (immediate response), which mainly affects natural killer (NK) cells, CD8+ T cells, and γδ T cells, is essentially induced by increased blood pressure and by adrenaline stimulation of β2-adrenergic receptors on the surface of lymphocytes. This is followed by a transient lymphopenia (delayed immune response) lasting up to approximately 24 hours, during which previously mobilized cells are redistributed to target tissues. This lymphopenia may improve immune surveillance. (Created in BioRender. Puta, C. (2025) https://BioRender.com/l87d474)
 </Figure>
 
-### 3.2 Hormonal Regulation
+### 3.4 Hormonal Regulation
 
 The stress hormones epinephrine, norepinephrine, and cortisol are particularly relevant for the biphasic response. At exercise intensities above the individual anaerobic threshold (IAT), an overproportional increase in epinephrine concentration occurs -- this point represents a physiological, hormonal, and immunological **breakpoint**. Cortisol secretion depends on exercise intensity and duration; during ultra-endurance exercise, increases can exceed 10-fold (Puta et al. 2026; Urhausen 1994).
 
-### 3.3 Intensity Dependence of the Immune Cell Response
+### 3.5 Intensity Dependence of the Immune Cell Response
 
 During extensive endurance exercise up to 1 h and exercise of up to 30 min at ≤ 100% IAT, virtually no influence on immune cell trafficking is observed in the post-exercise phase. Intensive interval training sessions produce exercise responses comparable to those following exhaustive continuous runs. Moderate exercise stimulates the oxidative burst of neutrophils; intense exercise has a suppressive effect (Gabriel and Kindermann 1997a, b; Puta et al. 2026).
 
-### 3.4 Effects of Regular Physical Activity on Immunity
+### 3.6 Effects of Regular Physical Activity on Immunity
 
 Regular moderate physical activity is associated with improved immunity and anti-inflammatory effects. Skeletal muscle as an endocrine organ secretes myokines during contraction, including IL-6, which can increase exponentially during exercise (up to 100-fold above basal values). In contrast to the proinflammatory role of IL-6 from immune cells, muscular IL-6 triggers an anti-inflammatory effect -- through induction of IL-1RA and IL-10 and reduction of circulating TNF levels (Fiuza-Luces et al. 2023).
 
@@ -65,11 +223,11 @@ Regular training improves immune surveillance, is associated with lower basal le
 - Urhausen A (1994) Individuelle anaerobe Schwelle. *Dtsch Z Sportmed* 45(Suppl):39-42.
 - Batatinha H et al. (2023) Human lymphocytes mobilized with exercise have an anti-tumor transcriptomic profile. *Front Immunol* 14:1067369.
 
-### 3.5 IL-6 as the Prototypical Myokine: Cytokine Context Determines Function
+### 3.7 IL-6 as the Prototypical Myokine: Cytokine Context Determines Function
 
 The distinction between exercise-induced and infection-related immune responses becomes mechanistically resolved through examination of interleukin-6 (IL-6) secretion dynamics in different physiological contexts. IL-6 was traditionally understood as a pro-inflammatory cytokine based on its prominent role in pathogenic immune responses. Yet during exercise, IL-6 is released at extraordinarily high concentrations—ranging from 42 to 240 pg/mL depending on exercise modality—despite the conspicuous absence of the canonical pro-inflammatory signals that characterize infection (Kistner et al. 2022; Lieberman et al. 2005). This apparent paradox reveals that IL-6 is fundamentally context-dependent, and its biological function cannot be determined by concentration alone but rather by the surrounding cytokine milieu (Febbraio and Pedersen 2004; Kistner et al. 2022).
 
-#### 3.5.1 Cytokine Context: Immune Response Versus Exercise Response
+#### 3.7.1 Cytokine Context: Immune Response Versus Exercise Response
 
 During a pathogenic immune challenge, the cytokine cascade follows a characteristic sequence initiated by recognition of pathogen-associated molecular patterns (Medzhitov 2008). Tumor necrosis factor-alpha (TNF-α) emerges as the master pro-inflammatory cytokine, appearing within minutes to early hours and triggering sustained activation of the NF-κB signaling pathway (Beutler 2005). Interleukin-1 (IL-1) follows closely, perpetuating inflammatory signaling. Only after 4-8 hours of sustained TNF-α and IL-1 signaling does IL-6 appear, itself functioning as a secondary amplifier of inflammation via IL-6 receptor activation on endothelial cells, fibroblasts, and hepatocytes (Gabay 2006). The counter-regulatory response—IL-1 receptor antagonist (IL-1ra) and IL-10—arrives substantially later (6-8 hours and 4-6 hours post-exposure, respectively), representing belated attempts to terminate the inflammation (Dinarello 2000; Moore et al. 2001).
 
@@ -77,7 +235,7 @@ In striking contrast, exercise triggers a fundamentally different cascade charac
 
 The mechanistic basis for this context-dependent IL-6 response reflects different signaling pathways. During infection, TNF-α activates NF-κB via TNFR1 ligation, which in turn transcribes IL-6 as a pro-inflammatory target gene (Beutler 2005). In contrast, exercise-induced IL-6 production in skeletal muscle is primarily regulated through AMPK activation (energy sensor), PGC-1α signaling (metabolic master regulator), and SIRT1 pathways in response to glycogen depletion and elevated AMP/ATP ratios (Pedersen 2012; Scheele et al. 2013). These alternative signaling cascades do not activate NF-κB to the same extent, explaining the minimal elevation of TNF receptor observed during exercise relative to immune responses (Kistner et al. 2022). The IL-6 produced in muscle during exercise therefore represents a **metabolic signal** coordinating glucose homeostasis and fuel mobilization rather than immune activation.
 
-#### 3.5.2 Quantitative IL-6 Response Kinetics by Exercise Modality
+#### 3.7.2 Quantitative IL-6 Response Kinetics by Exercise Modality
 
 The magnitude and temporal dynamics of exercise-induced IL-6 secretion vary substantially across exercise types, reflecting differences in muscle mass recruitment, metabolic stress, and glycogen depletion.
 
@@ -90,27 +248,27 @@ The magnitude and temporal dynamics of exercise-induced IL-6 secretion vary subs
 
 The endurance exercise modality consistently produces the largest IL-6 responses due to sustained high metabolic demand and complete glycogen depletion from large muscle groups (Lieberman et al. 2005; Scheele et al. 2013). Whole-body endurance activities (running) produce substantially larger anti-inflammatory myokine responses than lower-body-only modalities (cycling) at equivalent intensity and duration, reflecting greater overall muscle mass engagement (Ringleb et al. 2026).
 
-#### 3.5.3 The IL-6 Axis as Energy Allocator
+#### 3.7.3 The IL-6 Axis as Energy Allocator
 
 <Figure src={il6} srcDark={il6Dark} alt="Myokine IL-6 as a Short-Term Energy Allocator During Physical Activity">
-**Figure:** Myokine IL-6 as a short-term energy allocator. IL-6 fulfils three characteristics of a short-term energy allocator during physical activity. **a, Energy sensing.** Physiological components of prolonged muscle activity — lactic-acid buildup, reactive oxygen species (ROS) production, and muscle glycogen depletion — signal that intramuscular energy stores are depleted and precipitate myokine secretion of IL-6. **b, Energy liberation.** When myokine IL-6 is released into circulation, it liberates somatic energy by upregulating lipolysis and gluconeogenesis throughout the body. Myokine IL-6 also acts indirectly to increase catabolism and energy mobilization by inducing cortisol secretion. **c, Energy allocation.** Myokine IL-6 increases energy uptake by the muscle through increases in insulin receptor sensitivity, GLUT4 expression, and fatty acid transporter expression. Evidence suggests that it also allocates energy to the muscle indirectly by transiently downregulating other energy-consuming processes, such as immune activity. SCFA, short-chain fatty acids. Adapted from Kistner, Pedersen & Lieberman, *Nat. Metab.* 4, 170--179 (2022); created with biorender.com.
+**Figure 7:** Myokine IL-6 as a short-term energy allocator. IL-6 fulfils three characteristics of a short-term energy allocator during physical activity. **a, Energy sensing.** Physiological components of prolonged muscle activity — lactic-acid buildup, reactive oxygen species (ROS) production, and muscle glycogen depletion — signal that intramuscular energy stores are depleted and precipitate myokine secretion of IL-6. **b, Energy liberation.** When myokine IL-6 is released into circulation, it liberates somatic energy by upregulating lipolysis and gluconeogenesis throughout the body. Myokine IL-6 also acts indirectly to increase catabolism and energy mobilization by inducing cortisol secretion. **c, Energy allocation.** Myokine IL-6 increases energy uptake by the muscle through increases in insulin receptor sensitivity, GLUT4 expression, and fatty acid transporter expression. Evidence suggests that it also allocates energy to the muscle indirectly by transiently downregulating other energy-consuming processes, such as immune activity. SCFA, short-chain fatty acids. Adapted from Kistner, Pedersen & Lieberman, *Nat. Metab.* 4, 170--179 (2022); created with biorender.com.
 </Figure>
 
 The functional significance of exercise-induced IL-6 extends beyond simple metabolism. IL-6 acts on distant tissues to coordinate the post-exercise recovery response. Elevated IL-6 stimulates hepatic glucose production (gluconeogenesis) and muscle glucose uptake through AMPK activation, providing crucial substrate for glycogen resynthesis during the critical recovery window (Pedersen 2012). IL-6 simultaneously enhances adipose tissue lipolysis and mobilizes free fatty acids as alternative fuel sources, reducing the metabolic burden on carbohydrate reserves (Febbraio and Pedersen 2004). At the pancreatic level, IL-6 enhances insulin sensitivity through PI3K activation in muscle tissue, promoting glucose storage without excessive hyperinsulinemia. This coordinated metabolic response—termed "energy allocation" by Kistner and colleagues—represents the true biological function of exercise-induced IL-6 (Kistner et al. 2022). The high concentrations required for this metabolic coordination (42-240 pg/mL) are substantially higher than those produced during mild systemic inflammation, yet they produce health-promoting outcomes precisely because they occur without sustained pro-inflammatory signaling.
 
-#### 3.5.4 Mechanistic Distinctions: NF-κB Pathway Activation and IL-1ra as the Critical Discriminator
+#### 3.7.4 Mechanistic Distinctions: NF-κB Pathway Activation and IL-1ra as the Critical Discriminator
 
 The NF-κB signaling pathway serves as the critical mechanistic divergence point between immune-context and exercise-context IL-6 responses. During infection, TNF-α and IL-1 produce sustained NF-κB activation in immune cells, endothelium, and fibroblasts—a response measurable as elevated TNF receptor, sustained IL-6 production, and delayed counter-regulation (Medzhitov 2008). In contrast, exercise produces minimal NF-κB activation relative to the very high IL-6 concentrations achieved, as evidenced by minimal TNF receptor elevation (approximately one-third to one-half of immune response levels) despite IL-6 concentrations 100-240 times higher than baseline (Kistner et al. 2022).
 
 The production pattern of IL-1ra versus IL-1 itself offers perhaps the most discriminatory marker between contexts. In infection, IL-1 must be produced first to trigger the pro-inflammatory cascade; IL-1ra is then induced as a delayed, inadequate braking mechanism only after IL-1 has already activated tissue damage mechanisms (Dinarello 2000). In contrast, exercise produces IL-1ra **without producing IL-1**, and does so immediately concurrent with IL-6 rise (Kistner et al. 2022). This proactive IL-1ra elevation without antecedent IL-1 is immunologically unique to exercise and reflects the alternative metabolic signaling pathways governing muscle contractile responses. The presence of high IL-1ra in the absence of IL-1 essentially guarantees that any residual IL-1 from circulating sources will be neutralized, preventing inflammatory amplification.
 
-#### 3.5.5 Temporal Dynamics and Health Outcomes
+#### 3.7.5 Temporal Dynamics and Health Outcomes
 
 Beyond magnitude and signaling mechanisms, the temporal dimension fundamentally distinguishes exercise-induced from infection-induced IL-6 responses. Immune responses are characterized by sustained elevation: TNF-α persists for 10+ hours, IL-6 remains elevated for 24-48 hours or longer in infection (Gabay 2006). This sustained elevation is necessary for pathogen elimination but carries risk of collateral tissue damage from prolonged inflammatory infiltration. In contrast, exercise-induced IL-6 elevation, despite reaching much higher peak concentrations, persists for only 24-48 hours before returning to baseline (Lieberman et al. 2005). More critically, the counter-regulatory IL-10 and IL-1ra rise immediately (within 2-3 hours), not after 6-8 hours as in infection, creating a brief window of transient signaling followed by rapid resolution (Kistner et al. 2022).
 
 This temporal pattern—characterized as "biphasic with immediate resolution"—is fundamentally different from the sustained inflammation of infection. The health outcome is a direct function of temporal dynamics: very high IL-6 magnitude coupled with short duration and immediate counter-regulation produces adaptation; sustained elevation of similar magnitude produces chronic inflammation and tissue damage (Kistner et al. 2022; Lieberman et al. 2005).
 
-#### 3.5.6 Clinical Implications: Distinguishing Exercise from Infection
+#### 3.7.6 Clinical Implications: Distinguishing Exercise from Infection
 
 The Kistner framework for understanding context-dependent IL-6 function provides several clinically actionable insights for practitioners managing athletes and physically active individuals. First, elevated IL-6 alone—without accompanying TNF-α, IL-1, and delayed IL-1ra/IL-10—indicates exercise-induced metabolic signaling rather than pathogenic immune activation (Kistner et al. 2022). This distinction becomes critical in the context of return-to-sport decisions: an athlete with elevated IL-6 in the 24-48 hours post-intensive training requires different management than an athlete with elevated IL-6 as part of an immune response to infection.
 
@@ -134,15 +292,15 @@ Third, the IL-6 response to standardized exercise testing can serve as a persona
 
 ---
 
-### 3.6 Meta-Analytic Validation: Quantifying the Exercise-Induced Myokine Response (Ringleb et al. 2026)
+### 3.8 Meta-Analytic Validation: Quantifying the Exercise-Induced Myokine Response (Ringleb et al. 2026)
 
 <Figure src={ringleb} srcDark={ringlebDark} alt="Circulating Myokine Responses to Acute Endurance Exercise">
-**Figure:** Graphical abstract from Ringleb et al. (2026). This systematic review and meta-analysis, which examined the effects of acute endurance training on immunoregulatory myokines, showed significant small-moderate to very large positive effect sizes for IL-6, IL-10, IL-1ra, IL-8, IL-15, and TNF-α. These effects were significantly moderated by risk of bias, sex, age, V̇O2peak, experience, type of exercise, intensity, duration, dose, sample, fasting status, and time of day. This suggests that endurance training is a key component in the treatment of a variety of diseases. Adapted from Ringleb et al. (2026).
+**Figure 8:** Graphical abstract from Ringleb et al. (2026). This systematic review and meta-analysis, which examined the effects of acute endurance training on immunoregulatory myokines, showed significant small-moderate to very large positive effect sizes for IL-6, IL-10, IL-1ra, IL-8, IL-15, and TNF-α. These effects were significantly moderated by risk of bias, sex, age, V̇O2peak, experience, type of exercise, intensity, duration, dose, sample, fasting status, and time of day. This suggests that endurance training is a key component in the treatment of a variety of diseases. Adapted from Ringleb et al. (2026).
 </Figure>
 
 The conceptual framework provided by Kistner et al. requires quantitative validation through comprehensive synthesis of research evidence. A systematic review and meta-analysis by Ringleb and colleagues addressed this critical need by synthesizing data from 167 studies involving 3,622 participants across 294 endurance exercise interventions (Ringleb et al. 2026). This analysis provides definitive effect size estimates, dose-response relationships, and population-specific moderators for exercise-induced myokine responses.
 
-#### 3.6.1 Overall Effect Sizes: IL-6 as the Dominant Myokine Response
+#### 3.8.1 Overall Effect Sizes: IL-6 as the Dominant Myokine Response
 
 Ringleb et al. conducted independent random-effects meta-analyses for six immunoregulatory myokines, establishing effect sizes for acute endurance exercise responses:
 
@@ -161,7 +319,7 @@ The dramatically elevated effect size for IL-6 (g = 1.20, very large effect) com
 
 The high heterogeneity across studies (I² ranging from 64.0% to 88.6%) indicates substantial variability in myokine responses across different studies, reflecting differences in exercise protocols, participant characteristics, and measurement methodologies. This heterogeneity motivated detailed investigation of potential moderating variables.
 
-#### 3.6.2 Exercise Dose-Response Relationships: IL-6 as Metabolic Sensor
+#### 3.8.2 Exercise Dose-Response Relationships: IL-6 as Metabolic Sensor
 
 Ringleb et al. defined exercise dose as the combined product of exercise intensity and duration, expressed in metabolic equivalent minutes (MET·min). This approach captures the total energy expenditure during exercise—the fundamental variable determining metabolic stress and myokine mobilization.
 
@@ -171,7 +329,7 @@ This robust dose-response relationship mechanistically supports the energy-sensi
 
 **Dose-response for counter-regulatory cytokines.** IL-10 and IL-8 also showed significant dose-response relationships, though substantially weaker than IL-6 (Ringleb et al. 2026). Multivariate analysis of intensity and duration together explained R² = 22.1% for IL-10 and R² = 23.5% for IL-8 (p < 0.05). The weaker dose-response for these counter-regulatory molecules compared to IL-6 suggests they are not directly driven by metabolic stress but rather triggered as secondary responses to IL-6 elevation and metabolic signaling. This secondary-response pattern is consistent with the conceptual framework in which IL-1ra and IL-10 serve to curtail IL-6-mediated inflammation rather than functioning as primary energy sensors themselves.
 
-#### 3.6.3 Exercise Modality Effects: Muscle Mass as Critical Moderator
+#### 3.8.3 Exercise Modality Effects: Muscle Mass as Critical Moderator
 
 Exercise type significantly moderated myokine responses, with running consistently producing larger effects than cycling at equivalent intensity and duration (Ringleb et al. 2026):
 
@@ -184,7 +342,7 @@ Exercise type significantly moderated myokine responses, with running consistent
 
 The mechanistic explanation reflects muscle mass differences: running involves greater absolute muscle mass recruitment through engagement of lower limbs, trunk stabilizers, upper limbs, and core musculature compared to cycling, which predominantly activates the quadriceps and hamstrings with minimal upper body involvement (Ringleb et al. 2026). Larger total muscle mass activated during an exercise bout produces greater total glycogen depletion, stronger metabolic stress signals (higher AMP/ATP ratios), and subsequently amplified IL-6, IL-10, and IL-1ra responses. This mechanistic insight generates an actionable clinical principle: **whole-body endurance activities produce superior anti-inflammatory myokine responses compared to lower-body-only modalities at equivalent intensity** (Ringleb et al. 2026). For populations with specific therapeutic needs—such as individuals with inflammatory rheumatologic conditions—running-based activities would be expected to produce approximately 2.5-fold larger IL-10 responses than cycling, creating a more potent anti-inflammatory stimulus.
 
-#### 3.6.4 Population-Dependent Heterogeneity: Sex, Training Status, and Fitness
+#### 3.8.4 Population-Dependent Heterogeneity: Sex, Training Status, and Fitness
 
 **Sex differences.** Men exhibited significantly larger myokine responses than women in multiple myokine categories (Ringleb et al. 2026). IL-6 responses were substantially larger in men (g = 1.27) compared to studies enrolling predominantly mixed-sex or female samples (g = 0.83, p < 0.01). IL-10 responses in men (g = 0.60) were nearly five-fold larger than in women (g = 0.12, p < 0.05), and IL-8 responses showed similar sex-dependent amplification (men g = 0.92 vs. mixed-sex g = 0.37, p < 0.05). The mechanistic basis reflects well-documented sex differences in body composition: men have substantially higher lean body mass on average (40% of body weight vs. 28% in women), and muscle mass is positively associated with myokine production capacity (Ringleb et al. 2026).
 
@@ -194,17 +352,17 @@ However, Ringleb et al. emphasize a critical limitation: **80% of included studi
 
 **Fitness level and age.** While age showed limited moderating effects in the 18-50 year age range studied, IL-8 responses increased significantly with advancing age (R² = 7.5%, p < 0.05), consistent with the inflammaging hypothesis—the age-associated chronic low-grade inflammatory state (Ringleb et al. 2026). Higher aerobic fitness (VO₂peak) significantly moderated IL-10 effects (R² = 14.7%, p < 0.01), with greater aerobic fitness associated with substantially larger anti-inflammatory IL-10 responses. This finding suggests that older adults with preserved cardiovascular fitness maintain youthful myokine response profiles, emphasizing the importance of fitness maintenance across the lifespan.
 
-#### 3.6.5 Temporal and Sampling Considerations
+#### 3.8.5 Temporal and Sampling Considerations
 
 **Time of day: Circadian modulation.** IL-8 was the only myokine showing significant time-of-day effects, with afternoon exercise producing substantially larger responses (g = 1.17) than morning exercise (g = 0.50, p < 0.01) (Ringleb et al. 2026). The proposed mechanism involves circadian variation in catecholamine responses: catecholamine concentrations peak in late afternoon and are lowest in early morning; catecholamines amplify IL-8 release from circulating immune cells and endothelial tissue through β-adrenergic signaling. This temporal finding has practical relevance for clinical populations: exercise-based immune interventions targeting IL-8-mediated immune cell recruitment might be optimized through afternoon scheduling.
 
 **Sample type: Plasma versus serum.** Significant differences emerged between measurement matrices in IL-1ra and IL-8 concentrations (Ringleb et al. 2026). Plasma measurements of IL-1ra yielded significantly larger effect sizes (g = 0.52) compared to serum measurements (g = 0.17, p < 0.01); similarly, IL-8 plasma effects (g = 0.84) exceeded serum effects (g = 0.44, p < 0.05). Mechanistically, serum has lower protein concentration than plasma due to fibrinogen and other coagulation factors that precipitate during clotting; reduced protein concentration may alter myokine binding kinetics and stability. For future research standardization, plasma measurement appears preferable for IL-1ra and IL-8 studies to ensure consistent myokine quantification.
 
-#### 3.6.6 Integration with Kistner Framework and Clinical Translation
+#### 3.8.6 Integration with Kistner Framework and Clinical Translation
 
 The Ringleb meta-analysis provides quantitative validation of the Kistner et al. conceptual framework across diverse populations and exercise conditions (Ringleb et al. 2026). First, Kistner identified IL-6 as context-dependent; Ringleb demonstrates IL-6 is produced to **very large magnitude** (g = 1.20) in exercise predominantly in the **absence of TNF-α**, exactly as Kistner proposed (Ringleb et al. 2026). Second, Kistner showed immediate IL-1ra and IL-10 elevation in exercise; Ringleb confirms these counter-regulatory molecules consistently increase (g = 0.40-0.45), establishing the "biphasic signal with immediate resolution" pattern across multiple populations. Third, Kistner's energy-sensing model is mechanistically supported by Ringleb's demonstration that exercise dose explains approximately 40% of IL-6 variance through glycogen-depletion-dependent AMPK activation.
 
-#### 3.6.7 Clinical Exercise Prescription Guided by Dose-Response Evidence
+#### 3.8.7 Clinical Exercise Prescription Guided by Dose-Response Evidence
 
 Based on Ringleb's quantitative dose-response relationships, evidence-based exercise prescriptions can be tailored to specific clinical populations and therapeutic goals:
 
@@ -216,7 +374,7 @@ Based on Ringleb's quantitative dose-response relationships, evidence-based exer
 
 Ringleb et al. emphasize that "even suboptimal exercise conditions can elicit significant increases in immunoregulatory myokines," suggesting that any sustained endurance activity produces beneficial anti-inflammatory responses (Ringleb et al. 2026). This democratizes evidence-based exercise prescription: populations with orthopedic constraints, time limitations, or disease-related exercise intolerance can still achieve meaningful myokine responses through appropriately dosed activity.
 
-#### 3.6.8 Disease-Specific Therapeutic Applications
+#### 3.8.8 Disease-Specific Therapeutic Applications
 
 **Autoimmune rheumatologic diseases.** Running-based endurance exercise produces dramatically superior IL-10 and IL-1ra responses (g = 0.63 and 0.52 respectively) compared to cycling (g = 0.24 and 0.21), directly supporting IL-1 receptor blockade and regulatory T cell (Treg) expansion implicated in disease remission (Ringleb et al. 2026). The Kistner principle that IL-1ra is elevated **without** producing IL-1 becomes therapeutically actionable: exercise-trained individuals with inflammatory arthritis would mount IL-1ra responses that neutralize circulating pro-inflammatory IL-1 without the collateral immune activation characteristic of pharmacologic IL-1 blockade. This suggests combining IL-1 receptor antagonist medications with strategic running-based exercise could produce additive or synergistic benefits.
 
@@ -224,7 +382,7 @@ Ringleb et al. emphasize that "even suboptimal exercise conditions can elicit si
 
 **Neurological and psychiatric conditions.** IL-6 crosses the blood-brain barrier and regulates kynurenine pathway metabolism, with implications for depression and neuroinflammation (Ringleb et al. 2026). The demonstration that training status significantly amplifies IL-1ra responses suggests that periodized training programs emphasizing progressive intensity in depressed populations could produce escalating anti-inflammatory myokine responses over training cycles, with potential therapeutic benefits for mood disorders driven by neuroinflammation.
 
-#### 3.6.9 Overtraining and Myokine Monitoring: Red Flags for Excessive Training Load
+#### 3.8.9 Overtraining and Myokine Monitoring: Red Flags for Excessive Training Load
 
 Ringleb et al. note that excessively prolonged efforts—ultra-endurance events exceeding 5-6 hours of continuous exercise—may paradoxically shift from the adaptive pattern described to potentially detrimental immune responses characterized by sustained rather than transient elevation of pro-inflammatory signals (Ringleb et al. 2026). This observation translates into a practical monitoring approach for coaches and sports medicine practitioners: myokine biomarker profiling in the recovery period can distinguish normal post-exercise adaptation from concerning overtraining patterns.
 
@@ -232,7 +390,7 @@ Ringleb et al. note that excessively prolonged efforts—ultra-endurance events 
 
 **Concerning overtraining pattern:** Sustained IL-6 elevation at 48-72 hours post-training, delayed or absent IL-1ra/IL-10 elevation, or paradoxical sustained TNF-α elevation suggesting NF-κB-dependent pro-inflammatory signaling. These patterns warrant training load reduction and recovery protocol intensification to prevent progression to overtraining syndrome with its attendant immunological suppression.
 
-#### 3.6.10 Research Gaps and Future Directions
+#### 3.8.10 Research Gaps and Future Directions
 
 Ringleb et al. identify several critical research limitations necessitating future investigation (Ringleb et al. 2026):
 
@@ -254,7 +412,7 @@ Ringleb et al. identify several critical research limitations necessitating futu
 
 ---
 
-### 3.7 The J-Shaped Curve Model
+### 3.9 The J-Shaped Curve Model
 
 Physically inactive individuals have a moderate risk; athletes with moderate training have a lower risk; overtrained athletes have the highest risk. This model is not supported by all studies and should be critically evaluated (Nieman 1994; Brenner et al. 1994; Puta et al. 2026).
 
