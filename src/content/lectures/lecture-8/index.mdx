@@ -1,0 +1,106 @@
+---
+title: Infection-Associated Chronic Illness and Wearable Data
+description: ABC
+publishDate: '2026-05-29'
+draft: false
+tags:
+  - Lecture
+---
+
+import Figure from '../../../components/Figure.astro';
+import fig1 from '../../../assets/Figure_Ledebur_2025.png';
+import fig1Dark from '../../../assets/generated/Figure_Ledebur_2025_dark.png';
+
+
+## 1 Introduction -- Infection-Associated Chronic Illness
+
+Complex chronic illnesses such as Long COVID (LC) and Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS) are conditions in which symptoms persist long after an initial infection. The WHO defines post-COVID-19 condition (PCC) as the continuation or development of new symptoms three months after the initial SARS-CoV-2 infection, with these symptoms lasting for at least two months with no other explanation. LC significantly impacts quality of life through fluctuating, episodic symptoms including fatigue, shortness of breath, brain fog, and post-exertional malaise. Similarly, ME/CFS is characterized by profound fatigue, cognitive impairment, and a hallmark symptom of post-exertional symptom exacerbation -- often called "crashing" or "flare-ups" (Ledebur et al. 2025; Aitken et al. 2026).
+
+A central challenge in managing these conditions is the unpredictable, fluctuating nature of symptoms. Approximately 85% of those affected by LC experience episodic symptoms that can rapidly shift from periods of stability to severe exacerbations, resulting in significant functional declines. Biological drivers of these symptom flare-ups remain poorly understood, and patients are often unable to link a change in symptoms to a specific event or trigger. This inability to predict symptom exacerbations leads to less effective disease management and reduced quality of life (Aitken et al. 2026).
+
+## 2 The Role of Wearable Technology in Chronic Illness Research
+
+Consumer-grade wearable devices such as smartwatches and fitness trackers provide continuous, non-invasive monitoring of physiological and behavioral parameters -- including resting heart rate (RHR), heart rate variability (HRV), respiration rate (RR), step count, and sleep patterns. These data streams offer a unique complement to traditional point-wise clinical measurements. Key advantages include:
+
+- **Continuous, real-world data collection** under natural conditions, outside of healthcare facilities.
+- **High temporal resolution**, enabling analysis of day-to-day and even within-day physiological fluctuations.
+- **Scalability and cost-effectiveness**, making longitudinal monitoring feasible at population level.
+- **Retrospective analysis**, since data collected before illness onset can establish pre-illness baselines.
+
+These properties make wearables particularly well-suited for studying chronic conditions where symptoms fluctuate and traditional clinical visits capture only intermittent snapshots of health status (Ledebur et al. 2025; Aitken et al. 2026).
+
+## 3 Wearable-Derived Characteristics of Persistent Symptoms After SARS-CoV-2 Infection
+
+Ledebur et al. (2025) used wearable-derived behavioral and physiological data from over 20,000 participants in the German **Corona Data Donation (CDA)** project to characterize individuals with persistent symptoms following SARS-CoV-2 infection. By comparing a well-defined persistent symptoms cohort (COVID-19[+]PS, n=50) with matched positive and negative controls (each n=150), the study identified several distinguishing patterns:
+
+**Pre-infection differences.** Already *prior to* their SARS-CoV-2 test, individuals who later developed persistent symptoms had on average an elevated RHR (mean increase of 2.37 bpm compared to positive controls and 1.49 bpm compared to negative controls) and lower daily step counts (approximately 3,030 fewer steps than positive controls and 2,909 fewer than negative controls). These pre-existing differences suggest that lower baseline fitness levels and higher resting heart rate may predispose individuals to developing persistent post-infectious symptoms.
+
+**Acute-phase response.** During the acute phase (0--4 weeks after a positive SARS-CoV-2 test), individuals who later reported persistent symptoms showed a more pronounced transient tachycardia followed by a prolonged bradycardia that did not return to baseline by 18 days post-infection. By contrast, those without persistent symptoms showed a bradycardia that resolved within about 15 days. Physical activity was consistently lower in the persistent symptoms cohort across all infection phases.
+
+<Figure src={fig1} srcDark={fig1Dark} alt="Wearable data analysis of the match cohort">
+**Figure from Ledebur et al. (2025):** https://www.nature.com/articles/s41746-025-01456-x/figures/3. Wearable data analysis of the match cohort. **a** Z-transformed mean RHR (average of all 15-min RHR measurements within the last seven days) relative to the seasonal mean RHR with respect to the mean and standard deviation up to 7 days prior to the date of the reported test of all individuals in the M-COVID-19[+]PS (pink), M-COVID-19[+]NS (blue) and M-COVID-19[−] (black) cohorts. The difference between the maximum and minimum z-transformed RHR within 14 to and 20 days after the date of the reported SARS-CoV-2 test was more pronounced (1.3 vs 1.0) and more prolonged for M-COVID-19[+]PS than for M-COVID-19[+]NS. Shading indicates standard errors. The inset shows the average RHR relative to the SARS-CoV-2 test date. Already prior to the SARS-CoV-2 test, M-COVID-19[+]PS-individuals showed an increased RHR compared to M-COVID-19[+]NS and M-COVID-19[−].
+</Figure>
+
+
+**Well-being and quality of life.** Individuals with persistent symptoms reported significantly lower WHO-5 well-being scores and EQ-5D quality of life scores compared to both control cohorts -- notably already *before* their SARS-CoV-2 test as well as afterwards. This suggests pre-existing conditions may contribute to the risk of developing PCC.
+
+**Predictive features.** A logistic regression analysis identified several key predictors for developing persistent symptoms:
+
+| Feature | Mean Odds Ratio |
+|---|---|
+| Number of symptoms (acute phase) | 4.40 |
+| Chronic bronchitis | 1.65 |
+| Gender (unspecified) | 1.53 |
+| Allergies | 1.35 |
+| Mean RHR pre-phase | 1.31 |
+| Mental health condition | 1.29 |
+
+This demonstrates that integrating wearable-derived data with clinical variables can improve identification of individuals at higher risk of developing long-term symptoms (Ledebur et al. 2025).
+
+## 4 Digital Physiological Biomarkers for Symptom Prediction in Complex Chronic Illness
+
+Aitken et al. (2026) investigated whether daily morning biometric measurements from wearable devices could predict same-day evening symptom reports in individuals living with LC, ME/CFS, and other energy-limiting conditions. Using the **Visible** mobile application, 4,244 participants provided daily 60-second morning photoplethysmography (PPG) assessments alongside evening self-report symptom surveys, yielding a high-density longitudinal dataset with a median of 125 biometric observations per participant.
+
+**Biometric measures and outcomes.** Morning resting heart rate (HR), heart rate variability (HRV), and respiration rate (RR) were derived from smartphone camera or Polar armband PPG recordings. Evening symptom outcomes included crash occurrence (binary), fatigue severity, and brain fog severity.
+
+**Multilevel modeling approach.** Using generalized linear mixed-effects models, the study disaggregated within-person and between-person effects. This distinction is critical: a within-person effect captures how *fluctuations* in a given individual's biometrics from their personal baseline relate to changes in their symptoms, while a between-person effect captures how individuals with chronically different biometric levels differ in their average symptom burden.
+
+Key within-person findings:
+
+- **Increases in morning HR** and **decreases in morning HRV** predicted increased symptom severity that evening across all three outcomes (crash, fatigue, brain fog).
+- **7-day coefficients of variation (CoV)** for HR and HRV were also significant predictors, suggesting that short-term biometric *instability* -- not just one-time levels -- contributes to symptom exacerbation.
+- The **prior-day symptom report** was a strong autoregressive predictor, reflecting the episodic and serially correlated nature of symptoms in these conditions.
+
+Key between-person findings:
+
+- Individuals with **higher average HR** and **higher HR CoV** reported more frequent crashes, higher fatigue, and greater brain fog overall.
+- Individuals with **more stable morning HR patterns** (lower long-term variability) experienced fewer symptoms on average, suggesting that HRV stability may be a marker of physiological resilience.
+
+**Predictive modeling.** Walk-forward cross-validation showed that models combining morning biometrics with prior-day symptom reports achieved AUC values of 0.74--0.85, which were significantly higher than models using prior-day symptoms alone (AUC 0.73--0.83, DeLong's test p < 0.0001 for all outcomes). While the incremental improvement was modest, it was statistically robust and consistent across all outcomes, demonstrating the added utility of real-time biometric monitoring (Aitken et al. 2026).
+
+## 5 Autonomic Nervous System Mechanisms
+
+The observed associations between wearable biometrics and symptom fluctuations can be understood through autonomic nervous system (ANS) mechanisms. HRV and HR are proxy measures of ANS function:
+
+- **Sympathetic nervous system (SNS) activation** raises HR and reduces HRV.
+- **Parasympathetic nervous system (PNS) activation** lowers HR and increases HRV.
+
+The vagus nerve plays a central role in regulating inflammation and modulating central nervous system responses. A consistent negative relationship has been found between HRV and markers of inflammation, mediated through the cholinergic anti-inflammatory pathway. In conditions such as LC and ME/CFS, chronic inflammatory processes -- including persistent pathogens, reactivation of latent viruses, onset of autoimmunity, dysregulation of cortisol and other hormones, mitochondrial dysfunction, and endothelial dysfunction -- can cause chronic pro-inflammatory responses that disrupt autonomic balance, elevate HR, and reduce HRV. These daily fluctuations in autonomic signals may explain why wearable-derived morning biometrics can predict the emergence of crashes, fatigue, and brain fog later in the day (Aitken et al. 2026).
+
+## 6 Clinical and Practical Implications
+
+Together, these studies highlight several implications for the management of infection-associated chronic illness:
+
+1. **Pre-infection risk identification.** Wearable data collected before an infection can help identify individuals at higher risk of developing persistent symptoms based on elevated RHR and lower physical activity levels (Ledebur et al. 2025).
+2. **Real-time symptom monitoring.** Daily morning biometric assessments can provide actionable signals about likely symptom trajectory for the current day, supporting personalized activity and pacing strategies (Aitken et al. 2026).
+3. **Precision health tools.** Mobile health applications that combine self-reported symptoms with passively collected biometrics can serve as precision monitoring systems for complex chronic conditions.
+4. **Limitations to consider.** PPG-derived HR and HRV estimates from wearables may be less accurate than research-grade ECG measurements. Factors such as sensor quality, device type, skin tone, and recording conditions introduce variability. Furthermore, the uncontrolled, real-world nature of data collection introduces potential confounders that controlled clinical studies would avoid.
+
+## 7 Summary
+
+Wearable devices provide a scalable, non-invasive window into the physiological processes underlying infection-associated chronic illness. The Ledebur et al. (2025) study demonstrates that wearable data can distinguish individuals who develop persistent post-COVID symptoms from those who do not -- and that physiological and behavioral differences may already be detectable before the infection itself. The Aitken et al. (2026) study shows that daily morning biometrics can prospectively predict evening symptom severity in LC and ME/CFS, providing incremental predictive value beyond self-reported symptom history alone. Both studies point toward a future in which continuous, passive physiological monitoring supports earlier identification of at-risk individuals, real-time symptom prediction, and more personalized management of complex chronic conditions.
+
+## References
+
+- Aitken, A. et al. Digital physiological biomarkers predict within-person symptom changes in complex chronic illness. *npj Digital Medicine* **9**, 257 (2026).
+- Ledebur, K. et al. Wearable data reveals distinct characteristics of individuals with persistent symptoms after a SARS-CoV-2 infection. *npj Digital Medicine* **8**, 167 (2025).
