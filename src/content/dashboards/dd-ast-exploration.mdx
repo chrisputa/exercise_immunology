@@ -8,6 +8,24 @@ iframeHeight: 615
 iframeScale: 0.95
 draft: false
 ---
-{/*
-[← Lecture 9: Detecting POTS in Post-COVID Patients Using Wearable Technology](/lectures/lecture-9)
- */}
+
+### About the App
+This application visualizes the data-driven active standing test (DD-AST) for Postural Orthostatic Tachycardia Syndrome (POTS) using simulated data. The focus is on twenty minute time periods around get-up events (10 minutes pre and 10 minutes post get-up), through which POTS criteria can be explored in relation to the underlying data patterns. The app allows users to adjust various parameters of the simulated data, providing an interactive experience to understand how different data patterns relate to the established criteria for POTS and the expanded criteria of the DD-AST.
+
+### Controls
+*Pre HR Level* adjusts the heart rate level of all data points prior to the get-up event, indirectly influencing the sustained minimum heart rate.
+
+*Post HR Level* adjusts the heart rate level of all data points after the get-up event, indirectly influencing the sustained minimum heart rate.
+
+*Noise Level* adds random noise to the data, simulating variability of the individual measurements.
+
+*Amount of Get-ups* simulates additional get-up events on consecutive days.
+
+*Variation Level* introduces variability between get-up events, simulating day-to-day fluctuations in the data while maintaining a consistent overall trend.
+
+*Switch View* toggles between the **Single Event View**, which focuses on a single get-up event while keeping additional events in the background, and the **Time Period View**, which displays the HR differences across the full time period, allowing for a longitudinal perspective and the application of the DD-AST criteria.
+
+Additionally, interaction with the plot via *basic Plotly controls* (top right of the plot) allows, among other things, zooming or panning to explore specific time periods in more detail.
+
+### POTS Criteria Display
+Beneath the plot, a display of the diagnostic criteria for Postural Orthostatic Tachycardia Syndrome (POTS) is included. In **Single Event View** the original criteria are shown and applied onto the primary get-up event. In **Time Period View**, the adapted criteria of the DD-AST are shown and applied across the full time period. By changing the presented controls, criteria fullfillment or non-fulfillment can be simulated, allowing users to explore how different data patterns relate to the diagnostic criteria for POTS.

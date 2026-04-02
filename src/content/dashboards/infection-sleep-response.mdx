@@ -1,0 +1,32 @@
+---
+title: 'Infection & Sleep Parameter Response'
+description: ''
+publishDate: '2026-03-17'
+iframeSrc: 'https://spomed.svwiswp05.uni-jena.de/Immunenotes_Infection_Sleep_Response/'
+iframeWidth: 1050
+iframeHeight: 670
+iframeScale: 0.95
+draft: false
+---
+
+### About the App
+This application visualizes longitudinal health data from a single case study, collected from a wearable device, covering two distinct infection episodes, one viral and one bacterial. Shown are the pre-infection baseline period, the acute infection phase and the post-infection recovery period. The app allows users to explore how various sleep-related physiological metrics change in response to infection and how these changes compare to the pre-infection baseline.
+
+### Data & Methods
+The presented data originate from a single individual and were recorded nightly using an Oura Ring. Metrics include lowest heart rate, average heart rate variability (HRV), average respiratory rate and average body temperature. As body temperature is only measured by temperature deviation, an estimated absolute body temperature was computed using an assumed baseline of 36.6°C. All parameters describe the nightly sleep periods and are visualized as daily values.
+
+### Controls
+*Data* allows switching the two infection episodes, additionally showing one month of pre-infection and post-infection data each.
+
+*Presentation* offers three options to cumulatively toggle the visibility of the scatter points, trend line and bar plot. The trend option includes a slider that applies a rolling mean (and rolling standard deviation) of varying window size.
+
+*View* allows switching between the original time series view and a delta view, which shows the deviation of each data point from the pre-infection baseline median.
+
+*Reference* gives the option to highlight the infection interval, separated into mild and moderate infection periods. Additionally, a reference band can be displayed, which represents an adjustable percentile range (from the median outwards up to the 0th and 100th percentiles) computed from the pre-infection baseline.
+
+*Grouping* toggles the colouring of the data points by infection status or percentile membership (or none).
+
+*Play/Pause* starts or stops an animation that sequentially reveals the data points in chronological order, allowing users to observe the temporal progression of the data. The timeline slider can be used to select specific points in time.
+
+By *hovering* over a data point or infection episode, tooltips provide detailed information.
+Additionally, interaction with the plot via *basic Plotly controls* (top right of the plot) allows, among other things, zooming or panning to explore specific time periods in more detail.
