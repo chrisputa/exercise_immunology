@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import SlideLayout from '../../../../layouts/SlideLayout.astro';
+import SlideHead from '../../../../components/SlideHead.astro';
 import { parseSlideId } from '../../../../utils/slide-path.ts';
 
 
@@ -16,9 +17,23 @@ export async function getStaticPaths() {
     (byLecture.get(lecture) ?? byLecture.set(lecture, []).get(lecture)!).push(s);
   }
 
+  // Detect PDF slidedecks placed in a lecture's slides/ folder
+  const pdfModules = import.meta.glob<string>('/src/content/lectures/*/slides/*.pdf', {
+    query: '?url',
+    import: 'default',
+  });
+  const pdfByLecture = new Map<string, string>();
+  for (const [path, importer] of Object.entries(pdfModules)) {
+    const match = /\/src\/content\/lectures\/([^/]+)\/slides\/[^/]+\.pdf$/.exec(path);
+    if (match) {
+      const url = await importer();
+      pdfByLecture.set(match[1], url);
+    }
+  }
+
   // pick first slide per lecture (by order, then filename)
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-  return Array.from(byLecture.entries()).map(([lecture, list]) => {
+  const mdxPaths = Array.from(byLecture.entries()).map(([lecture, list]) => {
     list.sort((a, b) => {
       const ao = a.data.order ?? Infinity;
       const bo = b.data.order ?? Infinity;
@@ -26,20 +41,197 @@ export async function getStaticPaths() {
       return collator.compare(parseSlideId(a.id).slide, parseSlideId(b.id).slide);
     });
     const first = list[0];
-    return { params: { lecture }, props: { entry: first, lecture, list } };
+    return { params: { lecture }, props: { entry: first, lecture, list, pdfUrl: undefined as string | undefined } };
   });
+
+  // PDF-based paths – only for lectures that have no MDX slides
+  const pdfPaths = Array.from(pdfByLecture.entries())
+    .filter(([lecture]) => !byLecture.has(lecture))
+    .map(([lecture, pdfUrl]) => ({
+      params: { lecture },
+      props: { entry: undefined as SlideEntry | undefined, lecture, list: [] as SlideEntry[], pdfUrl },
+    }));
+
+  return [...mdxPaths, ...pdfPaths];
 }
 
-type Props = { entry: SlideEntry; lecture: string; list: SlideEntry[] };
-const { entry, lecture, list } = Astro.props as Props;
-const { Content } = await render(entry);
+type Props = { entry: SlideEntry | undefined; lecture: string; list: SlideEntry[]; pdfUrl: string | undefined };
+const { entry, lecture, list, pdfUrl } = Astro.props as Props;
 
-const title = entry.data.title ?? parseSlideId(entry.id).slide;
+const title = pdfUrl
+  ? `${lecture} – Slides`
+  : (entry!.data.title ?? parseSlideId(entry!.id).slide);
 
-// Link to the second slide (first “real” slide) using a relative URL
-const nextName = list.length > 1 ? parseSlideId(list[1].id).slide : undefined;
+// MDX mode: link to second slide
+const nextName = !pdfUrl && list.length > 1 ? parseSlideId(list[1].id).slide : undefined;
 const nextHref = nextName ? `./${nextName}/` : undefined;
+
+let Content: any;
+if (!pdfUrl && entry) {
+  ({ Content } = await render(entry));
+}
 ---
-<SlideLayout title={title} lecture={lecture} backHref="../" nextHref={nextHref}>
-  <Content />
-</SlideLayout>
+{pdfUrl ? (
+  <html lang="en" class="antialiased">
+    <head>
+      <SlideHead title={title} />
+    </head>
+    <body class="bg-main text-main" style="margin:0; overflow:hidden;">
+      <div
+        id="slide-root"
+        class="slide-root bg-main text-main"
+        style="--base-w: 1920; --base-h: 1080;"
+        data-pdf-url={pdfUrl}
+      >
+        <div class="slide-stage">
+          <div class="h-full min-h-0 grid grid-rows-[1fr_auto] gap-6 p-8">
+
+            <!-- PDF canvas -->
+            <div id="pdf-canvas-container" class="min-h-0 flex items-center justify-center overflow-hidden">
+              <canvas id="pdf-canvas"></canvas>
+            </div>
+
+            <!-- Nav bar – mirrors SlideNav/SlideCounter styling -->
+            <nav class="slide-nav shrink-0 flex items-center justify-center gap-3" aria-label="Slide controls">
+              <a
+                href="../"
+                class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 no-underline"
+              >Lecture</a>
+              <p id="page-counter" class="slide-counter">… / …</p>
+              <button
+                id="start-btn"
+                class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 cursor-pointer"
+              >Start</button>
+              <button
+                id="prev-btn"
+                class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 cursor-pointer opacity-40 pointer-events-none"
+                aria-disabled="true"
+              >Prev</button>
+              <button
+                id="next-btn"
+                class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100 cursor-pointer opacity-40 pointer-events-none"
+                aria-disabled="true"
+              >Next</button>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide scaling (identical to SlideLayout) -->
+      <script is:inline>
+        (function () {
+          var root = document.getElementById('slide-root');
+          if (!root) return;
+          var cs = getComputedStyle(root);
+          var baseW = parseFloat(cs.getPropertyValue('--base-w')) || 1920;
+          var baseH = parseFloat(cs.getPropertyValue('--base-h')) || 1080;
+          var update = function () {
+            var vw = window.innerWidth || document.documentElement.clientWidth || 0;
+            var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+            var s = Math.min(vw / baseW, vh / baseH);
+            var r = document.getElementById('slide-root');
+            if (r) r.style.setProperty('--slide-scale', String(s));
+          };
+          update();
+          window.addEventListener('resize', update, { passive: true });
+        })();
+      </script>
+
+      <!-- PDF.js page-by-page viewer -->
+      <script>
+        import * as pdfjsLib from 'pdfjs-dist';
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+          'pdfjs-dist/build/pdf.worker.min.mjs',
+          import.meta.url
+        ).href;
+
+        const root        = document.getElementById('slide-root') as HTMLElement;
+        const pdfUrl      = root.dataset.pdfUrl!;
+        const canvas      = document.getElementById('pdf-canvas') as HTMLCanvasElement;
+        const container   = document.getElementById('pdf-canvas-container') as HTMLElement;
+        const counter     = document.getElementById('page-counter') as HTMLElement;
+        const prevBtn     = document.getElementById('prev-btn') as HTMLButtonElement;
+        const nextBtn     = document.getElementById('next-btn') as HTMLButtonElement;
+        const startBtn    = document.getElementById('start-btn') as HTMLButtonElement;
+
+        let pdfDoc: any   = null;
+        let currentPage   = 1;
+        let rendering     = false;
+        let queued: number | null = null;
+
+        function setNavState(num: number, total: number) {
+          counter.textContent = `${num} / ${total}`;
+          const atStart = num <= 1;
+          const atEnd   = num >= total;
+          prevBtn.classList.toggle('opacity-40', atStart);
+          prevBtn.classList.toggle('pointer-events-none', atStart);
+          prevBtn.setAttribute('aria-disabled', String(atStart));
+          nextBtn.classList.toggle('opacity-40', atEnd);
+          nextBtn.classList.toggle('pointer-events-none', atEnd);
+          nextBtn.setAttribute('aria-disabled', String(atEnd));
+        }
+
+        async function renderPage(num: number) {
+          if (!pdfDoc) return;
+          if (rendering) { queued = num; return; }
+          rendering = true;
+
+          const page          = await pdfDoc.getPage(num);
+          const cw            = container.clientWidth  || 1856;
+          const ch            = container.clientHeight || 950;
+          const native        = page.getViewport({ scale: 1 });
+          const scale         = Math.min(cw / native.width, ch / native.height);
+          const viewport      = page.getViewport({ scale });
+
+          canvas.width        = viewport.width;
+          canvas.height       = viewport.height;
+          const ctx           = canvas.getContext('2d')!;
+          ctx.fillStyle       = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          await page.render({ canvasContext: ctx, viewport }).promise;
+
+          rendering = false;
+          setNavState(num, pdfDoc.numPages);
+
+          if (queued !== null && queued !== num) {
+            const next = queued;
+            queued = null;
+            renderPage(next);
+          }
+        }
+
+        async function goTo(num: number) {
+          if (!pdfDoc) return;
+          currentPage = Math.max(1, Math.min(num, pdfDoc.numPages));
+          await renderPage(currentPage);
+        }
+
+        prevBtn.addEventListener('click',  () => goTo(currentPage - 1));
+        nextBtn.addEventListener('click',  () => goTo(currentPage + 1));
+        startBtn.addEventListener('click', () => goTo(1));
+
+        window.addEventListener('keydown', (e) => {
+          const t = e.target as HTMLElement;
+          if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
+          if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+
+          if      (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goTo(currentPage + 1); }
+          else if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goTo(currentPage - 1); }
+          else if (e.key === 'Home')                                 { e.preventDefault(); goTo(1); }
+          else if (e.key === 'End' && pdfDoc)                        { e.preventDefault(); goTo(pdfDoc.numPages); }
+          else if (e.key === 'Escape')                               { location.assign('../'); }
+        });
+
+        pdfjsLib.getDocument(pdfUrl).promise.then((pdf: any) => {
+          pdfDoc = pdf;
+          goTo(1);
+        });
+      </script>
+    </body>
+  </html>
+) : (
+  <SlideLayout title={title} lecture={lecture} backHref="../" nextHref={nextHref}>
+    <Content />
+  </SlideLayout>
+)}

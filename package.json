@@ -4,7 +4,7 @@
     "description": "",
     "license": "CC-BY-4.0",
     "author": "CHRISTIAN PUTA",
-    "homepage": "https://chrisputa.github.io/exercise_immunology", 
+    "homepage": "https://chrisputa.github.io/exercise_immunology",
     "repository": {
         "type": "git",
         "url": "https://github.com/chrisputa/exercise_immunology",
@@ -43,6 +43,7 @@
         "marked": "^15.0.11",
         "network_explorer": "^0.0.2",
         "npm": "^11.4.1",
+        "pdfjs-dist": "^5.6.205",
         "qrcode": "^1.5.4",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
