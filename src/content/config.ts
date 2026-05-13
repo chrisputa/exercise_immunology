@@ -77,7 +77,6 @@ const lectures = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    publishDate: z.coerce.date(),
     draft: z.boolean().optional(),
     seo: seoSchema.optional(),
   }),
