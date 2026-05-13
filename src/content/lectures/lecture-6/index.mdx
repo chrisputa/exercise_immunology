@@ -1,385 +1,322 @@
 ---
-title: Lactate – From Metabolic Waste Product to Central Metabolite
-description: Traces the evolution of lactate from a metabolic byproduct to a central regulator of human physiology, highlighting its continuous aerobic production, role as a primary fuel source, and function as a signaling molecule across cellular and systemic levels. It also introduces lactate-based performance diagnostics, emphasizing individualized thresholds and curve analysis to assess training adaptation, endurance capacity, and metabolic dysfunction in conditions such as Long COVID and ME/CFS.
+title: Teaching Anaerobic Threshold
+description: Defines the anaerobic threshold as the upper border of the aerobic–anaerobic transition (MLSS), compares fixed (4 mmol/L) and individualised threshold concepts, walks through a Stegmann tangent worked example, and derives heart-rate–anchored training zones — with a critical look at why %VO₂max and %HRmax fall short as prescription anchors.
 draft: false
 tags:
   - Lecture
 ---
 
-import Quote from '../../../components/Quote.astro';
+import Figure from '../../../components/Figure.astro';
+import fig1 from '../../../assets/fig1_aerob_anaerob_transition.png';
+import fig1Dark from '../../../assets/generated/fig1_aerob_anaerob_transition_dark.png';
+import fig2 from '../../../assets/fig2_stegmann_iat.png';
+import fig2Dark from '../../../assets/generated/fig2_stegmann_iat_dark.png';
+import fig3 from '../../../assets/fig3_training_zones.png';
+import fig3Dark from '../../../assets/generated/fig3_training_zones_dark.png';
 import { Note } from '../../../components/MarginNote/index.js';
 
 
-## 1. Historical Context and Paradigm Shift
+## Table of Contents
 
-For decades, lactate was regarded as a toxic end-product of anaerobic glycolysis — the cause of muscle fatigue and performance decline. This view is now obsolete. Building on the **Lactate Shuttle Theory** (Brooks, 1985/2018), a fundamental paradigm shift has occurred: lactate is not the problem, but part of the solution.
-
-<Quote 
-  author="Brooks"
-  cite="2018, Cell Metabolism"
-  quote="Once thought to be a waste product of anaerobic metabolism, lactate is now known to form continuously under aerobic conditions." 
-/>
-
-Three core functions are now well established:
-
-1. **Energy substrate** – preferred oxidative fuel in the heart, brain, liver, and red skeletal muscle
-2. **Gluconeogenic precursor** – primary source for hepatic glucose synthesis (Cori cycle and beyond)
-3. **Signaling molecule** – autocrine, paracrine, and endocrine functions (myokine/exerkine)
-
----
-
-## 2. The Lactate Shuttle Theory – Conceptual Foundations
-
-### Brooks (2018) – *The Science and Translation of Lactate Shuttle Theory*
-**Cell Metabolism, 27, 757–785**
-
-This comprehensive review synthesizes four decades of research from the Brooks Lab (UC Berkeley) and describes three nested shuttle systems:
-
-| Shuttle Level | Description |
-|---|---|
-| **Cell-Cell Lactate Shuttle (CCLS)** | Lactate transfer between producing cells (e.g., glycolytic muscle fibers) and consuming cells (heart, brain, liver) along concentration gradients |
-| **Intracellular Lactate Shuttle (ILS)** | Intracellular transfer of cytosolically produced lactate to the mitochondrial matrix for oxidative metabolism within the same cell |
-| **Organ-Organ Lactate Shuttle** | Systemic redistribution between organs (muscle → liver, muscle → brain) via the bloodstream |
-
-**Key Findings:**
-- Lactate is produced **continuously under fully aerobic conditions** — not only during oxygen deficiency
-- At rest, approximately 50% of produced lactate is **oxidatively utilized**
-- During intense exercise, this fraction increases to approximately **75–80%**
-- Monocarboxylate transporters (MCT1, MCT4) and the co-factor **CD147** mediate transcellular lactate transport
-- A mitochondrial **lactate oxidation complex** (LDH + MCT1 + CD147) enables direct intracellular oxidation
-
-**Clinical Translation:**
-- Lactatemia as a **"strain" biomarker** (load response), not a pathological stress marker
-- Therapeutic lactate infusions in traumatic brain injury, heart failure, and systemic inflammation
-- Endurance training increases MCT expression and thereby lactate clearance capacity
+1. [Definition of the anaerobic threshold](#1-definition-of-the-anaerobic-threshold)
+   - 1.1 [The aerobic–anaerobic transition](#11-the-aerobicanaerobic-transition)
+   - 1.2 [The MLSS as gold standard](#12-the-mlss-as-gold-standard)
+   - 1.3 [The 4 mmol/L threshold and its limits](#13-the-4-mmoll-threshold-and-its-limits)
+   - 1.4 [Agreement between LT concepts and MLSS — limits of agreement](#14-agreement-between-lt-concepts-and-mlss--limits-of-agreement)
+2. [Worked example: determining the IAT after Stegmann et al. (1981)](#2-worked-example-determining-the-iat-after-stegmann-et-al-1981)
+   - 2.1 [Rationale of the method](#21-rationale-of-the-method)
+   - 2.2 [Sample protocol — incremental treadmill test](#22-sample-protocol--incremental-treadmill-test)
+   - 2.3 [Measured data](#23-measured-data)
+   - 2.4 [Construction of the IAT](#24-construction-of-the-iat)
+   - 2.5 [Derived training prescription](#25-derived-training-prescription)
+3. [The anaerobic threshold as a metabolic, hormonal and immunological breakpoint](#3-the-anaerobic-threshold-as-a-metabolic-hormonal-and-immunological-breakpoint)
+4. [Exercise prescription based on the anaerobic threshold](#4-exercise-prescription-based-on-the-anaerobic-threshold)
+   - 4.1 [Training zones derived from the aerobic–anaerobic transition (Kindermann 2004)](#41-training-zones-derived-from-the-aerobicanaerobic-transition-kindermann-2004)
+   - 4.2 [Application examples (Kindermann 2004)](#42-application-examples-kindermann-2004)
+   - 4.3 [The ACSM/ESSA framework (Bishop et al. 2025)](#43-the-acsmessa-framework-bishop-et-al-2025)
+5. [Trained versus untrained subjects](#5-trained-versus-untrained-subjects)
+6. [The anaerobic threshold and percentages of VO₂max / HRmax](#6-the-anaerobic-threshold-and-percentages-of-vomax--hrmax)
+   - 6.1 [Typical values](#61-typical-values)
+   - 6.2 [Why %VO₂max / %HRmax are *not* a reliable prescription tool](#62-why-vomax--hrmax-are-not-a-reliable-prescription-tool)
+7. [Strengths and weaknesses of the anaerobic-threshold concept](#7-strengths-and-weaknesses-of-the-anaerobic-threshold-concept)
+   - 7.1 [Strengths](#71-strengths)
+   - 7.2 [Weaknesses](#72-weaknesses)
+8. [Summary in one paragraph](#8-summary-in-one-paragraph)
+9. [References](#references)
+10. [One-Minute-Paper Topics](#one-minute-paper-topics)
 
 ---
 
-### Brooks et al. (2022) – *Tracing the Lactate Shuttle to the Mitochondrial Reticulum*
-**Experimental & Molecular Medicine, 54, 1332–1347**
+## 1. Definition of the anaerobic threshold
 
-This review deepens the mechanistic understanding of the **intracellular lactate shuttle** and describes the role of the mitochondrial reticulum:
+### 1.1 The aerobic–anaerobic transition
 
-- Isotope tracer studies (¹³C-lactate infusions) provide unambiguous documentation of **continuous organ-organ, cell-cell, and intracellular shuttling**
-- Lactate is considered the **preferred substrate over glucose** in heart and brain
-- The mitochondrial reticulum (an interconnected mitochondrial network) generates the concentration and redox gradients that drive intracellular lactate flux
-- **Histone lactylation** and CREB-dependent signaling pathways have been identified as novel epigenetic signaling routes
-- Introduction of the **Postprandial Lactate Shuttle (PLS)** as a new category: dietary carbohydrates pass through a lactate intermediate before storage or oxidation
+The framework introduced by Kindermann, Simon and Keul (1979) describes endurance metabolism not as one single point but as a transition zone between two breakpoints (Faude et al. 2009; Kindermann 2004):
 
-**Methodological note:** Isotope tracer infusions combined with arterial-venous difference measurements across muscle, heart, and brain yield quantitative flux rates at rest and during exercise, before and after endurance training, at sea level and altitude.
+- **Aerobic threshold (AeS / LTAer):** the lowest intensity at which blood lactate (bLa) first rises above baseline. Below this point the energy supply is almost exclusively oxidative; exercise can be maintained for hours.
+- **Anaerobic threshold (IAS / LTAn / MLSS):** the upper border of the transition zone. It represents the highest workload at which lactate production and elimination are still in equilibrium — the **Maximal Lactate Steady State (MLSS)**. Above this intensity, lactate accumulates progressively despite constant load and exhaustion follows within minutes to about an hour.
 
----
+The anaerobic threshold is therefore not a sudden switch but the upper border of a gradual transition.
 
-## 3. Lactate as the Primary TCA Substrate – Systemic Evidence
+<Figure src={fig1} srcDark={fig1Dark} alt="Aerobic-anaerobic transition during incremental exercise">
+**Figure 1:** Schematic representation of the aerobic–anaerobic transition (grey zone). Top: blood-lactate curve with aerobic threshold (AeS) and individual anaerobic threshold (IAS ≙ MLSS). Bottom: pulmonary ventilation with the two ventilatory thresholds VT1 and VT2 (RCP). Redrawn after Kindermann (2004).
+</Figure>
 
-### Hui et al. (2017) – *Glucose Feeds the TCA Cycle via Circulating Lactate*
-**Nature, 551, 115–118**
+### 1.2 The MLSS as gold standard
 
-This landmark study using systemic ¹³C isotope tracing in mice delivers a fundamental reinterpretation of aerobic metabolism:
+The MLSS is determined by performing several constant-load trials of at least 30 minutes on different days at different intensities. The MLSS criterion most commonly used is: blood lactate must not rise by more than **1 mmol/L between minute 10 and minute 30** of the constant-load test (Faude et al. 2009).
 
-**Background:** Under aerobic conditions, glucose was assumed to be the primary input to the TCA cycle. This assumption has been refuted.
+At the MLSS, oxygen uptake, CO₂ output, respiratory exchange ratio and bicarbonate concentration remain approximately constant; respiratory rate and heart rate, however, drift upwards.
 
-**Method:** Intravenous infusions of [U-¹³C]glucose, [U-¹³C]lactate, and [U-¹³C]glutamine in fed and fasted mice; measurement of isotope labeling fractions in TCA intermediates across multiple tissues.
+### 1.3 The 4 mmol/L threshold and its limits
 
-**Main Findings:**
+Historically, Mader et al. (1976) and Heck et al. (1985) proposed a **fixed threshold at 4 mmol/L lactate (LT4 / OBLA — Onset of Blood Lactate Accumulation)** as a practical estimate of MLSS. Kindermann (2004) notes that the anaerobic threshold lies on average around 4 mmol/L — but in endurance-trained athletes mostly lower.
 
-| Parameter | Result |
-|---|---|
-| Molar turnover flux of lactate vs. glucose (fed) | Lactate exceeds glucose by a **factor of 1.1** |
-| Molar turnover flux of lactate vs. glucose (fasted) | Lactate exceeds glucose by a **factor of 2.5** |
-| TCA labeling by ¹³C-lactate | Extensive in **all tissues** (fed and fasted) |
-| Glucose contribution to TCA cycle (fasted) | Primarily **indirect** — via circulating lactate — in all tissues except the brain |
-| Situation in tumors (lung, pancreas) | Lactate exceeds glucose as TCA substrate; in pancreatic tumors, glutamine contributes even more |
+The problem with a fixed value is biological variability. Reported MLSS lactate concentrations span from **about 2 to 10 mmol/L** between individuals (Faude et al. 2009). Equal lactate concentrations therefore do not necessarily represent equal metabolic situations.
 
-**Conclusion:** Glycolysis and the TCA cycle are **decoupled at the level of lactate**. Glucose can make its TCA contribution predominantly via the detour of circulating lactate, without entering the mitochondria directly as pyruvate. This enables independent regulation of ATP production and glucose catabolism.
+For this reason, **individual anaerobic threshold (IAT) concepts** were developed (Stegmann et al. 1981; Keul et al.; Simon et al.; Dickhuth et al.). They take the shape of the individual lactate–performance curve into account (e.g. tangent methods, +1.5 mmol/L above minimum lactate equivalent, Dmax/Dmod methods).
 
-<Quote 
-  author="Hui et al."
-  cite="2017, Nature"
-  quote="Glycolysis and the TCA cycle are uncoupled at the level of lactate, which is a primary circulating TCA substrate in most tissues and tumours." 
-/>
+### 1.4 Agreement between LT concepts and MLSS — limits of agreement
 
+Correlations between threshold concepts and MLSS are high, but correlations alone do not tell us whether two methods agree in absolute terms. Faude et al. (2009) recommend reporting the **mean bias and the 95 % limits of agreement (LoA)** according to Bland and Altman. Recalculated from raw data of Heck et al. they reported (Table VI in Faude et al. 2009):
 
----
-
-## 4. Lactate as a Mitochondrial Activator – Beyond Metabolism
-
-### Cai et al. (2023) – *Lactate Activates the Mitochondrial Electron Transport Chain Independently of Its Metabolism*
-**Molecular Cell, 83, 3904–3920**
-
-This work from the Thompson Lab at Memorial Sloan Kettering Cancer Center (New York) represents a conceptual breakthrough: lactate acts not only as a fuel, but as a **direct activator of the mitochondrial electron transport chain (ETC)** — independently of its own metabolism.
-
-**Core Findings:**
-
-1. **Lactate enters the mitochondrial matrix** and directly stimulates ETC activity.
-
-2. **The ability to enhance OXPHOS does not depend on lactate metabolism:**
-   - Both **L-lactate** (the biologically active stereoisomer) and **D-lactate** (not metabolizable by LDH) activate the ETC
-   - D-lactate suppressed aerobic glycolysis (Warburg effect) **reversibly** and in an ATP-dependent manner
-
-3. **Mechanism:** ATP production via OXPHOS suppresses glycolysis; lactate acts as a **mitochondrial messenger** that switches cells toward oxidative metabolism.
-
-4. **Immunological relevance:** In primary T cells, D-lactate enhanced:
-   - Cell proliferation
-   - Effector function
-
-5. **Oncological significance:** D-lactate suppressed the Warburg effect in tumor cell lines and enabled cell growth on respiration-dependent bioenergetic substrates.
-
-**Schematic summary of the mechanism:**
-
-```
-Extracellular lactate ↑
-        ↓
-Entry into mitochondrial matrix (via MCT + membrane transport)
-        ↓
-ETC activation (complex-independent signaling)
-        ↓
-↑ Mitochondrial ATP synthesis (OXPHOS)
-        ↓
-ATP-mediated suppression of glycolysis
-        ↓
-↑ Pyruvate and alternative substrate utilization
-```
-
-**Relevance for exercise and immunology:**
-- Lactate accumulation during exercise directly activates OXPHOS — independent of substrate delivery
-- Explains why trained athletes can oxidize efficiently even at high lactate concentrations
-- Opens new perspectives on the role of lactate in the activation of immune cells following exercise
-
----
-
-## 5. The Postprandial Lactate Shuttle – Lactate as a Dietary Carbon Vehicle
-
-### Leija et al. (2024) – *Enteric and Systemic Postprandial Lactate Shuttle Phases and Dietary Carbohydrate Carbon Flow in Humans*
-**Nature Metabolism, 6, 670–677**
-
-This human study provides the first direct in vivo evidence for the Postprandial Lactate Shuttle (PLS) in humans — with a striking temporal sequence.
-
-**Study population:** Healthy young men and women (overnight fasted); oral glucose tolerance test (OGTT, 75 g glucose); arterialized blood samples; stable isotope tracers ([3-¹³C]lactate, deuterium-labeled glucose).
-
-**Main Findings – Two Phases of the PLS:**
-
-| Phase | Timing | Mechanism | Interpretation |
+| Threshold concept | Treadmill, 3-min stages | Treadmill, 5-min stages | Cycle ergometry, 2-min stages |
 |---|---|---|---|
-| **Enteric PLS** | Blood lactate rises **before** blood glucose | Intestinal epithelial cells immediately metabolize glucose to lactate | Gut lumen → portal vein → liver/systemic circulation |
-| **Systemic PLS** | Second lactate rise, synchronous with glucose rise | Hepatic glucose release → peripheral glycolysis → lactate | Liver → muscle/organs → lactate redistribution |
+| LT4 | bias −0.13 m/s, LoA ≈ 8 % | bias +0.02 m/s, LoA ≈ 9 % | bias −19.8 W, LoA ≈ 14 % |
+| IAT (Keul) | bias −0.20 m/s, LoA ≈ 9 % | bias +0.06 m/s, LoA ≈ 8 % | bias −21.0 W, LoA ≈ 11 % |
+| IAT (Stegmann) | bias −0.03 m/s, LoA ≈ 12 % | bias −0.03 m/s, LoA ≈ 9 % | bias −15.0 W, LoA ≈ 18 % |
+| IAT (Bunc) | bias −0.33 m/s, LoA ≈ 8 % | bias −0.14 m/s, LoA ≈ 9 % | bias −71.4 W, LoA ≈ 27 % |
 
-**Quantitative Significance:**
-- The systemic PLS represents approximately **38% of the 75-g glucose load** appearing as lactate in the circulation
-- Following a carbohydrate-containing meal, lactate is a **carbon carrier of similar magnitude as glucose itself**
+**Interpretation:** even when the mean bias is small, the 95 % LoA can reach 10–20 % of the MLSS. For any individual subject the difference between a single LT estimate and the true MLSS may therefore be substantial — particularly on the cycle ergometer.
 
-**Conclusions:**
-- Lactate production is **not a consequence of hypoxia** in skeletal muscles; it occurs in fully aerobic tissues
-- Dietary carbohydrates are routinely distributed and utilized via the lactate shuttle
-- Lactate **buffers** the postprandial glucose surge (together with insulin)
-- The intestinal epithelium is identified as the **first actor** in systemic carbohydrate carbon flux
-
-<Quote 
-  author="Brooks"
-  cite="2024, cited in Berkeley News"
-  quote="Instead of a big glucose surge, we have a lactate and glucose surge after eating." 
-/>
+> **Key take-away.** The anaerobic threshold is best defined functionally as the MLSS — the highest constant workload at which lactate is still in steady state. The widely used 4 mmol/L value is an average, not a biological constant. Individualised concepts narrow the bias but do not eliminate substantial 95 % LoA.
 
 ---
 
-## 6. Implications for Sports Nutrition
+## 2. Worked example: determining the IAT after Stegmann et al. (1981)
 
-### Brooks (2023) – *What the Lactate Shuttle Means for Sports Nutrition*
-**Nutrients, 15(9), 2178**
+### 2.1 Rationale of the method
 
-This review draws practical conclusions from the lactate shuttle concept for sports nutrition:
+The individual anaerobic threshold (IAT) after **Stegmann, Kindermann and Schnabel (1981)** is one of the best-validated approaches and the one most consistently shown to track the MLSS (see Section 1.4 and Faude et al. 2009). Its idea is elegant:
 
-**Central argument:** Regardless of carbohydrate form (glucose, maltodextrin, starch, fructose), the **systemic carbohydrate energy flux** in the body ultimately follows:
+- The lactate curve during incremental exercise alone cannot tell us where the steady-state limit lies, because the test is too short for steady state to develop.
+- The recovery lactate curve, however, contains additional information: it reflects how the organism handles the **net lactate load** accumulated during the last exercise stages.
+- A tangent constructed from the **descending recovery curve at the point where blood lactate has returned to its end-of-exercise value (L_end)** to the **ascending exercise curve** identifies the intensity at which lactate production and elimination are still in equilibrium.
 
-```
-Hexose (glucose/glycogen) → Lactate → oxidative utilization OR liver glycogen storage
-```
+The tangent contact on the exercise curve is the IAT.
 
-**Practical Implications:**
+### 2.2 Sample protocol — incremental treadmill test
 
-| Question | Answer Based on the Lactate Shuttle Concept |
+The following example uses a standard protocol that meets Stegmann's original methodology (Faude et al. 2009).
+
+| Parameter | Specification |
 |---|---|
-| Which carbohydrate form is optimal? | The form plays a secondary role; all carbohydrates pass through lactate as an intermediate |
-| Is lactate supplementation sensible? | Lactate salts (e.g., polylactate/calcium lactate) are GRAS-classified; buffer acidosis and provide direct substrate |
-| Why does training increase carbohydrate tolerance? | Increased MCT expression → improved lactate clearance without lactatemia |
-| What is the role of fructose? | Converted to lactate and glucose in the gut; enters systemic circulation primarily as lactate |
-| Ketones as an alternative to lactate? | No advantage when carbohydrates are sufficiently available; lactate and carbohydrates are more efficiently and directly available |
+| Subject | Recreational male runner, 30 yr, 72 kg |
+| Ergometer | Motorised treadmill, 1 % incline |
+| Warm-up | 10 min jogging at ≈ 2.0 m/s |
+| Stages | 6 incremental stages of **3 min** each (Stegmann's original duration) |
+| Initial velocity | 2.0 m/s (7.2 km/h) |
+| Increment | +0.5 m/s per stage |
+| Termination | Volitional exhaustion |
+| Blood sampling | 20 μL capillary blood from hyperaemised earlobe at the end of each stage and at min 1, 3, 5, 8, 10 of passive recovery |
+| Analysis | Enzymatic-amperometric lactate analyser (haemolysed whole blood) |
 
-**Training-Specific Aspects:**
-- Endurance training increases the capacity for simultaneous lactate production and clearance → higher performance without hyperlactatemia
-- Pro Tour cyclists can sustain power outputs for hours at which untrained individuals would already develop hyperlactatemia
-- Lactate threshold training targets a shift in the equilibrium point between production and clearance
+### 2.3 Measured data
 
----
+| Stage | t (min) | v (m/s) | v (km/h) | HR (bpm) | Lactate (mmol·L⁻¹) |
+|---|---|---|---|---|---|
+| 1 | 3 | 2.0 | 7.2 | 118 | 1.0 |
+| 2 | 6 | 2.5 | 9.0 | 132 | 1.2 |
+| 3 | 9 | 3.0 | 10.8 | 145 | 1.5 |
+| 4 | 12 | 3.5 | 12.6 | 158 | 2.0 |
+| 5 | 15 | 4.0 | 14.4 | 172 | 5.0 |
+| 6 (end) | 18 | 4.5 | 16.2 | 188 | **9.0 = L_end** |
 
-## 7. The Anaerobic Threshold: Definitions, Methods, and Practical Applications
-
-*Based on: Kindermann W (2004). Anaerobe Schwelle. Deutsche Zeitschrift für Sportmedizin, 55(6), 161–162.*
-
-### Background and Rationale
-
-Classical exercise testing in the laboratory has long relied on spirometry and the measurement of maximal oxygen uptake (VO₂max) as the gold standard for cardiorespiratory fitness. However, a well-documented discrepancy exists between improvements in sport-specific endurance performance and increases in VO₂max — a limitation that became apparent already in the 1960s and 70s, when elite endurance athletes already exhibited VO₂max values of around or above 80 ml/min/kg. This ceiling effect prompted the development of submaximal performance concepts, particularly those based on blood lactate concentrations and ventilatory responses during graded exercise. Since the 1970s, the anaerobic threshold has become an established construct in international sports science, with firmly recognized roles in performance diagnostics and training load management.
-
-### Definitions: Aerobic and Anaerobic Threshold
-
-From a training-physiological perspective, the aerobic-anaerobic transition zone is of particular significance. This zone is demarcated by two distinct thresholds:
-
-**Aerobic Threshold (AeS)**
-Defined as the point of the first lactate rise above resting levels during incremental exercise. It represents the lower boundary of the aerobic-anaerobic transition and corresponds to the first ventilatory threshold (VT1). At this point, accumulated lactic acid begins to be buffered by bicarbonate, releasing excess CO₂ and stimulating a disproportionate increase in ventilation — a phenomenon described by Hollmann as the point of optimal respiratory efficiency.
-
-**Anaerobic Threshold / Individual Anaerobic Threshold (IAS)**
-Represents the upper boundary of the aerobic-anaerobic transition zone and corresponds to the maximal lactate steady state (MLSS) — the highest exercise intensity at which blood lactate remains stable despite constant effort. On average, the anaerobic threshold is observed around 4 mmol/l blood lactate, though in trained endurance athletes it is typically lower. The corresponding ventilatory marker is the second ventilatory threshold (VT2), also termed the respiratory compensation point (RCP), where hydrogen ions from lactic acid can no longer be fully buffered, driving further stimulation of ventilation via pH-mediated mechanisms. While VT2 and the lactate-derived anaerobic threshold are conceptually related, they are not numerically identical.
-
-### Methodological Aspects and Quality Criteria
-
-A wide variety of threshold determination methods exist, and the resulting threshold values are generally not interchangeable between methods, as most threshold models remain inadequately validated. A key methodological distinction concerns fixed versus individual thresholds:
-
-**Fixed lactate thresholds** (e.g., the 4 mmol/l criterion) are straightforward to apply but fail to account for interindividual variation — identical lactate concentrations can reflect markedly different metabolic states in different athletes.
-
-**Individual anaerobic thresholds** are therefore preferable, as they account for sport-specific and training-state-dependent variation in threshold lactate concentrations. The method developed by Stegmann et al. (1981) additionally incorporates lactate kinetics during early recovery, and has been validated as reflecting the MLSS. This approach demonstrates high reliability (test-retest consistency) and is robust to glycogen depletion. Importantly, step duration prolongation does not significantly affect the determined threshold, whereas reducing step height leads to an upward shift — a key consideration in test design.
-
-For ventilatory threshold determination, ramp protocols are recommended over stepwise increments, as abrupt step transitions can introduce artifacts that mimic threshold responses. Lactate thresholds, by contrast, are typically determined using stepwise protocols.
-
-### Physiological Significance as a Breakpoint
-
-The anaerobic threshold is not merely a metabolic marker but represents a genuine physiological breakpoint with multi-system implications. Exceeding the anaerobic threshold triggers disproportionate increases in plasma catecholamines (epinephrine and norepinephrine) and elicits significant changes in immunological parameters — including natural killer cell mobilization and oxidative burst activity. This has direct relevance to exercise immunology, underscoring that intensity relative to the anaerobic threshold is a critical determinant of immune responses to exercise.
-
-The anaerobic threshold is a reliable, motivation-independent marker of endurance capacity. Performance at the anaerobic threshold typically corresponds to approximately 60–85% VO₂max (sport- and training-state dependent), while the aerobic threshold corresponds to approximately 40–65% VO₂max.
-
-### Training Intensity Prescription: The Two-Threshold Model
-
-The dual-threshold model (Kindermann, Simon & Keul, 1979) provides a practical framework for training intensity zonation based on the aerobic-anaerobic transition. Key zones are defined as follows:
-
-| Zone | Intensity (% IAS) | Lactate (mmol/l) | Description |
-|---|---|---|---|
-| Regenerative training | < 70% | < 2 | Below aerobic threshold; recovery-oriented |
-| Basic Endurance I (GA I) | 70–90% | ~1.5–2.5 | Extensive aerobic training |
-| Basic Endurance II (GA II) / Tempo runs (TDL) | 90–100% | ~3–5 | Intensive aerobic with anaerobic contribution |
-| Interval Training (IVT) | > 100% | Variable | Supra-threshold; varies with intensity and recovery |
-
-In applied sport contexts, elite marathon runners compete at approximately their anaerobic threshold, and regional-level marathon athletes (~3:00 h finish time) run at roughly 95% of threshold speed. Training intensity recommendations should be expressed as heart rate targets. Notably, beta-blocker use does not influence the lactate-power curve, enabling accurate training prescription even in this clinical population.
-
-### Anaerobic Threshold and Fat Oxidation
-
-Maximum absolute fat oxidation occurs at approximately 55–72% VO₂max (68–79% HRmax), which corresponds to the aerobic-anaerobic transition zone. Only above the anaerobic threshold does the relative contribution of fat to total energy supply decline substantially. This means that training at approximately 90% of IAS simultaneously achieves maximal fat oxidation — a finding with implications for both athletic performance and preventive/therapeutic exercise programming.
-
-### Preventive and Rehabilitative Applications
-
-In preventive and rehabilitative exercise medicine, training intensity recommendations are similarly anchored to the aerobic-anaerobic transition. Shorter training sessions may be conducted at 90–100% IAS, while longer sessions should remain near the aerobic threshold. Supra-threshold exercise — i.e., above the anaerobic threshold — is not relevant for health-oriented training and carries risks in patient populations. Lactate-based training targets should be validated under field conditions given the potential for biomechanical and coordinative differences between laboratory ergometry and sport-specific movement.
-
-### Summary
-
-The anaerobic threshold — particularly when determined as the individual anaerobic threshold (IAS) corresponding to the maximal lactate steady state — is a reliable, clinically meaningful, and motivation-independent indicator of endurance capacity. It outperforms fixed lactate concentrations (e.g., 4 mmol/l) by accounting for interindividual metabolic variation. The two-threshold model provides a validated framework for training intensity prescription across competitive sport, preventive, and rehabilitative contexts. Its physiological significance extends beyond metabolism to encompass autonomic, hormonal, and immune system responses — the latter being of direct relevance to exercise immunology and research on post-infectious conditions such as ME/CFS and Long COVID.
-
----
-
-## 8. The Lactate Performance Curve: Diagnostic Logic and Training Zone Allocation
-
-### Figure Description
-
-In the paper of Kindermann (2004) Figure 1 shows a representative lactate performance curve derived from five serial cycle ergometer tests in a single subject (starting at 100 W, incremental steps of 20 W every 3 minutes). Two physiologically distinct thresholds are identified.  
-Link: https://www.germanjournalsportsmedicine.com/fileadmin/content/archiv2004/heft06/Standards_Kindermann.pdf
-
-| Threshold | Abbreviation | Operational Definition |
+| Recovery sample | t after exercise (min) | Lactate (mmol·L⁻¹) |
 |---|---|---|
-| Lactate Threshold | **LT** | First systematic rise in blood lactate above resting baseline; aerobic–anaerobic transition (Wasserman & McIlroy 1964) |
-| Individual Anaerobic Threshold | **IAS** | Maximal lactate steady-state power; highest workload at which lactate production and clearance remain in dynamic equilibrium |
+| R1 | 1 | 10.5 (= L_max) |
+| R2 | 3 | 10.0 |
+| R3 | 5 | 8.0 |
+| R4 | 8 | 5.0 |
+| R5 | 10 | 3.5 |
 
-In this individual, **LT occurred at 200 W** and **IAS at 250 W**, both determined on 22.12.2013.
+### 2.4 Construction of the IAT
 
-### Dual-Axis Presentation: Lactate and Heart Rate
+<Figure src={fig2} srcDark={fig2Dark} alt="Determination of the IAT after Stegmann et al. (1981)">
+**Figure 2:** Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 4 min post-exercise (linear interpolation between R2 = 10.0 mmol/L and R3 = 8.0 mmol/L → L = 9.0 at t ≈ 4 min): this is the **anchor**. The dashed green line is the tangent from the anchor to the ascending exercise curve; the **tangent contact** on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.
+</Figure>
 
-The figure employs a dual y-axis layout characteristic of lactate diagnostics in German-speaking sports medicine:
+**Step-by-step:**
 
-- **Lower curves (red, squares):** Blood lactate in mmol/l — the primary diagnostic variable. The characteristic J-shaped curve (flat aerobic baseline, exponential rise above IAS) is clearly visible, with confidence bands from repeated testing highlighting within-subject variability.
-- **Upper curves (blue, squares):** Heart rate in beats/min — used for transfer of laboratory thresholds into field-based training intensity prescription. Because heart rate is measurable continuously during training, it serves as the *operationalization* of metabolically defined zones.
+1. **End-of-exercise lactate.** L_end = 9.0 mmol·L⁻¹ at v_end = 4.5 m/s, HR_end = 188 bpm.
+2. **Anchor on recovery curve.** Find t* where the recovery lactate has decreased back to L_end. With R2 = 10.0 mmol/L at 3 min and R3 = 8.0 mmol/L at 5 min, linear interpolation gives:
+   - t* = 3 + (10.0 − 9.0)/(10.0 − 8.0) × (5 − 3) = **3 + 1 = 4 min post-exercise**.
+3. **Draw tangent.** From the anchor at (4 min post, 9.0 mmol/L) draw the line tangent to the ascending exercise lactate curve.
+4. **Read off the IAT.** The tangent touches the exercise curve at approximately:
+   - **v_IAT ≈ 3.8 m/s (13.7 km/h)**
+   - **L_IAT ≈ 4.0 mmol/L**
+5. **Interpolate the threshold heart rate.** Linear interpolation between stage 4 (v = 3.5, HR = 158 bpm) and stage 5 (v = 4.0, HR = 172 bpm) at v = 3.8 m/s:
+   - HR_IAT ≈ 158 + (3.8 − 3.5)/(4.0 − 3.5) × (172 − 158) = 158 + 0.6 × 14 = **≈ 166 bpm**.
 
-The simultaneous capture of both signals is considered standard practice in threshold diagnostics and allows real-time training steering via HR-based target ranges.
+The aerobic threshold (AeS) in the same test would be read off as the first systematic rise of lactate above baseline — in this subject between stages 3 and 4. Conventionally, this is set at v ≈ 3.0 m/s, HR ≈ 145 bpm, L ≈ 1.5 mmol/L.
 
-### Training Zone Architecture
+### 2.5 Derived training prescription
 
-The colored background zones map metabolic states to practical training categories:
+Using the IAT values for this subject as the anchor (Kindermann 2004; see also Section 4 below):
 
-| Zone | German Label | Physiological Basis |
+| Training zone | % IAT velocity | Target velocity | Target HR | Typical lactate | Example session |
+|---|---|---|---|---|---|
+| **Regenerative** | < 70 % | < 2.7 m/s  (< 9.6 km/h) | < 116 bpm | < 1.5 mmol/L | 30–45 min easy jog at 2.4 m/s (8.6 km/h) |
+| **Extensive endurance (GA I)** | 70 – 90 % | 2.7 – 3.4 m/s (9.6 – 12.3 km/h) | 116 – 149 bpm | 1.5 – 3 mmol/L | 60–90 min steady run at 3.1 m/s (11.2 km/h), HR ~145 bpm |
+| **Intensive endurance (GA II / TDL)** | 90 – 100 % | 3.4 – 3.8 m/s (12.3 – 13.7 km/h) | 149 – 166 bpm | 3 – 5 mmol/L | 30–45 min tempo run at 3.6 m/s (13.0 km/h), HR ~158 bpm |
+| **Interval training (IVT)** | > 100 % | > 3.8 m/s (> 13.7 km/h) | > 166 bpm (HR drifts during the interval) | typically > 5 mmol/L | 6 × 1000 m at 4.1 m/s (14.8 km/h), 3 min jog rest |
+
+**Notes for the coach.**
+
+- Use **heart rate** as the primary online control parameter (it tracks workload well, is unaffected by beta-blockers, and is far more practical than repeated lactate sampling).
+- For interval sessions, target HR is reached during the work bout, not from the start: prescription is normally given as work velocity ± rest interval rather than as HR.
+- Re-test every 6–8 weeks of focused training. A higher v_IAT at the same HR_IAT — or the same v_IAT at a lower HR — indicates positive adaptation.
+
+> **Key take-away.** A single 18-minute incremental test plus 10 minutes of recovery sampling yields, via the Stegmann tangent, an individual threshold velocity, lactate concentration and heart rate. From these three numbers a complete training-zone prescription can be derived.
+
+---
+
+## 3. The anaerobic threshold as a metabolic, hormonal and immunological breakpoint
+
+Although the transition between aerobic and anaerobic metabolism is gradual, **clearly identifiable changes** in several physiological systems coincide with the anaerobic threshold (Kindermann 2004; Faude et al. 2009):
+
+- **Metabolic.** Above the IAT, lactate concentration rises continuously during constant-load exercise; bicarbonate-buffered H⁺ ions can no longer be fully compensated and pH falls, additionally stimulating ventilation. The respiratory compensation point (VT2) marks this ventilatory consequence and lies in the region of the anaerobic lactate threshold.
+- **Hormonal.** Plasma catecholamines (**adrenaline and noradrenaline**) rise **disproportionately** when the anaerobic threshold is exceeded. Faude et al. (2009) summarise: "exercise above the MLSS is associated with an over-proportional excretion of stress hormones […] during constant-load exercise."
+- **Immunological.** Above the anaerobic threshold, immunological parameters such as **natural killer (NK) cells** and the **oxidative burst** of neutrophils show significant quantitative changes (Kindermann 2004).
+- **Neuromuscular.** Lucia et al. observed changes in EMG activity of vastus lateralis and rectus femoris that coincided with the aerobic–anaerobic transition in elite male cyclists (cited in Faude et al. 2009).
+
+These convergent breakpoints justify the concept even though "threshold" is, strictly speaking, a didactic simplification of a continuous process.
+
+> **Key take-away.** The anaerobic threshold marks an intensity at which not only lactate kinetics but also stress-hormone responses, immune-cell behaviour and neuromuscular activation patterns change qualitatively. It is therefore far more than a "lactate phenomenon".
+
+---
+
+## 4. Exercise prescription based on the anaerobic threshold
+
+### 4.1 Training zones derived from the aerobic–anaerobic transition (Kindermann 2004)
+
+| Zone (German terminology) | Intensity prescription | Lactate guidance |
 |---|---|---|
-| Light green | **Regeneratives Training (KB)** | Below aerobic threshold; active recovery; lactate ≈ 1.5–2.0 mmol/l |
-| Yellow | **Extensive Grundlagen (GA1)** | Aerobic base development; LT to mid-aerobic range; lactate 2–3 mmol/l |
-| Orange | **Intensive Grundlagen (GA2)** | Approach to IAS; highest tolerable steady-state intensity; lactate 3–4 mmol/l |
-| Pale red | **Schwellentraining (EB)** | At or near IAS; maximal lactate steady state; lactate ~4 mmol/l (interindividual variation ±1–2 mmol/l) |
+| Regenerative training | < AeS | At/below first lactate rise |
+| Extensive endurance (GA I) | ≈ 70 – < 90 % of IAT | between AeS and just below IAT |
+| Intensive endurance (GA II, "Tempodauerlauf") | 90 – 100 % of IAT | up to MLSS, typically 3–5 mmol/L in trained runners |
+| Interval training (IVT) | > 100 % of IAT | suprathreshold, lactate dependent on work/rest ratio |
 
-Training above the EB zone leads to progressive lactate accumulation and cannot be sustained beyond minutes — this is the domain of interval and competition training, not base endurance development.
+<Figure src={fig3} srcDark={fig3Dark} alt="Training zones as % of IAS">
+**Figure 3:** Typical blood-lactate ranges encountered during the four endurance-training zones, expressed as a percentage of the individual anaerobic threshold (IAS). Redrawn after Kindermann (2004).
+</Figure>
 
-### Longitudinal Interpretation: Right vs. Left Shift
+**Heart-rate prescription** is preferred in practice, because heart rate is easy to monitor and lactate response is not affected by beta-blockers — exact heart-rate targets at the IAT can therefore be given even to cardiac patients on beta-blockade.
 
-The core diagnostic value of serial testing lies in detecting **curve shift** as a marker of adaptation:
+### 4.2 Application examples (Kindermann 2004)
 
-- **Rechtsverschiebung (right shift, green arrow):** The lactate curve shifts to higher wattage at the same lactate concentration → improved mitochondrial capacity, enhanced lactate clearance (MCT1/MCT4 upregulation), increased fat oxidation at submaximal intensity. Physiologically equivalent to increased capillarization and Type I fiber oxidative capacity. Indicates **improved aerobic endurance performance**.
-- **Linksverschiebung (left shift, red arrow):** The curve shifts leftward → lactate accumulates at lower workloads → detraining, overreaching, infection, or post-infectious deconditioning. In ME/CFS and Long COVID research contexts, persistent left shift patterns at low absolute workloads are consistent with impaired oxidative metabolism and post-exertional malaise (PEM) physiology.
+- Good marathon runners race **at the IAT**. Marathon time can be predicted from running speed at the threshold. Regional-class runners (~3 h) run at ~95 % of IAT speed; elite runners ~100 %.
+- **Fat oxidation** is maximal in absolute terms at 55–72 % VO₂max, corresponding to 68–79 % HRmax — i.e. within the aerobic–anaerobic transition. Training around **~90 % of the IAT** therefore also elicits maximal fat oxidation.
+- **Preventive / rehabilitative sport.** Short sessions can be performed between 90 and 100 % of the IAT, longer sessions close to the AeS. Suprathreshold work is not relevant for health sport and may be risky for patients.
 
-**Clinical note:** In patients with post-infectious syndromes (ME/CFS, Long COVID), lactate curve left-shifts may occur even after minimal effort. The IAS in these populations can fall below 100 W — or even below resting-normalized aerobic threshold — making conventional zone-based training prescription potentially harmful without individualized lactate-guided assessment.
+### 4.3 The ACSM/ESSA framework (Bishop et al. 2025)
 
-### Methodological Considerations
+The recent joint ACSM/ESSA expert statement proposes five intensity categories anchored on metabolic thresholds — the first metabolic threshold (MT1) being approximated by the first lactate threshold/AeS, and the second metabolic threshold (MT2) being approximated by the MLSS or critical power/speed:
 
-1. **Protocol specificity:** The 3-minute step protocol shown here is ergometer-specific. Biomechanical and coordinative differences between cycling and running mean that thresholds cannot be transferred across modalities without sport-specific re-testing.
-2. **Resting lactate variability:** Pre-test resting lactate (baseline) can vary substantially (0.8–2.0 mmol/l) due to prior activity, nutritional status, psychological stress, and circadian effects. This affects the absolute position of the LT but has less influence on the IAS.
-3. **Confidence bands:** The dotted boundary curves in the figure illustrate test-retest variability across five sessions, emphasizing that threshold diagnostics require replication to establish stable reference values for training prescription.
-4. **Wearable integration:** In research contexts using continuous physiological monitoring (e.g., Firstbeat Bodyguard 3, Polar H10, Oura Ring), heart rate–lactate relationships derived from ergometry can be used to approximate metabolic intensity zones from HR alone — a key methodological bridge between laboratory diagnostics and free-living monitoring in studies on training load and recovery.
+| Category | Cardiorespiratory exercise reference |
+|---|---|
+| Very low | no current physiological marker |
+| Low | below MT1 |
+| Moderate | above MT1 but below MT2 |
+| High | above MT2 but below Wmax (work rate at VO₂max) |
+| Very high | above Wmax |
 
-### Integration with Lactate Shuttle Theory (Brooks)
+Bishop et al. (2025) state that the **direct measurement of metabolic thresholds** plus Wmax is "the best and preferred method to define exercise-intensity categories that will produce similar physiological stresses in individuals with different exercise capacities."
 
-The exponential lactate rise above IAS visible in Abb. 1 reflects the transition from net lactate *clearance* to net lactate *accumulation* — the point at which production (primarily fast-glycolytic fibers, cytoplasmic) exceeds the oxidative capacity of mitochondria-rich slow-twitch fibers and cardiac muscle to consume lactate via the intracellular and cell-to-cell lactate shuttles (MCT1-mediated import, mitochondrial lactate oxidation complex). Above IAS, circulating lactate serves both as a metabolic substrate (oxidized in heart, liver, slow-twitch muscle) and as a **signaling molecule** (lactormone) — activating PGC-1α, VEGF, BDNF, and fat oxidation gene programs — consistent with the updated lactate shuttle framework described by Brooks (2018, 2022, 2023).
+> **Key take-away.** The anaerobic threshold subdivides the endurance-training continuum into physiologically distinct zones. Heart-rate-controlled prescription anchored on the IAT (or on MT1/MT2) yields more comparable metabolic stress between individuals than work-rate or %VO₂max prescription.
+
+---
+
+## 5. Trained versus untrained subjects
+
+The anaerobic threshold is more sensitive to training than VO₂max (Kindermann 2004; Faude et al. 2009):
+
+- **Absolute power/velocity at MLSS** is markedly higher in trained subjects — the entire lactate–performance curve shifts to the right.
+- **Relative to VO₂max**, the IAT lies between roughly **60 and 85 % VO₂max**, depending on sport and training state (AeS roughly 40–65 % VO₂max). Highly trained endurance athletes operate at the upper end of this range.
+- **Lactate concentration at the MLSS** is **lower in endurance-trained athletes** than in untrained subjects. Faude et al. (2009) explicitly warn that the LT4 (4 mmol/L) "may frequently underestimate (particularly in anaerobically trained subjects) or overestimate (in aerobically trained athletes) real endurance capacity."
+- **VO₂max alone fails to discriminate** between subjects of homogeneous performance level (e.g. between elite endurance runners). The threshold, however, retains discriminatory power and correlates strongly with competition performance.
+- **Training adaptations** (mitochondrial density, oxidative enzymes, capillarisation, fibre-type shifts) shift the curve to the right — this is detected sensitively by changes at the IAT, often before VO₂max changes.
+
+> **Key take-away.** Training shifts the IAT to higher absolute workloads and tends to lower the lactate concentration at which the MLSS occurs. The IAT is a more sensitive marker of endurance training adaptations than VO₂max — especially in already-trained populations.
 
 ---
 
-## 9. Synthesis and Learning Objectives
+## 6. The anaerobic threshold and percentages of VO₂max / HRmax
 
-### Conceptual Overview
+### 6.1 Typical values
 
-```
-Dietary carbohydrates
-        ↓ [Enteric PLS – Leija 2024]
-Lactate (gut/portal vein)
-        ↓
-Systemic circulation
-        ↓ [Hui 2017 – primary TCA substrate]
-TCA cycle (heart, brain, muscle, liver)
-        ↓
-OXPHOS activation
-        ↓ [Cai 2023 – direct ETC activation, independent of metabolism]
-ATP synthesis + suppression of glycolysis
-        ↑
-Exercise-induced lactate
-        ↓ [Brooks 2018/2022 – Cell-Cell, Intracellular, Organ-Organ Shuttle]
-Redistribution via MCT → consumer organs
-```
+Across studies summarised by Kindermann (2004):
 
-### Learning Objectives
+- **AeS:** ~40 – 65 % VO₂max
+- **IAT:** ~60 – 85 % VO₂max
+- **Maximum fat oxidation:** 55 – 72 % VO₂max ≈ 68 – 79 % HRmax (within the aerobic–anaerobic transition)
 
-After completing this unit, you should be able to:
+### 6.2 Why %VO₂max / %HRmax are *not* a reliable prescription tool
 
-1. Explain the distinction between the Cell-Cell, Intracellular, and Organ-Organ Lactate Shuttles (Brooks 2018)
-2. Explain why lactate — not glucose — serves as the primary TCA substrate in most tissues (Hui 2017)
-3. Describe the mechanism by which lactate activates the ETC independently of its own metabolism (Cai 2023)
-4. Name and temporally sequence the two phases of the Postprandial Lactate Shuttle in humans (Leija 2024)
-5. Derive practical implications for sports nutrition from the lactate shuttle concept (Brooks 2023)
-6. Define the aerobic and anaerobic thresholds and explain their physiological significance as breakpoints (Kindermann 2004)
-7. Apply the two-threshold model (Kindermann, Simon & Keul 1979) to training intensity prescription across sport, preventive, and rehabilitative contexts
-8. Interpret longitudinal lactate performance curves, including right and left shifts as markers of adaptation or deconditioning
+Although these percentages are convenient, all three reviewed papers stress that a fixed percentage of VO₂max or HRmax does **not** produce the same metabolic strain in different people:
+
+- Meyer, Gabriel and Kindermann (1999, cited in Kindermann 2004) showed that exercise intensity prescriptions based on %VO₂max or %HRmax are inadequate because the IAT corresponds to a wide range of these percentages.
+- Bishop et al. (2025) cite a study reporting a **40-fold range** in the increase of muscle lactate between subjects at 70 % of VO₂max. At 80 % of HRmax, approximately half the participants were above their first metabolic threshold and approximately half were below.
+- Faude et al. (2009) likewise note that LTs are superior to VO₂max for assessing endurance performance in homogeneous groups of athletes.
+- Bishop et al. (2025) conclude that "prescribing exercise intensity based on a fixed percentage of maximal anchors (e.g., %VO₂max, %VO₂R, %HRmax, or %HRR) will cause individuals to exercise in different training intensity categories and to experience large variations in metabolic stress."
+
+> **Key take-away.** %VO₂max and %HRmax are practical *descriptors* of where the threshold tends to lie in a population, but they are not adequate *prescription anchors* for individuals. Threshold-based prescription (heart rate at the IAT, or thresholds derived from a GXT) achieves more comparable physiological strain.
 
 ---
+
+## 7. Strengths and weaknesses of the anaerobic-threshold concept
+
+### 7.1 Strengths
+
+- **High correlation with endurance performance.** Of 32 studies reviewed by Faude et al. (2009), the overwhelming majority reported strong linear correlations of LTs with running competition performance, with r-values typically between 0.7 and 0.98 and common variance of 55 – 85 %.
+- **Sensitivity to training.** Threshold-based parameters change earlier and more clearly than VO₂max, especially in trained athletes (Kindermann 2004).
+- **Independence of motivation / exhaustion.** Unlike VO₂max, the IAT does not require an all-out effort and can therefore be used safely in patients and recreational subjects (Kindermann 2004; Bishop et al. 2025).
+- **Reproducibility.** Test–retest reliability for velocity or power at LTs is high (r > 0.9 across LTfix, LTAer and LTAn concepts); VO₂ at LT is slightly lower (r ≈ 0.8 – 0.9) (Faude et al. 2009).
+- **Practical, multi-system breakpoint.** Metabolic, hormonal, immunological and neuromuscular changes converge at this intensity, giving the concept biological plausibility.
+- **Robust against beta-blockade.** Lactate–performance curves are not influenced by beta-blockers, so threshold-based heart-rate prescriptions remain valid in cardiac patients (Kindermann 2004).
+
+### 7.2 Weaknesses
+
+- **Definitional confusion.** Faude et al. (2009) located **25 different LT concepts** in the literature. Threshold values obtained by different methods are generally **not comparable**. Many concepts are insufficiently validated.
+- **The term "threshold" is misleading.** Aerobic and anaerobic pathways always contribute simultaneously; the transition is continuous, not abrupt. The model is appropriate didactically and practically but should not be reified.
+- **Methodological dependence.** Threshold values depend on:
+  - test protocol (stage duration, work-rate increment, ramp vs step);
+  - blood-sampling site (earlobe vs fingertip);
+  - blood medium analysed (plasma vs whole blood vs capillary);
+  - lactate analyser type and ambient conditions;
+  - nutritional state — glycogen depletion shifts the lactate curve down and can be misread as an improvement (Faude et al. 2009).
+- **Substantial individual differences from MLSS.** Even for the best-validated concepts, 95 % LoA between an LT estimate and the MLSS reach ~10 % on a treadmill and up to ~27 % on a cycle ergometer for some methods (Faude et al. 2009).
+- **MLSS lactate concentration varies between 2 and 10 mmol/L** across individuals — fixed values such as 4 mmol/L are at best a population average.
+- **MLSS reproducibility itself is not well established.** Faude et al. (2009) explicitly note "no scientific data" on the basic variability of MLSS, which limits how strictly LTs can be judged.
+- **Limited evidence outside running.** Validation against competition performance is strong for running but more heterogeneous in cycling and sparse in other endurance sports.
+- **Limited applicability to large populations.** Bishop et al. (2025) note that threshold-based testing requires expensive equipment, time-consuming protocols, blood sampling and expert interpretation — not realistic for population-level prescription.
+
+> **Key take-away.** The anaerobic-threshold concept is a powerful, valid and reliable instrument when (1) the chosen LT concept matches the question, (2) the test protocol is standardised, and (3) results are interpreted on the level of individuals with appropriate confidence intervals — not as point estimates carved in stone.
+
+---
+
+## 8. Summary in one paragraph
+
+The anaerobic threshold is the **upper border of the aerobic–anaerobic transition** and, functionally, corresponds to the **maximal lactate steady state**. Although it averages around 4 mmol/L of blood lactate, the actual MLSS concentration varies between 2 and 10 mmol/L between individuals, making individualised threshold concepts preferable to fixed values; even so, 95 % limits of agreement with the gold-standard MLSS reach 10–20 %. The threshold is more than a metabolic marker: catecholamines, NK-cell activity and oxidative burst all change disproportionately above this intensity, so it is best regarded as a **multi-system breakpoint**. It is the central anchor for endurance-training prescription, with regenerative, extensive (GA I, ~70–90 % IAT), intensive (GA II / TDL, ~90–100 % IAT) and interval (>100 % IAT) zones derived from it. Trained subjects reach the threshold at higher absolute workloads and often at lower lactate concentrations than untrained subjects, and the threshold is a more sensitive marker of training adaptation than VO₂max. Although it tends to fall between 60 and 85 % VO₂max (or 68–79 % HRmax for maximal fat oxidation), fixed percentages of these maximal anchors should not be used to prescribe individual training, because identical %VO₂max or %HRmax produce widely different metabolic strains. The main strengths of the concept are reliability, independence from maximal effort, and strong correlation with endurance performance; the main weaknesses are the proliferation of incompatible definitions, methodological sensitivity, and the fact that the underlying transition is, strictly speaking, continuous.
+
 
 ## References
 
-| Reference | DOI / Journal |
-|---|---|
-| Brooks, G.A. (2018). The Science and Translation of Lactate Shuttle Theory. *Cell Metabolism*, 27, 757–785. | [10.1016/j.cmet.2018.03.008](https://doi.org/10.1016/j.cmet.2018.03.008) |
-| Brooks, G.A. et al. (2022). Tracing the lactate shuttle to the mitochondrial reticulum. *Exp. Mol. Medicine*, 54, 1332–1347. | [10.1038/s12276-022-00802-3](https://doi.org/10.1038/s12276-022-00802-3) |
-| Cai, X. et al. (2023). Lactate activates the mitochondrial electron transport chain independently of its metabolism. *Molecular Cell*, 83, 3904–3920. | [10.1016/j.molcel.2023.09.034](https://doi.org/10.1016/j.molcel.2023.09.034) |
-| Hui, S. et al. (2017). Glucose feeds the TCA cycle via circulating lactate. *Nature*, 551, 115–118. | [10.1038/nature24057](https://doi.org/10.1038/nature24057) |
-| Leija, R.G. et al. (2024). Enteric and systemic postprandial lactate shuttle phases and dietary carbohydrate carbon flow in humans. *Nature Metabolism*, 6, 670–677. | [10.1038/s42255-024-00993-1](https://doi.org/10.1038/s42255-024-00993-1) |
-| Brooks, G.A. (2023). What the Lactate Shuttle Means for Sports Nutrition. *Nutrients*, 15(9), 2178. | [10.3390/nu15092178](https://doi.org/10.3390/nu15092178) |
-| Kindermann, W. (2004). Anaerobe Schwelle. *Deutsche Zeitschrift für Sportmedizin*, 55(6), 161–162. | DZSM 55(6) |
-| Wasserman, K. & McIlroy, M.B. (1964). Detecting the threshold of anaerobic metabolism in cardiac patients during exercise. *American Journal of Cardiology*, 14, 844–852. | [10.1016/0002-9149(64)90012-8](https://doi.org/10.1016/0002-9149(64)90012-8) |
+- Kindermann W. *Anaerobe Schwelle.* Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.
+
+- Faude O, Kindermann W, Meyer T. *Lactate Threshold Concepts — How Valid Are They?* Sports Medicine 39 (6), 2009: 469–490.
+
+- Bishop DJ et al. *Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.* Journal of Science and Medicine in Sport 28, 2025: 980–991.
 
 ---
 
@@ -388,23 +325,24 @@ After completing this unit, you should be able to:
   A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
 </Note>
 
-1. In one sentence, why is the idea that "lactate is a waste product" considered outdated?
-2. Explain the concept of continuous aerobic lactate production at rest.
-3. Describe the lactate shuttle hypothesis in your own words.
-4. Which tissues are major lactate consumers, and which are major producers?
-5. How does lactate function as a signaling molecule (lactormone)?
-6. Define the lactate threshold and explain why it is individualised.
-7. Compare maximal lactate steady state (MLSS) and the second lactate threshold (LT2).
-8. What does a left- vs. right-shifted lactate curve tell you about training adaptation?
-9. Why can resting lactate be elevated in patients with mitochondrial dysfunction?
-10. How might lactate kinetics differ between healthy controls and ME/CFS patients?
-11. What does delayed lactate clearance suggest about oxidative metabolism?
-12. Which methodological factors (sampling site, analyser, protocol) most influence lactate values?
-13. Explain why blood lactate alone is insufficient to characterise an athlete's metabolic profile.
-14. How does the monocarboxylate transporter (MCT) family enable lactate exchange between cells?
-15. Describe one role of lactate in the immune system.
-16. What was today's most surprising fact about lactate?
-17. Which concept from today's lecture do you find still confusing?
-18. How would you design a lactate-based diagnostic protocol for a Long COVID patient?
-19. Name one limitation of using lactate thresholds in untrained or clinical populations.
-20. What follow-up question about lactate would you like to explore further?
+1. Define the anaerobic threshold in terms of the maximal lactate steady state (MLSS) and explain why it represents the upper border of the aerobic–anaerobic transition rather than a single switching point.
+2. What MLSS criterion (in mmol/L over which time window) is most commonly used to identify the highest workload at which lactate production and elimination are still in equilibrium?
+3. Why is the fixed 4 mmol/L threshold (LT4 / OBLA) considered only a population average rather than a biological constant? Cite the reported between-subject range of MLSS lactate concentrations.
+4. Explain the rationale of the Stegmann tangent method: why does the recovery-lactate curve provide information that the incremental exercise curve alone cannot?
+5. In the Stegmann construction, what does the anchor point on the recovery curve represent, and how is it located on the time axis?
+6. Given an end-of-exercise lactate of 9.0 mmol/L with recovery values of 10.0 mmol/L at 3 min and 8.0 mmol/L at 5 min, calculate by linear interpolation the time at which the recovery curve crosses L_end.
+7. Why does Faude et al. (2009) recommend reporting Bland–Altman 95 % limits of agreement (LoA) rather than only Pearson correlations when comparing LT concepts against the MLSS?
+8. List the four endurance-training zones derived from the IAT and give their approximate percentage range of IAT velocity.
+9. Why is heart rate preferred over repeated blood-lactate sampling as the online control parameter for endurance training prescription in the field?
+10. Name three physiological systems other than lactate kinetics that show qualitative breakpoints at the anaerobic threshold.
+11. Explain in one sentence each how the MLSS lactate concentration and the absolute MLSS workload typically differ between endurance-trained and untrained subjects.
+12. Why is the IAT a more sensitive marker of endurance-training adaptation than VO₂max — especially in already-trained populations?
+13. Why does prescribing exercise at a fixed %VO₂max or %HRmax produce unequal metabolic stress between individuals? Cite one quantitative example from Bishop et al. (2025).
+14. Distinguish MT1 and MT2 in the ACSM/ESSA framework and name the physiological markers each approximates.
+15. List three methodological factors (test protocol, blood sampling, analysis, nutritional state) that systematically influence the position of a lactate threshold on the lactate–performance curve.
+16. Why can glycogen depletion lead to a misleadingly "improved" lactate–performance curve in a follow-up test, and how should this be controlled in re-testing?
+17. A recreational runner has v_IAT = 3.8 m/s, HR_IAT = 166 bpm, L_IAT = 4.0 mmol/L. Prescribe a 60-minute extensive endurance (GA I) session with appropriate velocity, target HR, and expected lactate range.
+18. Faude et al. (2009) located 25 different LT concepts in the literature. What practical problem does this proliferation create for coaches and clinicians comparing test results across labs?
+19. Why are threshold-based heart-rate prescriptions still valid in cardiac patients on beta-blockers, while %HRmax prescriptions are not?
+20. Maximal fat oxidation occurs at approximately 55–72 % VO₂max, which corresponds to roughly 90 % of the IAT. Use this to justify the training-zone choice for a client whose primary goal is weight management, and explain why prescription at the IAT itself or above would be counter-productive for this goal.
+
