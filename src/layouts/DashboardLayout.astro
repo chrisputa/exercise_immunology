@@ -13,6 +13,9 @@ export interface Props {
 }
 
 const { title, iframeSrc, showHeader = false, iframeWidth, iframeHeight, iframeScale = 1 } = Astro.props;
+const resolvedSrc = iframeSrc.startsWith('/') || /^https?:/.test(iframeSrc)
+  ? iframeSrc
+  : `${import.meta.env.BASE_URL}${iframeSrc}`;
 const hasFixedSize = iframeWidth !== undefined && iframeHeight !== undefined;
 const scaledWidth  = hasFixedSize ? Math.round(iframeWidth! * iframeScale) : null;
 const scaledHeight = hasFixedSize ? Math.round(iframeHeight! * iframeScale) : null;
@@ -36,7 +39,7 @@ const scaledHeight = hasFixedSize ? Math.round(iframeHeight! * iframeScale) : nu
             /* ── Fixed size ── */
             <div style={`width: ${scaledWidth}px; height: ${scaledHeight}px; overflow: hidden;`}>
               <iframe
-                src={iframeSrc}
+                src={resolvedSrc}
                 width={iframeWidth}
                 height={iframeHeight}
                 style={`transform: scale(${iframeScale}); transform-origin: top left; border: none; display: block;`}
@@ -48,7 +51,7 @@ const scaledHeight = hasFixedSize ? Math.round(iframeHeight! * iframeScale) : nu
             /* ── Dynamic size ── */
             <iframe
               id="dynamic-iframe"
-              src={iframeSrc}
+              src={resolvedSrc}
               scrolling="no"
               style="width: 100%; height: 200px; border: none; display: block; overflow: hidden; transition: height 0.15s ease;"
               title={title}

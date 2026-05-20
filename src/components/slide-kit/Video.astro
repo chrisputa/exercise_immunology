@@ -60,16 +60,22 @@ const {
   ...rest
 } = Astro.props;
 
+function resolveUrl(u: string): string {
+  return u.startsWith('/') || /^https?:/.test(u) || u.startsWith('data:') || u.startsWith('blob:')
+    ? u
+    : `${import.meta.env.BASE_URL}${u}`;
+}
 function normalizeSources() {
   const list: Source[] = [];
-  if (src) list.push({ src });
+  if (src) list.push({ src: resolveUrl(src) });
   for (const s of sources) {
-    if (typeof s === 'string') list.push({ src: s });
-    else if (s && typeof s.src === 'string') list.push(s);
+    if (typeof s === 'string') list.push({ src: resolveUrl(s) });
+    else if (s && typeof s.src === 'string') list.push({ ...s, src: resolveUrl(s.src) });
   }
   return list;
 }
 const srcList = normalizeSources();
+const resolvedPosterStr = typeof poster === 'string' ? resolveUrl(poster) : undefined;
 const hasCaption = !!caption || Astro.slots.has('caption');
 const captionId = hasCaption ? `vidcap-${Math.random().toString(36).slice(2)}` : undefined;
 
@@ -89,7 +95,7 @@ const autoAspectEffective = !aspect && autoAspect;
       loop={loop}
       playsinline={playsInline}
       preload={preload}
-      poster={posterIsStr ? (poster as string) : undefined}
+      poster={resolvedPosterStr}
     >
       {poster && !posterIsStr ? (
         <Image src={poster as ImageMetadata} alt="" aria-hidden="true" class="hidden" />
@@ -101,7 +107,7 @@ const autoAspectEffective = !aspect && autoAspect;
 
       {tracks.map((t) => (
         <track
-          src={t.src}
+          src={resolveUrl(t.src)}
           kind={t.kind ?? 'subtitles'}
           srclang={t.srclang}
           label={t.label}
