@@ -78,6 +78,7 @@ const lectures = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     draft: z.boolean().optional(),
+    examRelevant: z.boolean().default(false),
     seo: seoSchema.optional(),
   }),
 });

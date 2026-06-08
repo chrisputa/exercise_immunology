@@ -6,7 +6,7 @@ import ArrowRight from '../icons/ArrowRight.astro';
 type Props = { lecture: CollectionEntry<'lectures'>; class?: string; headingLevel?: 'h2' | 'h3'; sequence?: number };
 
 const { lecture, class: className, headingLevel = 'h2', sequence } = Astro.props;
-const { title, description } = lecture.data;
+const { title, description, examRelevant } = lecture.data;
 const TitleTag = headingLevel;
 
 ---
@@ -18,6 +18,7 @@ const TitleTag = headingLevel;
         >
             {sequence ? `Lecture ${sequence}: ` : ''}{title}
         </TitleTag>
+        {examRelevant && <div class="mt-1 text-sm font-serif leading-normal">★ Exam-relevant</div>}
         {description && <div class="mt-1 text-lg leading-normal font-serif">{description}</div>}
     </div>
     <div class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
