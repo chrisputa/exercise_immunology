@@ -125,39 +125,39 @@ The following example uses a standard protocol that meets Stegmann's original me
 | Stage | t (min) | v (m/s) | v (km/h) | HR (bpm) | Lactate (mmol·L⁻¹) |
 |---|---|---|---|---|---|
 | 1 | 3 | 2.0 | 7.2 | 118 | 1.0 |
-| 2 | 6 | 2.5 | 9.0 | 132 | 1.2 |
-| 3 | 9 | 3.0 | 10.8 | 145 | 1.5 |
-| 4 | 12 | 3.5 | 12.6 | 158 | 2.0 |
-| 5 | 15 | 4.0 | 14.4 | 172 | 5.0 |
+| 2 | 6 | 2.5 | 9.0 | 132 | 1.3 |
+| 3 | 9 | 3.0 | 10.8 | 145 | 1.8 |
+| 4 | 12 | 3.5 | 12.6 | 158 | 2.6 |
+| 5 | 15 | 4.0 | 14.4 | 172 | 4.4 |
 | 6 (end) | 18 | 4.5 | 16.2 | 188 | **9.0 = L_end** |
 
 | Recovery sample | t after exercise (min) | Lactate (mmol·L⁻¹) |
 |---|---|---|
-| R1 | 1 | 10.5 (= L_max) |
-| R2 | 3 | 10.0 |
-| R3 | 5 | 8.0 |
+| R1 | 1 | 10.0 (= L_max) |
+| R2 | 3 | 8.8 |
+| R3 | 5 | 7.0 |
 | R4 | 8 | 5.0 |
 | R5 | 10 | 3.5 |
 
 ### 2.4 Construction of the IAT
 
 <Figure src={fig2} srcDark={fig2Dark} alt="Determination of the IAT after Stegmann et al. (1981)">
-**Figure 2:** Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 4 min post-exercise (linear interpolation between R2 = 10.0 mmol/L and R3 = 8.0 mmol/L → L = 9.0 at t ≈ 4 min): this is the **anchor**. The dashed green line is the tangent from the anchor to the ascending exercise curve; the **tangent contact** on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.
+**Figure 2:** Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 2.7 min post-exercise (linear interpolation between R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min → L = 9.0 at t ≈ 2.7 min): this is the **anchor**. The dashed green line is the tangent from the anchor to the ascending exercise curve; the **tangent contact** on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.
 </Figure>
 
 **Step-by-step:**
 
 1. **End-of-exercise lactate.** L_end = 9.0 mmol·L⁻¹ at v_end = 4.5 m/s, HR_end = 188 bpm.
-2. **Anchor on recovery curve.** Find t* where the recovery lactate has decreased back to L_end. With R2 = 10.0 mmol/L at 3 min and R3 = 8.0 mmol/L at 5 min, linear interpolation gives:
-   - t* = 3 + (10.0 − 9.0)/(10.0 − 8.0) × (5 − 3) = **3 + 1 = 4 min post-exercise**.
-3. **Draw tangent.** From the anchor at (4 min post, 9.0 mmol/L) draw the line tangent to the ascending exercise lactate curve.
+2. **Anchor on recovery curve.** Find t* where the recovery lactate has decreased back to L_end. With R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min, linear interpolation gives:
+   - t* = 1 + (10.0 − 9.0)/(10.0 − 8.8) × (3 − 1) = **1 + 1.7 ≈ 2.7 min post-exercise**.
+3. **Draw tangent.** From the anchor at (2.7 min post, 9.0 mmol/L) draw the line tangent to the ascending exercise lactate curve.
 4. **Read off the IAT.** The tangent touches the exercise curve at approximately:
-   - **v_IAT ≈ 3.8 m/s (13.7 km/h)**
-   - **L_IAT ≈ 4.0 mmol/L**
-5. **Interpolate the threshold heart rate.** Linear interpolation between stage 4 (v = 3.5, HR = 158 bpm) and stage 5 (v = 4.0, HR = 172 bpm) at v = 3.8 m/s:
-   - HR_IAT ≈ 158 + (3.8 − 3.5)/(4.0 − 3.5) × (172 − 158) = 158 + 0.6 × 14 = **≈ 166 bpm**.
+   - **v_IAT ≈ 3.7 m/s (13.4 km/h)**
+   - **L_IAT ≈ 3.2 mmol/L**
+5. **Interpolate the threshold heart rate.** Linear interpolation between stage 4 (v = 3.5, HR = 158 bpm) and stage 5 (v = 4.0, HR = 172 bpm) at v = 3.72 m/s:
+   - HR_IAT ≈ 158 + (3.72 − 3.5)/(4.0 − 3.5) × (172 − 158) = 158 + 0.44 × 14 = **≈ 164 bpm**.
 
-The aerobic threshold (AeS) in the same test would be read off as the first systematic rise of lactate above baseline — in this subject between stages 3 and 4. Conventionally, this is set at v ≈ 3.0 m/s, HR ≈ 145 bpm, L ≈ 1.5 mmol/L.
+The aerobic threshold (AeS) in the same test would be read off as the first systematic rise of lactate above baseline — in this subject between stages 3 and 4. Conventionally, this is set at v ≈ 3.0 m/s, HR ≈ 145 bpm, L ≈ 1.8 mmol/L.
 
 ### 2.5 Derived training prescription
 
@@ -165,10 +165,10 @@ Using the IAT values for this subject as the anchor (Kindermann 2004; see also S
 
 | Training zone | % IAT velocity | Target velocity | Target HR | Typical lactate | Example session |
 |---|---|---|---|---|---|
-| **Regenerative** | < 70 % | < 2.7 m/s  (< 9.6 km/h) | < 116 bpm | < 1.5 mmol/L | 30–45 min easy jog at 2.4 m/s (8.6 km/h) |
-| **Extensive endurance (GA I)** | 70 – 90 % | 2.7 – 3.4 m/s (9.6 – 12.3 km/h) | 116 – 149 bpm | 1.5 – 3 mmol/L | 60–90 min steady run at 3.1 m/s (11.2 km/h), HR ~145 bpm |
-| **Intensive endurance (GA II / TDL)** | 90 – 100 % | 3.4 – 3.8 m/s (12.3 – 13.7 km/h) | 149 – 166 bpm | 3 – 5 mmol/L | 30–45 min tempo run at 3.6 m/s (13.0 km/h), HR ~158 bpm |
-| **Interval training (IVT)** | > 100 % | > 3.8 m/s (> 13.7 km/h) | > 166 bpm (HR drifts during the interval) | typically > 5 mmol/L | 6 × 1000 m at 4.1 m/s (14.8 km/h), 3 min jog rest |
+| **Regenerative** | < 70 % | < 2.6 m/s  (< 9.4 km/h) | < 115 bpm | < 1.5 mmol/L | 30–45 min easy jog at 2.3 m/s (8.3 km/h) |
+| **Extensive endurance (GA I)** | 70 – 90 % | 2.6 – 3.35 m/s (9.4 – 12.1 km/h) | 115 – 148 bpm | 1.5 – 3 mmol/L | 60–90 min steady run at 3.0 m/s (10.8 km/h), HR ~140 bpm |
+| **Intensive endurance (GA II / TDL)** | 90 – 100 % | 3.35 – 3.72 m/s (12.1 – 13.4 km/h) | 148 – 164 bpm | 3 – 5 mmol/L | 30–45 min tempo run at 3.5 m/s (12.6 km/h), HR ~156 bpm |
+| **Interval training (IVT)** | > 100 % | > 3.72 m/s (> 13.4 km/h) | > 164 bpm (HR drifts during the interval) | typically > 5 mmol/L | 6 × 1000 m at 4.0 m/s (14.4 km/h), 3 min jog rest |
 
 **Notes for the coach.**
 
@@ -308,6 +308,7 @@ Although these percentages are convenient, all three reviewed papers stress that
 
 The anaerobic threshold is the **upper border of the aerobic–anaerobic transition** and, functionally, corresponds to the **maximal lactate steady state**. Although it averages around 4 mmol/L of blood lactate, the actual MLSS concentration varies between 2 and 10 mmol/L between individuals, making individualised threshold concepts preferable to fixed values; even so, 95 % limits of agreement with the gold-standard MLSS reach 10–20 %. The threshold is more than a metabolic marker: catecholamines, NK-cell activity and oxidative burst all change disproportionately above this intensity, so it is best regarded as a **multi-system breakpoint**. It is the central anchor for endurance-training prescription, with regenerative, extensive (GA I, ~70–90 % IAT), intensive (GA II / TDL, ~90–100 % IAT) and interval (>100 % IAT) zones derived from it. Trained subjects reach the threshold at higher absolute workloads and often at lower lactate concentrations than untrained subjects, and the threshold is a more sensitive marker of training adaptation than VO₂max. Although it tends to fall between 60 and 85 % VO₂max (or 68–79 % HRmax for maximal fat oxidation), fixed percentages of these maximal anchors should not be used to prescribe individual training, because identical %VO₂max or %HRmax produce widely different metabolic strains. The main strengths of the concept are reliability, independence from maximal effort, and strong correlation with endurance performance; the main weaknesses are the proliferation of incompatible definitions, methodological sensitivity, and the fact that the underlying transition is, strictly speaking, continuous.
 
+---
 
 ## References
 
@@ -329,7 +330,7 @@ The anaerobic threshold is the **upper border of the aerobic–anaerobic transit
 3. Why is the fixed 4 mmol/L threshold (LT4 / OBLA) considered only a population average rather than a biological constant? Cite the reported between-subject range of MLSS lactate concentrations.
 4. Explain the rationale of the Stegmann tangent method: why does the recovery-lactate curve provide information that the incremental exercise curve alone cannot?
 5. In the Stegmann construction, what does the anchor point on the recovery curve represent, and how is it located on the time axis?
-6. Given an end-of-exercise lactate of 9.0 mmol/L with recovery values of 10.0 mmol/L at 3 min and 8.0 mmol/L at 5 min, calculate by linear interpolation the time at which the recovery curve crosses L_end.
+6. Given an end-of-exercise lactate of 9.2 mmol/L with recovery values of 10.2 mmol/L at 1 min and 8.6 mmol/L at 3 min, calculate by linear interpolation the time at which the recovery curve crosses L_end.
 7. Why does Faude et al. (2009) recommend reporting Bland–Altman 95 % limits of agreement (LoA) rather than only Pearson correlations when comparing LT concepts against the MLSS?
 8. List the four endurance-training zones derived from the IAT and give their approximate percentage range of IAT velocity.
 9. Why is heart rate preferred over repeated blood-lactate sampling as the online control parameter for endurance training prescription in the field?
@@ -344,4 +345,3 @@ The anaerobic threshold is the **upper border of the aerobic–anaerobic transit
 18. Faude et al. (2009) located 25 different LT concepts in the literature. What practical problem does this proliferation create for coaches and clinicians comparing test results across labs?
 19. Why are threshold-based heart-rate prescriptions still valid in cardiac patients on beta-blockers, while %HRmax prescriptions are not?
 20. Maximal fat oxidation occurs at approximately 55–72 % VO₂max, which corresponds to roughly 90 % of the IAT. Use this to justify the training-zone choice for a client whose primary goal is weight management, and explain why prescription at the IAT itself or above would be counter-productive for this goal.
-
