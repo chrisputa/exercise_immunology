@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz · Exercise Immunology</title>
+<style>
+  :root{
+    --rot:#A5132B;
+    --rot-d:#7d0e20;
+    --ink:#1a1a1a;
+    --grey-1:#f5f5f4;
+    --grey-2:#e7e5e4;
+    --grey-3:#c8c5c2;
+    --grey-4:#8a8784;
+    --grey-5:#56524f;
+    --ok:#2f6e3b;
+    --ok-bg:#eaf3eb;
+    --no:#A5132B;
+    --no-bg:#fbecee;
+    --paper:#ffffff;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:transparent;
+    line-height:1.55;
+  }
+  .wrap{max-width:none;margin:0;padding:0;}
+  header.top{
+    border-bottom:3px solid var(--rot);
+    padding-bottom:14px;margin-bottom:24px;
+  }
+  header.top .kicker{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--rot);font-weight:700;margin:0 0 4px;
+  }
+  header.top h1{font-size:24px;margin:0;font-weight:700;letter-spacing:-.01em;}
+  header.top .sub{color:var(--grey-5);font-size:14px;margin-top:4px;}
+
+  .card{
+    background:var(--paper);
+    border:1px solid var(--grey-2);
+    border-radius:var(--radius);
+    padding:26px;
+  }
+
+  /* Start screen */
+  .lead{font-size:15px;color:var(--grey-5);margin:0 0 20px;}
+  .opts-grid{display:grid;gap:14px;margin:18px 0 24px;}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;}
+  select,input[type=number]{
+    width:100%;padding:9px 10px;border:1px solid var(--grey-3);
+    border-radius:var(--radius);font-size:15px;background:#fff;color:var(--ink);
+  }
+  .row{display:flex;gap:14px;flex-wrap:wrap;}
+  .row>.field{flex:1;min-width:160px;}
+  .check{display:flex;align-items:center;gap:9px;font-size:14px;cursor:pointer;}
+  .check input{width:17px;height:17px;accent-color:var(--rot);}
+
+  .btn{
+    display:inline-block;border:none;cursor:pointer;
+    background:var(--rot);color:#fff;font-size:15px;font-weight:600;
+    padding:12px 22px;border-radius:var(--radius);
+    transition:background .15s;
+  }
+  .btn:hover{background:var(--rot-d);}
+  .btn:focus-visible{outline:3px solid var(--rot);outline-offset:2px;}
+  .btn.ghost{background:#fff;color:var(--rot);border:1px solid var(--rot);}
+  .btn.ghost:hover{background:var(--no-bg);}
+  .btn.grey{background:var(--grey-2);color:var(--ink);}
+  .btn.grey:hover{background:var(--grey-3);}
+  .btn:disabled{opacity:.45;cursor:not-allowed;}
+
+  /* Quiz screen */
+  .meta-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--grey-5);margin-bottom:10px;
+  }
+  .tags{display:flex;gap:6px;}
+  .tag{
+    font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;
+    padding:2px 8px;border-radius:99px;background:var(--grey-2);color:var(--grey-5);
+  }
+  .tag.lvl{color:#fff;}
+  .tag.lvl1{background:var(--grey-4);}
+  .tag.lvl2{background:var(--grey-5);}
+  .tag.lvl3{background:var(--rot);}
+  .timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);}
+  .progress{height:5px;background:var(--grey-2);border-radius:99px;overflow:hidden;margin-bottom:18px;}
+  .progress>span{display:block;height:100%;background:var(--rot);width:0;transition:width .25s;}
+  .qtext{font-size:18px;font-weight:600;margin:0 0 18px;line-height:1.4;}
+  .answers{display:grid;gap:10px;}
+  .ans{
+    text-align:left;width:100%;cursor:pointer;
+    background:#fff;border:1px solid var(--grey-3);border-radius:var(--radius);
+    padding:13px 15px;font-size:15px;color:var(--ink);
+    display:flex;gap:12px;align-items:flex-start;transition:border-color .12s,background .12s;
+  }
+  .ans:hover:not(:disabled){border-color:var(--rot);}
+  .ans:focus-visible{outline:3px solid var(--rot);outline-offset:2px;}
+  .ans .letter{
+    flex:0 0 auto;font-weight:700;color:var(--grey-4);
+    width:22px;height:22px;border:1px solid var(--grey-3);border-radius:99px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:1px;
+  }
+  .ans.correct{background:var(--ok-bg);border-color:var(--ok);}
+  .ans.correct .letter{background:var(--ok);color:#fff;border-color:var(--ok);}
+  .ans.wrong{background:var(--no-bg);border-color:var(--no);}
+  .ans.wrong .letter{background:var(--no);color:#fff;border-color:var(--no);}
+  .ans:disabled{cursor:default;}
+  .feedback{margin-top:16px;font-size:14px;min-height:24px;}
+  .feedback .fb-ok{color:var(--ok);font-weight:600;}
+  .feedback .fb-no{color:var(--no);font-weight:600;}
+  .navbtns{margin-top:22px;display:flex;justify-content:flex-end;}
+
+  /* Results */
+  .scorebox{
+    display:flex;gap:18px;flex-wrap:wrap;margin:4px 0 24px;
+  }
+  .stat{
+    flex:1;min-width:130px;border:1px solid var(--grey-2);border-radius:var(--radius);
+    padding:16px;text-align:center;background:#fff;
+  }
+  .stat .num{font-size:30px;font-weight:700;line-height:1;}
+  .stat .num.accent{color:var(--rot);}
+  .stat .lbl{font-size:12px;color:var(--grey-5);margin-top:6px;text-transform:uppercase;letter-spacing:.06em;}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--grey-2);}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--grey-5);font-weight:700;}
+  td.c{text-align:center;}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:99px;}
+  .dot.ok{background:var(--ok);}
+  .dot.no{background:var(--no);}
+  .result-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;}
+  .hidden{display:none;}
+  .qcell{max-width:340px;}
+  footer.foot{margin-top:32px;font-size:12px;color:var(--grey-4);text-align:center;}
+  @media (max-width:560px){
+    .card{padding:18px;}
+    .qcell{max-width:none;}
+    table{font-size:12px;}
+    th,td{padding:6px 5px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- START -->
+  <section id="start" class="card">
+    <p class="lead">Wähle Umfang und Stufen, dann starte das Quiz. Pro Frage werden Antwortzeit und Ergebnis erfasst. Die Antwortoptionen werden bei jedem Durchlauf neu gemischt.</p>
+    <div class="opts-grid">
+      <div class="row">
+        <div class="field">
+          <label for="levelSel">Schwierigkeit</label>
+          <select id="levelSel">
+            <option value="0">Alle Stufen</option>
+            <option value="1">Nur Stufe 1 – leicht</option>
+            <option value="2">Nur Stufe 2 – mittel</option>
+            <option value="3">Nur Stufe 3 – schwer</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="countSel">Anzahl Fragen</label>
+          <input type="number" id="countSel" min="1" value="15">
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="shuffleQ" checked> Fragen in zufälliger Reihenfolge</label>
+      <label class="check"><input type="checkbox" id="instantFb" checked> Sofortiges Feedback nach jeder Antwort</label>
+    </div>
+    <button class="btn" id="startBtn">Quiz starten</button>
+    <p class="sub" id="poolInfo" style="margin-top:14px;"></p>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="card hidden">
+    <div class="meta-bar">
+      <div class="tags" id="qtags"></div>
+      <div class="timer" id="qtimer">0,0 s</div>
+    </div>
+    <div class="progress"><span id="progBar"></span></div>
+    <p class="qtext" id="qtext"></p>
+    <div class="answers" id="answers"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="navbtns">
+      <button class="btn" id="nextBtn" disabled>Weiter</button>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="card hidden">
+    <p class="kicker" style="color:var(--rot);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;">Ergebnis</p>
+    <h2 style="margin:0 0 18px;font-size:22px;" id="scoreHead">Auswertung</h2>
+    <div class="scorebox">
+      <div class="stat"><div class="num accent" id="sCorrect">0</div><div class="lbl">richtig</div></div>
+      <div class="stat"><div class="num" id="sPct">0&nbsp;%</div><div class="lbl">Trefferquote</div></div>
+      <div class="stat"><div class="num" id="sTotal">0&nbsp;s</div><div class="lbl">Gesamtzeit</div></div>
+      <div class="stat"><div class="num" id="sAvg">0&nbsp;s</div><div class="lbl">Ø pro Frage</div></div>
+    </div>
+    <table id="resultTable">
+      <thead>
+        <tr><th>#</th><th>Stufe</th><th>Lec.</th><th class="qcell">Frage</th><th class="c">✓/✗</th><th class="num">Zeit</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="result-actions">
+      <button class="btn" id="retryBtn">Neues Quiz</button>
+      <button class="btn ghost" id="csvBtn">Ergebnis als CSV</button>
+    </div>
+  </section>
+</div>
+
+<script>
+/* ============================================================
+   FRAGEN-DATENBANK
+   - Fragen und Optionen sind gegenüber der Klausur umformuliert.
+   - correct = richtige Aussage, wrong = Distraktoren.
+   - Positionen werden zur Laufzeit gemischt (s. buildOptions).
+   ============================================================ */
+const BANK = [
+  // ---------- STUFE 1 ----------
+  {n:1, level:1, lec:"L1",
+   q:"Caspersen et al. grenzen 'Exercise' von körperlicher Aktivität ab. Welches Merkmal trifft auf 'Exercise' zu?",
+   correct:"Planmäßige, strukturierte und wiederholte Bewegung mit dem Zweck, die körperliche Fitness zu steigern oder zu erhalten",
+   wrong:["Jede unwillkürliche Kontraktion der Skelettmuskulatur","Bewegung, die im Gegensatz zu Aktivität keine Energie kostet","Ausschließlich im Wettkampf ausgeführte Bewegung","Bewegung, die unabhängig von einem Ziel erfolgt"]},
+  {n:2, level:1, lec:"L1",
+   q:"Mit welchem Wert ist ein metabolisches Äquivalent (1 MET) konventionell festgelegt?",
+   correct:"Eine O₂-Aufnahme von 3,5 mL·kg⁻¹·min⁻¹",
+   wrong:["Eine O₂-Aufnahme von 7,0 mL·kg⁻¹·min⁻¹","Eine O₂-Aufnahme von 35 mL·kg⁻¹·min⁻¹","Ein Umsatz von 1 kcal pro Tag","Ein Verbrauch von 1 Liter O₂ pro Minute"]},
+  {n:3, level:1, lec:"L1",
+   q:"Welche Größe zählt NICHT zu den Komponenten des täglichen Gesamtenergieverbrauchs (TDEE)?",
+   correct:"Die Glykogenspeicherkapazität der Leber",
+   wrong:["Der Grundumsatz (BMR)","Die thermische Wirkung der Nahrung (TEF)","Der Aktivitätsenergieverbrauch (AEE)","Die Non-Exercise Activity Thermogenesis (NEAT)"]},
+  {n:4, level:1, lec:"L2",
+   q:"Welcher Anteil akuter Atemwegsinfektionen (ARTI) gilt als viral bedingt?",
+   correct:"Mehr als 80 %",
+   wrong:["Etwa 50 %","Rund 20 %","Weniger als 10 %","Praktisch 100 %"]},
+  {n:5, level:1, lec:"L2",
+   q:"Wie viele Erkältungen durchlaufen Erwachsene laut Vorlesung im Jahresmittel?",
+   correct:"Ungefähr 2 bis 5",
+   wrong:["Etwa 7 bis 10","Höchstens 0 bis 1","Rund 12 bis 15","Mehr als 20"]},
+  {n:6, level:1, lec:"L2",
+   q:"Welche proinflammatorischen Zytokine spielen für die Fieberauslösung die größte Rolle?",
+   correct:"IL-1 und IL-6",
+   wrong:["IL-10 und TGF-β","IL-4 und IL-5","IL-2 und IL-17","IFN-γ und IL-13"]},
+  {n:7, level:1, lec:"L4",
+   q:"Um welchen Faktor nehmen NK-Zellen in der ersten Phase (Lymphozytose) nach akuter Belastung typischerweise zu?",
+   correct:"Etwa 8- bis 10-fach",
+   wrong:["Rund 1,2-fach","Bis zu 100-fach","Sie bleiben unverändert","Sie halbieren sich"]},
+  {n:8, level:1, lec:"L4",
+   q:"Wie wirkt aus dem Muskel freigesetztes IL-6 (Myokin) im Unterschied zu IL-6 aus Immunzellen?",
+   correct:"Antiinflammatorisch – über Induktion von IL-1RA und IL-10 sowie Senkung von TNF",
+   wrong:["Rein proinflammatorisch","Es bleibt biologisch wirkungslos","Es ist der zentrale Fieberauslöser","Es blockiert die Glukoseaufnahme"]},
+  {n:9, level:1, lec:"L4",
+   q:"Welcher Vorgang läuft nach Belastungsende zeitgleich mit der Lymphopenie ab?",
+   correct:"Eine Cortisol-vermittelte Neutrophilie",
+   wrong:["Ein Absinken sämtlicher Leukozyten","Ein Anstieg der NK-Zellen auf das 10-fache","Ein vollständiger Stopp der Hämatopoese","Ein Cortisol-Abfall unter den Ruhewert"]},
+  {n:10, level:1, lec:"L5",
+   q:"Wie wird Laktat im modernen Verständnis (Lactate-Shuttle-Theorie) eingeordnet?",
+   correct:"Als wertvolles Substrat, gluconeogenetischer Vorläufer und Signalmolekül",
+   wrong:["Als toxisches Abfallprodukt des anaeroben Stoffwechsels","Als alleinige Ursache des Muskelkaters","Als ausschließlich bei O₂-Mangel gebildetes Produkt","Als inertes Endprodukt ohne metabolische Bedeutung"]},
+  {n:11, level:1, lec:"L5",
+   q:"Welche Transporter (samt Cofaktor) vermitteln den transzellulären Laktattransport?",
+   correct:"Die Monocarboxylat-Transporter MCT1/MCT4 mit dem Cofaktor CD147",
+   wrong:["GLUT4 zusammen mit dem Insulinrezeptor","DMT1 und Ferroportin","Die Natrium-Kalium-ATPase","Aquaporine"]},
+  {n:12, level:1, lec:"L6",
+   q:"Wie hängen regelmäßige körperliche Aktivität und Krebs zusammen?",
+   correct:"Geringere Inzidenz, niedrigere Mortalität und seltenere Rezidive",
+   wrong:["Höhere Inzidenz und Mortalität","Es besteht kein Zusammenhang","Ausschließlich ein erhöhtes Rezidivrisiko","Ein Effekt zeigt sich nur bei Hautkrebs"]},
+  {n:13, level:1, lec:"L6",
+   q:"Welche stark zytotoxischen Immunzellen werden durch akute Belastung bevorzugt mobilisiert?",
+   correct:"NK-Zellen, CD8⁺-T-Zellen und γδ-T-Zellen",
+   wrong:["Regulatorische T-Zellen (Tregs)","Naive B-Zellen","Myeloide Suppressorzellen (MDSCs)","Plasmazellen"]},
+  {n:14, level:1, lec:"L10",
+   q:"Welche Aussage zur immunologischen Bedeutung von Zink ist korrekt?",
+   correct:"Zink reguliert über 300 Enzyme und rund 1000 Transkriptionsfaktoren; ein Mangel stört die T-Zell-Entwicklung",
+   wrong:["Zink reguliert keinerlei Enzyme","Zink ist nur für den Sauerstofftransport bedeutsam","Zinkmangel steigert die B-Zell-Zahl","Zink beeinflusst das Immunsystem nicht"]},
+  {n:15, level:1, lec:"L10",
+   q:"Über welche Molekülklasse entfaltet Selen seine Funktionen?",
+   correct:"Über Selenoproteine wie Glutathionperoxidasen und Thioredoxinreduktasen",
+   wrong:["Über Hämoglobin","Über Ferritin","Über Metallothionein","Über Transferrin"]},
+  {n:16, level:1, lec:"L11",
+   q:"Wie ist ein 'essenzielles Spurenelement' definiert?",
+   correct:"Ein nicht selbst synthetisierbares Element, das am Stoffwechsel beteiligt ist und dessen Mangel nur durch das Element selbst behoben werden kann",
+   wrong:["Ein Element, das der Körper selbst herstellen kann","Jedes beliebige Mineral in beliebiger Menge","Ein Element ohne Einfluss auf den Organismus","Ein Element, das ausschließlich in Pflanzen vorkommt"]},
+  {n:17, level:1, lec:"L11",
+   q:"Wie groß ist der Gesamtkörper-Eisengehalt bei Erwachsenen etwa?",
+   correct:"Ungefähr 3 bis 5 g",
+   wrong:["Rund 0,3 bis 0,5 g","Etwa 30 bis 50 g","Etwa 300 mg","Rund 100 g"]},
+
+  // ---------- STUFE 2 ----------
+  {n:18, level:2, lec:"L1",
+   q:"Welche Größe nutzt die Cunningham-Gleichung (1980) als alleinigen Prädiktor des Ruheumsatzes?",
+   correct:"Die Magermasse (Lean Body Mass)",
+   wrong:["Das Körpergewicht","Die Körpergröße","Die Fettmasse","Das Lebensalter"]},
+  {n:19, level:2, lec:"L1",
+   q:"Was kennzeichnet eine hormetische Dosis-Wirkungs-Beziehung?",
+   correct:"Niedrige bis moderate Dosen eines Stressors erzeugen vorteilhafte Effekte, die jenen bei hohen Dosen entgegengesetzt sind",
+   wrong:["Die Schädigung nimmt linear mit der Dosis zu","Jede Dosis eines Stressors wirkt schädlich","Nur sehr hohe Dosen lösen Anpassung aus","Stressoren beeinflussen die Anpassung nicht"]},
+  {n:20, level:2, lec:"L1",
+   q:"Welche Funktion hat der Transkriptionsfaktor Nrf2 in der hormetischen Trainingsantwort?",
+   correct:"Er wird durch trainingsbedingte ROS aktiviert und steuert die Transkription antioxidativer Enzyme (SOD, Katalase, Glutathionperoxidase)",
+   wrong:["Er hemmt die Mitochondrienbiogenese","Er treibt den Glykogenabbau an","Er senkt die Insulinsensitivität","Er regelt ausschließlich die Wärmeabgabe"]},
+  {n:21, level:2, lec:"L2",
+   q:"Wie verlaufen Niesen und Husten im typischen Zeitverlauf einer Erkältung?",
+   correct:"Niesen ist in den ersten beiden Tagen am stärksten und klingt dann ab, während Husten kontinuierlich zunimmt und bis zu 3 Wochen anhalten kann",
+   wrong:["Beide Symptome erreichen an Tag 7 ihr Maximum","Husten tritt nur am ersten Tag auf","Niesen hält 3 Wochen an, Husten nur 2 Tage","Beide Symptome beginnen erst nach 2 Wochen"]},
+  {n:22, level:2, lec:"L2",
+   q:"Wie beschreibt das J-Kurven-Modell (Nieman 1994) das Infektrisiko?",
+   correct:"Sedentäre haben ein mittleres Risiko, moderat Trainierende das niedrigste und exzessiv Belastete das höchste Risiko",
+   wrong:["Je mehr Training, desto geringer das Risiko – ausnahmslos","Alle drei Gruppen tragen dasselbe Risiko","Nur Sedentäre haben ein erhöhtes Risiko","Schon moderate Bewegung erhöht das Risiko"]},
+  {n:23, level:2, lec:"L2",
+   q:"Welche vorsichtige Rückkehr-zum-Sport-Empfehlung nach mild/moderater COVID-19 wird als sinnvoll dargestellt?",
+   correct:"Wiederaufnahme nach 10 Tagen Ruhe und anschließend mindestens 3 aufeinanderfolgenden symptomfreien Tagen",
+   wrong:["Sofortige Wiederaufnahme intensiven Trainings","Für alle mindestens 6 Wochen vollständige Sportkarenz","Wettkampf bereits nach 2 Tagen","Keinerlei Pause nötig"]},
+  {n:24, level:2, lec:"L4",
+   q:"Wodurch wird die belastungsinduzierte Lymphozyten-Mobilisierung vorrangig ausgelöst?",
+   correct:"Durch Stimulation β₂-adrenerger Rezeptoren mittels Adrenalin",
+   wrong:["Durch die Insulinausschüttung","Allein durch Cortisol","Durch die erhöhte Körpertemperatur","Durch den Laktatabbau"]},
+  {n:25, level:2, lec:"L4",
+   q:"Wie wird die transiente Lymphopenie nach Belastungsende aktuell interpretiert?",
+   correct:"Als Phase erhöhter Immunüberwachung, in der Zellen ins Zielgewebe umverteilt werden",
+   wrong:["Als Zeichen dauerhafter Immunschwäche","Als pathologischer Zelltod","Als Folge einer Infektion","Als reiner Messfehler"]},
+  {n:26, level:2, lec:"L4",
+   q:"Welche drei Eigenschaften erfüllt das Myokin IL-6 als kurzfristiger 'Energie-Allokator' (Kistner et al.)?",
+   correct:"Energiesensorik, Energiefreisetzung und Energiezuteilung",
+   wrong:["Energiespeicherung, Energieabbau und Energievernichtung","Fettsynthese, Proteinabbau und DNA-Reparatur","Wärmeerzeugung, Kälteschutz und Schwitzen","Sauerstofftransport, CO₂-Abtransport und pH-Pufferung"]},
+  {n:27, level:2, lec:"L5",
+   q:"Welche drei Shuttle-Systeme beschreibt Brooks (2018)?",
+   correct:"Zell-Zell-, intrazellulärer und Organ-Organ-Laktat-Shuttle",
+   wrong:["Glukose-, Fett- und Protein-Shuttle","Renaler, hepatischer und kardialer Shuttle","Aerober, anaerober und alaktazider Shuttle","Arterieller, venöser und kapillärer Shuttle"]},
+  {n:28, level:2, lec:"L5",
+   q:"Was kennzeichnet die 'enterische' Phase des postprandialen Laktat-Shuttles (Leija et al. 2024)?",
+   correct:"Das Blutlaktat steigt vor der Blutglukose, da Darmepithelzellen Glukose sofort zu Laktat verstoffwechseln",
+   wrong:["Die Blutglukose steigt vor dem Laktat","Es wird gar kein Laktat gebildet","Das Laktat sinkt nach der Mahlzeit","Die Phase tritt nur bei Sportlern auf"]},
+  {n:29, level:2, lec:"L6",
+   q:"Welcher Umstand begünstigt die NK-Zell-Aktivierung gegen Tumorzellen?",
+   correct:"Das Fehlen von MHC-I auf den Tumorzellen",
+   wrong:["Eine hohe MHC-I-Expression der Tumorzellen","Vermehrte Tregs im Tumor","Niedrige Adrenalinspiegel","Das Fehlen von Granzymen"]},
+  {n:30, level:2, lec:"L6",
+   q:"Welche Rolle spielt muskuläres IL-6 in der Krebsimmunität?",
+   correct:"Es mobilisiert NK-Zellen in den Blutkreislauf, sodass diese Tumoren infiltrieren können",
+   wrong:["Es fördert das Tumorwachstum unmittelbar","Es hemmt sämtliche Immunzellen","Es steigert die MDSC-Zahl","Im Muskel hat es keine Funktion"]},
+  {n:31, level:2, lec:"L10",
+   q:"Wie verhielt sich Eisen nach dem Sit-to-Stand-Test (STST)?",
+   correct:"Es war direkt nach Belastung erhöht und stieg nach 60 min signifikant weiter an",
+   wrong:["Es sank kontinuierlich ab","Es blieb konstant","Es war nur nach 30 min erniedrigt","Es war nicht messbar"]},
+  {n:32, level:2, lec:"L10",
+   q:"Warum müssen Serumparameter nach Belastung für Hämokonzentration korrigiert werden?",
+   correct:"Weil Blut- und Plasmavolumen abnehmen (hier ca. 6 % bzw. 10 %), was Konzentrationen scheinbar erhöht",
+   wrong:["Weil das Plasmavolumen zunimmt","Weil die Herzfrequenz sinkt","Weil Eisen abgebaut wird","Eine Korrektur ist unnötig"]},
+  {n:33, level:2, lec:"L11",
+   q:"Warum muss diätetisches Fe³⁺ vor der Aufnahme reduziert werden, und welcher Transporter übernimmt die apikale Aufnahme?",
+   correct:"Fe³⁺ wird durch DcytB zu Fe²⁺ reduziert; die Aufnahme erfolgt über DMT1",
+   wrong:["Fe³⁺ wird direkt über Ferroportin aufgenommen","Fe³⁺ wird unmittelbar durch Transferrin transportiert","Fe³⁺ wird über Hepcidin aufgenommen","Eine Reduktion ist nicht erforderlich"]},
+  {n:34, level:2, lec:"L11",
+   q:"Welche Laborkonstellation ist typisch für eine funktionelle Eisenmangelsituation?",
+   correct:"Ferritin normal/erhöht, Serumeisen niedrig, Transferrinsättigung niedrig, Hämoglobin normal",
+   wrong:["Ferritin niedrig, Serumeisen niedrig, Hämoglobin niedrig","Sämtliche Werte erhöht","Ferritin niedrig, Serumeisen erhöht","Sämtliche Werte normal"]},
+
+  // ---------- STUFE 3 ----------
+  {n:35, level:3, lec:"L1",
+   q:"Was zeigte die Studie von Pontzer et al. (2021) zum Gesamtenergieverbrauch (TEE) über die Lebensspanne?",
+   correct:"Nach Korrektur für die fettfreie Masse bleibt der TEE zwischen 20 und 60 Jahren konstant, und Geschlechtsunterschiede verschwinden",
+   wrong:["Der TEE steigt kontinuierlich bis ins hohe Alter","Frauen haben grundsätzlich einen niedrigeren Stoffwechsel","Der Spätlebens-Rückgang beginnt schon mit 40 Jahren","Der TEE erreicht in der Pubertät sein Maximum"]},
+  {n:36, level:3, lec:"L1",
+   q:"Warum kann eine vollständige Entzündungsunterdrückung (z. B. hochdosierte Antioxidanzien unmittelbar nach dem Training) nachteilig sein?",
+   correct:"Sie schwächt das adaptive Signal und mindert dadurch trainingsbedingte Anpassungen",
+   wrong:["Sie steigert die Laktatproduktion","Sie senkt die Herzfrequenz zu stark","Sie unterbindet die Schweißproduktion","Sie erhöht dauerhaft die TNF-α-Produktion"]},
+  {n:37, level:3, lec:"L1",
+   q:"Was repräsentiert die anaerobe Schwelle aus metabolischer Sicht?",
+   correct:"Das maximale Laktat-Steady-State – die höchste Intensität, bei der Bildung und Elimination von Laktat im Gleichgewicht stehen",
+   wrong:["Den Punkt maximaler Fettoxidation","Den Ruheenergieumsatz","Die maximale Herzfrequenz","Den Punkt der ersten Laktaterhöhung über den Ruhewert"]},
+  {n:38, level:3, lec:"L2",
+   q:"Welche Einschränkung des J-Kurven-Modells nannte die IOC-Konsensusgruppe (Schwellnus et al. 2016)?",
+   correct:"Die rechte Modellseite trifft womöglich nicht auf Eliteathleten zu, bei denen hohe Trainingslasten nicht konsistent mit erhöhtem Erkrankungsrisiko einhergehen",
+   wrong:["Das Modell gilt nur für Kinder","Moderate Bewegung erhöht das Risiko nachweislich","Das Modell ist auf Laborstudien beschränkt","Sedentäre haben das niedrigste Risiko"]},
+  {n:39, level:3, lec:"L2",
+   q:"Welcher immunologische Befund ist bei akuter COVID-19 mit mildem Verlauf und beschleunigter Viruselimination assoziiert?",
+   correct:"Eine rasche SARS-CoV-2-spezifische CD4⁺-T-Zell-Antwort",
+   wrong:["Ein vollständiges Fehlen von B-Zellen","Eine verzögerte CD4⁺-T-Zell-Antwort","Eine fehlende Interferonproduktion","Eine dauerhaft erhöhte Neutrophilenzahl"]},
+  {n:40, level:3, lec:"L2",
+   q:"Was beschreibt das Konzept des 'Immunometabolism' im Kontext intensiver, langer Belastung?",
+   correct:"Eine verringerte metabolische Kapazität der Immunzellen während der Erholung, die zu vorübergehender Immundysfunktion führt",
+   wrong:["Den Muskelmassezuwachs durch Krafttraining","Die Erhöhung des Grundumsatzes im Schlaf","Die Eisenspeicherung in Ferritin","Die Laktat-Shuttle-Theorie"]},
+  {n:41, level:3, lec:"L4",
+   q:"Was löst das 'IL-6-Paradoxon' zwischen Training und Infektion entscheidend auf?",
+   correct:"Beim Training wird IL-6 ohne TNF-α und IL-1 freigesetzt, begleitet von früher, gleichzeitiger Erhöhung von IL-1ra und IL-10",
+   wrong:["Beim Training erscheint IL-6 erst nach 8 Stunden","Beim Training fehlt IL-6 vollständig","Bei Infektion fehlt TNF-α","Training aktiviert NF-κB stärker als eine Infektion"]},
+  {n:42, level:3, lec:"L4",
+   q:"Über welche Signalwege wird die belastungsinduzierte IL-6-Produktion im Skelettmuskel vorrangig reguliert?",
+   correct:"Über AMPK, PGC-1α und SIRT1 als Reaktion auf Glykogenabbau und ein erhöhtes AMP/ATP-Verhältnis",
+   wrong:["Über TNFR1 und NF-κB","Allein über Insulin/PI3K","Über das Renin-Angiotensin-System","Über JAK/STAT3 mittels Hepcidin"]},
+  {n:43, level:3, lec:"L5",
+   q:"Was zeigte die Studie von Hui et al. (2017, Nature) zum TCA-Zyklus?",
+   correct:"Glykolyse und TCA-Zyklus sind auf Laktatebene entkoppelt; Laktat ist in den meisten Geweben das primäre zirkulierende TCA-Substrat",
+   wrong:["Glukose tritt stets direkt als Pyruvat in die Mitochondrien ein","Laktat spielt im TCA-Zyklus keine Rolle","Nur das Gehirn nutzt Laktat","Glutamin ist in allen Geweben das Hauptsubstrat"]},
+  {n:44, level:3, lec:"L5",
+   q:"Welche bahnbrechende Erkenntnis lieferte Cai et al. (2023) zur Wirkung von Laktat?",
+   correct:"Laktat aktiviert die mitochondriale Elektronentransportkette direkt – unabhängig von seiner eigenen Verstoffwechselung (auch nicht-metabolisierbares D-Laktat wirkt)",
+   wrong:["Laktat hemmt die Atmungskette","Laktat wirkt ausschließlich als Brennstoff","Nur L-Laktat wirkt, D-Laktat ist wirkungslos","Laktat verstärkt den Warburg-Effekt"]},
+  {n:45, level:3, lec:"L6",
+   q:"Welcher Mechanismus gehört NICHT zu den beschriebenen Effekten regelmäßigen Trainings auf die Tumorimmunität?",
+   correct:"Eine Verschlechterung der T-Zell-Repertoire-Diversität",
+   wrong:["Erhöhte Infiltration von NK- und CD8⁺-T-Zellen in den Tumor","Reduktion von Tregs und MDSCs","Verringerte T-Zell-Erschöpfung","Metabolische Reprogrammierung (Laktat verbessert die Stemness von CD8⁺-T-Zellen)"]},
+  {n:46, level:3, lec:"L6",
+   q:"Welche klinische Perspektive ergibt sich aus der bevorzugten Mobilisierung zytotoxischer Zellen durch akute Belastung?",
+   correct:"Die Nutzung von Immunzellen aus dem Blut nach Belastung als adoptive Zelltherapie bei Krebs",
+   wrong:["Der Verzicht auf jegliche Immuntherapie","Der vollständige Ersatz der Chemotherapie durch Sport","Eine Reduktion der NK-Zell-Funktion als Therapie","Die Vermeidung jeglicher körperlicher Aktivität bei Krebs"]},
+  {n:47, level:3, lec:"L10",
+   q:"Wie verhielten sich Kupfer und Selen unmittelbar nach dem STST?",
+   correct:"Beide nahmen signifikant ab und kehrten anschließend zu den Ausgangswerten zurück",
+   wrong:["Beide stiegen stark an","Beide blieben unverändert","Kupfer stieg, Selen fiel","Beide stiegen erst nach 60 min an"]},
+  {n:48, level:3, lec:"L10",
+   q:"Welcher Befund wurde für Zink im STST beobachtet?",
+   correct:"Keine Änderung des Gesamtzinks, aber ein signifikanter Anstieg des freien Zinks (fZn) unmittelbar nach Belastung",
+   wrong:["Ein starker Anstieg des Gesamtzinks","Ein Abfall von Gesamt- und freiem Zink","Ein unverändertes freies Zink","Zink war nicht nachweisbar"]},
+  {n:49, level:3, lec:"L11",
+   q:"Welches Zytokin ist der dominante Induktor von Hepcidin, und über welchen Signalweg?",
+   correct:"IL-6 über den JAK/STAT3-Signalweg",
+   wrong:["TNF-α über NF-κB","IL-10 über AMPK","Insulin über PI3K","IFN-γ über MAPK"]},
+  {n:50, level:3, lec:"L11",
+   q:"Wie senkt Hepcidin den zirkulierenden Eisenspiegel?",
+   correct:"Es bindet an Ferroportin und löst dessen Internalisierung und lysosomalen Abbau aus, wodurch der Eisenexport gehemmt wird",
+   wrong:["Es steigert die Ferroportin-Expression","Es oxidiert Fe²⁺ zu Fe³⁺","Es baut Ferritin ab","Es erhöht die intestinale Eisenaufnahme"]}
+];
+
+/* ============================================================
+   STATE & HELFER
+   ============================================================ */
+const LETTERS = ["A","B","C","D","E"];
+const $ = id => document.getElementById(id);
+
+let session = null;        // aktuelle Quiz-Session
+let qStartTime = 0;        // Startzeitpunkt der aktuellen Frage (ms)
+let tickHandle = null;     // Intervall für Live-Timer
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+function fmt(sec){ return sec.toFixed(1).replace(".",",") + " s"; }
+
+function buildOptions(item){
+  // Optionen mischen, Index der richtigen Antwort merken
+  const opts = shuffle([{t:item.correct,ok:true}, ...item.wrong.map(w=>({t:w,ok:false}))]);
+  return opts;
+}
+
+// Pool-Info beim Laden / bei Filteränderung
+function updatePoolInfo(){
+  const lvl = parseInt($("levelSel").value,10);
+  const pool = lvl===0 ? BANK : BANK.filter(q=>q.level===lvl);
+  const max = pool.length;
+  const inp = $("countSel");
+  inp.max = max;
+  if(parseInt(inp.value,10) > max) inp.value = max;
+  $("poolInfo").textContent = `Verfügbar in der Auswahl: ${max} Fragen.`;
+}
+$("levelSel").addEventListener("change", updatePoolInfo);
+updatePoolInfo();
+
+/* ============================================================
+   QUIZ-ABLAUF
+   ============================================================ */
+function startQuiz(){
+  const lvl = parseInt($("levelSel").value,10);
+  let pool = lvl===0 ? BANK.slice() : BANK.filter(q=>q.level===lvl);
+  if($("shuffleQ").checked) pool = shuffle(pool);
+  let count = parseInt($("countSel").value,10);
+  if(isNaN(count) || count<1) count = 1;
+  count = Math.min(count, pool.length);
+  pool = pool.slice(0, count);
+
+  session = {
+    questions: pool.map(item => ({...item, options: buildOptions(item)})),
+    idx: 0,
+    instant: $("instantFb").checked,
+    results: []   // {n, level, lec, q, correct(bool), timeSec, picked, answer}
+  };
+
+  $("start").classList.add("hidden");
+  $("results").classList.add("hidden");
+  $("quiz").classList.remove("hidden");
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const s = session;
+  const item = s.questions[s.idx];
+
+  // Tags & Fortschritt
+  const lvlNames = {1:"Leicht",2:"Mittel",3:"Schwer"};
+  $("qtags").innerHTML =
+    `<span class="tag lvl lvl${item.level}">Stufe ${item.level} · ${lvlNames[item.level]}</span>`+
+    `<span class="tag">${item.lec}</span>`+
+    `<span class="tag">Frage ${s.idx+1}/${s.questions.length}</span>`;
+  $("progBar").style.width = ((s.idx)/s.questions.length*100) + "%";
+
+  $("qtext").textContent = item.q;
+  $("feedback").innerHTML = "";
+  $("nextBtn").disabled = true;
+  $("nextBtn").textContent = (s.idx === s.questions.length-1) ? "Auswerten" : "Weiter";
+
+  // Antworten
+  const wrap = $("answers");
+  wrap.innerHTML = "";
+  item.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.className = "ans";
+    btn.type = "button";
+    btn.innerHTML = `<span class="letter">${LETTERS[i]}</span><span>${opt.t}</span>`;
+    btn.addEventListener("click", () => pick(i, btn));
+    wrap.appendChild(btn);
+  });
+
+  // Timer starten
+  qStartTime = performance.now();
+  startTick();
+}
+
+function startTick(){
+  stopTick();
+  $("qtimer").textContent = "0,0 s";
+  tickHandle = setInterval(() => {
+    const el = (performance.now()-qStartTime)/1000;
+    $("qtimer").textContent = fmt(el);
+  }, 100);
+}
+function stopTick(){ if(tickHandle){clearInterval(tickHandle); tickHandle=null;} }
+
+function pick(i, btn){
+  const s = session;
+  const item = s.questions[s.idx];
+  const timeSec = (performance.now()-qStartTime)/1000;
+  stopTick();
+  $("qtimer").textContent = fmt(timeSec);
+
+  const chosen = item.options[i];
+  const correct = !!chosen.ok;
+
+  // Auswahl protokollieren
+  s.results.push({
+    n:item.n, level:item.level, lec:item.lec, q:item.q,
+    correct, timeSec,
+    answer: chosen.t,
+    correctAnswer: item.correct
+  });
+
+  // Buttons sperren + markieren
+  const btns = $("answers").querySelectorAll(".ans");
+  btns.forEach((b, j) => {
+    b.disabled = true;
+    if(s.instant){
+      if(item.options[j].ok) b.classList.add("correct");
+      if(j===i && !correct) b.classList.add("wrong");
+    } else if(j===i){
+      b.classList.add(correct ? "correct" : "wrong");
+    }
+  });
+
+  // Feedback
+  if(s.instant){
+    $("feedback").innerHTML = correct
+      ? `<span class="fb-ok">Richtig.</span> <span style="color:var(--grey-5)">(${fmt(timeSec)})</span>`
+      : `<span class="fb-no">Leider falsch.</span> <span style="color:var(--grey-5)">Richtig wäre: ${item.correct}</span>`;
+  } else {
+    $("feedback").innerHTML = `<span style="color:var(--grey-5)">Antwort erfasst (${fmt(timeSec)}).</span>`;
+  }
+
+  $("nextBtn").disabled = false;
+  $("nextBtn").focus();
+}
+
+function next(){
+  const s = session;
+  if(s.idx < s.questions.length-1){
+    s.idx++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+/* ============================================================
+   ERGEBNIS
+   ============================================================ */
+function showResults(){
+  stopTick();
+  const s = session;
+  $("quiz").classList.add("hidden");
+  $("results").classList.remove("hidden");
+  $("progBar").style.width = "100%";
+
+  const total = s.results.length;
+  const right = s.results.filter(r=>r.correct).length;
+  const totalTime = s.results.reduce((a,r)=>a+r.timeSec,0);
+  const pct = total ? Math.round(right/total*100) : 0;
+  const avg = total ? totalTime/total : 0;
+
+  $("scoreHead").textContent = `${right} von ${total} Fragen richtig`;
+  $("sCorrect").textContent = right;
+  $("sPct").innerHTML = pct + "&nbsp;%";
+  $("sTotal").innerHTML = totalTime.toFixed(0) + "&nbsp;s";
+  $("sAvg").innerHTML = avg.toFixed(1).replace(".",",") + "&nbsp;s";
+
+  const lvlNames = {1:"1 · leicht",2:"2 · mittel",3:"3 · schwer"};
+  const tb = $("resultTable").querySelector("tbody");
+  tb.innerHTML = "";
+  s.results.forEach((r, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      `<td>${i+1}</td>`+
+      `<td>${lvlNames[r.level]}</td>`+
+      `<td>${r.lec}</td>`+
+      `<td class="qcell">${r.q}</td>`+
+      `<td class="c"><span class="dot ${r.correct?'ok':'no'}" title="${r.correct?'richtig':'falsch'}"></span></td>`+
+      `<td class="num">${fmt(r.timeSec)}</td>`;
+    tb.appendChild(tr);
+  });
+}
+
+function downloadCSV(){
+  const s = session;
+  const sep = ";";
+  const head = ["Nr","Stufe","Lecture","Frage","Antwort_gewaehlt","Richtige_Antwort","Korrekt","Zeit_Sekunden"];
+  const esc = v => `"${String(v).replace(/"/g,'""')}"`;
+  const rows = s.results.map((r,i) => [
+    i+1, r.level, r.lec, r.q, r.answer, r.correctAnswer,
+    r.correct?"ja":"nein", r.timeSec.toFixed(2).replace(".",",")
+  ].map(esc).join(sep));
+
+  const right = s.results.filter(r=>r.correct).length;
+  const totalTime = s.results.reduce((a,r)=>a+r.timeSec,0);
+  const summary = [
+    "", "",
+    `Summe${sep}${esc("Richtig: "+right+" / "+s.results.length)}${sep}${esc("Gesamtzeit (s): "+totalTime.toFixed(2).replace(".",","))}`
+  ];
+
+  const csv = "\uFEFF" + [head.map(esc).join(sep), ...rows, ...summary].join("\r\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const stamp = new Date().toISOString().slice(0,16).replace(/[:T]/g,"-");
+  a.href = url; a.download = `quiz_ergebnis_${stamp}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function resetToStart(){
+  $("results").classList.add("hidden");
+  $("quiz").classList.add("hidden");
+  $("start").classList.remove("hidden");
+  $("progBar").style.width = "0%";
+  updatePoolInfo();
+}
+
+/* ============================================================
+   EVENTS
+   ============================================================ */
+$("startBtn").addEventListener("click", startQuiz);
+$("nextBtn").addEventListener("click", next);
+$("retryBtn").addEventListener("click", resetToStart);
+$("csvBtn").addEventListener("click", downloadCSV);
+</script>
+</body>
+</html>
