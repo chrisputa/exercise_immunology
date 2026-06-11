@@ -89,12 +89,12 @@ const siteConfig: SiteConfig = {
             href: '/dashboards'
         },
         {
-            text: 'Tutorials',
-            href: '/tutorials'
-        },
-        {
             text: 'Quiz',
             href: '/quiz'
+        },
+        {
+            text: 'Tutorials',
+            href: '/tutorials'
         },
         {
             text: 'Contact',
