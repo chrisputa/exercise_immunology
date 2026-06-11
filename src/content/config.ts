@@ -19,6 +19,12 @@ const pages = defineCollection({
         title: z.string(),
         seo: seoSchema.optional(),
         showHeader: z.boolean().default(false),
+        // Optional iframe embed: when set, the page is rendered with DashboardLayout
+        // instead of PageLayout (see src/pages/[...id].astro).
+        iframeSrc: z.string().optional(),
+        iframeWidth: z.number().optional(),
+        iframeHeight: z.number().optional(),
+        iframeScale: z.number().optional(),
     })
 });
 
