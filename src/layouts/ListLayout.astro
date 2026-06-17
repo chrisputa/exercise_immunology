@@ -12,7 +12,7 @@ const showHeader = Astro.props.showHeader ?? Astro.props.frontmatter?.showHeader
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={showHeader}>
     <article class="mb-16 sm:mb-24">
         <header class="mb-8">
-            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{seo?.title ?? title}</h1>
+            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-[2.625rem] sm:leading-tight">{seo?.title ?? title}</h1>
         </header>
         <section class="max-w-none prose sm:prose-lg wide">
             <slot name="preamble" />

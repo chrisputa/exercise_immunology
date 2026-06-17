@@ -3,6 +3,8 @@
 @import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
 @import '@fontsource-variable/eb-garamond' layer(base);
 @import '@fontsource-variable/ibm-plex-sans' layer(base);
+@import '@fontsource-variable/source-serif-4' layer(base);
+@import '@fontsource-variable/source-serif-4/wght-italic.css' layer(base);
 @import 'katex/dist/katex.min.css' layer(base);
 
 @import 'tailwindcss';
@@ -10,18 +12,26 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-    --text-main: #111111;
+    --text-main: #262523;   /* grey-black (external --fg) */
+    --text-muted: #6b6b6b;
     --bg-main: #fffff8;
     --bg-muted: #eae9e1;
     --border-main: #171717;
+    --accent: #1f2937;       /* near-black slate for links */
+    --accent-hover: #000000;
+    /* Shared weight for all serif headings & titles. Tune here once. */
+    --weight-heading: 670;
 }
 html.dark {
     --text-main: #f2f1ec;
+    --text-muted: #ede8e8;
     --bg-main: #171717;
     --bg-muted: #242424;
     --border-main: #f2f1ec;
+    --accent: #e8e8e8;
+    --accent-hover: #ffffff;
 }
-/*
+/* Original (paper / EB Garamond)
 :root {
     --text-main: #111111;
     --bg-main: #fffff8;
@@ -68,12 +78,16 @@ html.dark {
 */
 
 @theme inline {
-    --font-sans: 'IBM Plex Sans Variable', 'Inter Variable', serif;
-    --font-serif: 'EB Garamond Variable', 'Newsreader Variable', serif;
+    /* Body text = Inter (UI / body sans-serif); headings/titles = Source Serif 4 (serif) */
+    --font-sans: 'Inter Variable', 'Helvetica Neue', Arial, system-ui, sans-serif;
+    --font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
     --text-color-main: var(--text-main);
+    --text-color-muted: var(--text-muted);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
     --border-color-main: var(--border-main);
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
 }
 
 /* Declare cascade order so @layer slides comes last */
@@ -84,14 +98,14 @@ html.dark {
         --tw-prose-body: var(--text-color-main);
         --tw-prose-headings: var(--text-color-main);
         --tw-prose-lead: var(--text-color-main);
-        --tw-prose-links: var(--text-color-main);
+        --tw-prose-links: var(--color-accent);
         --tw-prose-bold: var(--text-color-main);
         --tw-prose-counters: var(--text-color-main);
         --tw-prose-bullets: var(--text-color-main);
         --tw-prose-hr: var(--border-color-main);
-        --tw-prose-quotes: var(--text-color-main);
+        --tw-prose-quotes: var(--text-color-muted);
         --tw-prose-quote-borders: var(--border-color-main);
-        --tw-prose-captions: var(--text-color-main);
+        --tw-prose-captions: var(--text-color-muted);
         --tw-prose-kbd: var(--text-color-main);
         --tw-prose-code: var(--text-color-main);
         --tw-prose-th-borders: var(--border-color-main);
@@ -99,8 +113,9 @@ html.dark {
     }
     
     .prose {
-        @apply font-serif font-medium md:w-[65%] text-xl;
-        hyphens: auto;
+        @apply font-sans font-normal md:w-[65%] text-[15.5px]/[1.7];
+        letter-spacing: -0.005em;
+        hyphens: none;
     }
 
     .wide {
@@ -108,11 +123,20 @@ html.dark {
     }
 
     .prose a {
-        @apply underline font-semibold decoration-1 underline-offset-2 decoration-solid hover:decoration-dashed;
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+        transition: color 150ms, border-color 150ms;
+    }
+    .prose a:hover {
+        color: var(--accent-hover);
     }
 
     .prose :where(h2, h3, h4, h5, h6) {
-        @apply font-normal italic;
+        @apply font-serif italic;
+        font-weight: var(--weight-heading);
+        letter-spacing: -0.01em;
+        line-height: 1.25;
     }
 
     .prose figure figcaption p {
@@ -132,6 +156,11 @@ html.dark {
 
     .prose :where(code, strong) {
         @apply font-bold;
+    }
+
+    .prose pre {
+        white-space: pre-wrap;
+        overflow-x: unset;
     }
 
     .prose p {

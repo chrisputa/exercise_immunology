@@ -15,11 +15,11 @@ const TitleTag = headingLevel;
 <Link class:list={['flex justify-between items-start gap-8 group', className]} href={`/tutorials/${tutorial.id}/`}>
     <div class="grow">
         <TitleTag
-            class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+            class="text-2xl leading-tight font-serif font-[670] tracking-[-0.01em] italic group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
         >
             {title}
         </TitleTag>
-        <div class="mt-1 text-sm font-serif leading-normal">
+        <div class="mt-1 text-sm font-sans leading-normal text-muted">
             <FormattedDate date={publishDate} />
             {
                 updatedDate && (
@@ -32,7 +32,7 @@ const TitleTag = headingLevel;
                 )
             }
         </div>
-        {description && <div class="mt-1 text-lg leading-normal font-serif">{description}</div>}
+        {description && <div class="mt-1 text-[15.5px] leading-[1.7] tracking-[-0.005em] font-sans text-justify text-muted">{description}</div>}
     </div>
     <div class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
         View Tutorial <ArrowRight class="fill-current w-4 h-4" />
