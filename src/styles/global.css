@@ -13,14 +13,14 @@
 
 :root {
     --text-main: #262523;   /* grey-black (external --fg) */
-    --text-muted: #6b6b6b;
+    --text-muted: #5f5f5f;
     --bg-main: #fffff8;
     --bg-muted: #eae9e1;
     --border-main: #171717;
     --accent: #1f2937;       /* near-black slate for links */
     --accent-hover: #000000;
     /* Shared weight for all serif headings & titles. Tune here once. */
-    --weight-heading: 670;
+    --weight-heading: 600;
 }
 html.dark {
     --text-main: #f2f1ec;
@@ -31,51 +31,6 @@ html.dark {
     --accent: #e8e8e8;
     --accent-hover: #ffffff;
 }
-/* Original (paper / EB Garamond)
-:root {
-    --text-main: #111111;
-    --bg-main: #fffff8;
-    --bg-muted: #eae9e1;
-    --border-main: #171717;
-}
-html.dark {
-    --text-main: #f2f1ec;
-    --bg-main: #171717;
-    --bg-muted: #242424;
-    --border-main: #f2f1ec;
-}
-*/
-/* Cyan */
-/*
-:root {
-    --text-main: #162a2b;
-    --bg-main: #d6e0e2;
-    --bg-muted: #ccd8db;
-    --border-main: #162a2b;
-}
-html.dark {
-    --text-main: #d6e0e2;
-    --bg-main: #162a2b;
-    --bg-muted: #1c3537;
-    --border-main: #d6e0e2;
-}
-*/
-
-/* Green */
-/*
-:root {
-    --text-main: #3a4238;
-    --bg-main: #f3efe6;
-    --bg-muted: #eee9dc;
-    --border-main: #3a4238;
-}
-html.dark {
-    --text-main: #f3efe6;
-    --bg-main: #5e6c5b;
-    --bg-muted: #596756;
-    --border-main: #f3efe6;
-}
-*/
 
 @theme inline {
     /* Body text = Inter (UI / body sans-serif); headings/titles = Source Serif 4 (serif) */
