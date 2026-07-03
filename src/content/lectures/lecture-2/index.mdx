@@ -6,6 +6,7 @@ draft: false
 ---
 
 import Figure from '../../../components/Figure.astro';
+import Table from '../../../components/Table.astro';
 import phases from '../../../assets/Figure1_PhasesImmueResponse_bw.png';
 import phasesDark from '../../../assets/generated/Figure1_PhasesImmueResponse_bw_dark.png';
 import dendritic from '../../../assets/Figure2_Dendritic_Cells_bw.png';
@@ -66,6 +67,8 @@ The cellular immune response is triggered when sensor cells (macrophages, neutro
 
 Activation of sensor cells leads to the production of various **mediators**, particularly cytokines, which either directly contribute to the destruction of invading pathogens or act on other cells to amplify the immune response. The immune response proceeds in characteristic phases with distinct temporal dynamics (Murphy and Weaver 2016):
 
+<Table>
+
 | Phase | Onset After Infection | Duration |
 |---|---|---|
 | Inflammation, complement activation, phagocytosis (innate) | Minutes | Days |
@@ -77,10 +80,15 @@ Activation of sensor cells leads to the production of various **mediators**, par
 | Elimination of pathogen by effector cells and antibodies | A few days | Weeks |
 | Immunological memory: maintenance of memory B and T cells | Days to weeks | Can be lifelong |
 
+<Fragment slot="caption">
+Temporal dynamics of the immune response, from innate onset to lasting memory.
+</Fragment>
+</Table>
+
 This phase overview illustrates that the innate immune response reacts within minutes, while the adaptive immune response requires days to fully develop. Crucially, the adaptive immune response can eliminate infections far more efficiently than the innate immune response alone due to its exquisite specificity (Murphy and Weaver 2016).
 
 <Figure src={phases} srcDark={phasesDark} alt="Phases of the Immune Response">
-**Figure:** Phases of the Immune Response -- Gantt-Style Timeline Chart. The innate immune response (black) is initiated within minutes; the adaptive response (dark grey) develops over days to weeks; immunological memory (medium grey, dotted) can persist lifelong. Onset dots mark the beginning of each phase. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
+Phases of the Immune Response -- Gantt-Style Timeline Chart. The innate immune response (black) is initiated within minutes; the adaptive response (dark grey) develops over days to weeks; immunological memory (medium grey, dotted) can persist lifelong. Onset dots mark the beginning of each phase. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
 </Figure>
 
 ## 5 Dendritic Cells -- Key Cells of the Adaptive Immune Response
@@ -92,7 +100,7 @@ Recognition of pathogen-associated molecular patterns (PAMPs) by PRRs stimulates
 As antigen-presenting cells (APCs), mature dendritic cells stimulate the proliferation and differentiation of T lymphocytes in lymph nodes. The activation of naive T lymphocytes by dendritic cells thus represents an essential first step in virtually all adaptive immune responses. While macrophages and B cells can also function as APCs under certain circumstances, dendritic cells are the specialized initiators of adaptive immunity (Murphy and Weaver 2016; Puta et al. 2026).
 
 <Figure src={dendritic} srcDark={dendriticDark} alt="Dendritic Cells Carry Antigen Into the Lymph Nodes for T Cell Priming">
-**Figure:** Dendritic cells initiate adaptive immune responses. Immature dendritic cells in peripheral tissue take up pathogens via macropinocytosis and receptor-mediated endocytosis, then migrate to regional lymph nodes where they mature and activate naive T cells via antigen presentation and co-stimulatory molecules. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
+Dendritic cells initiate adaptive immune responses. Immature dendritic cells in peripheral tissue take up pathogens via macropinocytosis and receptor-mediated endocytosis, then migrate to regional lymph nodes where they mature and activate naive T cells via antigen presentation and co-stimulatory molecules. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
 </Figure>
 
 ## 6 Natural Killer Cells (NK Cells) -- Early Cellular Defense
@@ -121,7 +129,7 @@ NK cells serve to contain viral infections while the adaptive immune system gene
 Furthermore, NK cells produce TNF-α, GM-CSF, and the chemokines CCL3, CCL4, and CCL5 in addition to IFN-γ, contributing to the recruitment and activation of macrophages. IFN-γ from NK cells directly activates macrophages and influences the differentiation of CD4 T cells into the proinflammatory T~H~1 subset (Murphy and Weaver 2016).
 
 <Figure src={nk_cells} srcDark={nk_cellsDark} alt="NK Cells and the Host Response to Virus Infection">
-**Figure:** NK cells are an early component of the host response to virus infection. IFN-α/IFN-β and cytokines (black, solid) are produced first, followed by NK-cell killing (dark grey, dashed); T-cell killing (medium grey, dotted) peaks later as the adaptive response matures. Virus titer (light grey, dash-dot) rises then falls once adaptive immunity is established. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
+NK cells are an early component of the host response to virus infection. IFN-α/IFN-β and cytokines (black, solid) are produced first, followed by NK-cell killing (dark grey, dashed); T-cell killing (medium grey, dotted) peaks later as the adaptive response matures. Virus titer (light grey, dash-dot) rises then falls once adaptive immunity is established. Adapted from Murphy K & Weaver C (2016). *Janeway's Immunobiology*, 9th edn.
 </Figure>
 
 ## 7 Innate Lymphoid Cells (ILCs) -- Relatives of NK Cells

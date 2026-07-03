@@ -5,6 +5,7 @@ draft: false
 ---
 
 import { Note } from '../../../components/MarginNote/index.js';
+import Table from '../../../components/Table.astro';
 
 
 ## Table of Contents
@@ -58,6 +59,8 @@ All subpopulations return to baseline within ≈ 30 min, which identifies the so
 
 A core message of GK97 is that **identical cell counts can carry opposite functional meanings**. The comparison (GK97 §"Exercise- versus infection-induced leukocytosis", Figs. 10, 12, 13) is summarized below.
 
+<Table>
+
 | Feature | Strenuous endurance exercise | Bacterial URTI (sinusitis, tonsillitis) |
 |---|---|---|
 | Neutrophil count | Markedly elevated | Comparable elevation |
@@ -66,6 +69,11 @@ A core message of GK97 is that **identical cell counts can carry opposite functi
 | Monocyte composition | Mainly **regular** CD14⁺CD16⁻ | Strong shift to **mature** CD14⁺CD16⁺ premacrophages (maturation response) |
 | T-cell shift CD45RA → CD45RO | Small after long endurance exercise | Pronounced in infectious mononucleosis (CD8⁺CD45RO⁺CD8⁺HLA-DR⁺) |
 | C-reactive protein (CRP) | Few mg·L⁻¹ range (typically) | 12–96 mg·L⁻¹ |
+
+<Fragment slot="caption">
+Neutrophil and monocyte responses: strenuous exercise versus bacterial URTI.
+</Fragment>
+</Table>
 
 **Interpretation.** The neutrocytosis of infection reflects *primed cells with enhanced defense capacity*; the same numeric neutrocytosis after exercise reflects *demargination with impaired or unchanged effector function*. The infection induces a true **maturation** of monocytes toward premacrophages; exercise mostly mobilises already-existing mature cells from the marginal pool (Gab03). Hence the often-quoted phrase: *"The same cell count means something different."*
 
@@ -160,6 +168,8 @@ A **repeated anaerobic interval session** (e.g. AN-TS = 1 × 60 s + 8 × 10 s al
 
 Both training stimuli reached a comparable *absolute* metabolic peak (max lactate ≈ 14 mmol·L⁻¹, blood pH minimum ≈ 7.16–7.17, plasma volume contraction 13–15 %). What differs is the **duration of the lactic acidosis and the cumulative endocrine load** — and the immune system reads exactly this difference. The side-by-side picture from Meyer01 is:
 
+<Table>
+
 | Parameter (12 unspecifically trained men) | SMT (1 × 60 s) | AN-TS (1 × 60 s + 8 × 10 s) |
 |---|---|---|
 | Duration with lactate > 10 mmol·L⁻¹ | ~ 15 min (steep decline) | **> 60 min** (sustained acidosis) |
@@ -172,6 +182,11 @@ Both training stimuli reached a comparable *absolute* metabolic peak (max lactat
 | IL-8 | Unchanged | Unchanged |
 | CRP at 24 h post | No significant rise | **Significant rise** (P = 0.02 vs Co-day); 3/12 subjects approached or exceeded 5 mg·L⁻¹ |
 | Correlation CRP (24 h) ↔ IL-6 (15 min) | Not significant | **r = 0.79, P < 0.01** |
+
+<Fragment slot="caption">
+Immunoendocrine response to single-bout versus interval anaerobic exercise.
+</Fragment>
+</Table>
 
 The qualitative consequence is that the two protocols look almost identical at the level of *single-time-point* lactate or pH, yet they leave a completely different immunological footprint. SMT triggers a transient demargination of premacrophages plus a small, late neutrophilia — pattern of a stress response. AN-TS, by adding only ≈ 80 s of additional all-out work spread over 40 min, converts the same stimulus into a full **monocyte-activation / IL-6 / CRP cascade** lasting at least 24 h — pattern of a low-grade acute phase response. The key variable is therefore not maximal lactate but the **time-integral of lactic acidosis** (and of cortisol/catecholamines), which in AN-TS is several-fold larger than in SMT.
 
@@ -208,6 +223,8 @@ The kinetics confirm the GK97 / Gab03 pattern: catecholamine-driven early lympho
 
 **Trace elements.** Plasma volume fell ~10 % immediately post and normalised within 30 min, so values must be **plasma-volume corrected** to read true biology (Simon26):
 
+<Table>
+
 | Parameter | Pre | 0 min post | 30 min | 60 min | Direction (adjusted) |
 |---|---|---|---|---|---|
 | Selenium (µg·L⁻¹) | 48.8 | 45.8 | 49.4 | 49.1 | ↓ post, normalises |
@@ -216,6 +233,11 @@ The kinetics confirm the GK97 / Gab03 pattern: catecholamine-driven early lympho
 | Free Zn (µg·L⁻¹) | 0.047 | 0.052 | 0.049 | 0.046 | Transient ↑ at 0 min |
 | Copper (µg·L⁻¹) | 728 | 687 | 758 | 736 | ↓ post, ↑ at 30 min |
 | Iron (µg·L⁻¹) | 1287 | 1650 | 1504 | 1733 | ↑ post, sustained ↑ |
+
+<Fragment slot="caption">
+Serum trace-element kinetics after exercise.
+</Fragment>
+</Table>
 
 Mechanistic interpretation (Simon26 Discussion):
 

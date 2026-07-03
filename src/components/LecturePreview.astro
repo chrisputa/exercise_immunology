@@ -14,14 +14,14 @@ const TitleTag = headingLevel;
 <Link class:list={['flex justify-between items-start gap-8 group', className]} href={`/lectures/${lecture.id}/`}>
     <div class="grow">
         <TitleTag
-            class="text-2xl leading-tight font-serif font-[600] tracking-[-0.01em] italic group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
+            class="text-[27px] leading-tight font-display font-normal tracking-[0.005em] group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-[27px]"
         >
             {sequence ? `Lecture ${sequence}: ` : ''}{title}
         </TitleTag>
-        {examRelevant && <div class="mt-1 text-sm font-serif leading-normal">★ Exam-relevant</div>}
-        {description && <div class="mt-1 text-[15.5px] leading-[1.7] tracking-[-0.005em] font-sans text-justify text-muted">{description}</div>}
+        {examRelevant && <div class="mt-1 text-base font-serif leading-normal">★ Exam-relevant</div>}
+        {description && <div class="mt-2 border-l border-[var(--text-main)] pl-4 text-[18px] leading-[1.6] font-sans text-justify text-muted">{description}</div>}
     </div>
-    <div class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
+    <div class="hidden font-display tracking-[0.04em] opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
         View Lecture <ArrowRight class="fill-current w-4 h-4" />
     </div>
 </Link>

@@ -6,6 +6,7 @@ draft: false
 ---
 
 import { Note } from '../../../components/MarginNote/index.js';
+import Table from '../../../components/Table.astro';
 
 
 ## Table of Contents
@@ -39,6 +40,8 @@ Iron is the **most abundant** essential trace element in the human organism. The
 
 Iron participates in a wide range of biological processes:
 
+<Table>
+
 | Function | Mechanism |
 |---|---|
 | **Oxygen transport** | Component of haemoglobin in erythrocytes |
@@ -46,6 +49,11 @@ Iron participates in a wide range of biological processes:
 | **Energy production** | Electron transfer in the mitochondrial respiratory chain (cytochromes) |
 | **Enzyme function** | Cofactor of peroxidases, catalases, and other redox enzymes |
 | **Immune function** | Required for proliferation, differentiation, and activation of immune cells; generation of reactive oxygen species (ROS) for pathogen killing |
+
+<Fragment slot="caption">
+Physiological functions of iron.
+</Fragment>
+</Table>
 
 The dual role of iron – both essential for cellular function and potentially toxic via free radical generation – means that iron homeostasis is tightly regulated at every level, from intestinal absorption to intracellular storage.
 
@@ -87,11 +95,18 @@ Dietary Fe³⁺  →[DcytB]→  Fe²⁺  →[DMT1]→  Enterocyte
 
 Iron in the body is distributed across three main pools:
 
+<Table>
+
 | Pool | Proportion | Key Proteins | Function |
 |---|---|---|---|
 | **Functional** | ~74 % | Haemoglobin (erythrocytes), Myoglobin (muscle), Enzymes (cytochromes, catalases, peroxidases) | O₂ transport, O₂ storage, redox catalysis |
 | **Storage** | ~26 % | Ferritin, Haemosiderin | Iron reserve, buffering excess |
 | **Transport** | ~0.1 % | Serum iron (Fe³⁺ bound to Transferrin) | Bridge between storage and functional pool |
+
+<Fragment slot="caption">
+Distribution of body iron across functional, storage and transport pools.
+</Fragment>
+</Table>
 
 **Transferrin saturation** (the proportion of transferrin binding sites occupied by iron) is therefore a sensitive marker of iron availability. Under physiological conditions, transferrin is approximately 30 % saturated, leaving substantial reserve binding capacity to buffer any transient rise in free iron.
 
@@ -156,12 +171,19 @@ This cascade illustrates why indiscriminate zinc supplementation without attenti
 
 ### Functional Iron Deficiency
 
+<Table>
+
 | Marker | Finding |
 |---|---|
 | Ferritin | Normal or **elevated** (acute phase protein) |
 | Serum iron | **Low** |
 | Transferrin saturation | **Low** |
 | Haemoglobin | **Normal** |
+
+<Fragment slot="caption">
+Marker profile in functional iron deficiency (inflammation present).
+</Fragment>
+</Table>
 
 **Key principle:** Iron is *present* in the body but *unavailable* for functional use.
 
@@ -174,12 +196,19 @@ Contributing factors:
 
 ### Manifested (Absolute) Iron Deficiency
 
+<Table>
+
 | Marker | Finding |
 |---|---|
 | Ferritin | **Low** |
 | Serum iron | **Low** |
 | Transferrin saturation | **Low** |
 | Haemoglobin | **Low** (iron-deficiency anaemia) |
+
+<Fragment slot="caption">
+Marker profile in absolute iron deficiency.
+</Fragment>
+</Table>
 
 Manifested deficiency can develop when functional deficiency persists or is additionally exacerbated due to:
 
@@ -224,12 +253,19 @@ To contextualise the ferritin result, the **C-reactive protein (CRP)** should be
 
 The combined interpretation of ferritin and CRP creates four diagnostic scenarios:
 
+<Table>
+
 | Ferritin | CRP | Interpretation |
 |---|---|---|
 | ↓ Low | Normal | **Iron deficiency highly probable** — stores depleted |
 | Normal | Normal | **Iron deficiency unlikely** — stores intact, no confounding inflammation |
 | Normal | ↑ Elevated | **Ambiguous** — ferritin may be falsely elevated by acute phase response; stores could be depleted despite normal ferritin |
 | ↑ Elevated | ↑ Elevated | **Inflammatory anaemia / anaemia of chronic disease** — iron trapped, not truly replete |
+
+<Fragment slot="caption">
+Interpreting ferritin against CRP.
+</Fragment>
+</Table>
 
 The critical scenario is **normal ferritin + elevated CRP**: here, ferritin cannot be trusted as a reliable indicator of iron stores and a supplementary marker is required.
 
@@ -293,17 +329,26 @@ When haemoglobin **and** haematocrit are both below the reference range, anaemia
 
 The **mean corpuscular volume (MCV)** and **mean corpuscular haemoglobin (MCH)** define the morphological subtype and immediately narrow the differential diagnosis:
 
+<Table>
+
 | MCV | MCH | Morphology | Leading diagnoses |
 |---|---|---|---|
 | **< 80 fL** | **< 27 pg** | Microcytic hypochromic | Iron deficiency anaemia (IDA); thalassaemia trait; lead toxicity |
 | **80–100 fL** | **27–33 pg** | Normocytic normochromic | Anaemia of chronic disease (ACD); haemolysis; acute blood loss; early mixed deficiency |
 | **> 100 fL** | **> 33 pg** | Macrocytic | Vitamin B12 deficiency; folate deficiency; hypothyroidism; alcohol; myelodysplasia |
 
+<Fragment slot="caption">
+Anaemia classification by red-cell indices (MCV/MCH).
+</Fragment>
+</Table>
+
 In **sports medicine**, microcytic hypochromic anaemia is the dominant pattern in iron deficiency. Normocytic anaemia is common in athletes with chronic inflammation (e.g. persistent infections, IBD, post-COVID) or in the early stage of IDA before microcytosis develops.
 
 #### Step 2 — Microcytic Anaemia Workup (MCV < 80 fL)
 
 Confirm iron status with the full panel and differentiate IDA from thalassaemia trait:
+
+<Table>
 
 | Marker | IDA | Thalassaemia trait |
 |---|---|---|
@@ -314,11 +359,18 @@ Confirm iron status with the full panel and differentiate IDA from thalassaemia 
 | RBC count | ↓ or normal | **↑ Elevated** (characteristic) |
 | RDW | **↑ Elevated** | Normal (uniform small cells) |
 
+<Fragment slot="caption">
+Distinguishing iron-deficiency anaemia from thalassaemia trait.
+</Fragment>
+</Table>
+
 **Key discriminator:** In thalassaemia trait, the RBC count is characteristically elevated despite low MCV (many small cells), whereas in IDA the RBC count is reduced alongside microcytosis. The **Mentzer Index** (MCV / RBC count) provides a simple bedside calculation: < 13 suggests thalassaemia; > 13 suggests IDA.
 
 #### Step 3 — Normocytic Anaemia Workup (MCV 80–100 fL)
 
 The normocytic pattern requires differentiation between ACD and mixed-aetiology anaemia using ferritin, CRP, sTfR, and reticulocyte count:
+
+<Table>
 
 | Marker | ACD only | IDA + ACD (mixed) | Haemolysis |
 |---|---|---|---|
@@ -328,6 +380,11 @@ The normocytic pattern requires differentiation between ACD and mixed-aetiology 
 | Reticulocytes | ↓ Low | ↓ Low | **↑ Elevated** |
 | Haptoglobin | Normal | Normal | **↓ Low** |
 | LDH | Normal | Normal | **↑ Elevated** |
+
+<Fragment slot="caption">
+Marker patterns across anaemia of chronic disease, mixed deficiency and haemolysis.
+</Fragment>
+</Table>
 
 In athletes, normocytic anaemia with low reticulocytes, elevated CRP, and normal sTfR points to **ACD** (iron trapped by hepcidin, adequate stores). Mixed IDA + ACD is identified by elevated sTfR alongside elevated CRP — the sTfR signal indicates cellular iron restriction that cannot be explained by inflammation alone.
 

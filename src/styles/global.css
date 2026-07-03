@@ -1,26 +1,28 @@
-@import '@fontsource-variable/inter' layer(base);
-@import '@fontsource-variable/newsreader' layer(base);
-@import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
-@import '@fontsource-variable/eb-garamond' layer(base);
-@import '@fontsource-variable/ibm-plex-sans' layer(base);
-@import '@fontsource-variable/source-serif-4' layer(base);
-@import '@fontsource-variable/source-serif-4/wght-italic.css' layer(base);
 @import 'katex/dist/katex.min.css' layer(base);
 
 @import 'tailwindcss';
+
+/* ── fonts ─────────────────────────────────────────────────── */
+@import '@fontsource/marcellus' layer(base);
+@import '@fontsource-variable/newsreader' layer(base);
+@import '@fontsource-variable/newsreader/wght-italic.css' layer(base);
+@import '@fontsource/ibm-plex-mono/latin-400.css' layer(base);
+@import '@fontsource/ibm-plex-mono/latin-400-italic.css' layer(base);
+@import '@fontsource/ibm-plex-mono/latin-700.css' layer(base);
+@import '@fontsource/ibm-plex-mono/latin-700-italic.css' layer(base);
+
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-    --text-main: #262523;   /* grey-black (external --fg) */
-    --text-muted: #5f5f5f;
+    --text-main: #262523;
+    --text-muted: #6b6b6b;
     --bg-main: #fffff8;
     --bg-muted: #eae9e1;
     --border-main: #171717;
     --accent: #1f2937;       /* near-black slate for links */
     --accent-hover: #000000;
-    /* Shared weight for all serif headings & titles. Tune here once. */
-    --weight-heading: 600;
+    --weight-heading: 400;
 }
 html.dark {
     --text-main: #f2f1ec;
@@ -33,9 +35,10 @@ html.dark {
 }
 
 @theme inline {
-    /* Body text = Inter (UI / body sans-serif); headings/titles = Source Serif 4 (serif) */
-    --font-sans: 'Inter Variable', 'Helvetica Neue', Arial, system-ui, sans-serif;
-    --font-serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+    --font-display: 'Marcellus', 'Newsreader Variable', Georgia, serif;
+    --font-serif: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Newsreader Variable', Georgia, serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
     --text-color-main: var(--text-main);
     --text-color-muted: var(--text-muted);
     --background-color-main: var(--bg-main);
@@ -47,6 +50,14 @@ html.dark {
 
 /* Declare cascade order so @layer slides comes last */
 @layer base, components, utilities, slides;
+
+@layer base {
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+        font-optical-sizing: auto;
+        text-rendering: optimizeLegibility;
+    }
+}
 
 @layer utilities {
     .prose {
@@ -68,9 +79,9 @@ html.dark {
     }
     
     .prose {
-        @apply font-sans font-normal md:w-[65%] text-[15.5px]/[1.7];
-        letter-spacing: -0.005em;
-        hyphens: none;
+        @apply font-sans font-normal md:w-[65%] text-[18px]/[1.6];
+        letter-spacing: normal;
+        hyphens: auto;
     }
 
     .wide {
@@ -87,30 +98,76 @@ html.dark {
         color: var(--accent-hover);
     }
 
-    .prose :where(h2, h3, h4, h5, h6) {
-        @apply font-serif italic;
+    .prose :where(h1, h2, h3, h4, h5, h6) {
+        @apply font-display not-italic;
         font-weight: var(--weight-heading);
-        letter-spacing: -0.01em;
-        line-height: 1.25;
+        letter-spacing: 0.005em;
+        line-height: 1.2;
     }
 
-    .prose figure figcaption p {
+    .prose figure figcaption, .prose figure figcaption p {
         @apply text-left text-base/5;
+        color: var(--text-muted);
         hyphens: auto;
+    }
+
+    .prose figure figcaption[data-figlabel] {
+        padding-top: 0.4em;
+        background-image: linear-gradient(var(--text-main), var(--text-main));
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: calc(100% - 3rem) 1px;
+    }
+    .prose figure figcaption[data-figlabel]::before {
+        content: attr(data-figlabel);
+        margin-right: 0.85em;
+        font-weight: 640;
+        color: var(--text-main);
+    }
+    .prose figure figcaption[data-figlabel] > p:first-of-type {
+        display: inline;
     }
 
     .prose .marginnote, .prose .marginnote p
      {
         @apply text-left text-base/5;
+        color: var(--text-muted);
         hyphens: auto;
+    }
+
+    .prose .marginnote {
+        padding-top: 0.4em;
+        background-image: linear-gradient(var(--text-main), var(--text-main));
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: calc(100% - 4rem) 1px;
+    }
+    
+    .prose .marginnote > :first-child {
+        margin-top: 0;
     }
     
     .prose :where(ul, ol) {
         @apply w-[90%];
     }
 
-    .prose :where(code, strong) {
+    .prose :where(strong, b) {
+        font-weight: 640;
+    }
+
+    .prose :where(code) {
         @apply font-bold;
+    }
+
+    .prose .lede {
+        font-weight: 620;
+        font-size: 1.06em;
+        line-height: 1.48;
+    }
+    .prose .newthought {
+        font-variant: small-caps;
+        font-size: 1.08em;
+        letter-spacing: 0.02em;
     }
 
     .prose pre {
@@ -127,7 +184,7 @@ html.dark {
    
 
     .prose blockquote footer {
-        font-size: 0.75em; /* 87.5% of parent font size */
+        font-size: 0.75em;
     }   
 
     /* KaTeX overrides (keep them layered) */

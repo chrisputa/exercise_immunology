@@ -5,6 +5,7 @@ draft: false
 ---
 
 import Figure from '../../../components/Figure.astro';
+import Table from '../../../components/Table.astro';
 import jcurve from '../../../assets/jcurve_nieman2019_bw.png';
 import jcurveDark from '../../../assets/generated/jcurve_nieman2019_bw_dark.png';
 import { Note } from '../../../components/MarginNote/index.js';
@@ -69,6 +70,8 @@ Sneezing reaches its highest values within the first two days after infection an
 
 A comprehensive organ-by-organ classification of URTI symptoms aids differential diagnosis and supports the "neck check" rule used in return-to-sport decisions (Puta et al. 2026, Tab. 22.5):
 
+<Table>
+
 | Body region | Signs and symptoms |
 |---|---|
 | Head/Forehead | Headache, dizziness |
@@ -77,6 +80,11 @@ A comprehensive organ-by-organ classification of URTI symptoms aids differential
 | Ears | Blocked ears (impaired hearing), earache or pressure on ears |
 | Mouth/Throat/Neck | Hoarseness, sore throat, tonsillar swelling/redness/coating, difficulty swallowing, painful anterior cervical lymph nodes, toothache, partial or complete loss of taste, blue lips or oral mucosa (cyanosis) |
 | Face | Sensation of congestion or swelling in the facial area, facial pain (mainly upper jaw and forehead), unusual facial pallor, increased discomfort when bending the head forward |
+
+<Fragment slot="caption">
+Signs and symptoms of upper respiratory tract infection by body region.
+</Fragment>
+</Table>
 
 This level of clinical detail is essential for sports medicine practitioners making training and competition decisions. Knowing these symptoms by body region helps differentiate URTI from other conditions such as allergies, sinusitis, or early manifestations of systemic infection.
 
@@ -106,6 +114,8 @@ Respiratory infections represent, alongside injuries, the most frequent cause of
 
 A substantial body of epidemiological research has established the link between heavy exertion and elevated URTI risk in athletes (Nieman and Wentz 2019):
 
+<Table>
+
 | Study | Population | Key finding |
 |---|---|---|
 | Peters and Bateman (1983) | 141 ultramarathon runners vs. 124 controls | Illness incidence 2× higher in runners after 56-km race (33% vs. 15%) |
@@ -115,6 +125,11 @@ A substantial body of epidemiological research has established the link between 
 | Spence et al. (2007) | 20 elite, 30 recreational, 20 sedentary | Illness incidence 4× higher in elite athletes and 2× greater in sedentary controls vs. recreational athletes |
 | Engebretsen et al. (2010) | 27,245 elite athletes at Olympic Games (2010--2012) | Illness incidence 5--18%; risk factor: female sex |
 | Drew et al. (2017) | 132 elite athletes preparing for Olympics | Illness symptoms in 100% of athletes (46% upper respiratory); risk factors: female sex, low energy availability |
+
+<Fragment slot="caption">
+Epidemiological studies linking heavy training loads to elevated infection risk.
+</Fragment>
+</Table>
 
 The IOC and IAAF initiated acute illness surveillance systems revealing that 2--18% of elite athletes experience illness episodes during international competition events, with higher proportions for females and those engaging in endurance events (Schwellnus et al. 2022; Nieman and Wentz 2019).
 
@@ -177,12 +192,19 @@ This conservative recommendation is supported by several considerations: resumpt
 
 The return to training and competition should be staged according to WHO guidelines as asymptomatic, mild, moderate, severe, and critical (Steinacker et al. 2022; NIH 2024):
 
+<Table>
+
 | Severity | Clinical criteria | Symptom characterisation |
 |---|---|---|
 | Mild | Various signs and symptoms of COVID-19 (e.g. fever, cough, sore throat, malaise, headache, muscle pain, loss of smell/taste) but no dyspnoea or abnormal chest findings | Subfebrile temperature (&lt;38.5°C), mild cough, sore throat, mild malaise, no dyspnoea and no subjective cardiac complaints. Mild sniffles ≤3 days considered symptom-free; if persisting longer, classified as mild symptom |
 | Moderate | Lower airway involvement on clinical assessment or imaging, SpO₂ ≥94% | Pronounced malaise (fatigue symptoms), dyspnoea at rest, higher fever (>38.5°C), headache, muscle/joint/limb pain, nausea or diarrhoea. Persistent cough ≥3 days also classified as moderate |
 | Severe | SpO₂ &lt;94%, PaO₂/FiO₂ &lt;300 mmHg, respiratory rate >30/min, or lung infiltrates >50% | Hospitalisation required, up to intensive care |
 | Critical | Respiratory failure, septic shock, and/or multi-organ dysfunction | Intensive care required |
+
+<Fragment slot="caption">
+Clinical severity grades of COVID-19 with criteria and symptom profiles.
+</Fragment>
+</Table>
 
 Elliott et al. (2020, 2022) recommend that athletes with a complicated clinical course should undergo monitoring of inflammatory markers (e.g. C-reactive protein), respiratory function assessment (spirometry), and renal function evaluation. Steinacker et al. (2022) add that pulmonary function tests should be performed when clinical findings point to bronchial constriction or dyspnoea at rest or during exertion. Medical examinations should be considered for athletes wishing to return to competition earlier than 10 days after symptom onset, and should include a medical history, physical examination, laboratory diagnostics (differential blood count, CRP, transaminases, CK, creatinine, and troponin if cardiac complaints are present), and a resting ECG (Steinacker et al. 2022). Myocardial or pulmonary conditions may even require regular annual follow-up including ECG, echocardiography, and arterial blood gas analysis (Halle et al. 2021).
 
@@ -211,7 +233,7 @@ To illustrate the relationship between sport and upper respiratory tract infecti
 The model also illustrates the inverse relationship between immunity and infection frequency: as physical activity increases from sedentary to moderate levels, immunity rises and infection frequency drops. Beyond the moderate range into excessive exercise, immunity declines and infection frequency rises sharply. This dual visualisation was termed the "Immunfisch" (immune fish) by Puta et al. (2026, Abb. 22.7) because the combined curves resemble the outline of a fish.
 
 <Figure src={jcurve} srcDark={jcurveDark} alt="J-curve nieman">
-**Figure:** The curve follows the shape described in Nieman & Wentz (2019): URTI risk is **reduced ~40–50%** in the moderate exercise zone compared to sedentary individuals, then rises sharply with heavy exertion to **2–6× above normal** — matching the values cited in the paper for post-race illness incidence.
+The curve follows the shape described in Nieman & Wentz (2019): URTI risk is **reduced ~40–50%** in the moderate exercise zone compared to sedentary individuals, then rises sharply with heavy exertion to **2–6× above normal** — matching the values cited in the paper for post-race illness incidence.
 </Figure>
 
 ### 6.2 Supporting Epidemiological Evidence

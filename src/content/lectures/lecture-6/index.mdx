@@ -6,6 +6,7 @@ draft: false
 ---
 
 import Figure from '../../../components/Figure.astro';
+import Table from '../../../components/Table.astro';
 import fig1 from '../../../assets/fig1_aerob_anaerob_transition.png';
 import fig1Dark from '../../../assets/generated/fig1_aerob_anaerob_transition_dark.png';
 import fig2 from '../../../assets/fig2_stegmann_iat.png';
@@ -58,7 +59,7 @@ The framework introduced by Kindermann, Simon and Keul (1979) describes enduranc
 The anaerobic threshold is therefore not a sudden switch but the upper border of a gradual transition.
 
 <Figure src={fig1} srcDark={fig1Dark} alt="Aerobic-anaerobic transition during incremental exercise">
-**Figure 1:** Schematic representation of the aerobic–anaerobic transition (grey zone). Top: blood-lactate curve with aerobic threshold (AeS) and individual anaerobic threshold (IAS ≙ MLSS). Bottom: pulmonary ventilation with the two ventilatory thresholds VT1 and VT2 (RCP). Redrawn after Kindermann (2004).
+Schematic representation of the aerobic–anaerobic transition (grey zone). Top: blood-lactate curve with aerobic threshold (AeS) and individual anaerobic threshold (IAS ≙ MLSS). Bottom: pulmonary ventilation with the two ventilatory thresholds VT1 and VT2 (RCP). Redrawn after Kindermann (2004).
 </Figure>
 
 ### 1.2 The MLSS as gold standard
@@ -79,12 +80,19 @@ For this reason, **individual anaerobic threshold (IAT) concepts** were develope
 
 Correlations between threshold concepts and MLSS are high, but correlations alone do not tell us whether two methods agree in absolute terms. Faude et al. (2009) recommend reporting the **mean bias and the 95 % limits of agreement (LoA)** according to Bland and Altman. Recalculated from raw data of Heck et al. they reported (Table VI in Faude et al. 2009):
 
+<Table>
+
 | Threshold concept | Treadmill, 3-min stages | Treadmill, 5-min stages | Cycle ergometry, 2-min stages |
 |---|---|---|---|
 | LT4 | bias −0.13 m/s, LoA ≈ 8 % | bias +0.02 m/s, LoA ≈ 9 % | bias −19.8 W, LoA ≈ 14 % |
 | IAT (Keul) | bias −0.20 m/s, LoA ≈ 9 % | bias +0.06 m/s, LoA ≈ 8 % | bias −21.0 W, LoA ≈ 11 % |
 | IAT (Stegmann) | bias −0.03 m/s, LoA ≈ 12 % | bias −0.03 m/s, LoA ≈ 9 % | bias −15.0 W, LoA ≈ 18 % |
 | IAT (Bunc) | bias −0.33 m/s, LoA ≈ 8 % | bias −0.14 m/s, LoA ≈ 9 % | bias −71.4 W, LoA ≈ 27 % |
+
+<Fragment slot="caption">
+Agreement of threshold concepts across exercise protocols (bias and 95 % limits of agreement).
+</Fragment>
+</Table>
 
 **Interpretation:** even when the mean bias is small, the 95 % LoA can reach 10–20 % of the MLSS. For any individual subject the difference between a single LT estimate and the true MLSS may therefore be substantial — particularly on the cycle ergometer.
 
@@ -108,6 +116,8 @@ The tangent contact on the exercise curve is the IAT.
 
 The following example uses a standard protocol that meets Stegmann's original methodology (Faude et al. 2009).
 
+<Table>
+
 | Parameter | Specification |
 |---|---|
 | Subject | Recreational male runner, 30 yr, 72 kg |
@@ -120,7 +130,14 @@ The following example uses a standard protocol that meets Stegmann's original me
 | Blood sampling | 20 μL capillary blood from hyperaemised earlobe at the end of each stage and at min 1, 3, 5, 8, 10 of passive recovery |
 | Analysis | Enzymatic-amperometric lactate analyser (haemolysed whole blood) |
 
+<Fragment slot="caption">
+Protocol specification for the worked lactate example.
+</Fragment>
+</Table>
+
 ### 2.3 Measured data
+
+<Table>
 
 | Stage | t (min) | v (m/s) | v (km/h) | HR (bpm) | Lactate (mmol·L⁻¹) |
 |---|---|---|---|---|---|
@@ -131,6 +148,13 @@ The following example uses a standard protocol that meets Stegmann's original me
 | 5 | 15 | 4.0 | 14.4 | 172 | 4.4 |
 | 6 (end) | 18 | 4.5 | 16.2 | 188 | **9.0 = L_end** |
 
+<Fragment slot="caption">
+Incremental stage data: velocity, heart rate and lactate.
+</Fragment>
+</Table>
+
+<Table>
+
 | Recovery sample | t after exercise (min) | Lactate (mmol·L⁻¹) |
 |---|---|---|
 | R1 | 1 | 10.0 (= L_max) |
@@ -139,10 +163,15 @@ The following example uses a standard protocol that meets Stegmann's original me
 | R4 | 8 | 5.0 |
 | R5 | 10 | 3.5 |
 
+<Fragment slot="caption">
+Post-exercise lactate recovery samples.
+</Fragment>
+</Table>
+
 ### 2.4 Construction of the IAT
 
 <Figure src={fig2} srcDark={fig2Dark} alt="Determination of the IAT after Stegmann et al. (1981)">
-**Figure 2:** Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 2.7 min post-exercise (linear interpolation between R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min → L = 9.0 at t ≈ 2.7 min): this is the **anchor**. The dashed green line is the tangent from the anchor to the ascending exercise curve; the **tangent contact** on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.
+Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 2.7 min post-exercise (linear interpolation between R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min → L = 9.0 at t ≈ 2.7 min): this is the **anchor**. The dashed green line is the tangent from the anchor to the ascending exercise curve; the **tangent contact** on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.
 </Figure>
 
 **Step-by-step:**
@@ -163,12 +192,19 @@ The aerobic threshold (AeS) in the same test would be read off as the first syst
 
 Using the IAT values for this subject as the anchor (Kindermann 2004; see also Section 4 below):
 
+<Table>
+
 | Training zone | % IAT velocity | Target velocity | Target HR | Typical lactate | Example session |
 |---|---|---|---|---|---|
 | **Regenerative** | < 70 % | < 2.6 m/s  (< 9.4 km/h) | < 115 bpm | < 1.5 mmol/L | 30–45 min easy jog at 2.3 m/s (8.3 km/h) |
 | **Extensive endurance (GA I)** | 70 – 90 % | 2.6 – 3.35 m/s (9.4 – 12.1 km/h) | 115 – 148 bpm | 1.5 – 3 mmol/L | 60–90 min steady run at 3.0 m/s (10.8 km/h), HR ~140 bpm |
 | **Intensive endurance (GA II / TDL)** | 90 – 100 % | 3.35 – 3.72 m/s (12.1 – 13.4 km/h) | 148 – 164 bpm | 3 – 5 mmol/L | 30–45 min tempo run at 3.5 m/s (12.6 km/h), HR ~156 bpm |
 | **Interval training (IVT)** | > 100 % | > 3.72 m/s (> 13.4 km/h) | > 164 bpm (HR drifts during the interval) | typically > 5 mmol/L | 6 × 1000 m at 4.0 m/s (14.4 km/h), 3 min jog rest |
+
+<Fragment slot="caption">
+Training zones derived from the individual anaerobic threshold.
+</Fragment>
+</Table>
 
 **Notes for the coach.**
 
@@ -199,6 +235,8 @@ These convergent breakpoints justify the concept even though "threshold" is, str
 
 ### 4.1 Training zones derived from the aerobic–anaerobic transition (Kindermann 2004)
 
+<Table>
+
 | Zone (German terminology) | Intensity prescription | Lactate guidance |
 |---|---|---|
 | Regenerative training | < AeS | At/below first lactate rise |
@@ -206,8 +244,13 @@ These convergent breakpoints justify the concept even though "threshold" is, str
 | Intensive endurance (GA II, "Tempodauerlauf") | 90 – 100 % of IAT | up to MLSS, typically 3–5 mmol/L in trained runners |
 | Interval training (IVT) | > 100 % of IAT | suprathreshold, lactate dependent on work/rest ratio |
 
+<Fragment slot="caption">
+Endurance training zones and lactate guidance (German terminology).
+</Fragment>
+</Table>
+
 <Figure src={fig3} srcDark={fig3Dark} alt="Training zones as % of IAS">
-**Figure 3:** Typical blood-lactate ranges encountered during the four endurance-training zones, expressed as a percentage of the individual anaerobic threshold (IAS). Redrawn after Kindermann (2004).
+Typical blood-lactate ranges encountered during the four endurance-training zones, expressed as a percentage of the individual anaerobic threshold (IAS). Redrawn after Kindermann (2004).
 </Figure>
 
 **Heart-rate prescription** is preferred in practice, because heart rate is easy to monitor and lactate response is not affected by beta-blockers — exact heart-rate targets at the IAT can therefore be given even to cardiac patients on beta-blockade.
@@ -222,6 +265,8 @@ These convergent breakpoints justify the concept even though "threshold" is, str
 
 The recent joint ACSM/ESSA expert statement proposes five intensity categories anchored on metabolic thresholds — the first metabolic threshold (MT1) being approximated by the first lactate threshold/AeS, and the second metabolic threshold (MT2) being approximated by the MLSS or critical power/speed:
 
+<Table>
+
 | Category | Cardiorespiratory exercise reference |
 |---|---|
 | Very low | no current physiological marker |
@@ -229,6 +274,11 @@ The recent joint ACSM/ESSA expert statement proposes five intensity categories a
 | Moderate | above MT1 but below MT2 |
 | High | above MT2 but below Wmax (work rate at VO₂max) |
 | Very high | above Wmax |
+
+<Fragment slot="caption">
+Cardiorespiratory intensity categories by physiological marker.
+</Fragment>
+</Table>
 
 Bishop et al. (2025) state that the **direct measurement of metabolic thresholds** plus Wmax is "the best and preferred method to define exercise-intensity categories that will produce similar physiological stresses in individuals with different exercise capacities."
 

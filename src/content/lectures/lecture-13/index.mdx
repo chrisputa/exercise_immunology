@@ -5,6 +5,7 @@ draft: false
 ---
 
 import Figure from '../../../components/Figure.astro';
+import Table from '../../../components/Table.astro';
 import fig1 from '../../../assets/Figure_Ledebur_2025.png';
 import fig1Dark from '../../../assets/generated/Figure_Ledebur_2025_dark.png';
 import { Note } from '../../../components/MarginNote/index.js';
@@ -50,13 +51,15 @@ Ledebur et al. (2025) used wearable-derived behavioral and physiological data fr
 **Acute-phase response.** During the acute phase (0--4 weeks after a positive SARS-CoV-2 test), individuals who later reported persistent symptoms showed a more pronounced transient tachycardia followed by a prolonged bradycardia that did not return to baseline by 18 days post-infection. By contrast, those without persistent symptoms showed a bradycardia that resolved within about 15 days. Physical activity was consistently lower in the persistent symptoms cohort across all infection phases.
 
 <Figure src={fig1} srcDark={fig1Dark} alt="Wearable data analysis of the match cohort">
-**Figure from Ledebur et al. (2025):** https://www.nature.com/articles/s41746-025-01456-x/figures/3. Wearable data analysis of the match cohort. **a** Z-transformed mean RHR (average of all 15-min RHR measurements within the last seven days) relative to the seasonal mean RHR with respect to the mean and standard deviation up to 7 days prior to the date of the reported test of all individuals in the M-COVID-19[+]PS (pink), M-COVID-19[+]NS (blue) and M-COVID-19[−] (black) cohorts. The difference between the maximum and minimum z-transformed RHR within 14 to and 20 days after the date of the reported SARS-CoV-2 test was more pronounced (1.3 vs 1.0) and more prolonged for M-COVID-19[+]PS than for M-COVID-19[+]NS. Shading indicates standard errors. The inset shows the average RHR relative to the SARS-CoV-2 test date. Already prior to the SARS-CoV-2 test, M-COVID-19[+]PS-individuals showed an increased RHR compared to M-COVID-19[+]NS and M-COVID-19[−].
+From Ledebur et al. (2025): https://www.nature.com/articles/s41746-025-01456-x/figures/3. Wearable data analysis of the match cohort. Z-transformed mean RHR (average of all 15-min RHR measurements within the last seven days) relative to the seasonal mean RHR with respect to the mean and standard deviation up to 7 days prior to the date of the reported test of all individuals in the M-COVID-19[+]PS (pink), M-COVID-19[+]NS (blue) and M-COVID-19[−] (black) cohorts. The difference between the maximum and minimum z-transformed RHR within 14 to and 20 days after the date of the reported SARS-CoV-2 test was more pronounced (1.3 vs 1.0) and more prolonged for M-COVID-19[+]PS than for M-COVID-19[+]NS. Shading indicates standard errors. The inset shows the average RHR relative to the SARS-CoV-2 test date. Already prior to the SARS-CoV-2 test, M-COVID-19[+]PS-individuals showed an increased RHR compared to M-COVID-19[+]NS and M-COVID-19[−].
 </Figure>
 
 
 **Well-being and quality of life.** Individuals with persistent symptoms reported significantly lower WHO-5 well-being scores and EQ-5D quality of life scores compared to both control cohorts -- notably already *before* their SARS-CoV-2 test as well as afterwards. This suggests pre-existing conditions may contribute to the risk of developing PCC.
 
 **Predictive features.** A logistic regression analysis identified several key predictors for developing persistent symptoms:
+
+<Table>
 
 | Feature | Mean Odds Ratio |
 |---|---|
@@ -66,6 +69,11 @@ Ledebur et al. (2025) used wearable-derived behavioral and physiological data fr
 | Allergies | 1.35 |
 | Mean RHR pre-phase | 1.31 |
 | Mental health condition | 1.29 |
+
+<Fragment slot="caption">
+Predictors of persistent post-COVID symptoms, ranked by mean odds ratio.
+</Fragment>
+</Table>
 
 This demonstrates that integrating wearable-derived data with clinical variables can improve identification of individuals at higher risk of developing long-term symptoms (Ledebur et al. 2025).
 

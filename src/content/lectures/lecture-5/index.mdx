@@ -6,6 +6,7 @@ draft: false
 ---
 
 import { Note } from '../../../components/MarginNote/index.js';
+import Table from '../../../components/Table.astro';
 
 
 ## Table of Contents
@@ -31,11 +32,18 @@ import { Note } from '../../../components/MarginNote/index.js';
 
 Exercise follows a **biphasic dose–response** (Radak 2008): sedentary and chronic-overload sit at the two damaging ends of the same curve. The hormetic sweet spot coincides with **MLSS / IAS** (Kindermann, §7 parent lecture).
 
+<Table>
+
 | Term | Recovery |
 | --- | --- |
 | **FOR** — planned overreaching → supercompensation | Days |
 | **NFOR** — extreme overreaching, no supercompensation | Weeks – months |
 | **OTS** — prolonged maladaptation, exclusion diagnosis | Months – years |
+
+<Fragment slot="caption">
+The overtraining continuum and typical recovery timeframes.
+</Fragment>
+</Table>
 
 **Prevalence** (Meeusen 2013): 7–21% per season; career rate ~60% in elite endurance athletes; **91% relapse** after a first OTS episode.
 
@@ -59,10 +67,17 @@ A graded test alone misleads. Always combine with a **supra-threshold time-to-ex
 
 **Israel's two-form model:**
 
+<Table>
+
 | Form | Profile | ANS signature |
 | --- | --- | --- |
 | **Sympathicotonic OT** | Strength/sprint, acute, young | ↑ resting HR, ↑ BP, ↑ catecholamines, anxiety, insomnia |
 | **Parasympathicotonic OT** | Endurance, chronic | ↓ resting HR, depressed mood, fatigue — **harder to diagnose** |
+
+<Fragment slot="caption">
+The two autonomic forms of overtraining syndrome.
+</Fragment>
+</Table>
 
 **Sympathetic markers:** ↓ max HR; ↑ LF/HF (short-term overload); ↓ nocturnal catecholamines (chronic); **blunted lactate response**; **blunted cortisol/ACTH/GH/PRL** to exercise.
 
@@ -82,12 +97,19 @@ A graded test alone misleads. Always combine with a **supra-threshold time-to-ex
 
 **Verdict — what works:**
 
+<Table>
+
 | Marker | Status |
 | --- | --- |
 | Blunted **cortisol response** to standardized exercise | Best hormonal probe (saliva-based) |
 | Blunted **lactate response** to fixed-intensity exercise | β-adrenergic / HPA dysregulation |
 | **CD4⁺CD45RO⁺ expression** | High specificity + sensitivity (see §5) |
 | Salivary IgA ↓ | Good with caveats |
+
+<Fragment slot="caption">
+Candidate diagnostic markers for overtraining syndrome.
+</Fragment>
+</Table>
 
 **What doesn't work alone:** plasma glutamine, CK, urea, cortisol/T ratio, resting catecholamines, CD4/CD8 ratio.
 
@@ -144,12 +166,19 @@ OTS = **Selye GAS stage 3 (exhaustion)**, not adaptation. Chronic inflammation d
 
 Two incremental tests to exhaustion, separated by **4 hours**. Hormonal pattern on bout 2 vs. bout 1:
 
+<Table>
+
 | State | ACTH / PRL / GH on bout 2 |
 | --- | --- |
 | Healthy | Comparable |
 | FOR | Less pronounced |
 | **NFOR** | **Hyperreactive** |
 | **OTS** | **Bout 1 extreme + complete suppression in bout 2** |
+
+<Fragment slot="caption">
+Neuroendocrine response to a two-bout exercise protocol by training state.
+</Fragment>
+</Table>
 
 The only protocol that prospectively differentiates **NFOR from OTS**.
 
@@ -191,6 +220,8 @@ Underperformance ≥ 2 weeks
 
 **Critical differential.** OTS and ME/CFS / Long COVID look similar (fatigue, low max lactate) but have **opposite** clearance signatures.
 
+<Table>
+
 | Feature | OTS | ME/CFS / Long COVID |
 | --- | --- | --- |
 | Lactate–power curve | **No shift** | **Left-shifted** |
@@ -202,6 +233,11 @@ Underperformance ≥ 2 weeks
 | Peripheral O₂ extraction | Preserved | **↓** (Haunhorst 2022) |
 | Primary defect | Reduced **production** (β-AR / HPA) | Reduced **clearance / oxidation** (mitochondrial + microvascular) |
 | Recovery | Months with rest | Often years; PEM after minimal effort |
+
+<Fragment slot="caption">
+Lactate and metabolic signatures distinguishing OTS from ME/CFS and Long COVID.
+</Fragment>
+</Table>
 
 **Mechanism in post-infectious syndromes** (Haunhorst 2022, 2024; Joseph 2023; Singh 2022):
 

@@ -14,7 +14,7 @@ const publishDate = Astro.props.publishDate ?? Astro.props.frontmatter?.publishD
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={showHeader}>
     <article class="mb-16 sm:mb-24">
         <header class="mb-8">
-            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-[2.625rem] sm:leading-tight">{seo?.title ?? title}</h1>
+            <h1 class="text-3xl leading-tight font-display font-normal tracking-[0.005em] sm:text-[2.625rem] sm:leading-tight">{seo?.title ?? title}</h1>
             {publishDate && (
                 <div class="mt-2 font-serif">
                     <FormattedDate date={publishDate} />

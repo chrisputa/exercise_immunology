@@ -1,22 +1,60 @@
 ---
-// filepath: /Users/zwerg/Coding/astro/dante/src/components/Figure.astro
 import { Image } from 'astro:assets';
-const { src, alt, srcDark, margin = false } = Astro.props;
+import { getNextFigureNumber } from '../utils/figure-registry.js';
+
+// `panels` lets one caption cover several stacked images (e.g. two related
+// panels sharing a description). Each entry is { src, srcDark?, alt } and gets
+// its own figure number, so the label collapses to a range: "Figure 2 & 3."
+const { src, alt, srcDark, margin = false, panels = [] } = Astro.props;
+
+// Reserve one number per image so physical figure order stays correct.
+const startNum = getNextFigureNumber();
+let endNum = startNum;
+for (let i = 0; i < panels.length; i++) endNum = getNextFigureNumber();
+
+const hasCaption = Astro.slots.has('default');
+const figLabel = !hasCaption
+    ? undefined
+    : endNum === startNum
+        ? `Figure ${startNum}`
+        : endNum === startNum + 1
+            ? `Figure ${startNum} & ${endNum}`
+            : `Figure ${startNum}–${endNum}`;
+
+const images = [{ src, srcDark, alt }, ...panels];
 ---
 
 <figure class={margin ? 'm-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6' : 'm-0'}>
     {
-        !margin && (
-            <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6">
+        !margin && hasCaption && (
+            <figcaption
+                class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6"
+                data-figlabel={figLabel}
+            >
                 <slot />
             </figcaption>
         )
     }
 
-    <Image src={src} alt={alt} class="w-full h-auto py-0 block dark:hidden" />
-    {srcDark && <Image src={srcDark} alt={alt} class="w-full h-auto py-0 hidden dark:block" />}
+    {
+        images.map((img) => (
+            <Fragment>
+                <Image src={img.src} alt={img.alt} class="w-full h-auto py-0 block dark:hidden" />
+                {img.srcDark && (
+                    <Image src={img.srcDark} alt={img.alt} class="w-full h-auto py-0 hidden dark:block" />
+                )}
+            </Fragment>
+        ))
+    }
 
-    <figcaption class={margin ? 'block px-6 md:px-0 my-4' : 'block md:hidden px-6 my-4'}>
-        <slot />
-    </figcaption>
+    {
+        hasCaption && (
+            <figcaption
+                class={margin ? 'block px-6 md:px-0 my-4' : 'block md:hidden px-6 my-4'}
+                data-figlabel={figLabel}
+            >
+                <slot />
+            </figcaption>
+        )
+    }
 </figure>

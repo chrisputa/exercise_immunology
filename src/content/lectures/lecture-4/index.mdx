@@ -6,6 +6,7 @@ draft: false
 ---
 
 import Figure from '../../../components/Figure.astro';
+import Table from '../../../components/Table.astro';
 import biphasic from '../../../assets/Figure4_Biphasic.png';
 import biphasicDark from '../../../assets/generated/Figure4_Biphasic_dark.png';
 import il6 from '../../../assets/Figure5_IL6_bw.png';
@@ -65,7 +66,7 @@ Acute exercise preferentially mobilizes subsets of CD8⁺ T cells with anti-tumo
 Following cessation of acute exercise, a transient (up to approximately 24 h) lymphopenia occurs, during which previously mobilized cells are redirected to target tissues. The nadir is reached approximately 45 min to 2 h post-exercise (**30--50% below baseline**). Simultaneously, neutrophils increase through cortisol-mediated recruitment (neutrophilia). According to current knowledge, this lymphopenia is interpreted as a phase of **heightened immune surveillance** (Campbell and Turner 2018; Simpson et al. 2020; Puta et al. 2026).
 
 <Figure src={biphasic} srcDark={biphasicDark} alt="The Biphasic Immune Cell Response to Dynamic Acute Physical Stress">
-**Figure 1:** The biphasic immune cell response to dynamic acute physical stress. The lymphocytosis (immediate response), which mainly affects natural killer (NK) cells, CD8+ T cells, and γδ T cells, is essentially induced by increased blood pressure and by adrenaline stimulation of β2-adrenergic receptors on the surface of lymphocytes. This is followed by a transient lymphopenia (delayed immune response) lasting up to approximately 24 hours, during which previously mobilized cells are redistributed to target tissues. This lymphopenia may improve immune surveillance. (Created in BioRender. Puta, C. (2025) https://BioRender.com/l87d474)
+The biphasic immune cell response to dynamic acute physical stress. The lymphocytosis (immediate response), which mainly affects natural killer (NK) cells, CD8+ T cells, and γδ T cells, is essentially induced by increased blood pressure and by adrenaline stimulation of β2-adrenergic receptors on the surface of lymphocytes. This is followed by a transient lymphopenia (delayed immune response) lasting up to approximately 24 hours, during which previously mobilized cells are redistributed to target tissues. This lymphopenia may improve immune surveillance. (Created in BioRender. Puta, C. (2025) https://BioRender.com/l87d474)
 </Figure>
 
 ## 2 Hormonal Regulation
@@ -114,6 +115,8 @@ The mechanistic basis for this context-dependent IL-6 response reflects differen
 
 The magnitude and temporal dynamics of exercise-induced IL-6 secretion vary substantially across exercise types, reflecting differences in muscle mass recruitment, metabolic stress, and glycogen depletion.
 
+<Table>
+
 | Exercise Type | Duration | Intensity | Peak IL-6 (pg/mL) | Time to Peak | Return to Baseline |
 |---|---|---|---|---|---|
 | Endurance (running) | 60 min | 75% VO₂max | 240 | 2-3 hours | 24-48 hours |
@@ -121,12 +124,17 @@ The magnitude and temporal dynamics of exercise-induced IL-6 secretion vary subs
 | Resistance exercise | 30 min | Moderate volume | 42 | 2-3 hours | 24-48 hours |
 | Moderate continuous | 45 min | 60-70% VO₂max | 85 | 1.5-2 hours | 24-48 hours |
 
+<Fragment slot="caption">
+IL-6 response by exercise modality: magnitude and time course.
+</Fragment>
+</Table>
+
 The endurance exercise modality consistently produces the largest IL-6 responses due to sustained high metabolic demand and complete glycogen depletion from large muscle groups (Lieberman et al. 2005; Scheele et al. 2013). Whole-body endurance activities (running) produce substantially larger anti-inflammatory myokine responses than lower-body-only modalities (cycling) at equivalent intensity and duration, reflecting greater overall muscle mass engagement (Ringleb et al. 2026).
 
 ### 5.3 The IL-6 Axis as Energy Allocator
 
 <Figure src={il6} srcDark={il6Dark} alt="Myokine IL-6 as a Short-Term Energy Allocator During Physical Activity">
-**Figure 2:** Myokine IL-6 as a short-term energy allocator. IL-6 fulfils three characteristics of a short-term energy allocator during physical activity. **a, Energy sensing.** Physiological components of prolonged muscle activity — lactic-acid buildup, reactive oxygen species (ROS) production, and muscle glycogen depletion — signal that intramuscular energy stores are depleted and precipitate myokine secretion of IL-6. **b, Energy liberation.** When myokine IL-6 is released into circulation, it liberates somatic energy by upregulating lipolysis and gluconeogenesis throughout the body. Myokine IL-6 also acts indirectly to increase catabolism and energy mobilization by inducing cortisol secretion. **c, Energy allocation.** Myokine IL-6 increases energy uptake by the muscle through increases in insulin receptor sensitivity, GLUT4 expression, and fatty acid transporter expression. Evidence suggests that it also allocates energy to the muscle indirectly by transiently downregulating other energy-consuming processes, such as immune activity. SCFA, short-chain fatty acids. Adapted from Kistner, Pedersen & Lieberman, *Nat. Metab.* 4, 170--179 (2022); created with biorender.com.
+Myokine IL-6 as a short-term energy allocator. IL-6 fulfils three characteristics of a short-term energy allocator during physical activity. **a, Energy sensing.** Physiological components of prolonged muscle activity — lactic-acid buildup, reactive oxygen species (ROS) production, and muscle glycogen depletion — signal that intramuscular energy stores are depleted and precipitate myokine secretion of IL-6. **b, Energy liberation.** When myokine IL-6 is released into circulation, it liberates somatic energy by upregulating lipolysis and gluconeogenesis throughout the body. Myokine IL-6 also acts indirectly to increase catabolism and energy mobilization by inducing cortisol secretion. **c, Energy allocation.** Myokine IL-6 increases energy uptake by the muscle through increases in insulin receptor sensitivity, GLUT4 expression, and fatty acid transporter expression. Evidence suggests that it also allocates energy to the muscle indirectly by transiently downregulating other energy-consuming processes, such as immune activity. SCFA, short-chain fatty acids. Adapted from Kistner, Pedersen & Lieberman, *Nat. Metab.* 4, 170--179 (2022); created with biorender.com.
 </Figure>
 
 The functional significance of exercise-induced IL-6 extends beyond simple metabolism. IL-6 acts on distant tissues to coordinate the post-exercise recovery response. Elevated IL-6 stimulates hepatic glucose production (gluconeogenesis) and muscle glucose uptake through AMPK activation, providing crucial substrate for glycogen resynthesis during the critical recovery window (Pedersen 2012). IL-6 simultaneously enhances adipose tissue lipolysis and mobilizes free fatty acids as alternative fuel sources, reducing the metabolic burden on carbohydrate reserves (Febbraio and Pedersen 2004). At the pancreatic level, IL-6 enhances insulin sensitivity through PI3K activation in muscle tissue, promoting glucose storage without excessive hyperinsulinemia. This coordinated metabolic response—termed "energy allocation" by Kistner and colleagues—represents the true biological function of exercise-induced IL-6 (Kistner et al. 2022). The high concentrations required for this metabolic coordination (42-240 pg/mL) are substantially higher than those produced during mild systemic inflammation, yet they produce health-promoting outcomes precisely because they occur without sustained pro-inflammatory signaling.
@@ -170,7 +178,7 @@ Third, the IL-6 response to standardized exercise testing can serve as a persona
 ## 6 Meta-Analytic Validation: Quantifying the Exercise-Induced Myokine Response (Ringleb et al. 2026)
 
 <Figure src={ringleb} srcDark={ringlebDark} alt="Circulating Myokine Responses to Acute Endurance Exercise">
-**Figure 3:** Graphical abstract from Ringleb et al. (2026). This systematic review and meta-analysis, which examined the effects of acute endurance training on immunoregulatory myokines, showed significant small-moderate to very large positive effect sizes for IL-6, IL-10, IL-1ra, IL-8, IL-15, and TNF-α. These effects were significantly moderated by risk of bias, sex, age, V̇O2peak, experience, type of exercise, intensity, duration, dose, sample, fasting status, and time of day. This suggests that endurance training is a key component in the treatment of a variety of diseases. Adapted from Ringleb et al. (2026).
+Graphical abstract from Ringleb et al. (2026). This systematic review and meta-analysis, which examined the effects of acute endurance training on immunoregulatory myokines, showed significant small-moderate to very large positive effect sizes for IL-6, IL-10, IL-1ra, IL-8, IL-15, and TNF-α. These effects were significantly moderated by risk of bias, sex, age, V̇O2peak, experience, type of exercise, intensity, duration, dose, sample, fasting status, and time of day. This suggests that endurance training is a key component in the treatment of a variety of diseases. Adapted from Ringleb et al. (2026).
 </Figure>
 
 The conceptual framework provided by Kistner et al. requires quantitative validation through comprehensive synthesis of research evidence. A systematic review and meta-analysis by Ringleb and colleagues addressed this critical need by synthesizing data from 167 studies involving 3,622 participants across 294 endurance exercise interventions (Ringleb et al. 2026). This analysis provides definitive effect size estimates, dose-response relationships, and population-specific moderators for exercise-induced myokine responses.
@@ -178,6 +186,8 @@ The conceptual framework provided by Kistner et al. requires quantitative valida
 ### 6.1 Overall Effect Sizes: IL-6 as the Dominant Myokine Response
 
 Ringleb et al. conducted independent random-effects meta-analyses for six immunoregulatory myokines, establishing effect sizes for acute endurance exercise responses:
+
+<Table>
 
 | Myokine | Hedges' g | 95% CI | Studies (k) | Participants | Heterogeneity (I²) |
 |---|---|---|---|---|---|
@@ -187,6 +197,11 @@ Ringleb et al. conducted independent random-effects meta-analyses for six immuno
 | IL-10 | 0.45*** | [0.31, 0.59] | 67 | 1,212 | 87.9% |
 | IL-1ra | 0.40*** | [0.26, 0.53] | 31 | 646 | 64.0% |
 | IL-15 | 0.37** | [0.13, 0.61] | 12 | 295 | 79.9% |
+
+<Fragment slot="caption">
+Meta-analytic effect sizes for exercise-induced myokine responses.
+</Fragment>
+</Table>
 
 *Note: ***p < 0.001, **p < 0.01. Effect sizes represent standardized mean differences in myokine concentrations comparing post-exercise to baseline measurements.
 
@@ -208,12 +223,19 @@ This robust dose-response relationship mechanistically supports the energy-sensi
 
 Exercise type significantly moderated myokine responses, with running consistently producing larger effects than cycling at equivalent intensity and duration (Ringleb et al. 2026):
 
+<Table>
+
 | Myokine | Running | Cycling | p-value |
 |---|---|---|---|
 | IL-6 | 1.30 | 1.10 | n.s. |
 | IL-10 | 0.63 | 0.24 | p < 0.01 |
 | IL-1ra | 0.52 | 0.21 | p < 0.01 |
 | TNF-α | 0.65 | 0.36 | p < 0.01 |
+
+<Fragment slot="caption">
+Myokine responses compared between running and cycling.
+</Fragment>
+</Table>
 
 The mechanistic explanation reflects muscle mass differences: running involves greater absolute muscle mass recruitment through engagement of lower limbs, trunk stabilizers, upper limbs, and core musculature compared to cycling, which predominantly activates the quadriceps and hamstrings with minimal upper body involvement (Ringleb et al. 2026). Larger total muscle mass activated during an exercise bout produces greater total glycogen depletion, stronger metabolic stress signals (higher AMP/ATP ratios), and subsequently amplified IL-6, IL-10, and IL-1ra responses. This mechanistic insight generates an actionable clinical principle: **whole-body endurance activities produce superior anti-inflammatory myokine responses compared to lower-body-only modalities at equivalent intensity** (Ringleb et al. 2026). For populations with specific therapeutic needs—such as individuals with inflammatory rheumatologic conditions—running-based activities would be expected to produce approximately 2.5-fold larger IL-10 responses than cycling, creating a more potent anti-inflammatory stimulus.
 
@@ -241,11 +263,18 @@ The Ringleb meta-analysis provides quantitative validation of the Kistner et al.
 
 Based on Ringleb's quantitative dose-response relationships, evidence-based exercise prescriptions can be tailored to specific clinical populations and therapeutic goals:
 
+<Table>
+
 | Clinical Goal | Exercise Type | Duration | Intensity | Expected Effect | Clinical Rationale |
 |---|---|---|---|---|---|
 | Maximum anti-inflammatory | Running | 45-60 min | Vigorous 75-90% VO₂max | Very large IL-6 (g=1.30); large IL-10 (g=0.63) | Whole-body mass recruitment; maximal glycogen depletion |
 | Moderate anti-inflammatory | Mixed modality/cycling | 30-45 min | Moderate 60-75% VO₂max | Large IL-6 (g=1.10); moderate IL-10 (g=0.24) | Lower muscle mass; submaximal glycogen stress |
 | Time-limited/orthopedic constraint | HIIT/cycling | 20-30 min | Maximal intervals | Large IL-6 (g=1.15); moderate IL-8 (g=0.71) | Metabolic intensity compensates for duration |
+
+<Fragment slot="caption">
+Exercise prescriptions matched to anti-inflammatory clinical goals.
+</Fragment>
+</Table>
 
 Ringleb et al. emphasize that "even suboptimal exercise conditions can elicit significant increases in immunoregulatory myokines," suggesting that any sustained endurance activity produces beneficial anti-inflammatory responses (Ringleb et al. 2026). This democratizes evidence-based exercise prescription: populations with orthopedic constraints, time limitations, or disease-related exercise intolerance can still achieve meaningful myokine responses through appropriately dosed activity.
 

@@ -6,6 +6,7 @@ draft: false
 
 import Quote from '../../../components/Quote.astro';
 import { Note } from '../../../components/MarginNote/index.js';
+import Table from '../../../components/Table.astro';
 
 
 ## Table of Contents
@@ -71,11 +72,18 @@ Three core functions are now well established:
 
 This comprehensive review synthesizes four decades of research from the Brooks Lab (UC Berkeley) and describes three nested shuttle systems:
 
+<Table>
+
 | Shuttle Level | Description |
 |---|---|
 | **Cell-Cell Lactate Shuttle (CCLS)** | Lactate transfer between producing cells (e.g., glycolytic muscle fibers) and consuming cells (heart, brain, liver) along concentration gradients |
 | **Intracellular Lactate Shuttle (ILS)** | Intracellular transfer of cytosolically produced lactate to the mitochondrial matrix for oxidative metabolism within the same cell |
 | **Organ-Organ Lactate Shuttle** | Systemic redistribution between organs (muscle → liver, muscle → brain) via the bloodstream |
+
+<Fragment slot="caption">
+The three lactate shuttle systems.
+</Fragment>
+</Table>
 
 **Key Findings:**
 - Lactate is produced **continuously under fully aerobic conditions** — not only during oxygen deficiency
@@ -119,6 +127,8 @@ This landmark study using systemic ¹³C isotope tracing in mice delivers a fund
 
 **Main Findings:**
 
+<Table>
+
 | Parameter | Result |
 |---|---|
 | Molar turnover flux of lactate vs. glucose (fed) | Lactate exceeds glucose by a **factor of 1.1** |
@@ -126,6 +136,11 @@ This landmark study using systemic ¹³C isotope tracing in mice delivers a fund
 | TCA labeling by ¹³C-lactate | Extensive in **all tissues** (fed and fasted) |
 | Glucose contribution to TCA cycle (fasted) | Primarily **indirect** — via circulating lactate — in all tissues except the brain |
 | Situation in tumors (lung, pancreas) | Lactate exceeds glucose as TCA substrate; in pancreatic tumors, glutamine contributes even more |
+
+<Fragment slot="caption">
+Lactate turnover flux relative to glucose (tracer study).
+</Fragment>
+</Table>
 
 **Conclusion:** Glycolysis and the TCA cycle are **decoupled at the level of lactate**. Glucose can make its TCA contribution predominantly via the detour of circulating lactate, without entering the mitochondria directly as pyruvate. This enables independent regulation of ATP production and glucose catabolism.
 
@@ -195,10 +210,17 @@ This human study provides the first direct in vivo evidence for the Postprandial
 
 **Main Findings – Two Phases of the PLS:**
 
+<Table>
+
 | Phase | Timing | Mechanism | Interpretation |
 |---|---|---|---|
 | **Enteric PLS** | Blood lactate rises **before** blood glucose | Intestinal epithelial cells immediately metabolize glucose to lactate | Gut lumen → portal vein → liver/systemic circulation |
 | **Systemic PLS** | Second lactate rise, synchronous with glucose rise | Hepatic glucose release → peripheral glycolysis → lactate | Liver → muscle/organs → lactate redistribution |
+
+<Fragment slot="caption">
+The two phases of the postprandial lactate shuttle.
+</Fragment>
+</Table>
 
 **Quantitative Significance:**
 - The systemic PLS represents approximately **38% of the 75-g glucose load** appearing as lactate in the circulation
@@ -233,6 +255,8 @@ Hexose (glucose/glycogen) → Lactate → oxidative utilization OR liver glycoge
 
 **Practical Implications:**
 
+<Table>
+
 | Question | Answer Based on the Lactate Shuttle Concept |
 |---|---|
 | Which carbohydrate form is optimal? | The form plays a secondary role; all carbohydrates pass through lactate as an intermediate |
@@ -240,6 +264,11 @@ Hexose (glucose/glycogen) → Lactate → oxidative utilization OR liver glycoge
 | Why does training increase carbohydrate tolerance? | Increased MCT expression → improved lactate clearance without lactatemia |
 | What is the role of fructose? | Converted to lactate and glucose in the gut; enters systemic circulation primarily as lactate |
 | Ketones as an alternative to lactate? | No advantage when carbohydrates are sufficiently available; lactate and carbohydrates are more efficiently and directly available |
+
+<Fragment slot="caption">
+Sports-nutrition questions answered through the lactate shuttle concept.
+</Fragment>
+</Table>
 
 **Training-Specific Aspects:**
 - Endurance training increases the capacity for simultaneous lactate production and clearance → higher performance without hyperlactatemia
@@ -286,12 +315,19 @@ The anaerobic threshold is a reliable, motivation-independent marker of enduranc
 
 The dual-threshold model (Kindermann, Simon & Keul, 1979) provides a practical framework for training intensity zonation based on the aerobic-anaerobic transition. Key zones are defined as follows:
 
+<Table>
+
 | Zone | Intensity (% IAS) | Lactate (mmol/l) | Description |
 |---|---|---|---|
 | Regenerative training | < 70% | < 2 | Below aerobic threshold; recovery-oriented |
 | Basic Endurance I (GA I) | 70–90% | ~1.5–2.5 | Extensive aerobic training |
 | Basic Endurance II (GA II) / Tempo runs (TDL) | 90–100% | ~3–5 | Intensive aerobic with anaerobic contribution |
 | Interval Training (IVT) | > 100% | Variable | Supra-threshold; varies with intensity and recovery |
+
+<Fragment slot="caption">
+Endurance training zones by lactate and % IAS.
+</Fragment>
+</Table>
 
 In applied sport contexts, elite marathon runners compete at approximately their anaerobic threshold, and regional-level marathon athletes (~3:00 h finish time) run at roughly 95% of threshold speed. Training intensity recommendations should be expressed as heart rate targets. Notably, beta-blocker use does not influence the lactate-power curve, enabling accurate training prescription even in this clinical population.
 
@@ -316,10 +352,17 @@ The anaerobic threshold — particularly when determined as the individual anaer
 In the paper of Kindermann (2004) Figure 1 shows a representative lactate performance curve derived from five serial cycle ergometer tests in a single subject (starting at 100 W, incremental steps of 20 W every 3 minutes). Two physiologically distinct thresholds are identified.  
 Link: https://www.germanjournalsportsmedicine.com/fileadmin/content/archiv2004/heft06/Standards_Kindermann.pdf
 
+<Table>
+
 | Threshold | Abbreviation | Operational Definition |
 |---|---|---|
 | Lactate Threshold | **LT** | First systematic rise in blood lactate above resting baseline; aerobic–anaerobic transition (Wasserman & McIlroy 1964) |
 | Individual Anaerobic Threshold | **IAS** | Maximal lactate steady-state power; highest workload at which lactate production and clearance remain in dynamic equilibrium |
+
+<Fragment slot="caption">
+Operational definitions of the lactate and individual anaerobic thresholds.
+</Fragment>
+</Table>
 
 In this individual, **LT occurred at 200 W** and **IAS at 250 W**, both determined on 22.12.2013.
 
@@ -336,12 +379,19 @@ The simultaneous capture of both signals is considered standard practice in thre
 
 The colored background zones map metabolic states to practical training categories:
 
+<Table>
+
 | Zone | German Label | Physiological Basis |
 |---|---|---|
 | Light green | **Regeneratives Training (KB)** | Below aerobic threshold; active recovery; lactate ≈ 1.5–2.0 mmol/l |
 | Yellow | **Extensive Grundlagen (GA1)** | Aerobic base development; LT to mid-aerobic range; lactate 2–3 mmol/l |
 | Orange | **Intensive Grundlagen (GA2)** | Approach to IAS; highest tolerable steady-state intensity; lactate 3–4 mmol/l |
 | Pale red | **Schwellentraining (EB)** | At or near IAS; maximal lactate steady state; lactate ~4 mmol/l (interindividual variation ±1–2 mmol/l) |
+
+<Fragment slot="caption">
+Colour-coded training zones and their physiological basis.
+</Fragment>
+</Table>
 
 Training above the EB zone leads to progressive lactate accumulation and cannot be sustained beyond minutes — this is the domain of interval and competition training, not base endurance development.
 
@@ -406,6 +456,8 @@ After completing this unit, you should be able to:
 
 ## References
 
+<Table>
+
 | Reference | DOI / Journal |
 |---|---|
 | Brooks, G.A. (2018). The Science and Translation of Lactate Shuttle Theory. *Cell Metabolism*, 27, 757–785. | [10.1016/j.cmet.2018.03.008](https://doi.org/10.1016/j.cmet.2018.03.008) |
@@ -416,6 +468,11 @@ After completing this unit, you should be able to:
 | Brooks, G.A. (2023). What the Lactate Shuttle Means for Sports Nutrition. *Nutrients*, 15(9), 2178. | [10.3390/nu15092178](https://doi.org/10.3390/nu15092178) |
 | Kindermann, W. (2004). Anaerobe Schwelle. *Deutsche Zeitschrift für Sportmedizin*, 55(6), 161–162. | DZSM 55(6) |
 | Wasserman, K. & McIlroy, M.B. (1964). Detecting the threshold of anaerobic metabolism in cardiac patients during exercise. *American Journal of Cardiology*, 14, 844–852. | [10.1016/0002-9149(64)90012-8](https://doi.org/10.1016/0002-9149(64)90012-8) |
+
+<Fragment slot="caption">
+Key references.
+</Fragment>
+</Table>
 
 ---
 
