@@ -37,14 +37,19 @@ const images = [{ src, srcDark, alt }, ...panels];
     }
 
     {
-        images.map((img) => (
-            <Fragment>
-                <Image src={img.src} alt={img.alt} class="w-full h-auto py-0 block dark:hidden" />
-                {img.srcDark && (
-                    <Image src={img.srcDark} alt={img.alt} class="w-full h-auto py-0 hidden dark:block" />
-                )}
-            </Fragment>
-        ))
+        images.map((img, i) => {
+            // Give every panel after the first some breathing room so stacked,
+            // related images don't touch (the first image keeps py-0).
+            const gap = i > 0 ? ' mt-6!' : '';
+            return (
+                <Fragment>
+                    <Image src={img.src} alt={img.alt} class={`w-full h-auto py-0 block dark:hidden${gap}`} />
+                    {img.srcDark && (
+                        <Image src={img.srcDark} alt={img.alt} class={`w-full h-auto py-0 hidden dark:block${gap}`} />
+                    )}
+                </Fragment>
+            );
+        })
     }
 
     {
