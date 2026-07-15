@@ -107,8 +107,8 @@ const siteConfig: SiteConfig = {
             text: 'Contact',
             href: '/contact'
         }, {
-            text: 'Terms',
-            href: '/terms'
+            text: 'Privacy Policy',
+            href: '/privacy-policy'
         }
     ],
     socialLinks: [
