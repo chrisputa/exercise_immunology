@@ -25,32 +25,36 @@ import { Note } from '../../../components/MarginNote/index.js';
 
 ## Table of Contents
 
-1. [Key Terms of Physical Activity and Exercise](#1-key-terms-of-physical-activity-and-exercise-in-relation-to-energy-expenditure-and-metabolic-strain)
-2. [Short-Term Balancing of Homeostasis](#2-short-term-balancing-of-homeostasis)
-3. [Homeostasis and Hormesis](#3-homeostasis-and-hormesis)
-4. [State of Sleep and Wakefulness](#4-state-of-sleep-and-wakefulness)
-5. [Behaviour and V̇O₂](#5-behaviour-and-v̇o)
-6. [Threshold Concepts](#6-threshold-concepts)
-7. [How to Determine and Monitor the Different Exercise Intensities](#7-how-to-determine-and-monitor-the-different-exercise-intensities)
+1. [Language & Energetics of Exercise](#1-language-and-energetics-of-exercise)
+2. [Homeostasis: Acute Regulation](#2-homeostasis-acute-regulation)
+3. [Hormesis: Chronic Adaptation & Clinical Edge](#3-hormesis-chronic-adaptation-and-clinical-edge)
+4. [Intensity Determination & Diagnostics](#4-intensity-determination-and-diagnostics)
 
 ---
 
-## 1 Key Terms of Physical Activity and Exercise in relation to Energy Expenditure and Metabolic Strain
+## 1 Language & Energetics of Exercise
 
-### Definition of Physical Activity
+**Learning objectives:**
+- Distinguish physical activity, exercise, training and sport (Caspersen) and justify why the distinction matters for public-health messaging.
+- Decompose TDEE into BMR, RMR, TEF and AEE/NEAT and identify the most modifiable component.
+- Select an appropriate BMR/RMR prediction equation for a given population (Harris–Benedict → Cunningham → Ten Haaf & Weijs; FFM vs LBM).
+- Use V̇O₂, MET and MET-min to express metabolic strain in comparable units.
 
-Physical activity, in the broadest sense, is every bodily movement performed by skeletal muscles and consuming energy [1]. The following applies: **the more intensive the physical activity, the more energy is consumed per unit of time.**
 
-In the public health context, physical activity is defined as any bodily movement produced by skeletal muscles that results in energy expenditure [1].
+### 1.1 Definition of Physical Activity
 
-The behaviour, the **type and intensity** of physical activity — characterised by frequency, intensity, duration, mode, and progression — is called **exercise**, **training**, or **sport** in different contexts. Exercise is planned, structured, and repetitive physical activity with the specific goal of improving or maintaining one or more aspects of physical fitness [1]. Here are key differences:
+Physical activity, in the broadest sense, is every bodily movement performed by skeletal muscles and consuming energy (Caspersen et al., 1985). The following applies: **the more intensive the physical activity, the more energy is consumed per unit of time.**
+
+In the public health context, physical activity is defined as any bodily movement produced by skeletal muscles that results in energy expenditure (Caspersen et al., 1985).
+
+The behaviour, the **type and intensity** of physical activity — characterised by frequency, intensity, duration, mode, and progression — is called **exercise**, **training**, or **sport** in different contexts. Exercise is planned, structured, and repetitive physical activity with the specific goal of improving or maintaining one or more aspects of physical fitness (Caspersen et al., 1985). Here are key differences:
 
 - **Physical activity** encompasses all body movements in everyday life.
 - **Exercise** represents planned, structured activities with specific goals.
 - **Training** involves systematic exercise for long-term adaptation.
 - **Sport** is competitive physical activity with rules and objectives.
 
-### Energy Expenditure
+### 1.2 Energy Expenditure
 
 Energy expenditure comprises several components:
 
@@ -61,21 +65,21 @@ Energy expenditure comprises several components:
 
 **The key principle:** *Total daily energy expenditure (TDEE) = BMR + TEF + AEE + non-exercise thermogenesis (NEAT).*
 
-#### Estimation of Basal Metabolic Rate
+#### 1.2.1 Estimation of Basal Metabolic Rate
 
 Accurate estimation of BMR is a prerequisite for calculating total daily energy expenditure (TDEE)
 and for designing sport-specific nutrition strategies. Several prediction equations have been
 developed, differing in their input variables and the populations in which they were validated.
 The classic **Harris–Benedict equations** (1918, revised by Roza & Shizgal 1984) estimate BMR
-from body weight, height, and age separately for males and females [17, 18]. Because these
+from body weight, height, and age separately for males and females (Harris & Benedict, 1918; Roza & Shizgal, 1984). Because these
 equations were derived from non-athletic populations, they systematically underestimate RMR in
 individuals with high lean body mass. The **Cunningham equation** (1980) addresses this limitation
 by replacing anthropometric proxies with **lean body mass (LBM)** as the sole predictor, yielding
-a single sex-independent formula that better captures metabolically active tissue [19]. Building on
+a single sex-independent formula that better captures metabolically active tissue (Cunningham, 1980). Building on
 Cunningham's framework, **Ten Haaf & Weijs (2014)** confirmed its validity in recreational athletes
 and proposed a slightly revised coefficient set using **fat-free mass (FFM)** (370 + 21.6 × FFM),
 along with a weight-based alternative equation for situations where body composition data are
-unavailable [20]. For athletic populations — including strength-trained and endurance athletes —
+unavailable (Ten Haaf & Weijs, 2014). For athletic populations — including strength-trained and endurance athletes —
 equations incorporating FFM or LBM are generally preferred over weight-based equations, as
 metabolically active tissue is the primary determinant of resting metabolic rate.
 
@@ -112,7 +116,6 @@ Conceptual comparison of fat-free mass (FFM) and lean body mass (LBM) in the con
 </Fragment>
 </Table>
 
-
 <Table>
 
 | Equation | Year | Formula | Input variables | Validated population |
@@ -124,21 +127,21 @@ Conceptual comparison of fat-free mass (FFM) and lean body mass (LBM) in the con
 | **Ten Haaf & Weijs** (weight-based) | 2014 | REE = (25.9 × BW) − 284 | Body weight (kg) | Recreational athletes (18–35 y); no body composition data required |
 
 <Fragment slot="caption">
-Comparison of Estimation Formulas of Basal Metabolic Rate with special relevance for athletic populations (adapted from [17–20]).
+Comparison of Estimation Formulas of Basal Metabolic Rate with special relevance for athletic populations (adapted from Harris & Benedict, 1918; Roza & Shizgal, 1984; Cunningham, 1980; Ten Haaf & Weijs, 2014).
 
 All values in kcal/day. LBM = lean body mass; FFM = fat-free mass; BW = body weight. Note: LBM and FFM are related but not identical — LBM includes a small fraction of essential fat (~3 % in males, ~12 % in females) absent from FFM. Cunningham (1980) used LBM; Ten Haaf & Weijs (2014) used FFM. Both measures are typically obtained via DEXA, BIA, or hydrostatic weighing; substituting one for the other introduces only negligible error in most athletic populations.
 </Fragment>
 </Table>
 
-#### Total Energy Expenditure across the Human Life Course
+#### 1.2.2 Total Energy Expenditure across the Human Life Course
 
 Beyond resting metabolism, understanding how **total energy expenditure (TEE)** changes across
 the lifespan is fundamental for contextualising BMR within a broader metabolic framework.
-A landmark large-scale study published in *Science* (Pontzer et al., 2021) [21] demonstrated
+A landmark large-scale study published in *Science* (Pontzer et al., 2021) (Pontzer et al., 2021) demonstrated
 that TEE is strongly determined by **fat-free mass (muscle mass)** and follows a distinct
 age-related trajectory. Using doubly labelled water data from over 6,400 individuals across
 29 countries (aged 8 days to 95 years), the authors identified **four distinct metabolic phases**
-across the human lifespan [22]:
+across the human lifespan (Rhoads & Anderson, 2021):
 
 1. **Infancy and childhood (0–20 years):** TEE adjusted for FFM rises sharply during infancy,
    peaks in early childhood (~1 year of age at ~50 % above adult levels), then progressively
@@ -152,7 +155,7 @@ across the human lifespan [22]:
    reduction in tissue-level metabolic rate.
 4. **Clinical relevance:** The marked rise in incidence of chronic disease from late middle age
    closely aligns with the shift in TEE and progressive loss of adiposity, suggesting that
-   **metabolism may be a driver in ageing biology** rather than merely a passive correlate [21, 22].
+   **metabolism may be a driver in ageing biology** rather than merely a passive correlate (Pontzer et al., 2021; Rhoads & Anderson, 2021).
 
 These findings have direct implications for BMR prediction in exercise and sports science
 contexts: equations validated in young athletic adults (e.g. Ten Haaf & Weijs, 2014) may
@@ -162,7 +165,7 @@ age-related reductions in both FFM and tissue-specific metabolic rates must be c
 * [Pontzer et al. (2021) — Daily energy expenditure through the human life course (*Science*)](https://www.science.org/doi/10.1126/science.abe5017)
 * [Rhoads & Anderson (2021) — Taking the long view on metabolism (*Science*)](https://www.science.org/doi/10.1126/science.abl4537)
 
-#### Online Calculators
+#### 1.2.3 Online Calculators
 The following tools allow students and practitioners to apply BMR/RMR prediction equations
 interactively without manual calculation. The **USDA Dietary Reference Intakes (DRI) Calculator**
 provides evidence-based energy and nutrient estimates for a wide range of age groups and
@@ -174,7 +177,7 @@ and individuals with known body composition data.
 * [USDA DRI Calculator — Energy & Nutrient Estimates](https://www.nal.usda.gov/human-nutrition-and-food-safety/dri-calculator/results)
 * [Cunningham RMR Calculator (peterbond.org)](https://peterbond.org/calculate-rmr-cunningham-equation)
 
-### Metabolic Strain and Physiological Responses
+### 1.3 Metabolic Strain and Physiological Responses
 
 Physical activity exerts a metabolic strain on the organism. The **physiological strain** depends on:
 
@@ -186,226 +189,11 @@ Physical activity exerts a metabolic strain on the organism. The **physiological
 
 The organism responds to metabolic strain through acute physiological adjustments (heart rate increase, breathing rate increase) and chronic adaptations (mitochondrial biogenesis, improved capillary density).
 
----
-
-## 2 Short-Term Balancing of Homeostasis
-
-### Concept of Homeostasis
-
-<Figure src={fig1} srcDark={fig1Dark} alt="Homeostasis">
-Homeostasis refers to the dynamic equilibrium of the internal environment, maintained through regulatory mechanisms that counteract disturbances. Physical activity is a significant disturbance to homeostasis, triggering rapid regulatory responses.
-</Figure>
-
-### Acute Responses to Exercise
-
-Acute physical stress, for example through physical activity, leads to a disruption of homeostasis. 
-The disruption of homeostasis is rebalanced by physiological mechanisms and
-returns to a state of rest. For example, physical exertion leads to increased breathing in
-order to absorb more oxygen. In order for the oxygen in the blood to be transported to
-the muscles, the blood circulation must be increased. In order for the blood circulation to
-increase, the duration of the heartbeats must be shortened with a simultaneous increase
-in the stroke volume. In order to increase ventilation, the depth of the breath and
-the respiratory rate must be increased. The increase in circulation and ventilation leads
-to increased oxygen intake in the organism. Ventilation and duration of heart beats are typical 
-physiological parameters to describe the functions of the respiratory and cardiovascular
-system
-
-When the organism engages in physical activity, multiple physiological systems are activated simultaneously:
-
-#### Cardiovascular Response
-- **Heart rate increases** to deliver more oxygen and nutrients to working muscles.
-- **Stroke volume increases** — the heart pumps more blood per beat.
-- **Blood pressure rises** — systolic increases more than diastolic.
-- **Blood flow redistribution** — 20–25 % of cardiac output at rest goes to muscles; during exercise, this increases to 85–90 %.
-
-<Figure
-	src={fig2}
-	srcDark={fig2Dark}
-	alt="Heart rate"
-	panels={[{ src: fig3, srcDark: fig3Dark, alt: 'Ventilation' }]}
->
-Example for acute disturbance of the homeostasis by acute physical stress. Heart rate and ventilation increase during exercise and return after the end of the exercise. Light blue lines: Physical rest before exercise, red lines: Incremental graded maximal cycle ergometer exercise, dark blue lines: physical rest after the end of exercise.
-</Figure>
-
-#### Respiratory Response
-- **Breathing frequency increases** to enhance gas exchange.
-- **Tidal volume increases** — greater volume of air per breath.
-- **Minute ventilation (V̇E) increases** proportionally to exercise intensity.
-- **V̇O₂ increases** — more oxygen is extracted from inhaled air.
-
-#### Metabolic Response
-- **ATP demand increases** — muscle contractions require rapid ATP regeneration.
-- **Substrate utilization shifts** — at low intensities, fats dominate; at high intensities, carbohydrates predominate.
-- **Lactate production increases** — anaerobic metabolism becomes significant above the anaerobic threshold.
-- **Hormone secretion increases** — catecholamines, cortisol, and glucagon mobilize energy substrates.
-
-#### Temperature Regulation
-- **Core body temperature rises** due to metabolic heat production.
-- **Sweating increases** — the primary mechanism for heat dissipation during exercise.
-- **Skin blood flow increases** — facilitates heat loss to the environment.
-
-### Recovery and Return to Baseline
-
-Upon cessation of exercise, the organism enters a **recovery phase** characterized by:
-
-1. **Gradual reduction in heart rate and breathing rate** — occurs in stages (fast and slow phases).
-2. **Restoration of muscle glycogen** — aided by insulin sensitivity and GLUT4 translocation.
-3. **Lactate clearance** — lactate is oxidized in slow-twitch fibers and the liver.
-4. **Hormonal normalization** — stress hormones return to baseline; anabolic hormones increase.
-5. **EPOC (Excess Post-Exercise Oxygen Consumption)** — elevated metabolic rate persisting after exercise, fueling recovery processes.
-
-**Practical insight:** The recovery phase is critical. Regular physical activity improves the efficiency of these regulatory mechanisms, reducing the time required to return to baseline and enhancing overall homeostatic stability.
-
----
-
-## 3 Homeostasis and Hormesis
-
-### From Homeostatic Regulation to Hormetic Adaptation
-
-The acute physiological responses described in Section 2 restore internal equilibrium through negative feedback — a process canonically attributed to Claude Bernard and Walter Cannon [2]. However, the observation that repeated exercise bouts lead not merely to restoration of the original baseline but to a *higher* functional set-point demands a second explanatory framework: **hormesis** [3, 4].
-
-Hormesis describes the biphasic dose-response relationship in which low-to-moderate doses of a stressor produce beneficial effects opposite to those observed at high doses [3]. In exercise physiology, this means that the very inflammatory mediators serving as homeostatic error signals — IL-6, reactive oxygen species (ROS), NF-κB — simultaneously function as dose-dependent adaptive triggers when present at appropriate magnitudes and durations [4].
-
-More formally, "hormesis refers to adaptive responses of biological systems to moderate environmental or self-imposed challenges through which the system improves its functionality and/or tolerance to more severe challenges. In other words, hormesis is a coordinated response of cells and organisms to an imposed or intrinsically generated challenge that involves multiple integrative signal-transduction processes, each of which is quantitatively hormetic, to coordinate a final holistic response" [15].
-
-### Hormetic Stress Response
-
-Skeletal muscle and the broader physiological system perpetually encounter intrinsic mechanical and metabolic challenges imposed by physical activity. To cope with exercise-induced stressors — including mechanical loading, metabolic perturbation, oxidative stress, hypoxia, muscle damage, and thermal stress arising from sustained exertion — living organisms have evolved adaptive, protective training responses. At the molecular, cellular, and whole-organism levels, these responses share common regulatory features collectively termed 'exercise stress' and rely on evolutionarily conserved, exercise-responsive transcriptional networks [16]. The pattern of exercise-induced adaptations is dictated not only by the specific type of training stimulus (e.g., resistance, endurance, or concurrent exercise) but also by its intensity, frequency, and duration — variables central to exercise programming. Each of these factors, alone or in combination, can transiently disrupt physiological homeostasis and impair functional capacity. Sub-maximal training loads, however, elicit beneficial adaptive responses — including muscle hypertrophy, mitochondrial biogenesis, and improved cardiovascular function — that attenuate the physiological cost of subsequent bouts of the same or related exercise stress. This dose-dependent, biphasic adaptive property is known as 'hormesis' [15, 16]. A hallmark of exercise-induced hormesis is that the adaptive response to a given exercise stressor can extend cross-protective effects against future, and apparently unrelated, forms of physiological stress. The architecture of the exercise-responsive transcriptional network, whereby distinct modes of training regulate overlapping profiles of effector genes — including those encoding heat shock proteins, pro- and anti-inflammatory immune responses, antioxidant enzymes, and angiogenic factors — provides a compelling mechanistic explanation for this phenomenon [16].
-
-<Figure src={fig4} srcDark={fig4Dark} alt="Homeostasis time-course">
-Homeostasis time-course: the IL-6 peak, delayed IL-10/IL-1Ra counter-response, functional capacity dip, and the set-point reference line, with annotated phase zones.
-</Figure>
-
-<Figure src={fig5} srcDark={fig5Dark} alt="Hormesis dose-response">
-Hormesis dose-response: the full J-curve (URTI risk), bell-shaped adaptive benefit, and monotonically rising inflammatory load, with the three dose zones (sub-threshold / hormetic / overload) shaded.
-</Figure>
-
-### The Dual Identity of Inflammatory Mediators
-
-The juxtaposition of homeostasis and hormesis reveals that the same molecular entities serve different functional roles depending on dose and context [5]:
-
-- **Interleukin-6 (IL-6)** functions as a homeostatic error signal communicating perturbation magnitude to the hypothalamus and liver, yet simultaneously acts as a myokine with insulin-sensitising, lipolytic, and anti-inflammatory properties that drive long-term adaptation [6].
-- **Reactive oxygen species (ROS)** act as homeostatic damage markers activating NF-κB-driven repair programs at low concentrations, while simultaneously triggering Nrf2-mediated antioxidant upregulation through a hormetic pathway [7].
-- **NF-κB** activates both pro-inflammatory gene targets (TNF-α, IL-1β, COX-2) and protective ones (antioxidant enzymes, anti-apoptotic factors), with the net outcome determined by the intensity and duration of its activation [5].
-
-### Molecular Mediators of the Hormetic Response
-
-At the molecular level, the hormetic response to exercise is mediated by overlapping stress-response pathways [3, 4]:
-
-- **Nrf2** (nuclear factor erythroid 2-related factor 2): activated by exercise-generated ROS; drives the transcription of antioxidant enzymes (SOD, catalase, glutathione peroxidase) and phase II detoxification enzymes.
-- **PGC-1α** (peroxisome proliferator-activated receptor gamma coactivator 1-alpha): activated by AMP/ATP ratio, intracellular calcium, and ROS; orchestrates mitochondrial biogenesis, fibre type transition, and VEGF-driven angiogenesis.
-- **Heat-shock proteins (HSPs)**, particularly HSP70 and HSP90: upregulated in response to thermal and oxidative stress; act as molecular chaperones protecting structural and contractile proteins.
-- **Autophagy induction**: exercise activates AMPK-mediated autophagy, clearing dysfunctional organelles and misfolded proteins, contributing to cellular quality control.
-
-A crucial insight is that complete suppression of inflammation — for example through NSAIDs or antioxidants immediately post-exercise — may blunt the adaptive signal and attenuate training-induced gains [8, 9].
-
-### Biphasic Dose-Response and the J-Curve of Immune Function
-
-The hormesis framework organises the exercise dose-response into three operationally distinct zones [5, 10]:
-
-1. **Sub-threshold zone** (sedentary to light activity): insufficient stimulus for meaningful adaptive programming.
-2. **Hormetic zone** (moderate to vigorous exercise): net adaptive benefit peaks; URTI risk falls approximately 38 % below population average [10]; Nrf2 and PGC-1α pathways are maximally activated.
-3. **Overload zone** (extreme training load): inflammatory load overwhelms adaptive reserves; immune suppression ensues consistent with the open-window hypothesis [10, 11].
-
-The J-curve of upper respiratory tract infection (URTI) risk across the exercise intensity spectrum, first articulated by Nieman [10], is the most widely cited empirical anchor for the hormetic dose-response in exercise immunology. At the moderate exercise level, URTI risk reaches its nadir; at the heavy-to-extreme transition, URTI risk exceeds the sedentary baseline, marking the operational equivalent of the hormetic toxicity threshold.
-
-### Complementary Temporal Scales
-
-Homeostasis and hormesis are not competing theories but complementary descriptions of the same biology at different temporal scales [5]:
-
-- In the **acute window (0–24 h post-exercise)**, the homeostatic frame predominates: the organism's priority is to restore internal equilibrium through negative feedback.
-- In the **sub-acute and chronic adaptation window (24 h to multiple training cycles)**, the hormetic frame becomes operative: if the inflammatory signal was of appropriate magnitude and the resolution phase was complete, molecular memory — in the form of elevated Nrf2 target gene expression, increased mitochondrial density, and epigenetic modification of stress-response promoters — shifts the set-point upward (supercompensation).
-
-<Table>
-
-| Dimension | Homeostasis framework | Hormesis framework |
-|---|---|---|
-| Primary signal role of IL-6/ROS | Error signal (perturbation magnitude) | Adaptive stimulus (dose-dependent trigger) |
-| Feedback direction | Negative (corrective) | Forward at low dose; negative at overload |
-| Set-point outcome | Preserved at baseline | Elevated (supercompensation) |
-| Dose-response shape | Linear / monotonic resolution | Biphasic / inverted-U |
-| Inflammation framing | Perturbation to be resolved | Necessary adaptive trigger |
-| Key regulatory node | IL-10 axis, HPA cortisol | Nrf2, PGC-1α, HSPs, autophagy |
-| Optimal treatment strategy | Anti-inflammatory resolution support | Preserve signal; avoid premature blunting |
-| Failure mode | Unresolved chronic inflammation | Overtraining / immunosuppression |
-
-<Fragment slot="caption">
-Mechanistic contrast between homeostasis and hormesis frameworks applied to exercise-induced inflammation (adapted from [5]).
-</Fragment>
-</Table>
-
-### Pathological Contexts: ME/CFS, Long COVID, and Post-Exertional Malaise
-
-In populations with myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) and Long COVID, post-exertional malaise (PEM) represents a pathological exaggeration of the post-exercise inflammatory state [12, 13]. Within the dual-framework model, PEM can be conceptualised as a combination of two discrete abnormalities [5]:
-
-1. **Failure of homeostatic resolution**: the counter-regulatory response (IL-10, IL-1Ra) is either insufficient, delayed, or overridden by persistent upstream activation, leaving the inflammatory perturbation unresolved beyond 24–48 h.
-2. **Right-shift or inversion of the hormetic dose-response curve**: the threshold between the sub-threshold and overload zones narrows critically, such that exercise doses producing adaptive benefits in healthy individuals fall within or above the overload zone for the affected individual.
-
-This model provides a theoretical basis for the observation that graded exercise therapy (GET) — predicated on the homeostatic assumption that graduated perturbations will lead to adaptive set-point elevation — is not only ineffective but actively harmful in ME/CFS, because the hormetic adaptive machinery is unavailable or compromised [5, 12, 13].
-
-**Practical insight:** Homeostasis governs the immediate inflammatory resolution following exercise, while hormesis explains the long-term adaptive gains. Recognising their complementary nature is essential for optimal exercise prescription — particularly in clinical populations where resolution capacity may be impaired and the hormetic dose-response curve may be critically altered.
-
----
-
-## 4 State of Sleep and Wakefulness
-
-### Sleep Architecture and Physiology
-
-Sleep is a vital physiological state characterized by reduced responsiveness to external stimuli and reversibility. It consists of two main types:
-
-#### Non-REM (NREM) Sleep
-- **Stage 1 (Light sleep):** Transition from wakefulness; muscle tone decreases; brain waves slow.
-- **Stage 2 (Intermediate sleep):** Further slowing of brain waves; characterized by sleep spindles and K-complexes.
-- **Stage 3 (Deep sleep/Slow-wave sleep):** Highest threshold for arousal; greatest brain wave slowing; major restorative processes occur.
-
-#### REM Sleep (Rapid Eye Movement Sleep)
-- **Characterized by rapid eye movements**, muscle atonia, and vivid dreams.
-- **Brain activity resembles wakefulness**, but voluntary movement is inhibited.
-- **Occupies ~20–25 % of total sleep time** in adults.
-
-### Sleep Cycles and Duration
-
-A complete sleep cycle lasts approximately 90 minutes and progresses through stages 1–3 of NREM followed by REM sleep. Most restorative sleep occurs during stages 3 (deep sleep) and REM phases. Adults require 7–9 hours of sleep per night for optimal physiological function.
-
-### Physiological Functions of Sleep
-
-Sleep serves multiple critical functions:
-
-1. **Physical restoration** — tissue repair, protein synthesis, growth hormone secretion.
-2. **Metabolic regulation** — glucose homeostasis, insulin sensitivity, lipid metabolism.
-3. **Immune function** — T-cell proliferation, cytokine production, immune memory consolidation.
-4. **Cognitive consolidation** — memory consolidation (both declarative and procedural).
-5. **Cerebral clearance** — removal of metabolic waste products via the glymphatic system.
-6. **Thermoregulation** — core body temperature decreases during sleep.
-
-### Relationship Between Exercise and Sleep
-
-**Physical activity promotes sleep quality through multiple mechanisms:**
-
-1. **Increased sleep pressure** — physical activity depletes energy substrates and increases adenosine, promoting sleep.
-2. **Enhanced thermoregulation** — exercise-induced increase in core body temperature followed by a rapid drop facilitates sleep onset.
-3. **Stress reduction** — regular physical activity reduces cortisol levels and psychological stress.
-4. **Improved circadian alignment** — morning exercise synchronizes the circadian rhythm, facilitating sleep at appropriate times.
-
-**Sleep deprivation impairs exercise performance and recovery:**
-
-1. **Reduced strength and power output.**
-2. **Increased injury risk** — impaired neuromuscular control.
-3. **Blunted training adaptations** — reduced mitochondrial biogenesis and angiogenesis.
-4. **Immune suppression** — increased susceptibility to infections.
-5. **Metabolic dysregulation** — increased carbohydrate cravings and reduced insulin sensitivity.
-
-**Practical insight:** A bidirectional relationship exists between exercise and sleep. Regular physical activity improves sleep quality, and adequate sleep enhances exercise performance and training adaptations. Prioritizing both is essential for optimal health outcomes.
-
----
-
-## 5 Behaviour and V̇O₂
-
-### 5.1 Physical Performance, Activity and Behaviour
+### 1.4 Physical Performance, Activity and Behaviour
 
 From a biological point of view, movement is a vital skill enabling physical performance, physical activity, and behaviour. A minimum level of physical fitness is required to be physically active. Physical performance and physical activity are the main determining factors for behaviour in everyday life, at work, and in leisure time.
 
-### 5.2 Oxygen — Essential for Energy Supply
+### 1.5 Oxygen — Essential for Energy Supply
 
 Oxygen (O₂) is essential for the energy supply of cells. A prolonged lack of O₂ — usually the result of a circulatory disorder — initially leads to functional failures and later to irreversible cell and organ damage. There are no significant oxygen stores in cells, and oxygen-independent metabolism is insufficient for energy requirements. Therefore, sufficient O₂ must be constantly supplied via the circulatory system.
 
@@ -420,7 +208,7 @@ During exercise, O₂ consumption of cardiac muscle tissue increases 3–4 times
 
 **Too much oxygen can be harmful** — oxygen radicals damage cell membranes, enzymes and DNA. Reactive oxygen species continuously formed in cells play an important role as signalling molecules at low concentrations but cause cell damage at high concentrations.
 
-### 5.3 V̇O₂ and Daily Behaviour
+### 1.6 V̇O₂ and Daily Behaviour
 
 Any type of physical activity and therefore behaviour requires energy. The amount of oxygen required for energy metabolism is supplied via pulmonary respiration and transported via blood to organs such as skeletal muscles.
 
@@ -439,47 +227,13 @@ Exercise-intensity zones by V̇O₂ (ACSM).
 </Fragment>
 </Table>
 
-### 5.4 V̇O₂ as a Measure of Energy Expenditure
+### 1.7 V̇O₂ as a Measure of Energy Expenditure
 
 Oxygen uptake provides information about the energy requirements and energy consumption of the organism. When providing energy, oxygen consumption depends on the type of energy source: fats require more oxygen to burn than carbohydrates or proteins, resulting in different physiological calorific values.
 
-### 5.5 Normoxia and Energy Supply
+### 1.8 MET — Metabolic Equivalents of Task
 
-**Normoxia** means that sufficient O₂ is available at all times for all tasks of a cell, tissue or organ. Under normoxic conditions the O₂ requirement for the respiratory chain is covered by a corresponding O₂ supply.
-
-The short-term increase in O₂ supply can be achieved through increased blood flow; in the medium term through increased O₂ capacity of the blood. Various hormones, body temperature, and mitochondrial uncoupling proteins (e.g. UCP1) influence basal O₂ consumption. Consumption-increasing hormones include catecholamines and thyroid hormones.
-
-### 5.6 O₂ Deficiency and Energy Supply
-
-O₂ deficiency leads to severely restricted ATP formation. Anaerobic glycolysis cannot compensate for a disruption in O₂ supply in the long term. The resulting lactate and protons transported from cells into the extracellular space can lead to **tissue acidosis**.
-
-<Table>
-
-| Component | Volume (%) | Partial pressure (mmHg) |
-|---|---|---|
-| N₂ | 78.09 | 593.45 |
-| O₂ | 20.95 | 159.21 |
-| Ar | 0.927 | 7.04 |
-| CO₂ | 0.039 | 0.293 |
-
-<Fragment slot="caption">
-Dry-air composition and partial pressures at sea level.
-</Fragment>
-</Table>
-
-### 5.7 Breathing and Gas Exchange
-
-Gas exchange occurs in the alveoli by diffusion. After ventilation transports O₂-rich gas into the alveoli, O₂ is absorbed into the blood and CO₂ released. The **1st Fick diffusion law** describes pulmonary gas exchange: diffusion current is proportional to the partial pressure difference and exchange area, and inversely proportional to layer thickness. The Krogh diffusion constant for CO₂ is approximately 20 times that of O₂.
-
-At rest:
-- Alveolar O₂ fraction: 14 % by volume; O₂ partial pressure: ~100 mmHg
-- Alveolar CO₂ fraction: 5.6 % by volume; CO₂ partial pressure: ~40 mmHg
-
-The diffusion capacity for adults at rest is normally 30 mL·min⁻¹·mmHg⁻¹. Contact time for equilibration of partial pressures in the pulmonary capillaries: approximately 0.3–0.7 s.
-
-### 5.8 MET — Metabolic Equivalents of Task
-
-#### 5.8.1 Physical Activity Levels
+#### 1.8.1 Physical Activity Levels
 
 The metabolic equivalent (MET) is an index of energy expenditure. One MET is the rate of EE while sitting at rest; by scientific convention, 1 MET = 3.5 mL·kg⁻¹·min⁻¹ O₂ uptake = 1 kcal·kg·h⁻¹ body weight.
 
@@ -497,15 +251,15 @@ Physical-activity levels by MET (Compendium).
 </Fragment>
 </Table>
 
-#### 5.8.2 What Is MET?
+#### 1.8.2 What Is MET?
 
 1 MET corresponds to 3.5 mL·kg⁻¹·min⁻¹. Most source studies catalogued in the 2011 Compendium reported energy costs as either V̇O₂ (mL·kg⁻¹·min⁻¹) or MET using 3.5 as the denominator. There are differences between the standard denominator and the real RMR. For an individual with a predicted RMR = 2.8 mL·kg⁻¹·min⁻¹, the corrected MET would be 3.5/2.8 = 125 % of Compendium values.
 
-#### 5.8.3 MET ≠ MET?
+#### 1.8.3 MET ≠ MET?
 
 1 MET is not always the same amount of V̇O₂. The standard 3.5 mL·kg⁻¹·min⁻¹ is a convention; individual resting metabolic rate differs. The Compendium MET level for any PA can be multiplied by the ratio (standard MET / individual predicted RMR) for individual correction.
 
-### 5.9 MET-min
+### 1.9 MET-min
 
 **MET-minutes** quantify the total amount of physical activity performed in a standardised manner. Calculated as: METs × duration in minutes.
 
@@ -513,17 +267,335 @@ Example: Jogging at 7 METs for 30 min on 3 days/week = **7 × 30 × 3 = 630 MET�
 
 MET-minutes are usually standardised per week or per day and used in physical activity guidelines and epidemiological studies.
 
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- What is the key distinction between "physical activity" and "exercise" according to Caspersen et al., and why does this distinction matter for public health recommendations?
+- Name the four components of TDEE (BMR, RMR, TEF, AEE/NEAT) and explain which one is most modifiable through lifestyle behaviour.
+
+### Key References
+- Caspersen CJ, Powell KE, Christenson GM. Physical activity, exercise, and physical fitness: definitions and distinctions for health-related research. *Public Health Reports*. 1985;100(2):126–131. ISSN 0033-3549.
+- Cunningham JJ. A reanalysis of the factors influencing basal metabolic rate in normal adults. *The American Journal of Clinical Nutrition*. 1980;33(11):2372–2374. doi:10.1093/ajcn/33.11.2372.
+- Harris JA, Benedict FG. A biometric study of human basal metabolism. *Proceedings of the National Academy of Sciences*. 1918;4(12):370–373. doi:10.1073/pnas.4.12.370.
+- Pontzer H, Yamada Y, Sagayama H, et al. Daily energy expenditure through the human life course. *Science*. 2021;373(6556):808–812. doi:10.1126/science.abe5017.
+- Rhoads TW, Anderson RM. Taking the long view on metabolism. *Science*. 2021 Aug 13;373(6556):738–739. doi:10.1126/science.abl4537. PMID: 34385381.
+- Roza AM, Shizgal HM. The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass. *The American Journal of Clinical Nutrition*. 1984;40(1):168–182. doi:10.1093/ajcn/40.1.168.
+- Ten Haaf T, Weijs PJM. Resting energy expenditure prediction in recreational athletes of 18–35 years: confirmation of Cunningham equation and an improved weight-based alternative. *PLOS ONE*. 2014;9(9):e108460. doi:10.1371/journal.pone.0108460.
+
 ---
 
-## 6 Threshold Concepts
+## 2 Homeostasis: Acute regulation
 
-### Background
+**Learning objectives:**
+- Trace an acute perturbation → correction → recovery loop for heart rate and minute ventilation.
+- Explain cardiovascular, respiratory, metabolic and thermoregulatory adjustments as coordinated homeostatic corrections.
+- Relate O₂ transport, Fick diffusion and normoxia/hypoxia to why these adjustments are physiologically required.
+- Describe EPOC and the fast/slow phases of return to baseline.
+
+### 2.1 Concept of Homeostasis
+
+<Figure src={fig1} srcDark={fig1Dark} alt="Homeostasis">
+Homeostasis refers to the dynamic equilibrium of the internal environment, maintained through regulatory mechanisms that counteract disturbances. Physical activity is a significant disturbance to homeostasis, triggering rapid regulatory responses.
+</Figure>
+
+### 2.2 Acute Responses to Exercise
+
+Acute physical stress, for example through physical activity, leads to a disruption of homeostasis. 
+The disruption of homeostasis is rebalanced by physiological mechanisms and
+returns to a state of rest. For example, physical exertion leads to increased breathing in
+order to absorb more oxygen. In order for the oxygen in the blood to be transported to
+the muscles, the blood circulation must be increased. In order for the blood circulation to
+increase, the duration of the heartbeats must be shortened with a simultaneous increase
+in the stroke volume. In order to increase ventilation, the depth of the breath and
+the respiratory rate must be increased. The increase in circulation and ventilation leads
+to increased oxygen intake in the organism. Ventilation and duration of heart beats are typical 
+physiological parameters to describe the functions of the respiratory and cardiovascular
+system
+
+When the organism engages in physical activity, multiple physiological systems are activated simultaneously:
+
+#### 2.2.1 Cardiovascular Response
+- **Heart rate increases** to deliver more oxygen and nutrients to working muscles.
+- **Stroke volume increases** — the heart pumps more blood per beat.
+- **Blood pressure rises** — systolic increases more than diastolic.
+- **Blood flow redistribution** — 20–25 % of cardiac output at rest goes to muscles; during exercise, this increases to 85–90 %.
+
+<Figure
+	src={fig2}
+	srcDark={fig2Dark}
+	alt="Heart rate"
+	panels={[{ src: fig3, srcDark: fig3Dark, alt: 'Ventilation' }]}
+>
+Example for acute disturbance of the homeostasis by acute physical stress. Heart rate and ventilation increase during exercise and return after the end of the exercise. Light blue lines: Physical rest before exercise, red lines: Incremental graded maximal cycle ergometer exercise, dark blue lines: physical rest after the end of exercise.
+</Figure>
+
+#### 2.2.2 Respiratory Response
+- **Breathing frequency increases** to enhance gas exchange.
+- **Tidal volume increases** — greater volume of air per breath.
+- **Minute ventilation (V̇E) increases** proportionally to exercise intensity.
+- **V̇O₂ increases** — more oxygen is extracted from inhaled air.
+
+#### 2.2.3 Metabolic Response
+- **ATP demand increases** — muscle contractions require rapid ATP regeneration.
+- **Substrate utilization shifts** — at low intensities, fats dominate; at high intensities, carbohydrates predominate.
+- **Lactate production increases** — anaerobic metabolism becomes significant above the anaerobic threshold.
+- **Hormone secretion increases** — catecholamines, cortisol, and glucagon mobilize energy substrates.
+
+#### 2.2.4 Temperature Regulation
+- **Core body temperature rises** due to metabolic heat production.
+- **Sweating increases** — the primary mechanism for heat dissipation during exercise.
+- **Skin blood flow increases** — facilitates heat loss to the environment.
+
+### 2.3 Recovery and Return to Baseline
+
+Upon cessation of exercise, the organism enters a **recovery phase** characterized by:
+
+1. **Gradual reduction in heart rate and breathing rate** — occurs in stages (fast and slow phases).
+2. **Restoration of muscle glycogen** — aided by insulin sensitivity and GLUT4 translocation.
+3. **Lactate clearance** — lactate is oxidized in slow-twitch fibers and the liver.
+4. **Hormonal normalization** — stress hormones return to baseline; anabolic hormones increase.
+5. **EPOC (Excess Post-Exercise Oxygen Consumption)** — elevated metabolic rate persisting after exercise, fueling recovery processes.
+
+**Practical insight:** The recovery phase is critical. Regular physical activity improves the efficiency of these regulatory mechanisms, reducing the time required to return to baseline and enhancing overall homeostatic stability.
+
+### 2.4 Normoxia and Energy Supply
+
+**Normoxia** means that sufficient O₂ is available at all times for all tasks of a cell, tissue or organ. Under normoxic conditions the O₂ requirement for the respiratory chain is covered by a corresponding O₂ supply.
+
+The short-term increase in O₂ supply can be achieved through increased blood flow; in the medium term through increased O₂ capacity of the blood. Various hormones, body temperature, and mitochondrial uncoupling proteins (e.g. UCP1) influence basal O₂ consumption. Consumption-increasing hormones include catecholamines and thyroid hormones.
+
+### 2.5 O₂ Deficiency and Energy Supply
+
+O₂ deficiency leads to severely restricted ATP formation. Anaerobic glycolysis cannot compensate for a disruption in O₂ supply in the long term. The resulting lactate and protons transported from cells into the extracellular space can lead to **tissue acidosis**.
+
+<Table>
+
+| Component | Volume (%) | Partial pressure (mmHg) |
+|---|---|---|
+| N₂ | 78.09 | 593.45 |
+| O₂ | 20.95 | 159.21 |
+| Ar | 0.927 | 7.04 |
+| CO₂ | 0.039 | 0.293 |
+
+<Fragment slot="caption">
+Dry-air composition and partial pressures at sea level.
+</Fragment>
+</Table>
+
+### 2.6 Breathing and Gas Exchange
+
+Gas exchange occurs in the alveoli by diffusion. After ventilation transports O₂-rich gas into the alveoli, O₂ is absorbed into the blood and CO₂ released. The **1st Fick diffusion law** describes pulmonary gas exchange: diffusion current is proportional to the partial pressure difference and exchange area, and inversely proportional to layer thickness. The Krogh diffusion constant for CO₂ is approximately 20 times that of O₂.
+
+At rest:
+- Alveolar O₂ fraction: 14 % by volume; O₂ partial pressure: ~100 mmHg
+- Alveolar CO₂ fraction: 5.6 % by volume; CO₂ partial pressure: ~40 mmHg
+
+The diffusion capacity for adults at rest is normally 30 mL·min⁻¹·mmHg⁻¹. Contact time for equilibration of partial pressures in the pulmonary capillaries: approximately 0.3–0.7 s.
+
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- Describe the cascade of cardiovascular adjustments (heart rate, stroke volume, blood redistribution) that occur within the first minutes of aerobic exercise. What is the homeostatic "goal" of these changes?
+- How does minute ventilation (V̇E) respond during an incremental exercise test, and what physiological purpose does this serve for maintaining homeostasis?
+- What is excess post-exercise oxygen consumption (EPOC), and which metabolic processes does it fund during recovery? Why is it clinically relevant?
+- Explain in your own words what Walter Cannon meant by "the wisdom of the body." How does exercise challenge and ultimately reinforce this wisdom?
+
+### Key References
+- Cannon WB. *The Wisdom of the Body*. W. W. Norton & Company; 1932.
+- Caspersen CJ, Powell KE, Christenson GM. Physical activity, exercise, and physical fitness: definitions and distinctions for health-related research. *Public Health Reports*. 1985;100(2):126–131. ISSN 0033-3549.
+
+---
+
+## 3 Hormesis: Chronic Adaptation & Clinical Edge
+
+**Learning objectives:**
+- Locate a training dose within the sub-threshold / hormetic / overload zones and predict the adaptive outcome.
+- Explain the dual identity of IL-6, ROS and NF-κB as error signal vs adaptive trigger.
+- Apply the homeostasis-vs-hormesis contrast (Table 3) as a take-home model.
+- Use the dual framework to justify divergent prescriptions for a healthy runner vs a Long-COVID patient, and explain why GET fails in ME/CFS.
+
+### 3.1 From Homeostatic Regulation to Hormetic Adaptation
+
+The acute physiological responses described in Section 2 restore internal equilibrium through negative feedback — a process canonically attributed to Claude Bernard and Walter Cannon (Cannon, 1932). However, the observation that repeated exercise bouts lead not merely to restoration of the original baseline but to a *higher* functional set-point demands a second explanatory framework: **hormesis** (Calabrese & Baldwin, 2002; Calabrese & Mattson, 2017).
+
+Hormesis describes the biphasic dose-response relationship in which low-to-moderate doses of a stressor produce beneficial effects opposite to those observed at high doses (Calabrese & Baldwin, 2002). In exercise physiology, this means that the very inflammatory mediators serving as homeostatic error signals — IL-6, reactive oxygen species (ROS), NF-κB — simultaneously function as dose-dependent adaptive triggers when present at appropriate magnitudes and durations (Calabrese & Mattson, 2017).
+
+More formally, "hormesis refers to adaptive responses of biological systems to moderate environmental or self-imposed challenges through which the system improves its functionality and/or tolerance to more severe challenges. In other words, hormesis is a coordinated response of cells and organisms to an imposed or intrinsically generated challenge that involves multiple integrative signal-transduction processes, each of which is quantitatively hormetic, to coordinate a final holistic response" (Calabrese & Mattson, 2017).
+
+### 3.2 Hormetic Stress Response
+
+Skeletal muscle and the broader physiological system perpetually encounter intrinsic mechanical and metabolic challenges imposed by physical activity. To cope with exercise-induced stressors — including mechanical loading, metabolic perturbation, oxidative stress, hypoxia, muscle damage, and thermal stress arising from sustained exertion — living organisms have evolved adaptive, protective training responses. At the molecular, cellular, and whole-organism levels, these responses share common regulatory features collectively termed 'exercise stress' and rely on evolutionarily conserved, exercise-responsive transcriptional networks (Bauer et al., 2024). The pattern of exercise-induced adaptations is dictated not only by the specific type of training stimulus (e.g., resistance, endurance, or concurrent exercise) but also by its intensity, frequency, and duration — variables central to exercise programming. Each of these factors, alone or in combination, can transiently disrupt physiological homeostasis and impair functional capacity. Sub-maximal training loads, however, elicit beneficial adaptive responses — including muscle hypertrophy, mitochondrial biogenesis, and improved cardiovascular function — that attenuate the physiological cost of subsequent bouts of the same or related exercise stress. This dose-dependent, biphasic adaptive property is known as 'hormesis' (Calabrese & Mattson, 2017; Bauer et al., 2024). A hallmark of exercise-induced hormesis is that the adaptive response to a given exercise stressor can extend cross-protective effects against future, and apparently unrelated, forms of physiological stress. The architecture of the exercise-responsive transcriptional network, whereby distinct modes of training regulate overlapping profiles of effector genes — including those encoding heat shock proteins, pro- and anti-inflammatory immune responses, antioxidant enzymes, and angiogenic factors — provides a compelling mechanistic explanation for this phenomenon (Bauer et al., 2024).
+
+<Figure src={fig4} srcDark={fig4Dark} alt="Homeostasis time-course">
+Homeostasis time-course: the IL-6 peak, delayed IL-10/IL-1Ra counter-response, functional capacity dip, and the set-point reference line, with annotated phase zones.
+</Figure>
+
+<Figure src={fig5} srcDark={fig5Dark} alt="Hormesis dose-response">
+Hormesis dose-response: the full J-curve (URTI risk), bell-shaped adaptive benefit, and monotonically rising inflammatory load, with the three dose zones (sub-threshold / hormetic / overload) shaded.
+</Figure>
+
+### 3.3 The Dual Identity of Inflammatory Mediators
+
+The juxtaposition of homeostasis and hormesis reveals that the same molecular entities serve different functional roles depending on dose and context (Puta & Gabriel, 2025):
+
+- **Interleukin-6 (IL-6)** functions as a homeostatic error signal communicating perturbation magnitude to the hypothalamus and liver, yet simultaneously acts as a myokine with insulin-sensitising, lipolytic, and anti-inflammatory properties that drive long-term adaptation (Pedersen & Febbraio, 2008).
+- **Reactive oxygen species (ROS)** act as homeostatic damage markers activating NF-κB-driven repair programs at low concentrations, while simultaneously triggering Nrf2-mediated antioxidant upregulation through a hormetic pathway (Ristow et al., 2009).
+- **NF-κB** activates both pro-inflammatory gene targets (TNF-α, IL-1β, COX-2) and protective ones (antioxidant enzymes, anti-apoptotic factors), with the net outcome determined by the intensity and duration of its activation (Puta & Gabriel, 2025).
+
+### 3.4 Molecular Mediators of the Hormetic Response
+
+At the molecular level, the hormetic response to exercise is mediated by overlapping stress-response pathways (Calabrese & Baldwin, 2002; Calabrese & Mattson, 2017):
+
+- **Nrf2** (nuclear factor erythroid 2-related factor 2): activated by exercise-generated ROS; drives the transcription of antioxidant enzymes (SOD, catalase, glutathione peroxidase) and phase II detoxification enzymes.
+- **PGC-1α** (peroxisome proliferator-activated receptor gamma coactivator 1-alpha): activated by AMP/ATP ratio, intracellular calcium, and ROS; orchestrates mitochondrial biogenesis, fibre type transition, and VEGF-driven angiogenesis.
+- **Heat-shock proteins (HSPs)**, particularly HSP70 and HSP90: upregulated in response to thermal and oxidative stress; act as molecular chaperones protecting structural and contractile proteins.
+- **Autophagy induction**: exercise activates AMPK-mediated autophagy, clearing dysfunctional organelles and misfolded proteins, contributing to cellular quality control.
+
+A crucial insight is that complete suppression of inflammation — for example through NSAIDs or antioxidants immediately post-exercise — may blunt the adaptive signal and attenuate training-induced gains (Paulsen et al., 2014; Selye, 1946).
+
+### 3.5 Biphasic Dose-Response and the J-Curve of Immune Function
+
+The hormesis framework organises the exercise dose-response into three operationally distinct zones (Puta & Gabriel, 2025; Nieman, 1994):
+
+1. **Sub-threshold zone** (sedentary to light activity): insufficient stimulus for meaningful adaptive programming.
+2. **Hormetic zone** (moderate to vigorous exercise): net adaptive benefit peaks; URTI risk falls approximately 38 % below population average (Nieman, 1994); Nrf2 and PGC-1α pathways are maximally activated.
+3. **Overload zone** (extreme training load): inflammatory load overwhelms adaptive reserves; immune suppression ensues consistent with the open-window hypothesis (Nieman, 1994; Nieman & Wentz, 2019).
+
+The J-curve of upper respiratory tract infection (URTI) risk across the exercise intensity spectrum, first articulated by Nieman (Nieman, 1994), is the most widely cited empirical anchor for the hormetic dose-response in exercise immunology. At the moderate exercise level, URTI risk reaches its nadir; at the heavy-to-extreme transition, URTI risk exceeds the sedentary baseline, marking the operational equivalent of the hormetic toxicity threshold.
+
+### 3.6 Complementary Temporal Scales
+
+Homeostasis and hormesis are not competing theories but complementary descriptions of the same biology at different temporal scales (Puta & Gabriel, 2025):
+
+- In the **acute window (0–24 h post-exercise)**, the homeostatic frame predominates: the organism's priority is to restore internal equilibrium through negative feedback.
+- In the **sub-acute and chronic adaptation window (24 h to multiple training cycles)**, the hormetic frame becomes operative: if the inflammatory signal was of appropriate magnitude and the resolution phase was complete, molecular memory — in the form of elevated Nrf2 target gene expression, increased mitochondrial density, and epigenetic modification of stress-response promoters — shifts the set-point upward (supercompensation).
+
+<Table>
+
+| Dimension | Homeostasis framework | Hormesis framework |
+|---|---|---|
+| Primary signal role of IL-6/ROS | Error signal (perturbation magnitude) | Adaptive stimulus (dose-dependent trigger) |
+| Feedback direction | Negative (corrective) | Forward at low dose; negative at overload |
+| Set-point outcome | Preserved at baseline | Elevated (supercompensation) |
+| Dose-response shape | Linear / monotonic resolution | Biphasic / inverted-U |
+| Inflammation framing | Perturbation to be resolved | Necessary adaptive trigger |
+| Key regulatory node | IL-10 axis, HPA cortisol | Nrf2, PGC-1α, HSPs, autophagy |
+| Optimal treatment strategy | Anti-inflammatory resolution support | Preserve signal; avoid premature blunting |
+| Failure mode | Unresolved chronic inflammation | Overtraining / immunosuppression |
+
+<Fragment slot="caption">
+Mechanistic contrast between homeostasis and hormesis frameworks applied to exercise-induced inflammation (adapted from Puta & Gabriel, 2025).
+</Fragment>
+</Table>
+
+### 3.7 Pathological Contexts: ME/CFS, Long COVID, and Post-Exertional Malaise
+
+In populations with myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) and Long COVID, post-exertional malaise (PEM) represents a pathological exaggeration of the post-exercise inflammatory state (Carruthers et al., 2011; Komaroff & Lipkin, 2021). Within the dual-framework model, PEM can be conceptualised as a combination of two discrete abnormalities (Puta & Gabriel, 2025):
+
+1. **Failure of homeostatic resolution**: the counter-regulatory response (IL-10, IL-1Ra) is either insufficient, delayed, or overridden by persistent upstream activation, leaving the inflammatory perturbation unresolved beyond 24–48 h.
+2. **Right-shift or inversion of the hormetic dose-response curve**: the threshold between the sub-threshold and overload zones narrows critically, such that exercise doses producing adaptive benefits in healthy individuals fall within or above the overload zone for the affected individual.
+
+This model provides a theoretical basis for the observation that graded exercise therapy (GET) — predicated on the homeostatic assumption that graduated perturbations will lead to adaptive set-point elevation — is not only ineffective but actively harmful in ME/CFS, because the hormetic adaptive machinery is unavailable or compromised (Puta & Gabriel, 2025; Carruthers et al., 2011; Komaroff & Lipkin, 2021).
+
+**Practical insight:** Homeostasis governs the immediate inflammatory resolution following exercise, while hormesis explains the long-term adaptive gains. Recognising their complementary nature is essential for optimal exercise prescription — particularly in clinical populations where resolution capacity may be impaired and the hormetic dose-response curve may be critically altered.
+
+### 3.8 Sleep Architecture and Physiology
+
+Sleep is a vital physiological state characterized by reduced responsiveness to external stimuli and reversibility. It consists of two main types:
+
+#### 3.8.1 Non-REM (NREM) Sleep
+- **Stage 1 (Light sleep):** Transition from wakefulness; muscle tone decreases; brain waves slow.
+- **Stage 2 (Intermediate sleep):** Further slowing of brain waves; characterized by sleep spindles and K-complexes.
+- **Stage 3 (Deep sleep/Slow-wave sleep):** Highest threshold for arousal; greatest brain wave slowing; major restorative processes occur.
+
+#### 3.8.2 REM Sleep (Rapid Eye Movement Sleep)
+- **Characterized by rapid eye movements**, muscle atonia, and vivid dreams.
+- **Brain activity resembles wakefulness**, but voluntary movement is inhibited.
+- **Occupies ~20–25 % of total sleep time** in adults.
+
+### 3.9 Sleep Cycles and Duration
+
+A complete sleep cycle lasts approximately 90 minutes and progresses through stages 1–3 of NREM followed by REM sleep. Most restorative sleep occurs during stages 3 (deep sleep) and REM phases. Adults require 7–9 hours of sleep per night for optimal physiological function.
+
+### 3.10 Physiological Functions of Sleep
+
+Sleep serves multiple critical functions:
+
+1. **Physical restoration** — tissue repair, protein synthesis, growth hormone secretion.
+2. **Metabolic regulation** — glucose homeostasis, insulin sensitivity, lipid metabolism.
+3. **Immune function** — T-cell proliferation, cytokine production, immune memory consolidation.
+4. **Cognitive consolidation** — memory consolidation (both declarative and procedural).
+5. **Cerebral clearance** — removal of metabolic waste products via the glymphatic system.
+6. **Thermoregulation** — core body temperature decreases during sleep.
+
+### 3.11 Relationship Between Exercise and Sleep
+
+**Physical activity promotes sleep quality through multiple mechanisms:**
+
+1. **Increased sleep pressure** — physical activity depletes energy substrates and increases adenosine, promoting sleep.
+2. **Enhanced thermoregulation** — exercise-induced increase in core body temperature followed by a rapid drop facilitates sleep onset.
+3. **Stress reduction** — regular physical activity reduces cortisol levels and psychological stress.
+4. **Improved circadian alignment** — morning exercise synchronizes the circadian rhythm, facilitating sleep at appropriate times.
+
+**Sleep deprivation impairs exercise performance and recovery:**
+
+1. **Reduced strength and power output.**
+2. **Increased injury risk** — impaired neuromuscular control.
+3. **Blunted training adaptations** — reduced mitochondrial biogenesis and angiogenesis.
+4. **Immune suppression** — increased susceptibility to infections.
+5. **Metabolic dysregulation** — increased carbohydrate cravings and reduced insulin sensitivity.
+
+**Practical insight:** A bidirectional relationship exists between exercise and sleep. Regular physical activity improves sleep quality, and adequate sleep enhances exercise performance and training adaptations. Prioritizing both is essential for optimal health outcomes.
+
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- Describe the three dose zones of the hormetic dose–response (sub-threshold, hormetic, overload). Give one physiological example for each zone in the context of exercise.
+- Interleukin-6 plays opposite roles depending on context. Explain the difference between IL-6 as a homeostatic error signal and IL-6 as an anti-inflammatory myokine produced by contracting muscle.
+- How does exercise-generated ROS activate the Nrf2 pathway, and why would taking high-dose antioxidants immediately post-exercise blunt training adaptations?
+- What cellular conditions activate PGC-1α during exercise, and what downstream adaptations does it orchestrate? Why is this molecule central to the hormetic framework?
+- Sketch the J-curve of upper respiratory tract infection risk across exercise intensity zones. At which point is URTI risk lowest, and what happens in the overload zone?
+- Why are homeostasis and hormesis described as "complementary descriptions of the same biology at different temporal scales"? Use a 72-hour post-exercise timeline to illustrate your answer.
+- The lecture states that "complete suppression of inflammation may blunt the adaptive signal." What is the evidence for this claim, and what practical implications does it have for athletes?
+- Using the dual-framework model (homeostasis + hormesis), explain why graded exercise therapy (GET) may be harmful in ME/CFS. What two discrete abnormalities does the model identify in PEM?
+- Distinguish between NREM Stage 3 (slow-wave sleep) and REM sleep in terms of brain activity, physiological function, and proportion of total sleep time in healthy adults.
+- What is the glymphatic system, and why is deep (NREM Stage 3) sleep particularly important for cerebral metabolic waste clearance? How might exercise influence this process?
+- List two mechanisms by which regular physical activity improves sleep quality, and two mechanisms by which sleep deprivation impairs exercise performance. What does "bidirectional" mean here?
+- The lecture describes exercise-induced temperature regulation as a facilitator of sleep onset. Explain the thermodynamic mechanism: how does a post-exercise drop in core body temperature promote sleep?
+- Distinguish between "restoration of baseline" (homeostatic outcome) and "set-point elevation / supercompensation" (hormetic outcome). What molecular memory processes make supercompensation possible?
+- For a healthy recreational runner and a patient with Long COVID, how would you use the homeostasis–hormesis table (Table 3) to justify different exercise prescriptions? Which framework is most relevant for each, and why?
+
+### Key References
+- Bauer M, Ermolaeva M, Singer M, Wetzker R, Soares MP. Hormesis as an adaptive response to infection. *Trends in Molecular Medicine*. 2024;30(7):633–642. doi:10.1016/j.molmed.2024.04.012.
+- Calabrese EJ, Baldwin LA. Defining hormesis. *Human & Experimental Toxicology*. 2002;21(2):91–97.
+- Calabrese EJ, Mattson MP. How does hormesis impact biology, toxicology, and medicine? *npj Aging and Mechanisms of Disease*. 2017;3:13. doi:10.1038/s41514-017-0013-z.
+- Carruthers BM, van de Sande MI, De Meirleir KL, et al. Myalgic encephalomyelitis: International consensus criteria. *Journal of Internal Medicine*. 2011;270(4):327–338.
+- Komaroff AL, Lipkin WI. Insights from myalgic encephalomyelitis/chronic fatigue syndrome may help unravel the pathogenesis of post-acute COVID-19 syndrome. *Trends in Molecular Medicine*. 2021;27(9):895–906.
+- Nieman DC. Exercise, infection, and immunity. *International Journal of Sports Medicine*. 1994;15(S3):S131–S141.
+- Pedersen BK, Febbraio MA. Muscle as an endocrine organ: focus on muscle-derived interleukin-6. *Physiological Reviews*. 2008;88(4):1379–1406.
+- Puta C, Gabriel H. Homeostasis and hormesis as complementary frameworks for exercise-induced inflammation: a conceptual simulation analysis. Friedrich-Schiller-Universität Jena, Institute for Sports Science; 2025.
+- Ristow M, Zarse K, Oberbach A, et al. Antioxidants prevent health-promoting effects of physical exercise in humans. *Proceedings of the National Academy of Sciences*. 2009;106(21):8665–8670.
+
+---
+
+## 4 Intensity Determination & Diagnostics
+
+**Learning objectives:**
+- Differentiate T1/T2 threshold concepts across metabolic, gas-exchange and ventilatory models.
+- Explain why %V̇O₂max / %HRmax / %HRR / METs under-individualise intensity.
+- Apply the ACSM–ESSA 5-level terminology; use RIR for resistance and RPE as an adjunct.
+- Select and defend an intensity-anchoring method and interpret HRmax / HRR for a specific athlete or patient.
+
+### 4.1 Background
 
 The **anaerobic threshold** is a conceptual approach developed to determine the exercise intensity at which arterial blood lactate concentration begins to increase sharply during an incremental exercise test. During such tests, blood lactate accumulation is attributed to inadequate oxygen delivery to contracting muscle resulting in increased rates of glycolysis and lactate production.
 
 The anaerobic threshold represents the maximum lactate steady state — the metabolic point at which muscular lactate formation and elimination from skeletal muscles are just about balanced. From the perspective of gas exchange, this point also represents the maximum equilibrium of oxygen uptake in the organism.
 
-### Physiological Responses Above the Anaerobic Threshold
+### 4.2 Physiological Responses Above the Anaerobic Threshold
 
 1. Accelerated muscle glycogen utilisation and anaerobic regeneration of ATP
 2. Reduced exercise endurance
@@ -538,7 +610,7 @@ The anaerobic threshold represents the maximum lactate steady state — the meta
 11. Increased catecholamine levels
 12. Increased double product (systolic blood pressure × heart rate)
 
-### Threshold Concepts — Overview
+### 4.3 Threshold Concepts — Overview
 
 <Table>
 
@@ -556,18 +628,9 @@ Threshold concepts at T1 and T2 across metabolic, gas-exchange and ventilatory m
 </Fragment>
 </Table>
 
-### Key References (Section 8)
+### 4.4 How to Determine and Monitor the Different Exercise Intensities
 
-- Wassermann K, McIlroy MB. Detecting the threshold of anaerobic metabolism in cardiac patients during exercise. *Am J Cardiol*. 1964;14:844–852.
-- Faude O, Kindermann W, Meyer T. Lactate threshold concepts: how valid are they? *Sports Medicine*. 2009;39(6):469–490.
-- Poole DC, Rossiter HB, Brooks GA, Gladden LB. The anaerobic threshold: 50+ years of controversy. *J Physiol*. 2021;599(3):737–767.
-- Meyer T, Lucía A, Earnest CP, Kindermann W. A conceptual framework for performance diagnosis and training prescription from submaximal gas exchange parameters. *Int J Sports Med*. 2005;26(S1):S38–S48.
-
----
-
-## 7 How to Determine and Monitor the Different Exercise Intensities
-
-There is currently no consensus regarding which of the many commonly used methods to establish different exercise intensities for different populations is best [23]. Traditional methods for determining exercise intensity include: (a) threshold-based approaches, using the first and second metabolic thresholds (MT1 and MT2) to demarcate exercise domains; (b) percentages of different anchor measurements, such as %VO₂max, %HRmax, or %HRR, which — despite widespread use — do not achieve category-specific cardiovascular and metabolic responses in all individuals; (c) fixed values, such as metabolic equivalents (METs), which do not adequately consider individual differences in age, sex, body mass, and fitness; and (d) perceptual measures, most notably the Rating of Perceived Exertion (RPE), which integrates feelings of effort, strain, and fatigue from peripheral muscles, the cardiopulmonary system, and the central nervous system [23]. A joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sports Science Australia (ESSA) Consensus Statement proposed a standardised five-level exercise intensity terminology — Very Low, Low, Moderate, High, and Very High — applicable to both cardiorespiratory and resistance exercise, together with five corresponding perception-of-effort descriptors: very easy, easy, somewhat hard, hard, and very hard [23]. The preferred method for prescribing cardiorespiratory exercise intensity is the direct measurement of metabolic thresholds and the work rate associated with the attainment of VO₂max during a graded exercise test (GXT), as this produces similar physiological stresses across individuals with different exercise capacities [23]. For resistance exercise, the statement recommends prescribing intensity via repetitions in reserve (RIR) rather than percentage of one-repetition maximum (%1-RM), since RIR better captures both load and proximity to neuromuscular failure [23]. RPE is recommended as a useful adjunct method to help monitor both cardiorespiratory and resistance exercise, particularly when laboratory-based assessments are not available [23]. Tables 8 and 9 summarise the current descriptors and criteria from leading organisations, while Table 10 presents the proposed standardised classifications anchored to metabolic thresholds, RIR, and RPE scales [23].
+There is currently no consensus regarding which of the many commonly used methods to establish different exercise intensities for different populations is best (Bishop et al., 2025). Traditional methods for determining exercise intensity include: (a) threshold-based approaches, using the first and second metabolic thresholds (MT1 and MT2) to demarcate exercise domains; (b) percentages of different anchor measurements, such as %VO₂max, %HRmax, or %HRR, which — despite widespread use — do not achieve category-specific cardiovascular and metabolic responses in all individuals; (c) fixed values, such as metabolic equivalents (METs), which do not adequately consider individual differences in age, sex, body mass, and fitness; and (d) perceptual measures, most notably the Rating of Perceived Exertion (RPE), which integrates feelings of effort, strain, and fatigue from peripheral muscles, the cardiopulmonary system, and the central nervous system (Bishop et al., 2025). A joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sports Science Australia (ESSA) Consensus Statement proposed a standardised five-level exercise intensity terminology — Very Low, Low, Moderate, High, and Very High — applicable to both cardiorespiratory and resistance exercise, together with five corresponding perception-of-effort descriptors: very easy, easy, somewhat hard, hard, and very hard (Bishop et al., 2025). The preferred method for prescribing cardiorespiratory exercise intensity is the direct measurement of metabolic thresholds and the work rate associated with the attainment of VO₂max during a graded exercise test (GXT), as this produces similar physiological stresses across individuals with different exercise capacities (Bishop et al., 2025). For resistance exercise, the statement recommends prescribing intensity via repetitions in reserve (RIR) rather than percentage of one-repetition maximum (%1-RM), since RIR better captures both load and proximity to neuromuscular failure (Bishop et al., 2025). RPE is recommended as a useful adjunct method to help monitor both cardiorespiratory and resistance exercise, particularly when laboratory-based assessments are not available (Bishop et al., 2025). Tables 8 and 9 summarise the current descriptors and criteria from leading organisations, while Table 10 presents the proposed standardised classifications anchored to metabolic thresholds, RIR, and RPE scales (Bishop et al., 2025).
 
 <Table>
 
@@ -585,7 +648,7 @@ There is currently no consensus regarding which of the many commonly used method
 <Fragment slot="caption">
 Current descriptors and criteria for cardiorespiratory exercise intensity.
 
-Suggested values assume VO₂max = 10 METs or 35 mL O₂·kg⁻¹·min⁻¹. Sources: ESSA position statement (2010); ACSM Guidelines for Exercise Testing and Prescription (2020); Howley (2001). Adapted from Bishop et al. [23].
+Suggested values assume VO₂max = 10 METs or 35 mL O₂·kg⁻¹·min⁻¹. Sources: ESSA position statement (2010); ACSM Guidelines for Exercise Testing and Prescription (2020); Howley (2001). Adapted from Bishop et al. (2025).
 </Fragment>
 </Table>
 
@@ -603,7 +666,7 @@ Suggested values assume VO₂max = 10 METs or 35 mL O₂·kg⁻¹·min⁻¹. Sou
 <Fragment slot="caption">
 Current descriptors and criteria for resistance exercise intensity.
 
-Sources: ESSA position statement (2010); ACSM Guidelines for Exercise Testing and Prescription (2020); Howley (2001). Adapted from Bishop et al. [23].
+Sources: ESSA position statement (2010); ACSM Guidelines for Exercise Testing and Prescription (2020); Howley (2001). Adapted from Bishop et al. (2025).
 </Fragment>
 </Table>
 
@@ -621,16 +684,16 @@ Sources: ESSA position statement (2010); ACSM Guidelines for Exercise Testing an
 <Fragment slot="caption">
 Proposed standardised classifications for exercise intensity.
 
-MT1, the first metabolic threshold; MT2, the second metabolic threshold; W_max, the work rate associated with VO₂max attainment during a graded exercise test. Source: Bishop et al. [23].
+MT1, the first metabolic threshold; MT2, the second metabolic threshold; W_max, the work rate associated with VO₂max attainment during a graded exercise test. Source: Bishop et al. (2025).
 </Fragment>
 </Table>
 
 **Practical insight:** The direct measurement of metabolic thresholds via GXT remains the gold standard for individualised exercise prescription in cardiorespiratory exercise, because percentage-based anchors (%VO₂max, %HRmax, %HRR, METs) do not reliably elicit the same metabolic stress across individuals. For resistance exercise, RIR provides a more ecologically valid measure of intensity than %1-RM alone. When laboratory assessment is unavailable, RPE serves as a practical adjunct for monitoring both exercise modalities.
 
 
-### 7.1 Literature Summary: Predicted Maximal Heart Rate & Heart Rate Recovery
+### 4.5 Literature Summary: Predicted Maximal Heart Rate & Heart Rate Recovery
 
-#### 7.1.1 Predicted Maximal Heart Rate (HRmax) Formulas
+#### 4.5.1 Predicted Maximal Heart Rate (HRmax) Formulas
 
 **Tanaka et al. (2001) — Age-Predicted Maximal Heart Rate Revisited**
 
@@ -650,7 +713,7 @@ Nes and coworkers derived and validated an age-based HRmax equation in a large h
 
 *Citation:* Nes BM, Janszky I, Wisløff U, Støylen A, Karlsen T. **Age-predicted maximal heart rate in healthy subjects: The HUNT Fitness Study.** *Scandinavian Journal of Medicine & Science in Sports*. 2013;23(6):697–704.
 
-#### 7.1.2 Heart Rate Recovery (HRR)
+#### 4.5.2 Heart Rate Recovery (HRR)
 
 **Cole et al. (1999) — HRR as Predictor of Mortality**
 
@@ -682,7 +745,7 @@ Buchheit evaluated the 30-15 Intermittent Fitness Test (30-15IFT) as a tool for 
 
 *Citation:* Buchheit M. **The 30-15 Intermittent Fitness Test: accuracy for individualizing interval training of young intermittent sport players.** *Journal of Strength and Conditioning Research*. 2008;22(2):365–374.
 
-#### 7.1.3 Summary Tables
+#### 4.5.3 Summary Tables
 
 <Table>
 
@@ -726,76 +789,48 @@ Typical HRR thresholds by protocol.
 </Fragment>
 </Table>
 
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- Why do percentage-based anchors (%V̇O₂max, %HRmax, %HRR, METs) fail to elicit the same metabolic stress across individuals, and why are direct metabolic thresholds (MT1, MT2) preferred?
+- Define heart-rate recovery (HRR) and explain why a low 1-minute HRR predicts mortality. What autonomic mechanism does delayed HR decline reflect?
+
+### Key References
+- Bishop DJ, Beck B, Biddle SJH, Denay KL, Ferri A, Jones AM, Jung M, Lee MJ-C, Moholdt T, Newton RU, Nimphius S, Pescatello LS, Saner NJ, Tzarimas C. Physical activity and exercise intensity terminology: a joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sport Science Australia (ESSA) Consensus Statement. *Med Sci Sports Exerc*. 2025;57(11):2599–2613. doi:10.1016/j.jsams.2024.11.004.
+
 ---
 
 ## References
 
-- [1] Caspersen CJ, Powell KE, Christenson GM. Physical activity, exercise, and physical fitness: definitions and distinctions for health-related research. *Public Health Reports*. 1985;100(2):126–131. ISSN 0033-3549.
-- [2] Cannon WB. *The Wisdom of the Body*. W. W. Norton & Company; 1932.
-- [3] Calabrese EJ, Baldwin LA. Defining hormesis. *Human & Experimental Toxicology*. 2002;21(2):91–97.
-- [4] Calabrese EJ, Mattson MP. How does hormesis impact biology, toxicology and medicine? *npj Aging and Mechanisms of Disease*. 2017;3:13.
-- [5] Puta C, Gabriel H. Homeostasis and hormesis as complementary frameworks for exercise-induced inflammation: a conceptual simulation analysis. Friedrich-Schiller-Universität Jena, Institute for Sports Science; 2025.
-- [6] Pedersen BK, Febbraio MA. Muscle as an endocrine organ: focus on muscle-derived interleukin-6. *Physiological Reviews*. 2008;88(4):1379–1406.
-- [7] Ristow M, Zarse K, Oberbach A, et al. Antioxidants prevent health-promoting effects of physical exercise in humans. *Proceedings of the National Academy of Sciences*. 2009;106(21):8665–8670.
-- [8] Paulsen G, Cumming KT, Holden G, et al. Vitamin C and E supplementation hampers cellular adaptation to endurance training in humans. *Journal of Physiology*. 2014;592(8):1887–1901.
-- [9] Selye H. The general adaptation syndrome and the diseases of adaptation. *Journal of Clinical Endocrinology and Metabolism*. 1946;6(2):117–230.
-- [10] Nieman DC. Exercise, infection, and immunity. *International Journal of Sports Medicine*. 1994;15(S3):S131–S141.
-- [11] Nieman DC, Wentz LM. The compelling link between physical activity and the body's defense system. *Journal of Sport and Health Science*. 2019;8(3):201–217.
-- [12] Carruthers BM, van de Sande MI, De Meirleir KL, et al. Myalgic encephalomyelitis: International consensus criteria. *Journal of Internal Medicine*. 2011;270(4):327–338.
-- [13] Komaroff AL, Lipkin WI. Insights from myalgic encephalomyelitis/chronic fatigue syndrome may help unravel the pathogenesis of post-acute COVID-19 syndrome. *Trends in Molecular Medicine*. 2021;27(9):895–906.
-- [14] Gleeson M, Bishop NC, Stensel DJ, Lindley MR, Mastana SS, Nimmo MA. The anti-inflammatory effects of exercise: mechanisms and implications for the prevention and treatment of disease. *Nature Reviews Immunology*. 2011;11(9):607–615.
-- [15] Calabrese EJ, Mattson MP. How does hormesis impact biology, toxicology, and medicine? *npj Aging and Mechanisms of Disease*. 2017;3:13. doi:10.1038/s41514-017-0013-z.
-- [16] Bauer M, Ermolaeva M, Singer M, Wetzker R, Soares MP. Hormesis as an adaptive response to infection. *Trends in Molecular Medicine*. 2024;30(7):633–642. doi:10.1016/j.molmed.2024.04.012.
-- [17] Harris JA, Benedict FG. A biometric study of human basal metabolism. *Proceedings of the National Academy of Sciences*. 1918;4(12):370–373. doi:10.1073/pnas.4.12.370.
-- [18] Roza AM, Shizgal HM. The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass. *The American Journal of Clinical Nutrition*. 1984;40(1):168–182. doi:10.1093/ajcn/40.1.168.
-- [19] Cunningham JJ. A reanalysis of the factors influencing basal metabolic rate in normal adults. *The American Journal of Clinical Nutrition*. 1980;33(11):2372–2374. doi:10.1093/ajcn/33.11.2372.
-- [20] Ten Haaf T, Weijs PJM. Resting energy expenditure prediction in recreational athletes of 18–35 years: confirmation of Cunningham equation and an improved weight-based alternative. *PLOS ONE*. 2014;9(9):e108460. doi:10.1371/journal.pone.0108460.
-- [21] Pontzer H, Yamada Y, Sagayama H, et al. Daily energy expenditure through the human life course. *Science*. 2021;373(6556):808–812. doi:10.1126/science.abe5017.
-- [22] Rhoads TW, Anderson RM. Taking the long view on metabolism. *Science*. 2021 Aug 13;373(6556):738–739. doi:10.1126/science.abl4537. PMID: 34385381.
-- [23] Bishop DJ, Beck B, Biddle SJH, Denay KL, Ferri A, Jones AM, Jung M, Lee MJ-C, Moholdt T, Newton RU, Nimphius S, Pescatello LS, Saner NJ, Tzarimas C. Physical activity and exercise intensity terminology: a joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sport Science Australia (ESSA) Consensus Statement. *Med Sci Sports Exerc*. 2025;57(11):2599–2613. doi:10.1016/j.jsams.2024.11.004.
-
+- Bauer M, Ermolaeva M, Singer M, Wetzker R, Soares MP. Hormesis as an adaptive response to infection. *Trends in Molecular Medicine*. 2024;30(7):633–642. doi:10.1016/j.molmed.2024.04.012.
+- Bishop DJ, Beck B, Biddle SJH, Denay KL, Ferri A, Jones AM, Jung M, Lee MJ-C, Moholdt T, Newton RU, Nimphius S, Pescatello LS, Saner NJ, Tzarimas C. Physical activity and exercise intensity terminology: a joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sport Science Australia (ESSA) Consensus Statement. *Med Sci Sports Exerc*. 2025;57(11):2599–2613. doi:10.1016/j.jsams.2024.11.004.
 - Boettger S, Wetzig F, Puta C, Donath L, Müller H-J, Gabriel HHW, Bär K-J. Physical fitness and heart rate recovery are decreased in major depressive disorder. *Psychosomatic Medicine*. 2009;71(5):519–523.
-
 - Buchheit M. The 30-15 Intermittent Fitness Test: accuracy for individualizing interval training of young intermittent sport players. *Journal of Strength and Conditioning Research*. 2008;22(2):365–374.
-
+- Calabrese EJ, Baldwin LA. Defining hormesis. *Human & Experimental Toxicology*. 2002;21(2):91–97.
+- Calabrese EJ, Mattson MP. How does hormesis impact biology, toxicology, and medicine? *npj Aging and Mechanisms of Disease*. 2017;3:13. doi:10.1038/s41514-017-0013-z.
+- Cannon WB. *The Wisdom of the Body*. W. W. Norton & Company; 1932.
+- Carruthers BM, van de Sande MI, De Meirleir KL, et al. Myalgic encephalomyelitis: International consensus criteria. *Journal of Internal Medicine*. 2011;270(4):327–338.
+- Caspersen CJ, Powell KE, Christenson GM. Physical activity, exercise, and physical fitness: definitions and distinctions for health-related research. *Public Health Reports*. 1985;100(2):126–131. ISSN 0033-3549.
 - Cole CR, Blackstone EH, Pashkow FJ, Snader CE, Lauer MS. Heart-rate recovery immediately after exercise as a predictor of mortality. *New England Journal of Medicine*. 1999;341(18):1351–1357.
-
+- Cunningham JJ. A reanalysis of the factors influencing basal metabolic rate in normal adults. *The American Journal of Clinical Nutrition*. 1980;33(11):2372–2374. doi:10.1093/ajcn/33.11.2372.
 - Fox SM, Naughton JP, Haskell WL. Physical activity and the prevention of coronary heart disease. *Annals of Clinical Research*. 1971;3(6):404–432.
-
 - Gellish RL, Goslin BR, Olson RE, McDonald A, Russi GD, Moudgil VK. Longitudinal modeling of the relationship between age and maximal heart rate. *Medicine & Science in Sports & Exercise*. 2007;39(5):822–829.
-
+- Gleeson M, Bishop NC, Stensel DJ, Lindley MR, Mastana SS, Nimmo MA. The anti-inflammatory effects of exercise: mechanisms and implications for the prevention and treatment of disease. *Nature Reviews Immunology*. 2011;11(9):607–615.
+- Harris JA, Benedict FG. A biometric study of human basal metabolism. *Proceedings of the National Academy of Sciences*. 1918;4(12):370–373. doi:10.1073/pnas.4.12.370.
+- Komaroff AL, Lipkin WI. Insights from myalgic encephalomyelitis/chronic fatigue syndrome may help unravel the pathogenesis of post-acute COVID-19 syndrome. *Trends in Molecular Medicine*. 2021;27(9):895–906.
 - Nes BM, Janszky I, Wisløff U, Støylen A, Karlsen T. Age-predicted maximal heart rate in healthy subjects: The HUNT Fitness Study. *Scandinavian Journal of Medicine & Science in Sports*. 2013;23(6):697–704.
-
+- Nieman DC. Exercise, infection, and immunity. *International Journal of Sports Medicine*. 1994;15(S3):S131–S141.
+- Nieman DC, Wentz LM. The compelling link between physical activity and the body's defense system. *Journal of Sport and Health Science*. 2019;8(3):201–217.
+- Paulsen G, Cumming KT, Holden G, et al. Vitamin C and E supplementation hampers cellular adaptation to endurance training in humans. *Journal of Physiology*. 2014;592(8):1887–1901.
+- Pedersen BK, Febbraio MA. Muscle as an endocrine organ: focus on muscle-derived interleukin-6. *Physiological Reviews*. 2008;88(4):1379–1406.
+- Pontzer H, Yamada Y, Sagayama H, et al. Daily energy expenditure through the human life course. *Science*. 2021;373(6556):808–812. doi:10.1126/science.abe5017.
+- Puta C, Gabriel H. Homeostasis and hormesis as complementary frameworks for exercise-induced inflammation: a conceptual simulation analysis. Friedrich-Schiller-Universität Jena, Institute for Sports Science; 2025.
 - Qiu S, Cai X, Sun Z, Li L, Zuegel M, Steinacker JM, Schumann U. Heart rate recovery and risk of cardiovascular events and all-cause mortality: a meta-analysis of prospective cohort studies. *Journal of the American Heart Association*. 2017;6(5):e005505.
-
+- Rhoads TW, Anderson RM. Taking the long view on metabolism. *Science*. 2021 Aug 13;373(6556):738–739. doi:10.1126/science.abl4537. PMID: 34385381.
+- Ristow M, Zarse K, Oberbach A, et al. Antioxidants prevent health-promoting effects of physical exercise in humans. *Proceedings of the National Academy of Sciences*. 2009;106(21):8665–8670.
+- Roza AM, Shizgal HM. The Harris Benedict equation reevaluated: resting energy requirements and the body cell mass. *The American Journal of Clinical Nutrition*. 1984;40(1):168–182. doi:10.1093/ajcn/40.1.168.
+- Selye H. The general adaptation syndrome and the diseases of adaptation. *Journal of Clinical Endocrinology and Metabolism*. 1946;6(2):117–230.
 - Tanaka H, Monahan KD, Seals DR. Age-predicted maximal heart rate revisited. *Journal of the American College of Cardiology*. 2001;37(1):153–156.
-
+- Ten Haaf T, Weijs PJM. Resting energy expenditure prediction in recreational athletes of 18–35 years: confirmation of Cunningham equation and an improved weight-based alternative. *PLOS ONE*. 2014;9(9):e108460. doi:10.1371/journal.pone.0108460.
 - Watanabe J, Thamilarasan M, Blackstone EH, Thomas JD, Lauer MS. Heart rate recovery immediately after treadmill exercise and left ventricular systolic dysfunction as predictors of mortality: the case of stress echocardiography. *Circulation*. 2001;104(16):1911–1916.
-
----
-
-## One-Minute-Paper Topics
-<Note>
-  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
-</Note>
-
-1. What is the key distinction between "physical activity" and "exercise" according to Caspersen et al., and why does this distinction matter for public health recommendations?
-2. Name the four components of TDEE (BMR, RMR, TEF, AEE/NEAT) and explain which one is most modifiable through lifestyle behaviour.
-3. Describe the cascade of cardiovascular adjustments (heart rate, stroke volume, blood redistribution) that occur within the first minutes of aerobic exercise. What is the homeostatic "goal" of these changes?
-4. How does minute ventilation (V̇E) respond during an incremental exercise test, and what physiological purpose does this serve for maintaining homeostasis?
-5. What is excess post-exercise oxygen consumption (EPOC), and which metabolic processes does it fund during recovery? Why is it clinically relevant?
-6. Explain in your own words what Walter Cannon meant by "the wisdom of the body." How does exercise challenge and ultimately reinforce this wisdom?
-7. Describe the three dose zones of the hormetic dose–response (sub-threshold, hormetic, overload). Give one physiological example for each zone in the context of exercise.
-8. Interleukin-6 plays opposite roles depending on context. Explain the difference between IL-6 as a homeostatic error signal and IL-6 as an anti-inflammatory myokine produced by contracting muscle.
-9. How does exercise-generated ROS activate the Nrf2 pathway, and why would taking high-dose antioxidants immediately post-exercise blunt training adaptations?
-10. What cellular conditions activate PGC-1α during exercise, and what downstream adaptations does it orchestrate? Why is this molecule central to the hormetic framework?
-11. Sketch the J-curve of upper respiratory tract infection risk across exercise intensity zones. At which point is URTI risk lowest, and what happens in the overload zone?
-12. Why are homeostasis and hormesis described as "complementary descriptions of the same biology at different temporal scales"? Use a 72-hour post-exercise timeline to illustrate your answer.
-13. The lecture states that "complete suppression of inflammation may blunt the adaptive signal." What is the evidence for this claim, and what practical implications does it have for athletes?
-14. Using the dual-framework model (homeostasis + hormesis), explain why graded exercise therapy (GET) may be harmful in ME/CFS. What two discrete abnormalities does the model identify in PEM?
-15. Distinguish between NREM Stage 3 (slow-wave sleep) and REM sleep in terms of brain activity, physiological function, and proportion of total sleep time in healthy adults.
-16. What is the glymphatic system, and why is deep (NREM Stage 3) sleep particularly important for cerebral metabolic waste clearance? How might exercise influence this process?
-17. List two mechanisms by which regular physical activity improves sleep quality, and two mechanisms by which sleep deprivation impairs exercise performance. What does "bidirectional" mean here?
-18. The lecture describes exercise-induced temperature regulation as a facilitator of sleep onset. Explain the thermodynamic mechanism: how does a post-exercise drop in core body temperature promote sleep?
-19. Distinguish between "restoration of baseline" (homeostatic outcome) and "set-point elevation / supercompensation" (hormetic outcome). What molecular memory processes make supercompensation possible?
-20. For a healthy recreational runner and a patient with Long COVID, how would you use the homeostasis–hormesis table (Table 3) to justify different exercise prescriptions? Which framework is most relevant for each, and why?
