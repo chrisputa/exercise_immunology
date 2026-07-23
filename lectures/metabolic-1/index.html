@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="en" class="antialiased break-words"> <head><!-- High Priority Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Teaching Anaerobic Threshold | Exercise Immunology</title><meta name="generator" content="Astro v5.16.0"><!-- Fonts --><link rel="preload" as="font" type="font/woff2" href="/exercise_immunology/_astro/marcellus-latin-400-normal.86dSXJnk.woff2" crossorigin="anonymous"><link rel="preload" as="font" type="font/woff2" href="/exercise_immunology/_astro/newsreader-latin-wght-normal.CCVVNp6i.woff2" crossorigin="anonymous"><!-- Low Priority Global Metadata --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS"><!-- Page Metadata --><link rel="canonical" href="https://chrisputa.github.io/exercise_immunology/lectures/metabolic-1/"><meta name="description" content><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://chrisputa.github.io/exercise_immunology/lectures/metabolic-1/"><meta property="og:title" content="Teaching Anaerobic Threshold | Exercise Immunology"><meta property="og:description" content><!-- X/Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://chrisputa.github.io/exercise_immunology/lectures/metabolic-1/"><meta property="twitter:title" content="Teaching Anaerobic Threshold | Exercise Immunology"><meta property="twitter:description" content><script>
+  (function () {
+    try {
+      const mql = window.matchMedia('(prefers-color-scheme: dark)');
+      const getStored = () => localStorage.getItem('theme');
+      const apply = (dark) => {
+        document.documentElement.classList.toggle('dark', !!dark);
+        if (typeof syncWidgetDarkMode === 'function') syncWidgetDarkMode(!!dark);
+      };
+
+      // Persisted preference; default to 'light'
+      const pref = localStorage.getItem('theme') || 'light';
+      document.documentElement.classList.toggle('dark', pref === 'dark');
+
+      // Optional: keep in sync if you add a theme toggle elsewhere
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+          document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+        }
+      });
+
+      // Initial apply: stored preference wins, else system
+      const stored = getStored();
+      apply(stored ? stored === 'dark' : mql.matches);
+
+      // Follow system changes only when no stored preference
+      if (!stored) mql.addEventListener('change', (e) => apply(e.matches));
+
+      // React to changes from other tabs/windows
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') apply(e.newValue === 'dark');
+      });
+
+      // Re-apply after Astro client-side transitions
+      document.addEventListener('astro:after-swap', () => {
+        const s = getStored();
+        apply(s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      });
+    } catch {}
+  })();
+</script><!-- <ClientRouter /> --><link rel="stylesheet" href="/exercise_immunology/_astro/index.tjVPbCf6.css">
+<style>/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0}}}@media (max-width:767px){.menu[data-astro-cid-dmqpwcec]{visibility:hidden;opacity:0;width:calc(100% + 1.25rem)}.menu[data-astro-cid-dmqpwcec].is-visible{visibility:visible;opacity:1;transition:opacity .25s cubic-bezier(.4,0,.2,1) .2s}.menu-toggle-icon[data-astro-cid-dmqpwcec]{transition:width .1s cubic-bezier(.4,0,.2,1) .3s}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]{width:calc(var(--spacing,.25rem)*0);transition:width .1s cubic-bezier(.4,0,.2,1)}.menu-toggle-icon[data-astro-cid-dmqpwcec]:before,.menu-toggle-icon[data-astro-cid-dmqpwcec]:after{top:calc(var(--spacing,.25rem)*0);height:1px;width:calc(var(--spacing,.25rem)*6);transform-origin:50%;--tw-translate-x: -50% ;translate:var(--tw-translate-x)var(--tw-translate-y);content:"";background-color:currentColor;transition:rotate .2s cubic-bezier(.4,0,.2,1),margin .2s cubic-bezier(.4,0,.2,1) .2s;position:absolute;left:50%}.menu-toggle-icon[data-astro-cid-dmqpwcec]:before{margin-top:calc(var(--spacing,.25rem)*-1.5)}.menu-toggle-icon[data-astro-cid-dmqpwcec]:after{margin-top:calc(var(--spacing,.25rem)*1.5)}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:before,.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:after{margin-top:calc(var(--spacing,.25rem)*0);transition:margin .2s cubic-bezier(.4,0,.2,1) .1s,rotate .2s cubic-bezier(.4,0,.2,1) .3s}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:before{rotate:45deg}.menu-toggle[data-astro-cid-dmqpwcec].is-active .menu-toggle-icon[data-astro-cid-dmqpwcec]:after{rotate:-45deg}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}
+</style></head> <body class="bg-main text-main sm:px-14"> <div class="flex flex-col min-h-screen px-4 md:px-8 "> <nav class="min-h-10  w-full max-w-5xl mx-auto pt-4 pb-12 relative sm:min-h-14 sm:pb-24 md:pt-8" data-astro-cid-dmqpwcec> <div class="w-full  mx-auto relative pb-4" data-astro-cid-dmqpwcec> <button class="menu-toggle cursor-pointer w-8 h-8 -ml-1 flex items-center justify-center relative z-30 md:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items" data-astro-cid-dmqpwcec> <span class="menu-toggle-icon w-6 h-px relative bg-current" data-astro-cid-dmqpwcec></span> </button> <ul id="menu-items" class="menu flex flex-wrap gap-6 items-center max-md:flex-col max-md:gap-1 max-md:absolute max-md:-top-2.5 max-md:-left-2.5 max-md:max-w-64 max-md:px-3 max-md:pt-16 max-md:pb-10 max-md:z-20 max-md:bg-main max-md:border max-md:border-dashed max-md:border-main" data-astro-cid-dmqpwcec> <li data-astro-cid-dmqpwcec> <a href="/exercise_immunology/" data-astro-cid-dmqpwcec> <img src="/exercise_immunology/_astro/logo.BOxXENlm.png" alt="t-cell logo" class="max-h-12  dark:hidden" data-astro-cid-dmqpwcec> <img src="/exercise_immunology/_astro/logo_dark.CQjdzMrG.png" alt="t-cell logo dark" class="max-h-12 hidden dark:block" data-astro-cid-dmqpwcec> </a> </li> <li class="py-1 " data-astro-cid-dmqpwcec> <a class="text-xl font-display font-normal tracking-[0.02em] text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-lg" href="/exercise_immunology/" data-astro-cid-dmqpwcec="true">Home</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="text-xl font-display font-normal tracking-[0.02em] text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-lg" href="/exercise_immunology/lectures" data-astro-cid-dmqpwcec="true">Lectures</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="text-xl font-display font-normal tracking-[0.02em] text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-lg" href="/exercise_immunology/dashboards" data-astro-cid-dmqpwcec="true">Dashboards</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="text-xl font-display font-normal tracking-[0.02em] text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-lg" href="/exercise_immunology/quiz" data-astro-cid-dmqpwcec="true">Quiz</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="text-xl font-display font-normal tracking-[0.02em] text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-lg" href="/exercise_immunology/tutorials" data-astro-cid-dmqpwcec="true">Tutorials</a> </li><li class="py-1 " data-astro-cid-dmqpwcec> <a class="text-xl font-display font-normal tracking-[0.02em] text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-lg" href="/exercise_immunology/contact" data-astro-cid-dmqpwcec="true">Contact</a> </li> </ul> </div> <!-- <div class="absolute right-0 top-3 z-10 md:top-8">
+        <a href="/">
+            <img src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} class="max-h-12 block dark:hidden" />
+            <img src={siteConfig.logoDark.src} alt={siteConfig.logoDark.alt || ''} class="max-h-12 hidden dark:block" />
+        </a>
+    </div> --> </nav>  <script type="module">function n(){const s=document.querySelector(".menu"),e=document.querySelector(".menu-toggle");e?.addEventListener("click",()=>{const t=e.getAttribute("aria-expanded")==="true";e.classList.toggle("is-active"),e.setAttribute("aria-expanded",t?"false":"true"),e.setAttribute("aria-label",t?"Open Menu":"Close Menu"),s?.classList.toggle("is-visible")})}n();document.addEventListener("astro:after-swap",n);</script>  <main class="grow w-full max-w-5xl mx-auto ">  <article class="mb-16 sm:mb-24"> <header class="mb-8"> <h1 class="text-3xl leading-tight font-display font-normal tracking-[0.005em] sm:text-[2.625rem] sm:leading-tight">Teaching Anaerobic Threshold</h1>  </header> <div class="max-w-none prose sm:prose-lg">  <h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-what-the-threshold-is--mlss-and-the-multi-system-breakpoint">What the Threshold Is — MLSS and the Multi-System Breakpoint</a></li>
+<li><a href="#2-measuring-it--the-stegmann-worked-example">Measuring It — the Stegmann Worked Example</a></li>
+<li><a href="#3-prescribing-from-the-threshold">Prescribing From the Threshold</a></li>
+<li><a href="#4-strengths-weaknesses-and-the-limits-of-the-concept">Strengths, Weaknesses and the Limits of the Concept</a></li>
+</ol>
+<hr/>
+<h2 id="1-what-the-threshold-is--mlss-and-the-multi-system-breakpoint">1 What the Threshold Is — MLSS and the Multi-System Breakpoint</h2>
+<p><strong>Learning objectives:</strong></p>
+<ul>
+<li>Describe endurance metabolism as a transition zone between two breakpoints (Kindermann, Simon &amp; Keul 1979): the aerobic threshold (AeS/LTAer, first rise of blood lactate above baseline) and the anaerobic threshold (IAS/LTAn/MLSS, upper border of the transition), and explain why the anaerobic threshold is the upper border of a gradual transition rather than a sudden switch (Faude et al. 2009; Kindermann 2004).</li>
+<li>Define the MLSS as the highest constant workload at which lactate production and elimination remain in equilibrium, and state the operational criterion: blood lactate rises by ≤ 1 mmol·L⁻¹ between minute 10 and minute 30 of a ≥ 30-min constant-load trial, repeated across days and intensities.</li>
+<li>Explain why the fixed 4 mmol·L⁻¹ threshold (LT4/OBLA; Mader et al. 1976, Heck et al. 1985) is a population average, not a biological constant, citing the ≈ 2–10 mmol·L⁻¹ between-subject range of MLSS lactate, and why individual anaerobic-threshold concepts were developed to respect the shape of each lactate–performance curve.</li>
+<li>Interpret Bland–Altman agreement: explain why high correlations do not establish agreement, and read the Faude et al. limits-of-agreement table — even small mean bias can hide 95 % LoA of 10–20 % of the MLSS, worst on the cycle ergometer.</li>
+<li>Argue that the threshold is a multi-system breakpoint, naming the four convergent changes above the IAT — metabolic (progressive lactate rise, falling pH, the VT2/respiratory compensation point), hormonal (disproportionate adrenaline/noradrenaline rise), immunological (NK-cell and neutrophil oxidative-burst changes), and neuromuscular (EMG shifts) — and identify the immunological breakpoint as the hook into the exercise-immunology course.</li>
+</ul>
+<h3 id="11-the-aerobicanaerobic-transition">1.1 The aerobic–anaerobic transition</h3>
+<p>The framework introduced by Kindermann, Simon and Keul (1979) describes endurance metabolism not as one single point but as a transition zone between two breakpoints (Faude et al. 2009; Kindermann 2004):</p>
+<ul>
+<li><strong>Aerobic threshold (AeS / LTAer):</strong> the lowest intensity at which blood lactate (bLa) first rises above baseline. Below this point the energy supply is almost exclusively oxidative; exercise can be maintained for hours.</li>
+<li><strong>Anaerobic threshold (IAS / LTAn / MLSS):</strong> the upper border of the transition zone. It represents the highest workload at which lactate production and elimination are still in equilibrium — the <strong>Maximal Lactate Steady State (MLSS)</strong>. Above this intensity, lactate accumulates progressively despite constant load and exhaustion follows within minutes to about an hour.</li>
+</ul>
+<p>The anaerobic threshold is therefore not a sudden switch but the upper border of a gradual transition.</p>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Figure 1"> <p>Schematic representation of the aerobic–anaerobic transition (grey zone). Top: blood-lactate curve with aerobic threshold (AeS) and individual anaerobic threshold (IAS ≙ MLSS). Bottom: pulmonary ventilation with the two ventilatory thresholds VT1 and VT2 (RCP). Redrawn after Kindermann (2004).</p> </figcaption>  <img src="/exercise_immunology/_astro/fig1_aerob_anaerob_transition.CxoVzxS0_ZeFicW.webp" alt="Aerobic-anaerobic transition during incremental exercise" loading="lazy" decoding="async" fetchpriority="auto" width="1969" height="1568" class="w-full h-auto py-0 block dark:hidden"> <img src="/exercise_immunology/_astro/fig1_aerob_anaerob_transition_dark.B6KPLD3s_1sGXR3.webp" alt="Aerobic-anaerobic transition during incremental exercise" loading="lazy" decoding="async" fetchpriority="auto" width="1969" height="1568" class="w-full h-auto py-0 hidden dark:block"> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Figure 1"> <p>Schematic representation of the aerobic–anaerobic transition (grey zone). Top: blood-lactate curve with aerobic threshold (AeS) and individual anaerobic threshold (IAS ≙ MLSS). Bottom: pulmonary ventilation with the two ventilatory thresholds VT1 and VT2 (RCP). Redrawn after Kindermann (2004).</p> </figcaption> </figure>
+<h3 id="12-the-mlss-as-gold-standard">1.2 The MLSS as gold standard</h3>
+<p>The MLSS is determined by performing several constant-load trials of at least 30 minutes on different days at different intensities. The MLSS criterion most commonly used is: blood lactate must not rise by more than <strong>1 mmol/L between minute 10 and minute 30</strong> of the constant-load test (Faude et al. 2009).</p>
+<p>At the MLSS, oxygen uptake, CO₂ output, respiratory exchange ratio and bicarbonate concentration remain approximately constant; respiratory rate and heart rate, however, drift upwards.</p>
+<h3 id="13-the-4-mmoll-threshold-and-its-limits">1.3 The 4 mmol/L threshold and its limits</h3>
+<p>Historically, Mader et al. (1976) and Heck et al. (1985) proposed a <strong>fixed threshold at 4 mmol/L lactate (LT4 / OBLA — Onset of Blood Lactate Accumulation)</strong> as a practical estimate of MLSS. Kindermann (2004) notes that the anaerobic threshold lies on average around 4 mmol/L — but in endurance-trained athletes mostly lower.</p>
+<p>The problem with a fixed value is biological variability. Reported MLSS lactate concentrations span from <strong>about 2 to 10 mmol/L</strong> between individuals (Faude et al. 2009). Equal lactate concentrations therefore do not necessarily represent equal metabolic situations.</p>
+<p>For this reason, <strong>individual anaerobic threshold (IAT) concepts</strong> were developed — among them the tangent method of Stegmann et al. (1981) and the concepts named after Keul, Simon and Dickhuth. They take the shape of the individual lactate–performance curve into account (e.g. tangent methods, +1.5 mmol/L above minimum lactate equivalent, Dmax/Dmod methods).</p>
+<h3 id="14-agreement-between-lt-concepts-and-mlss--limits-of-agreement">1.4 Agreement between LT concepts and MLSS — limits of agreement</h3>
+<p>Correlations between threshold concepts and MLSS are high, but correlations alone do not tell us whether two methods agree in absolute terms. Faude et al. (2009) recommend reporting the <strong>mean bias and the 95 % limits of agreement (LoA)</strong> according to Bland and Altman. Recalculated from raw data of Heck et al. they reported (Table VI in Faude et al. 2009):</p>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 1"> <p>Agreement of threshold concepts across exercise protocols (bias and 95 % limits of agreement).</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Threshold concept</th><th>Treadmill, 3-min stages</th><th>Treadmill, 5-min stages</th><th>Cycle ergometry, 2-min stages</th></tr></thead><tbody><tr><td>LT4</td><td>bias −0.13 m/s, LoA ≈ 8 %</td><td>bias +0.02 m/s, LoA ≈ 9 %</td><td>bias −19.8 W, LoA ≈ 14 %</td></tr><tr><td>IAT (Keul)</td><td>bias −0.20 m/s, LoA ≈ 9 %</td><td>bias +0.06 m/s, LoA ≈ 8 %</td><td>bias −21.0 W, LoA ≈ 11 %</td></tr><tr><td>IAT (Stegmann)</td><td>bias −0.03 m/s, LoA ≈ 12 %</td><td>bias −0.03 m/s, LoA ≈ 9 %</td><td>bias −15.0 W, LoA ≈ 18 %</td></tr><tr><td>IAT (Bunc)</td><td>bias −0.33 m/s, LoA ≈ 8 %</td><td>bias −0.14 m/s, LoA ≈ 9 %</td><td>bias −71.4 W, LoA ≈ 27 %</td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 1"> <p>Agreement of threshold concepts across exercise protocols (bias and 95 % limits of agreement).</p> </figcaption> </figure>
+<p><strong>Interpretation:</strong> even when the mean bias is small, the 95 % LoA can reach 10–20 % of the MLSS. For any individual subject the difference between a single LT estimate and the true MLSS may therefore be substantial — particularly on the cycle ergometer.</p>
+<blockquote>
+<p><strong>Key take-away.</strong> The anaerobic threshold is best defined functionally as the MLSS — the highest constant workload at which lactate is still in steady state. The widely used 4 mmol/L value is an average, not a biological constant. Individualised concepts narrow the bias but do not eliminate substantial 95 % LoA.</p>
+</blockquote>
+<h3 id="15-the-anaerobic-threshold-as-a-metabolic-hormonal-and-immunological-breakpoint">1.5 The anaerobic threshold as a metabolic, hormonal and immunological breakpoint</h3>
+<p>Although the transition between aerobic and anaerobic metabolism is gradual, <strong>clearly identifiable changes</strong> in several physiological systems coincide with the anaerobic threshold (Kindermann 2004; Faude et al. 2009):</p>
+<ul>
+<li><strong>Metabolic.</strong> Above the IAT, lactate concentration rises continuously during constant-load exercise; bicarbonate-buffered H⁺ ions can no longer be fully compensated and pH falls, additionally stimulating ventilation. The respiratory compensation point (VT2) marks this ventilatory consequence and lies in the region of the anaerobic lactate threshold.</li>
+<li><strong>Hormonal.</strong> Plasma catecholamines (<strong>adrenaline and noradrenaline</strong>) rise <strong>disproportionately</strong> when the anaerobic threshold is exceeded. Faude et al. (2009) summarise: “exercise above the MLSS is associated with an over-proportional excretion of stress hormones […] during constant-load exercise.”</li>
+<li><strong>Immunological.</strong> Above the anaerobic threshold, immunological parameters such as <strong>natural killer (NK) cells</strong> and the <strong>oxidative burst</strong> of neutrophils show significant quantitative changes (Kindermann 2004).</li>
+<li><strong>Neuromuscular.</strong> Lucia et al. observed changes in EMG activity of vastus lateralis and rectus femoris that coincided with the aerobic–anaerobic transition in elite male cyclists (cited in Faude et al. 2009).</li>
+</ul>
+<p>These convergent breakpoints justify the concept even though “threshold” is, strictly speaking, a didactic simplification of a continuous process.</p>
+<blockquote>
+<p><strong>Key take-away.</strong> The anaerobic threshold marks an intensity at which not only lactate kinetics but also stress-hormone responses, immune-cell behaviour and neuromuscular activation patterns change qualitatively. It is therefore far more than a “lactate phenomenon”.</p>
+</blockquote>
+<h3 id="one-minute-paper-topics">One-Minute-Paper Topics</h3>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p>A <strong>One-Minute-Paper</strong> (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today’s session.</p> </div>
+<ul>
+<li>Define the anaerobic threshold in terms of the maximal lactate steady state (MLSS) and explain why it represents the upper border of the aerobic–anaerobic transition rather than a single switching point.</li>
+<li>What MLSS criterion (in mmol/L over which time window) is most commonly used to identify the highest workload at which lactate production and elimination are still in equilibrium?</li>
+<li>Why is the fixed 4 mmol/L threshold (LT4 / OBLA) considered only a population average rather than a biological constant? Cite the reported between-subject range of MLSS lactate concentrations.</li>
+<li>Why does Faude et al. (2009) recommend reporting Bland–Altman 95 % limits of agreement (LoA) rather than only Pearson correlations when comparing LT concepts against the MLSS?</li>
+<li>Name three physiological systems other than lactate kinetics that show qualitative breakpoints at the anaerobic threshold.</li>
+</ul>
+<h3 id="key-references">Key References</h3>
+<ul>
+<li>Faude O, Kindermann W, Meyer T. <em>Lactate Threshold Concepts — How Valid Are They?</em> Sports Medicine 39 (6), 2009: 469–490.</li>
+<li>Kindermann W. <em>Anaerobe Schwelle.</em> Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.</li>
+</ul>
+<hr/>
+<h2 id="2-measuring-it--the-stegmann-worked-example">2 Measuring It — the Stegmann Worked Example</h2>
+<p><strong>Learning objectives:</strong></p>
+<ul>
+<li>Explain the rationale of the Stegmann et al. 1981 method: why the incremental exercise curve alone cannot locate the steady-state limit (the test is too short for steady state), and why the recovery-lactate curve adds the missing information about how the organism clears the accumulated net lactate load.</li>
+<li>Specify a compliant incremental protocol: recreational subject, treadmill at 1 % incline, 3-min stages (Stegmann’s original duration), +0.5 m·s⁻¹ increments, capillary earlobe sampling at end of each stage and at min 1, 3, 5, 8, 10 of passive recovery.</li>
+<li>Execute the tangent construction step by step: (1) read L_end at end of exercise; (2) locate the anchor — the point on the descending recovery curve where lactate returns to L_end — by linear interpolation on the time axis; (3) draw the tangent from that anchor to the ascending exercise curve; (4) read v_IAT and L_IAT at the tangent contact; (5) interpolate HR_IAT between the bracketing stages.</li>
+<li>Reproduce the worked result: L_end = 9.0 mmol·L⁻¹, anchor at ≈ 2.7 min post-exercise, v_IAT ≈ 3.7 m·s⁻¹ (13.4 km·h⁻¹), L_IAT ≈ 3.2 mmol·L⁻¹, HR_IAT ≈ 164 bpm; and read the aerobic threshold from the same test (v ≈ 3.0 m·s⁻¹, HR ≈ 145 bpm, L ≈ 1.8 mmol·L⁻¹).</li>
+<li>Perform the interpolation arithmetic independently — e.g. locate t* where recovery lactate crosses L_end, and interpolate HR at a fractional stage velocity — and state the assumptions (local linearity) that make it valid.</li>
+<li>Convert the three threshold numbers into a first training prescription (the payoff that §3 generalises), and apply the coach’s notes: heart rate as the online control parameter, work-velocity ± rest for intervals, and 6–8-week re-testing to detect a rightward shift.</li>
+</ul>
+<h3 id="21-rationale-of-the-method">2.1 Rationale of the method</h3>
+<p>The individual anaerobic threshold (IAT) after <strong>Stegmann, Kindermann and Schnabel (1981)</strong> is one of the best-validated approaches and the one most consistently shown to track the MLSS (see §1.4 and Faude et al. 2009). Its idea is elegant:</p>
+<ul>
+<li>The lactate curve during incremental exercise alone cannot tell us where the steady-state limit lies, because the test is too short for steady state to develop.</li>
+<li>The recovery lactate curve, however, contains additional information: it reflects how the organism handles the <strong>net lactate load</strong> accumulated during the last exercise stages.</li>
+<li>A tangent constructed from the <strong>descending recovery curve at the point where blood lactate has returned to its end-of-exercise value (L_end)</strong> to the <strong>ascending exercise curve</strong> identifies the intensity at which lactate production and elimination are still in equilibrium.</li>
+</ul>
+<p>The tangent contact on the exercise curve is the IAT.</p>
+<h3 id="22-sample-protocol--incremental-treadmill-test">2.2 Sample protocol — incremental treadmill test</h3>
+<p>The following example uses a standard protocol that meets Stegmann’s original methodology (Faude et al. 2009).</p>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 2"> <p>Protocol specification for the worked lactate example.</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Parameter</th><th>Specification</th></tr></thead><tbody><tr><td>Subject</td><td>Recreational male runner, 30 yr, 72 kg</td></tr><tr><td>Ergometer</td><td>Motorised treadmill, 1 % incline</td></tr><tr><td>Warm-up</td><td>10 min jogging at ≈ 2.0 m/s</td></tr><tr><td>Stages</td><td>6 incremental stages of <strong>3 min</strong> each (Stegmann’s original duration)</td></tr><tr><td>Initial velocity</td><td>2.0 m/s (7.2 km/h)</td></tr><tr><td>Increment</td><td>+0.5 m/s per stage</td></tr><tr><td>Termination</td><td>Volitional exhaustion</td></tr><tr><td>Blood sampling</td><td>20 μL capillary blood from hyperaemised earlobe at the end of each stage and at min 1, 3, 5, 8, 10 of passive recovery</td></tr><tr><td>Analysis</td><td>Enzymatic-amperometric lactate analyser (haemolysed whole blood)</td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 2"> <p>Protocol specification for the worked lactate example.</p> </figcaption> </figure>
+<h3 id="23-measured-data">2.3 Measured data</h3>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 3"> <p>Incremental stage data: velocity, heart rate and lactate.</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Stage</th><th>t (min)</th><th>v (m/s)</th><th>v (km/h)</th><th>HR (bpm)</th><th>Lactate (mmol·L⁻¹)</th></tr></thead><tbody><tr><td>1</td><td>3</td><td>2.0</td><td>7.2</td><td>118</td><td>1.0</td></tr><tr><td>2</td><td>6</td><td>2.5</td><td>9.0</td><td>132</td><td>1.3</td></tr><tr><td>3</td><td>9</td><td>3.0</td><td>10.8</td><td>145</td><td>1.8</td></tr><tr><td>4</td><td>12</td><td>3.5</td><td>12.6</td><td>158</td><td>2.6</td></tr><tr><td>5</td><td>15</td><td>4.0</td><td>14.4</td><td>172</td><td>4.4</td></tr><tr><td>6 (end)</td><td>18</td><td>4.5</td><td>16.2</td><td>188</td><td><strong>9.0 = L_end</strong></td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 3"> <p>Incremental stage data: velocity, heart rate and lactate.</p> </figcaption> </figure>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 4"> <p>Post-exercise lactate recovery samples.</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Recovery sample</th><th>t after exercise (min)</th><th>Lactate (mmol·L⁻¹)</th></tr></thead><tbody><tr><td>R1</td><td>1</td><td>10.0 (= L_max)</td></tr><tr><td>R2</td><td>3</td><td>8.8</td></tr><tr><td>R3</td><td>5</td><td>7.0</td></tr><tr><td>R4</td><td>8</td><td>5.0</td></tr><tr><td>R5</td><td>10</td><td>3.5</td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 4"> <p>Post-exercise lactate recovery samples.</p> </figcaption> </figure>
+<h3 id="24-construction-of-the-iat">2.4 Construction of the IAT</h3>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Figure 2"> <p>Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 2.7 min post-exercise (linear interpolation between R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min → L = 9.0 at t ≈ 2.7 min): this is the <strong>anchor</strong>. The dashed green line is the tangent from the anchor to the ascending exercise curve; the <strong>tangent contact</strong> on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.</p> </figcaption>  <img src="/exercise_immunology/_astro/fig2_stegmann_iat.CKRcypv7_2wrJIm.webp" alt="Determination of the IAT after Stegmann et al. (1981)" loading="lazy" decoding="async" fetchpriority="auto" width="2370" height="1730" class="w-full h-auto py-0 block dark:hidden"> <img src="/exercise_immunology/_astro/fig2_stegmann_iat_dark.tRMoI1Xc_Z2nDtkU.webp" alt="Determination of the IAT after Stegmann et al. (1981)" loading="lazy" decoding="async" fetchpriority="auto" width="2370" height="1730" class="w-full h-auto py-0 hidden dark:block"> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Figure 2"> <p>Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 2.7 min post-exercise (linear interpolation between R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min → L = 9.0 at t ≈ 2.7 min): this is the <strong>anchor</strong>. The dashed green line is the tangent from the anchor to the ascending exercise curve; the <strong>tangent contact</strong> on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.</p> </figcaption> </figure>
+<p><strong>Step-by-step:</strong></p>
+<ol>
+<li><strong>End-of-exercise lactate.</strong> L_end = 9.0 mmol·L⁻¹ at v_end = 4.5 m/s, HR_end = 188 bpm.</li>
+<li><strong>Anchor on recovery curve.</strong> Find t* where the recovery lactate has decreased back to L_end. With R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min, linear interpolation gives:
+<ul>
+<li>t* = 1 + (10.0 − 9.0)/(10.0 − 8.8) × (3 − 1) = <strong>1 + 1.7 ≈ 2.7 min post-exercise</strong>.</li>
+</ul>
+</li>
+<li><strong>Draw tangent.</strong> From the anchor at (2.7 min post, 9.0 mmol/L) draw the line tangent to the ascending exercise lactate curve.</li>
+<li><strong>Read off the IAT.</strong> The tangent touches the exercise curve at approximately:
+<ul>
+<li><strong>v_IAT ≈ 3.7 m/s (13.4 km/h)</strong></li>
+<li><strong>L_IAT ≈ 3.2 mmol/L</strong></li>
+</ul>
+</li>
+<li><strong>Interpolate the threshold heart rate.</strong> Linear interpolation between stage 4 (v = 3.5, HR = 158 bpm) and stage 5 (v = 4.0, HR = 172 bpm) at v = 3.72 m/s:
+<ul>
+<li>HR_IAT ≈ 158 + (3.72 − 3.5)/(4.0 − 3.5) × (172 − 158) = 158 + 0.44 × 14 = <strong>≈ 164 bpm</strong>.</li>
+</ul>
+</li>
+</ol>
+<p>The aerobic threshold (AeS) in the same test would be read off as the first systematic rise of lactate above baseline — in this subject between stages 3 and 4. Conventionally, this is set at v ≈ 3.0 m/s, HR ≈ 145 bpm, L ≈ 1.8 mmol/L.</p>
+<h3 id="25-derived-training-prescription">2.5 Derived training prescription</h3>
+<p>Using the IAT values for this subject as the anchor (Kindermann 2004; see also §3 below):</p>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 5"> <p>Training zones derived from the individual anaerobic threshold.</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Training zone</th><th>% IAT velocity</th><th>Target velocity</th><th>Target HR</th><th>Typical lactate</th><th>Example session</th></tr></thead><tbody><tr><td><strong>Regenerative</strong></td><td>&lt; 70 %</td><td>&lt; 2.6 m/s  (&lt; 9.4 km/h)</td><td>&lt; 115 bpm</td><td>&lt; 1.5 mmol/L</td><td>30–45 min easy jog at 2.3 m/s (8.3 km/h)</td></tr><tr><td><strong>Extensive endurance (GA I)</strong></td><td>70 – 90 %</td><td>2.6 – 3.35 m/s (9.4 – 12.1 km/h)</td><td>115 – 148 bpm</td><td>1.5 – 3 mmol/L</td><td>60–90 min steady run at 3.0 m/s (10.8 km/h), HR ~140 bpm</td></tr><tr><td><strong>Intensive endurance (GA II / TDL)</strong></td><td>90 – 100 %</td><td>3.35 – 3.72 m/s (12.1 – 13.4 km/h)</td><td>148 – 164 bpm</td><td>3 – 5 mmol/L</td><td>30–45 min tempo run at 3.5 m/s (12.6 km/h), HR ~156 bpm</td></tr><tr><td><strong>Interval training (IVT)</strong></td><td>&gt; 100 %</td><td>&gt; 3.72 m/s (&gt; 13.4 km/h)</td><td>&gt; 164 bpm (HR drifts during the interval)</td><td>typically &gt; 5 mmol/L</td><td>6 × 1000 m at 4.0 m/s (14.4 km/h), 3 min jog rest</td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 5"> <p>Training zones derived from the individual anaerobic threshold.</p> </figcaption> </figure>
+<p><strong>Notes for the coach.</strong></p>
+<ul>
+<li>Use <strong>heart rate</strong> as the primary online control parameter (it tracks workload well, is unaffected by beta-blockers, and is far more practical than repeated lactate sampling).</li>
+<li>For interval sessions, target HR is reached during the work bout, not from the start: prescription is normally given as work velocity ± rest interval rather than as HR.</li>
+<li>Re-test every 6–8 weeks of focused training. A higher v_IAT at the same HR_IAT — or the same v_IAT at a lower HR — indicates positive adaptation.</li>
+</ul>
+<blockquote>
+<p><strong>Key take-away.</strong> A single 18-minute incremental test plus 10 minutes of recovery sampling yields, via the Stegmann tangent, an individual threshold velocity, lactate concentration and heart rate. From these three numbers a complete training-zone prescription can be derived.</p>
+</blockquote>
+<h3 id="one-minute-paper-topics-1">One-Minute-Paper Topics</h3>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p>A <strong>One-Minute-Paper</strong> (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today’s session.</p> </div>
+<ul>
+<li>Explain the rationale of the Stegmann tangent method: why does the recovery-lactate curve provide information that the incremental exercise curve alone cannot?</li>
+<li>In the Stegmann construction, what does the anchor point on the recovery curve represent, and how is it located on the time axis?</li>
+<li>Given an end-of-exercise lactate of 9.2 mmol/L with recovery values of 10.2 mmol/L at 1 min and 8.6 mmol/L at 3 min, calculate by linear interpolation the time at which the recovery curve crosses L_end.</li>
+</ul>
+<h3 id="key-references-1">Key References</h3>
+<ul>
+<li>Faude O, Kindermann W, Meyer T. <em>Lactate Threshold Concepts — How Valid Are They?</em> Sports Medicine 39 (6), 2009: 469–490.</li>
+<li>Kindermann W. <em>Anaerobe Schwelle.</em> Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.</li>
+<li>Stegmann H, Kindermann W, Schnabel A. <em>Lactate kinetics and individual anaerobic threshold.</em> International Journal of Sports Medicine 2, 1981: 160–165.</li>
+</ul>
+<hr/>
+<h2 id="3-prescribing-from-the-threshold">3 Prescribing From the Threshold</h2>
+<p><strong>Learning objectives:</strong></p>
+<ul>
+<li>Derive the four endurance-training zones from the IAT (Kindermann 2004) — regenerative (&lt; AeS), extensive endurance GA I (≈ 70–90 % IAT), intensive endurance GA II/TDL (90–100 % IAT), interval &gt; 100 % IAT — with their lactate guidance, and prescribe a session in each from a subject’s threshold numbers.</li>
+<li>Apply the practical examples: marathon runners race at ≈ 95–100 % of IAT velocity; maximal fat oxidation (55–72 % VO₂max ≈ 68–79 % HRmax) coincides with ≈ 90 % IAT; preventive/rehabilitative sport stays between AeS and IAT with suprathreshold work avoided.</li>
+<li>Place the IAT within the ACSM/ESSA five-category framework (Bishop et al. 2025): MT1 ≈ first lactate threshold/AeS, MT2 ≈ MLSS/critical power, and the very-low/low/moderate/high/very-high bands anchored on MT1, MT2 and Wmax, and defend direct threshold measurement as the preferred way to equalise physiological stress across individuals.</li>
+<li>Contrast trained and untrained subjects: the whole lactate–performance curve shifts right, absolute power/velocity at MLSS is higher, MLSS lactate concentration is <em>lower</em> in endurance-trained athletes, the IAT sits at ≈ 60–85 % VO₂max, and the IAT discriminates performance where VO₂max cannot.</li>
+<li>Justify why the IAT is a more sensitive marker of training adaptation than VO₂max — mitochondrial density, oxidative enzymes, capillarisation and fibre-type shifts move the curve before VO₂max changes — especially in already-trained populations.</li>
+<li>Explain why fixed %VO₂max/%HRmax prescriptions produce unequal metabolic strain — the IAT spans a wide range of these percentages, a 40-fold between-subject range in muscle-lactate rise at 70 % VO₂max, half the subjects above and half below MT1 at 80 % HRmax — and conclude with Bishop et al. that maximal-anchor percentages are inadequate individual prescription tools.</li>
+</ul>
+<h3 id="31-training-zones-derived-from-the-aerobicanaerobic-transition-kindermann-2004">3.1 Training zones derived from the aerobic–anaerobic transition (Kindermann 2004)</h3>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 6"> <p>Endurance training zones and lactate guidance (German terminology).</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Zone (German terminology)</th><th>Intensity prescription</th><th>Lactate guidance</th></tr></thead><tbody><tr><td>Regenerative training</td><td>&lt; AeS</td><td>At/below first lactate rise</td></tr><tr><td>Extensive endurance (GA I)</td><td>≈ 70 – &lt; 90 % of IAT</td><td>between AeS and just below IAT</td></tr><tr><td>Intensive endurance (GA II, “Tempodauerlauf”)</td><td>90 – 100 % of IAT</td><td>up to MLSS, typically 3–5 mmol/L in trained runners</td></tr><tr><td>Interval training (IVT)</td><td>&gt; 100 % of IAT</td><td>suprathreshold, lactate dependent on work/rest ratio</td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 6"> <p>Endurance training zones and lactate guidance (German terminology).</p> </figcaption> </figure>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Figure 3"> <p>Typical blood-lactate ranges encountered during the four endurance-training zones, expressed as a percentage of the individual anaerobic threshold (IAS). Redrawn after Kindermann (2004).</p> </figcaption>  <img src="/exercise_immunology/_astro/fig3_training_zones.kdewKvmM_Z1aMtfN.webp" alt="Training zones as % of IAS" loading="lazy" decoding="async" fetchpriority="auto" width="2168" height="1365" class="w-full h-auto py-0 block dark:hidden"> <img src="/exercise_immunology/_astro/fig3_training_zones_dark.D5VhEtZI_tBfg3.webp" alt="Training zones as % of IAS" loading="lazy" decoding="async" fetchpriority="auto" width="2168" height="1365" class="w-full h-auto py-0 hidden dark:block"> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Figure 3"> <p>Typical blood-lactate ranges encountered during the four endurance-training zones, expressed as a percentage of the individual anaerobic threshold (IAS). Redrawn after Kindermann (2004).</p> </figcaption> </figure>
+<p><strong>Heart-rate prescription</strong> is preferred in practice, because heart rate is easy to monitor and lactate response is not affected by beta-blockers — exact heart-rate targets at the IAT can therefore be given even to cardiac patients on beta-blockade.</p>
+<h3 id="32-application-examples-kindermann-2004">3.2 Application examples (Kindermann 2004)</h3>
+<ul>
+<li>Good marathon runners race <strong>at the IAT</strong>. Marathon time can be predicted from running speed at the threshold. Regional-class runners (~3 h) run at ~95 % of IAT speed; elite runners ~100 %.</li>
+<li><strong>Fat oxidation</strong> is maximal in absolute terms at 55–72 % VO₂max, corresponding to 68–79 % HRmax — i.e. within the aerobic–anaerobic transition. Training around <strong>~90 % of the IAT</strong> therefore also elicits maximal fat oxidation.</li>
+<li><strong>Preventive / rehabilitative sport.</strong> Short sessions can be performed between 90 and 100 % of the IAT, longer sessions close to the AeS. Suprathreshold work is not relevant for health sport and may be risky for patients.</li>
+</ul>
+<h3 id="33-the-acsmessa-framework-bishop-et-al-2025">3.3 The ACSM/ESSA framework (Bishop et al. 2025)</h3>
+<p>The recent joint ACSM/ESSA expert statement proposes five intensity categories anchored on metabolic thresholds — the first metabolic threshold (MT1) being approximated by the first lactate threshold/AeS, and the second metabolic threshold (MT2) being approximated by the MLSS or critical power/speed:</p>
+<figure class="m-0"> <figcaption class="hidden md:block md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-6" data-figlabel="Table 7"> <p>Cardiorespiratory intensity categories by physiological marker.</p> </figcaption> <!-- Constrain wide tables to the content column so they can't bleed into the
+         (floated) caption gutter; overflow scrolls horizontally instead. --> <div class="overflow-x-auto max-w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Category</th><th>Cardiorespiratory exercise reference</th></tr></thead><tbody><tr><td>Very low</td><td>no current physiological marker</td></tr><tr><td>Low</td><td>below MT1</td></tr><tr><td>Moderate</td><td>above MT1 but below MT2</td></tr><tr><td>High</td><td>above MT2 but below Wmax (work rate at VO₂max)</td></tr><tr><td>Very high</td><td>above Wmax</td></tr></tbody></table></div> <figcaption class="block md:hidden px-6 my-4" data-figlabel="Table 7"> <p>Cardiorespiratory intensity categories by physiological marker.</p> </figcaption> </figure>
+<p>Bishop et al. (2025) state that the <strong>direct measurement of metabolic thresholds</strong> plus Wmax is “the best and preferred method to define exercise-intensity categories that will produce similar physiological stresses in individuals with different exercise capacities.”</p>
+<blockquote>
+<p><strong>Key take-away.</strong> The anaerobic threshold subdivides the endurance-training continuum into physiologically distinct zones. Heart-rate-controlled prescription anchored on the IAT (or on MT1/MT2) yields more comparable metabolic stress between individuals than work-rate or %VO₂max prescription.</p>
+</blockquote>
+<h3 id="34-trained-versus-untrained-subjects">3.4 Trained versus untrained subjects</h3>
+<p>The anaerobic threshold is more sensitive to training than VO₂max (Kindermann 2004; Faude et al. 2009):</p>
+<ul>
+<li><strong>Absolute power/velocity at MLSS</strong> is markedly higher in trained subjects — the entire lactate–performance curve shifts to the right.</li>
+<li><strong>Relative to VO₂max</strong>, the IAT lies between roughly <strong>60 and 85 % VO₂max</strong>, depending on sport and training state (AeS roughly 40–65 % VO₂max). Highly trained endurance athletes operate at the upper end of this range.</li>
+<li><strong>Lactate concentration at the MLSS</strong> is <strong>lower in endurance-trained athletes</strong> than in untrained subjects. Faude et al. (2009) explicitly warn that the LT4 (4 mmol/L) “may frequently underestimate (particularly in anaerobically trained subjects) or overestimate (in aerobically trained athletes) real endurance capacity.”</li>
+<li><strong>VO₂max alone fails to discriminate</strong> between subjects of homogeneous performance level (e.g. between elite endurance runners). The threshold, however, retains discriminatory power and correlates strongly with competition performance.</li>
+<li><strong>Training adaptations</strong> (mitochondrial density, oxidative enzymes, capillarisation, fibre-type shifts) shift the curve to the right — this is detected sensitively by changes at the IAT, often before VO₂max changes.</li>
+</ul>
+<blockquote>
+<p><strong>Key take-away.</strong> Training shifts the IAT to higher absolute workloads and tends to lower the lactate concentration at which the MLSS occurs. The IAT is a more sensitive marker of endurance training adaptations than VO₂max — especially in already-trained populations.</p>
+</blockquote>
+<h3 id="35-typical-values-as-percentages-of-vomax--hrmax">3.5 Typical values as percentages of VO₂max / HRmax</h3>
+<p>Across studies summarised by Kindermann (2004):</p>
+<ul>
+<li><strong>AeS:</strong> ~40 – 65 % VO₂max</li>
+<li><strong>IAT:</strong> ~60 – 85 % VO₂max</li>
+<li><strong>Maximum fat oxidation:</strong> 55 – 72 % VO₂max ≈ 68 – 79 % HRmax (within the aerobic–anaerobic transition)</li>
+</ul>
+<h3 id="36-why-vomax--hrmax-are-not-a-reliable-prescription-tool">3.6 Why %VO₂max / %HRmax are <em>not</em> a reliable prescription tool</h3>
+<p>Although these percentages are convenient, all three reviewed papers stress that a fixed percentage of VO₂max or HRmax does <strong>not</strong> produce the same metabolic strain in different people:</p>
+<ul>
+<li>Kindermann (2004) summarises evidence that exercise-intensity prescriptions based on %VO₂max or %HRmax are inadequate, because the IAT corresponds to a wide range of these percentages.</li>
+<li>Bishop et al. (2025) cite a study reporting a <strong>40-fold range</strong> in the increase of muscle lactate between subjects at 70 % of VO₂max. At 80 % of HRmax, approximately half the participants were above their first metabolic threshold and approximately half were below.</li>
+<li>Faude et al. (2009) likewise note that LTs are superior to VO₂max for assessing endurance performance in homogeneous groups of athletes.</li>
+<li>Bishop et al. (2025) conclude that “prescribing exercise intensity based on a fixed percentage of maximal anchors (e.g., %VO₂max, %VO₂R, %HRmax, or %HRR) will cause individuals to exercise in different training intensity categories and to experience large variations in metabolic stress.”</li>
+</ul>
+<blockquote>
+<p><strong>Key take-away.</strong> %VO₂max and %HRmax are practical <em>descriptors</em> of where the threshold tends to lie in a population, but they are not adequate <em>prescription anchors</em> for individuals. Threshold-based prescription (heart rate at the IAT, or thresholds derived from a GXT) achieves more comparable physiological strain.</p>
+</blockquote>
+<h3 id="one-minute-paper-topics-2">One-Minute-Paper Topics</h3>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p>A <strong>One-Minute-Paper</strong> (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today’s session.</p> </div>
+<ul>
+<li>List the four endurance-training zones derived from the IAT and give their approximate percentage range of IAT velocity.</li>
+<li>Why is heart rate preferred over repeated blood-lactate sampling as the online control parameter for endurance training prescription in the field?</li>
+<li>Explain in one sentence each how the MLSS lactate concentration and the absolute MLSS workload typically differ between endurance-trained and untrained subjects.</li>
+<li>Why is the IAT a more sensitive marker of endurance-training adaptation than VO₂max — especially in already-trained populations?</li>
+<li>Why does prescribing exercise at a fixed %VO₂max or %HRmax produce unequal metabolic stress between individuals? Cite one quantitative example from Bishop et al. (2025).</li>
+<li>Distinguish MT1 and MT2 in the ACSM/ESSA framework and name the physiological markers each approximates.</li>
+<li>A recreational runner has v_IAT = 3.8 m/s, HR_IAT = 166 bpm, L_IAT = 4.0 mmol/L. Prescribe a 60-minute extensive endurance (GA I) session with appropriate velocity, target HR, and expected lactate range.</li>
+<li>Why are threshold-based heart-rate prescriptions still valid in cardiac patients on beta-blockers, while %HRmax prescriptions are not?</li>
+<li>Maximal fat oxidation occurs at approximately 55–72 % VO₂max, which corresponds to roughly 90 % of the IAT. Use this to justify the training-zone choice for a client whose primary goal is weight management, and explain why prescription at the IAT itself or above would be counter-productive for this goal.</li>
+</ul>
+<h3 id="key-references-2">Key References</h3>
+<ul>
+<li>Bishop DJ et al. <em>Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.</em> Journal of Science and Medicine in Sport 28, 2025: 980–991.</li>
+<li>Faude O, Kindermann W, Meyer T. <em>Lactate Threshold Concepts — How Valid Are They?</em> Sports Medicine 39 (6), 2009: 469–490.</li>
+<li>Kindermann W. <em>Anaerobe Schwelle.</em> Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.</li>
+</ul>
+<hr/>
+<h2 id="4-strengths-weaknesses-and-the-limits-of-the-concept">4 Strengths, Weaknesses and the Limits of the Concept</h2>
+<p><strong>Learning objectives:</strong></p>
+<ul>
+<li>Marshal the concept’s strengths: strong correlation with endurance performance (r ≈ 0.7–0.98 across 32 studies, 55–85 % common variance), sensitivity to training, independence from maximal effort (usable in patients), high test–retest reliability (r &gt; 0.9 for velocity/power at LTs), multi-system biological plausibility, and robustness to beta-blockade.</li>
+<li>Explain why threshold heart-rate prescriptions remain valid in cardiac patients on beta-blockers while %HRmax prescriptions do not — the lactate–performance curve is unaffected by beta-blockade.</li>
+<li>Confront the definitional problem: Faude et al. located 25 different LT concepts whose values are generally not comparable, and articulate the practical difficulty this creates for coaches and clinicians comparing results across laboratories.</li>
+<li>List the methodological factors that systematically move a threshold — test protocol (stage duration, increment, ramp vs step), sampling site (earlobe vs fingertip), blood medium (plasma/whole blood/capillary), analyser and ambient conditions, and nutritional/glycogen state — and explain how glycogen depletion can masquerade as improvement in a re-test and how to control for it.</li>
+<li>State the residual uncertainty even for the best concepts: 95 % LoA with the MLSS of ≈ 10 % (treadmill) to ≈ 27 % (cycle) for some methods, MLSS lactate spanning 2–10 mmol·L⁻¹, and the absence of good data on MLSS’s own reproducibility.</li>
+<li>Acknowledge the scope limits — strong validation in running, heterogeneous in cycling, sparse elsewhere; and the population-scale impracticality (equipment, time, blood, expertise) raised by Bishop et al. — and synthesise the summary paragraph’s balanced verdict.</li>
+</ul>
+<h3 id="41-strengths">4.1 Strengths</h3>
+<ul>
+<li><strong>High correlation with endurance performance.</strong> Of 32 studies reviewed by Faude et al. (2009), the overwhelming majority reported strong linear correlations of LTs with running competition performance, with r-values typically between 0.7 and 0.98 and common variance of 55 – 85 %.</li>
+<li><strong>Sensitivity to training.</strong> Threshold-based parameters change earlier and more clearly than VO₂max, especially in trained athletes (Kindermann 2004).</li>
+<li><strong>Independence of motivation / exhaustion.</strong> Unlike VO₂max, the IAT does not require an all-out effort and can therefore be used safely in patients and recreational subjects (Kindermann 2004; Bishop et al. 2025).</li>
+<li><strong>Reproducibility.</strong> Test–retest reliability for velocity or power at LTs is high (r &gt; 0.9 across LTfix, LTAer and LTAn concepts); VO₂ at LT is slightly lower (r ≈ 0.8 – 0.9) (Faude et al. 2009).</li>
+<li><strong>Practical, multi-system breakpoint.</strong> Metabolic, hormonal, immunological and neuromuscular changes converge at this intensity, giving the concept biological plausibility.</li>
+<li><strong>Robust against beta-blockade.</strong> Lactate–performance curves are not influenced by beta-blockers, so threshold-based heart-rate prescriptions remain valid in cardiac patients (Kindermann 2004).</li>
+</ul>
+<h3 id="42-weaknesses">4.2 Weaknesses</h3>
+<ul>
+<li><strong>Definitional confusion.</strong> Faude et al. (2009) located <strong>25 different LT concepts</strong> in the literature. Threshold values obtained by different methods are generally <strong>not comparable</strong>. Many concepts are insufficiently validated.</li>
+<li><strong>The term “threshold” is misleading.</strong> Aerobic and anaerobic pathways always contribute simultaneously; the transition is continuous, not abrupt. The model is appropriate didactically and practically but should not be reified.</li>
+<li><strong>Methodological dependence.</strong> Threshold values depend on:
+<ul>
+<li>test protocol (stage duration, work-rate increment, ramp vs step);</li>
+<li>blood-sampling site (earlobe vs fingertip);</li>
+<li>blood medium analysed (plasma vs whole blood vs capillary);</li>
+<li>lactate analyser type and ambient conditions;</li>
+<li>nutritional state — glycogen depletion shifts the lactate curve down and can be misread as an improvement (Faude et al. 2009).</li>
+</ul>
+</li>
+<li><strong>Substantial individual differences from MLSS.</strong> Even for the best-validated concepts, 95 % LoA between an LT estimate and the MLSS reach ~10 % on a treadmill and up to ~27 % on a cycle ergometer for some methods (Faude et al. 2009).</li>
+<li><strong>MLSS lactate concentration varies between 2 and 10 mmol/L</strong> across individuals — fixed values such as 4 mmol/L are at best a population average.</li>
+<li><strong>MLSS reproducibility itself is not well established.</strong> Faude et al. (2009) explicitly note “no scientific data” on the basic variability of MLSS, which limits how strictly LTs can be judged.</li>
+<li><strong>Limited evidence outside running.</strong> Validation against competition performance is strong for running but more heterogeneous in cycling and sparse in other endurance sports.</li>
+<li><strong>Limited applicability to large populations.</strong> Bishop et al. (2025) note that threshold-based testing requires expensive equipment, time-consuming protocols, blood sampling and expert interpretation — not realistic for population-level prescription.</li>
+</ul>
+<blockquote>
+<p><strong>Key take-away.</strong> The anaerobic-threshold concept is a powerful, valid and reliable instrument when (1) the chosen LT concept matches the question, (2) the test protocol is standardised, and (3) results are interpreted on the level of individuals with appropriate confidence intervals — not as point estimates carved in stone.</p>
+</blockquote>
+<h3 id="43-summary-in-one-paragraph">4.3 Summary in one paragraph</h3>
+<p>The anaerobic threshold is the <strong>upper border of the aerobic–anaerobic transition</strong> and, functionally, corresponds to the <strong>maximal lactate steady state</strong>. Although it averages around 4 mmol/L of blood lactate, the actual MLSS concentration varies between 2 and 10 mmol/L between individuals, making individualised threshold concepts preferable to fixed values; even so, 95 % limits of agreement with the gold-standard MLSS reach 10–20 %. The threshold is more than a metabolic marker: catecholamines, NK-cell activity and oxidative burst all change disproportionately above this intensity, so it is best regarded as a <strong>multi-system breakpoint</strong>. It is the central anchor for endurance-training prescription, with regenerative, extensive (GA I, ~70–90 % IAT), intensive (GA II / TDL, ~90–100 % IAT) and interval (&gt;100 % IAT) zones derived from it. Trained subjects reach the threshold at higher absolute workloads and often at lower lactate concentrations than untrained subjects, and the threshold is a more sensitive marker of training adaptation than VO₂max. Although it tends to fall between 60 and 85 % VO₂max (or 68–79 % HRmax for maximal fat oxidation), fixed percentages of these maximal anchors should not be used to prescribe individual training, because identical %VO₂max or %HRmax produce widely different metabolic strains. The main strengths of the concept are reliability, independence from maximal effort, and strong correlation with endurance performance; the main weaknesses are the proliferation of incompatible definitions, methodological sensitivity, and the fact that the underlying transition is, strictly speaking, continuous.</p>
+<h3 id="one-minute-paper-topics-3">One-Minute-Paper Topics</h3>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p>A <strong>One-Minute-Paper</strong> (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today’s session.</p> </div>
+<ul>
+<li>List three methodological factors (test protocol, blood sampling, analysis, nutritional state) that systematically influence the position of a lactate threshold on the lactate–performance curve.</li>
+<li>Why can glycogen depletion lead to a misleadingly “improved” lactate–performance curve in a follow-up test, and how should this be controlled in re-testing?</li>
+<li>Faude et al. (2009) located 25 different LT concepts in the literature. What practical problem does this proliferation create for coaches and clinicians comparing test results across labs?</li>
+</ul>
+<h3 id="key-references-3">Key References</h3>
+<ul>
+<li>Bishop DJ et al. <em>Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.</em> Journal of Science and Medicine in Sport 28, 2025: 980–991.</li>
+<li>Faude O, Kindermann W, Meyer T. <em>Lactate Threshold Concepts — How Valid Are They?</em> Sports Medicine 39 (6), 2009: 469–490.</li>
+<li>Kindermann W. <em>Anaerobe Schwelle.</em> Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.</li>
+</ul>
+<hr/>
+<h2 id="references">References</h2>
+<ul>
+<li>Bishop DJ et al. <em>Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.</em> Journal of Science and Medicine in Sport 28, 2025: 980–991.</li>
+<li>Faude O, Kindermann W, Meyer T. <em>Lactate Threshold Concepts — How Valid Are They?</em> Sports Medicine 39 (6), 2009: 469–490.</li>
+<li>Heck H, Mader A, Hess G, Mücke S, Müller R, Hollmann W. <em>Justification of the 4-mmol/l Lactate Threshold.</em> International Journal of Sports Medicine 6 (3), 1985: 117–130.</li>
+<li>Kindermann W. <em>Anaerobe Schwelle.</em> Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.</li>
+<li>Kindermann W, Simon G, Keul J. <em>The significance of the aerobic-anaerobic transition for the determination of work load intensities during endurance training.</em> European Journal of Applied Physiology and Occupational Physiology 42, 1979: 25–34.</li>
+<li>Mader A, Liesen H, Heck H, Philippi H, Rost R, Schürch W, Hollmann W. <em>Zur Beurteilung der sportartspezifischen Ausdauerleistungsfähigkeit im Labor.</em> Sportarzt und Sportmedizin 27, 1976: 80–88 und 109–112.</li>
+<li>Stegmann H, Kindermann W, Schnabel A. <em>Lactate kinetics and individual anaerobic threshold.</em> International Journal of Sports Medicine 2, 1981: 160–165.</li>
+</ul>  </div> </article>  </main> <footer class="w-full max-w-5xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14"> <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1"> <a class="font-serif hover:underline hover:underline-offset-2" href="/exercise_immunology/contact">Contact</a><a class="font-serif hover:underline hover:underline-offset-2" href="/exercise_immunology/privacy-policy">Privacy Policy</a> </div> <div class="pt-6 flex flex-col gap-4 border-t border-dashed border-main">  <p class="text-sm">
+&copy; 2026&nbsp;Christian Puta. All rights reserved.<br>Template generated by Dirk Brockmann.
+</p> </div> </footer> </div> </body></html>
