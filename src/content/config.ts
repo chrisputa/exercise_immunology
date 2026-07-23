@@ -13,12 +13,24 @@ const seoSchema = z.object({
     pageType: z.enum(['website', 'article']).default('website')
 });
 
+// Optional grouping of a listing page into named subcategories. `label` doubles
+// as the folder prefix (unless `prefix` overrides it) and as the word before the
+// running number: label "Metabolic" matches `metabolic-1/` and renders
+// "Metabolic 1". Omit the field entirely for a flat, ungrouped listing.
+const subcategorySchema = z.object({
+    title: z.string(),
+    label: z.string(),
+    prefix: z.string().optional(),
+    description: z.string().optional()
+});
+
 const pages = defineCollection({
     loader: glob({pattern: '**/*.{md,mdx}', base: './src/content/pages'}),
     schema: z.object({
         title: z.string(),
         seo: seoSchema.optional(),
         showHeader: z.boolean().default(false),
+        subcategories: z.array(subcategorySchema).optional(),
         // Optional iframe embed: when set, the page is rendered with DashboardLayout
         // instead of PageLayout (see src/pages/[...id].astro).
         iframeSrc: z.string().optional(),
@@ -85,6 +97,9 @@ const lectures = defineCollection({
     description: z.string().optional(),
     draft: z.boolean().optional(),
     examRelevant: z.boolean().default(false),
+    // Overrides the folder-prefix grouping, so a lecture can be moved into a
+    // subcategory without renaming its folder (and thus changing its URL).
+    category: z.string().optional(),
     seo: seoSchema.optional(),
   }),
 });

@@ -3,9 +3,16 @@ import { type CollectionEntry } from 'astro:content';
 import Link from '../components/Link.astro';
 import ArrowRight from '../icons/ArrowRight.astro';
 
-type Props = { lecture: CollectionEntry<'lectures'>; class?: string; headingLevel?: 'h2' | 'h3'; sequence?: number };
+type Props = {
+    lecture: CollectionEntry<'lectures'>;
+    class?: string;
+    headingLevel?: 'h2' | 'h3';
+    sequence?: number;
+    /** Word before the running number; set per subcategory, e.g. "Metabolic". */
+    sequenceLabel?: string;
+};
 
-const { lecture, class: className, headingLevel = 'h2', sequence } = Astro.props;
+const { lecture, class: className, headingLevel = 'h2', sequence, sequenceLabel = 'Lecture' } = Astro.props;
 const { title, description, examRelevant } = lecture.data;
 const TitleTag = headingLevel;
 
@@ -16,7 +23,7 @@ const TitleTag = headingLevel;
         <TitleTag
             class="text-[27px] leading-tight font-display font-normal tracking-[0.005em] group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-[27px]"
         >
-            {sequence ? `Lecture ${sequence}: ` : ''}{title}
+            {sequence ? `${sequenceLabel} ${sequence}: ` : ''}{title}
         </TitleTag>
         {examRelevant && <div class="mt-1 text-base font-serif leading-normal">★ Exam-relevant</div>}
         {description && <div class="mt-2 border-l border-[var(--text-main)] pl-4 text-[18px] leading-[1.6] font-sans text-justify text-muted">{description}</div>}

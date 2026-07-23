@@ -3,34 +3,50 @@ import { getCollection, getEntry, render } from 'astro:content';
 import Link from '../../components/Link.astro';
 import LecturePreview from '../../components/LecturePreview.astro';
 import ListLayout from '../../layouts/ListLayout.astro';
-import { sortItemsByDateDesc } from '../../utils/data-utils';
+import { groupEntries } from '../../utils/collection-groups';
 
-const lectures = (await getCollection('lectures'))
-  .filter((lecture) => !lecture.data.draft)
-  .sort((a, b) => {
-    const numA = parseInt(a.id.match(/\d+/)?.[0] ?? '0');
-    const numB = parseInt(b.id.match(/\d+/)?.[0] ?? '0');
-    return numA - numB;
-  });
+const lectures = (await getCollection('lectures')).filter((lecture) => !lecture.data.draft);
 const preamble = await getEntry('pages', 'lectures');
 const title = preamble?.data?.title ?? 'Lectures';
 const image = (preamble?.data as any)?.image;
 const showHeader = preamble?.data?.showHeader ?? false;
 const { Content } = preamble ? await render(preamble) : { Content: () => '' };
+
+// Without `subcategories` in the page frontmatter this yields a single
+// unlabelled group, i.e. the plain numbered list.
+const groups = groupEntries(lectures, preamble?.data?.subcategories, { defaultLabel: 'Lecture' });
 ---
 
 <ListLayout title={title} image={image} showHeader={showHeader}>
     <div slot="preamble">
         <Content components={{ a: Link }} />
     </div>
-    
+
     <div slot="list">
-        {lectures.map((lecture, i) => (
-            <LecturePreview
-                lecture={lecture}
-                sequence={i + 1}
-                class="mb-10 sm:mb-12"
-            />
+        {groups.map((group) => (
+            <section>
+                {group.title && (
+                    <h2
+                        class="mt-16 mb-10 border-t border-[var(--text-main)] pt-6 text-2xl leading-tight font-display font-normal tracking-[0.005em] sm:mt-20 sm:mb-12 sm:text-[2rem]"
+                    >
+                        {group.title}
+                    </h2>
+                )}
+                {group.description && (
+                    <p class="-mt-6 mb-10 text-[18px] leading-[1.6] font-sans text-muted sm:-mt-8 sm:mb-12">
+                        {group.description}
+                    </p>
+                )}
+                {group.entries.map((lecture, i) => (
+                    <LecturePreview
+                        lecture={lecture}
+                        sequence={i + 1}
+                        sequenceLabel={group.label}
+                        headingLevel={group.title ? 'h3' : 'h2'}
+                        class="mb-10 sm:mb-12"
+                    />
+                ))}
+            </section>
         ))}
     </div>
 </ListLayout>
