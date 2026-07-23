@@ -52,16 +52,11 @@
 </ol>
 <hr/>
 <h2 id="1-the-condition-and-the-population-signal">1 The Condition and the Population Signal</h2>
-<p><strong>Learning objectives:</strong></p>
-<ul>
-<li>Define infection-associated chronic illness and give two clinical examples; state the WHO post-COVID-19 condition definition (new or continuing symptoms ≥ 3 months after infection, lasting ≥ 2 months, otherwise unexplained) and name the hallmark symptoms — fatigue, dyspnoea, brain fog, post-exertional malaise (Ledebur et al. 2025; Aitken et al. 2026).</li>
-<li>Explain why the episodic, fluctuating nature of these conditions — ≈ 85 % of Long COVID patients experience unpredictable flares — is the core management challenge, and why it defeats point-in-time clinical measurement.</li>
-<li>Justify wearables as a research tool through their four properties: continuous real-world collection, high temporal resolution, scalability, and retrospective pre-illness baselines; name the signals captured (RHR, HRV, respiration rate, step count, sleep).</li>
-<li>Summarise the Ledebur et al. 2025 design: &gt; 20,000 participants in the German Corona Data Donation project, a persistent-symptoms cohort (COVID-19[+]PS, n = 50) matched against positive and negative controls (n = 150 each).</li>
-<li>State the pre-infection finding and its significance: future persistent-symptom individuals already had elevated RHR (+2.37 bpm vs positive controls) and lower step counts (≈ 3,000 fewer) <em>before</em> their SARS-CoV-2 test, plus lower WHO-5 and EQ-5D scores — evidence that baseline fitness and pre-existing conditions predispose to PCC.</li>
-<li>Describe the acute-phase signature: a more pronounced transient tachycardia followed by a prolonged bradycardia that had not resolved by 18 days (vs ≈ 15 days in non-persistent cases), with consistently lower physical activity across all phases.</li>
-<li>Read the predictive-feature table (odds ratios): acute-phase symptom count (4.40), chronic bronchitis (1.65), gender (1.53), allergies (1.35), pre-phase mean RHR (1.31), mental-health condition (1.29), and argue why combining wearable with clinical variables improves risk identification.</li>
-</ul>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p><strong>Learning objectives:</strong></p><ul>
+<li>Infection-associated chronic illness and the WHO post-COVID-19 condition</li>
+<li>Episodic symptoms as the case for wearables over point-in-time measurement</li>
+<li>Pre-infection and acute-phase wearable signatures, and the predictive features of PCC</li>
+</ul> </div>
 <h3 id="11-introduction--infection-associated-chronic-illness">1.1 Introduction — Infection-Associated Chronic Illness</h3>
 <p>Complex chronic illnesses such as Long COVID (LC) and Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS) are conditions in which symptoms persist long after an initial infection. The WHO defines post-COVID-19 condition (PCC) as the continuation or development of new symptoms three months after the initial SARS-CoV-2 infection, with these symptoms lasting for at least two months with no other explanation. LC significantly impacts quality of life through fluctuating, episodic symptoms including fatigue, shortness of breath, brain fog, and post-exertional malaise. Similarly, ME/CFS is characterized by profound fatigue, cognitive impairment, and a hallmark symptom of post-exertional symptom exacerbation — often called “crashing” or “flare-ups” (Ledebur et al. 2025; Aitken et al. 2026).</p>
 <p>A central challenge in managing these conditions is the unpredictable, fluctuating nature of symptoms. Approximately 85% of those affected by LC experience episodic symptoms that can rapidly shift from periods of stability to severe exacerbations, resulting in significant functional declines. Biological drivers of these symptom flare-ups remain poorly understood, and patients are often unable to link a change in symptoms to a specific event or trigger. This inability to predict symptom exacerbations leads to less effective disease management and reduced quality of life (Aitken et al. 2026).</p>
@@ -133,17 +128,11 @@
 </ul>
 <hr/>
 <h2 id="2-predicting-the-flare--mechanism-and-practice">2 Predicting the Flare — Mechanism and Practice</h2>
-<p><strong>Learning objectives:</strong></p>
-<ul>
-<li>Summarise the Aitken et al. 2026 design: 4,244 participants with LC/ME/CFS and other energy-limiting conditions using the Visible app, providing daily 60-second morning PPG plus evening symptom surveys, median 125 observations per participant.</li>
-<li>Name the biometric inputs (morning HR, HRV, respiration rate from smartphone-camera or Polar-armband PPG) and the evening outcomes (crash, fatigue severity, brain-fog severity).</li>
-<li>Explain the multilevel-modelling distinction between within-person effects (fluctuation from an individual’s own baseline) and between-person effects (chronic differences between individuals), and why disaggregating them matters.</li>
-<li>State the within-person findings: rising morning HR and falling morning HRV predict greater same-evening symptom severity across all three outcomes; 7-day coefficients of variation for HR and HRV are also predictive, so short-term <em>instability</em> — not just level — drives exacerbation; the prior-day symptom report is a strong autoregressive predictor.</li>
-<li>State the between-person findings: higher average HR and higher HR variability track more frequent crashes and greater symptom burden, while more stable morning HR marks physiological resilience.</li>
-<li>Interpret the predictive-modelling result: walk-forward cross-validation AUC 0.74–0.85 for biometrics + prior-day symptoms vs 0.73–0.83 for symptoms alone (DeLong p &lt; 0.0001) — a modest but robust and consistent incremental gain.</li>
-<li>Explain the autonomic mechanism: HR and HRV as SNS/PNS proxies (SNS ↑HR ↓HRV; PNS ↓HR ↑HRV); the vagus and the cholinergic anti-inflammatory pathway; the negative HRV–inflammation relationship; and how chronic inflammatory processes in LC/ME-CFS (persistent pathogens, viral reactivation, autoimmunity, cortisol dysregulation, mitochondrial and endothelial dysfunction) disrupt autonomic balance and produce the morning-biometric → evening-symptom link.</li>
-<li>Derive the clinical implications and their limits: pre-infection risk identification, real-time monitoring to support pacing, precision mobile-health tools — against the PPG-vs-ECG accuracy gap, sensor/skin-tone/device variability, and real-world confounding.</li>
-</ul>
+<div class="marginnote m-0 md:mr-[-53%] md:float-right md:clear-end md:w-[53%] px-8 pb-4"> <p><strong>Learning objectives:</strong></p><ul>
+<li>Within-person vs between-person effects in multilevel models</li>
+<li>Morning HR and HRV — level and instability — as predictors of same-evening symptoms</li>
+<li>The autonomic mechanism linking HRV, vagal tone and inflammation, and the limits of PPG monitoring</li>
+</ul> </div>
 <h3 id="21-digital-physiological-biomarkers-for-symptom-prediction-in-complex-chronic-illness">2.1 Digital Physiological Biomarkers for Symptom Prediction in Complex Chronic Illness</h3>
 <p>Aitken et al. (2026) investigated whether daily morning biometric measurements from wearable devices could predict same-day evening symptom reports in individuals living with LC, ME/CFS, and other energy-limiting conditions. Using the <strong>Visible</strong> mobile application, 4,244 participants provided daily 60-second morning photoplethysmography (PPG) assessments alongside evening self-report symptom surveys, yielding a high-density longitudinal dataset with a median of 125 biometric observations per participant.</p>
 <p><strong>Biometric measures and outcomes.</strong> Morning resting heart rate (HR), heart rate variability (HRV), and respiration rate (RR) were derived from smartphone camera or Polar armband PPG recordings. Evening symptom outcomes included crash occurrence (binary), fatigue severity, and brain fog severity.</p>
