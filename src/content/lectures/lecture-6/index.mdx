@@ -1,429 +1,642 @@
 ---
-title: Teaching Anaerobic Threshold
-description: Defines the anaerobic threshold as the upper border of the aerobic–anaerobic transition (MLSS), compares fixed (4 mmol/L) and individualised threshold concepts, walks through a Stegmann tangent worked example, and derives heart-rate–anchored training zones — with a critical look at why %VO₂max and %HRmax fall short as prescription anchors.
+title: Acute Effects of Physical Exercise on Biomarkers of the Trace Elements Selenium, Zinc, Copper, and Iron
+description: Introduces the micronutrient dimension of exercise immunology, presenting original data on the acute effects of a standardised sit-to-stand test on selenium, zinc, copper, and iron biomarkers — demonstrating how exercise-induced haemodynamic changes, oxidative stress, and immune activation alter trace element distribution and highlighting the practical implications for sports medicine laboratory interpretation.
 examRelevant: true
 draft: false
 ---
 
-import Figure from '../../../components/Figure.astro';
-import Table from '../../../components/Table.astro';
-import fig1 from '../../../assets/fig1_aerob_anaerob_transition.png';
-import fig1Dark from '../../../assets/generated/fig1_aerob_anaerob_transition_dark.png';
-import fig2 from '../../../assets/fig2_stegmann_iat.png';
-import fig2Dark from '../../../assets/generated/fig2_stegmann_iat_dark.png';
-import fig3 from '../../../assets/fig3_training_zones.png';
-import fig3Dark from '../../../assets/generated/fig3_training_zones_dark.png';
 import { Note } from '../../../components/MarginNote/index.js';
+import Table from '../../../components/Table.astro';
 
 
 ## Table of Contents
 
-1. [What the Threshold Is — MLSS and the Multi-System Breakpoint](#1-what-the-threshold-is--mlss-and-the-multi-system-breakpoint)
-2. [Measuring It — the Stegmann Worked Example](#2-measuring-it--the-stegmann-worked-example)
-3. [Prescribing From the Threshold](#3-prescribing-from-the-threshold)
-4. [Strengths, Weaknesses and the Limits of the Concept](#4-strengths-weaknesses-and-the-limits-of-the-concept)
+1. [The Essential Trace Elements — Definitions and Immune Roles](#1-the-essential-trace-elements--definitions-and-immune-roles)
+2. [Iron Handling, Hepcidin, and How Deficiency Arises](#2-iron-handling-hepcidin-and-how-deficiency-arises)
+3. [What a Blood Sample Says After Exercise](#3-what-a-blood-sample-says-after-exercise)
+4. [Reading Iron Status in the Athlete](#4-reading-iron-status-in-the-athlete)
 
 ---
 
-## 1 What the Threshold Is — MLSS and the Multi-System Breakpoint
+## 1 The Essential Trace Elements — Definitions and Immune Roles
 
 **Learning objectives:**
-- Describe endurance metabolism as a transition zone between two breakpoints (Kindermann, Simon & Keul 1979): the aerobic threshold (AeS/LTAer, first rise of blood lactate above baseline) and the anaerobic threshold (IAS/LTAn/MLSS, upper border of the transition), and explain why the anaerobic threshold is the upper border of a gradual transition rather than a sudden switch (Faude et al. 2009; Kindermann 2004).
-- Define the MLSS as the highest constant workload at which lactate production and elimination remain in equilibrium, and state the operational criterion: blood lactate rises by ≤ 1 mmol·L⁻¹ between minute 10 and minute 30 of a ≥ 30-min constant-load trial, repeated across days and intensities.
-- Explain why the fixed 4 mmol·L⁻¹ threshold (LT4/OBLA; Mader et al. 1976, Heck et al. 1985) is a population average, not a biological constant, citing the ≈ 2–10 mmol·L⁻¹ between-subject range of MLSS lactate, and why individual anaerobic-threshold concepts were developed to respect the shape of each lactate–performance curve.
-- Interpret Bland–Altman agreement: explain why high correlations do not establish agreement, and read the Faude et al. limits-of-agreement table — even small mean bias can hide 95 % LoA of 10–20 % of the MLSS, worst on the cycle ergometer.
-- Argue that the threshold is a multi-system breakpoint, naming the four convergent changes above the IAT — metabolic (progressive lactate rise, falling pH, the VT2/respiratory compensation point), hormonal (disproportionate adrenaline/noradrenaline rise), immunological (NK-cell and neutrophil oxidative-burst changes), and neuromuscular (EMG shifts) — and identify the immunological breakpoint as the hook into the exercise-immunology course.
+- Define *trace element* (1–100 mg·day⁻¹, or < 0.01 % of body weight) and *essential trace element* — not synthesised by the body, directly involved in metabolism, deficiency correctable only by the element itself — and apply both definitions to iron (Mehri 2020; Frieden 1985).
+- Justify why selenium, zinc, copper and iron are grouped together in exercise immunology, using the three shared axes of immune function, redox homeostasis and oxygen/energy metabolism (Simon et al. 2026).
+- For zinc: state the scale of its regulatory role (> 300 enzymes, > 1000 transcription factors), name SOD1, MTF1 and NRF2, and list the immune consequences of deficiency — reduced chemotaxis and phagocytosis, impaired monocyte/macrophage development and cytokine production, reduced B-cell counts and antibody production, impaired T-cell development.
+- For selenium: explain that function is mediated through selenoproteins (glutathione peroxidases, thioredoxin reductases), describe how reducing hydroperoxides inhibits NF-κB activation, and state the effects on T-, B- and NK-cell proliferation.
+- For copper: name its role as cofactor of SOD1, hephaestin and ceruloplasmin, and state its influence on T-cell proliferation and on neutrophil and macrophage number and function.
+- For iron: tabulate its five biological roles — oxygen transport (haemoglobin), oxygen storage (myoglobin), energy production (cytochromes), enzyme cofactor (peroxidases, catalases), immune function (proliferation, differentiation, activation, ROS generation for pathogen killing) — and state the total body content of 3–5 g.
+- Explain iron's dual nature: essential for cellular function yet toxic through free-radical generation, and why this forces tight regulation at every level from absorption to storage.
+- Explain why the panel pairs a total concentration with a second marker — total zinc alongside free zinc (fZn), selenium alongside selenoprotein P (SELENOP) — and why the divergence between the two members of a pair is what carries the biological signal.
 
-### 1.1 The aerobic–anaerobic transition
+### 1.1 Trace Elements – Definitions and Classification
 
-The framework introduced by Kindermann, Simon and Keul (1979) describes endurance metabolism not as one single point but as a transition zone between two breakpoints (Faude et al. 2009; Kindermann 2004):
+**Trace element** (Spurenelement): minerals required in amounts between 1 and 100 mg/day or that make up less than 0.01 % of total body weight (Mehri, *Int J Prev Med*, 2020).
 
-- **Aerobic threshold (AeS / LTAer):** the lowest intensity at which blood lactate (bLa) first rises above baseline. Below this point the energy supply is almost exclusively oxidative; exercise can be maintained for hours.
-- **Anaerobic threshold (IAS / LTAn / MLSS):** the upper border of the transition zone. It represents the highest workload at which lactate production and elimination are still in equilibrium — the **Maximal Lactate Steady State (MLSS)**. Above this intensity, lactate accumulates progressively despite constant load and exhaustion follows within minutes to about an hour.
+**Essential trace element**: cannot be synthesised by the body itself, has a direct influence on the organism and is involved in its metabolism, and deficiency leads to functional impairments that can only be alleviated or prevented by the trace element itself (Frieden, *J Chem Educ*, 1985).
 
-The anaerobic threshold is therefore not a sudden switch but the upper border of a gradual transition.
+Iron is the **most abundant** essential trace element in the human organism. The total body iron content in adults is approximately 3–5 g, distributed across functionally distinct compartments.
 
-<Figure src={fig1} srcDark={fig1Dark} alt="Aerobic-anaerobic transition during incremental exercise">
-Schematic representation of the aerobic–anaerobic transition (grey zone). Top: blood-lactate curve with aerobic threshold (AeS) and individual anaerobic threshold (IAS ≙ MLSS). Bottom: pulmonary ventilation with the two ventilatory thresholds VT1 and VT2 (RCP). Redrawn after Kindermann (2004).
-</Figure>
+### 1.2 Iron as an Essential Trace Element
 
-### 1.2 The MLSS as gold standard
-
-The MLSS is determined by performing several constant-load trials of at least 30 minutes on different days at different intensities. The MLSS criterion most commonly used is: blood lactate must not rise by more than **1 mmol/L between minute 10 and minute 30** of the constant-load test (Faude et al. 2009).
-
-At the MLSS, oxygen uptake, CO₂ output, respiratory exchange ratio and bicarbonate concentration remain approximately constant; respiratory rate and heart rate, however, drift upwards.
-
-### 1.3 The 4 mmol/L threshold and its limits
-
-Historically, Mader et al. (1976) and Heck et al. (1985) proposed a **fixed threshold at 4 mmol/L lactate (LT4 / OBLA — Onset of Blood Lactate Accumulation)** as a practical estimate of MLSS. Kindermann (2004) notes that the anaerobic threshold lies on average around 4 mmol/L — but in endurance-trained athletes mostly lower.
-
-The problem with a fixed value is biological variability. Reported MLSS lactate concentrations span from **about 2 to 10 mmol/L** between individuals (Faude et al. 2009). Equal lactate concentrations therefore do not necessarily represent equal metabolic situations.
-
-For this reason, **individual anaerobic threshold (IAT) concepts** were developed — among them the tangent method of Stegmann et al. (1981) and the concepts named after Keul, Simon and Dickhuth. They take the shape of the individual lactate–performance curve into account (e.g. tangent methods, +1.5 mmol/L above minimum lactate equivalent, Dmax/Dmod methods).
-
-### 1.4 Agreement between LT concepts and MLSS — limits of agreement
-
-Correlations between threshold concepts and MLSS are high, but correlations alone do not tell us whether two methods agree in absolute terms. Faude et al. (2009) recommend reporting the **mean bias and the 95 % limits of agreement (LoA)** according to Bland and Altman. Recalculated from raw data of Heck et al. they reported (Table VI in Faude et al. 2009):
+Iron participates in a wide range of biological processes:
 
 <Table>
 
-| Threshold concept | Treadmill, 3-min stages | Treadmill, 5-min stages | Cycle ergometry, 2-min stages |
+| Function | Mechanism |
+|---|---|
+| **Oxygen transport** | Component of haemoglobin in erythrocytes |
+| **Oxygen storage** | Component of myoglobin in muscle tissue |
+| **Energy production** | Electron transfer in the mitochondrial respiratory chain (cytochromes) |
+| **Enzyme function** | Cofactor of peroxidases, catalases, and other redox enzymes |
+| **Immune function** | Required for proliferation, differentiation, and activation of immune cells; generation of reactive oxygen species (ROS) for pathogen killing |
+
+<Fragment slot="caption">
+Physiological functions of iron.
+</Fragment>
+</Table>
+
+The dual role of iron – both essential for cellular function and potentially toxic via free radical generation – means that iron homeostasis is tightly regulated at every level, from intestinal absorption to intracellular storage.
+
+### 1.3 Immune Roles of Selenium, Zinc, Copper and Iron
+
+Essential trace elements play a key role in modulating the immune response, redox balance, and muscle function (Simon et al. 2026):
+
+**Zinc:** Regulates more than 300 enzymes and 1000 transcription factors. Influences both innate and adaptive immune systems. Zinc deficiency leads to reduced chemotaxis, phagocytosis, decreased B cell numbers, and impaired T cell development.
+
+**Selenium:** Mediates its functions as a component of selenoproteins (glutathione peroxidases, thioredoxin reductases). Supports proliferation and activity of T cells, B cells, and NK cells.
+
+**Copper:** Essential cofactor of numerous enzymes. Influences T cell proliferation as well as the number and function of neutrophils and macrophages. As a cofactor of SOD1, it is central to antioxidant defense.
+
+**Iron:** Central role in oxygen transport (hemoglobin, myoglobin), energy metabolism, and DNA synthesis. Critical for the proliferation and activation of immune cells.
+
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- Define "essential trace element" in one sentence and explain why iron qualifies.
+- Why are selenium, zinc, copper, and iron grouped together in exercise immunology?
+- Name five distinct biological functions of iron in the human body.
+- State one immunological function of selenium.
+- State one immunological function of zinc.
+- State one immunological function of copper.
+- State one immunological function of iron.
+- Explain how oxidative stress modulates copper and selenium biomarkers acutely.
+
+### Key References
+- Frieden E (1985) New perspectives on the essential trace elements. *J Chem Educ* 62(11):917–923.
+- Mehri A (2020) Trace elements in human nutrition (II) – an update. *Int J Prev Med* 11:2.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
+- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+
+---
+
+## 2 Iron Handling, Hepcidin, and How Deficiency Arises
+
+**Learning objectives:**
+- Trace the absorption cascade: dietary Fe³⁺ → DcytB reduction → Fe²⁺ → DMT1 uptake → enterocyte → ferritin storage **or** ferroportin export → hephaestin re-oxidation → Fe³⁺ → transferrin → circulation.
+- Explain why Fe³⁺ cannot be absorbed directly and why iron must be re-oxidised before binding transferrin, naming hephaestin (basolateral membrane) and ceruloplasmin (plasma) as the responsible ferroxidases.
+- Describe ferritin as a spherical shell storing up to ≈ 4,500 iron atoms, serving simultaneously as a toxicity buffer and a mobilisable reserve.
+- Justify calling ferroportin the "only known iron exporter in mammals" and derive why this makes it the single point of control.
+- Quantify the three iron pools — functional ≈ 74 % (haemoglobin, myoglobin, cytochromes/catalases/peroxidases), storage ≈ 26 % (ferritin, haemosiderin), transport ≈ 0.1 % (Fe³⁺ on transferrin) — and explain why transferrin saturation (≈ 30 % physiologically) is a sensitive availability marker with reserve buffering capacity.
+- Describe hepcidin: a 25-amino-acid hepatocyte peptide hormone that binds ferroportin, triggering internalisation and lysosomal degradation, thereby blocking export from enterocytes, macrophages and hepatocytes — circulating iron falls.
+- List hepcidin's upregulators (iron stores via BMP/SMAD; inflammation via IL-6 → JAK/STAT3; infection as hypoferraemia of inflammation) and downregulators (iron deficiency, anaemia, hypoxia, increased erythropoiesis).
+- Explain why exercise is itself a hepcidin stimulus — IL-6 release from contracting muscle — and identify this as the central mechanism of functional iron deficiency in athletes.
+- Derive the copper cascade: Cu deficiency → ferroxidase activity ↓ → iron cannot load onto transferrin → iron accumulates in stores → serum iron falls despite normal or elevated ferritin → functional deficiency without absolute depletion.
+- Derive the zinc cascade: zinc excess → metallothionein ↑ in enterocytes → copper sequestration → functional copper deficiency → impaired ferroxidase activity → functional iron deficiency; and explain why indiscriminate zinc supplementation can impair iron utilisation.
+- Contrast functional and manifested (absolute) iron deficiency on four laboratory axes (ferritin, serum iron, transferrin saturation, haemoglobin) and name four factors that drive progression from one to the other.
+
+### 2.1 Iron Metabolism: Absorption and Distribution
+
+**Dietary iron forms and intestinal uptake.** Dietary iron exists in the form of heme iron (meat, poultry, fish) or non-heme iron (primarily plant-based food). In the body, iron exists in two oxidation states:
+
+- **Fe³⁺ (ferric iron)**: the predominant form in plant-based foods and most dietary sources
+- **Fe²⁺ (ferrous iron)**: the form preferentially absorbed by intestinal enterocytes
+
+Because Fe³⁺ cannot be directly transported, it must first be reduced to Fe²⁺ by the brush-border enzyme **duodenal cytochrome B (DcytB)**. Transport across the apical membrane is then mediated by **divalent metal transporter 1 (DMT1)**.
+
+Heme iron is transported by heme receptor - mainly HCP1 (heme carrier protein 1) - across the apical membrane and iron is released from heme by heme oxygenase.
+
+**Intracellular storage.** Within enterocytes (and other cells), surplus iron is sequestered within **ferritin** – a spherical protein shell that can store up to ~4 500 iron atoms in a non-toxic, bioavailable form. Ferritin thus serves as both a buffer against toxicity and a mobilisable reserve.
+
+**Basolateral export.** The export of iron from enterocytes into the bloodstream is exclusively mediated by **ferroportin** (FPN1), the only known iron exporter in mammals. Before iron can be loaded onto the plasma carrier transferrin, Fe²⁺ must be re-oxidised to Fe³⁺ by the ferroxidases **hephaestin** (at the intestinal basolateral membrane) or **ceruloplasmin** (in plasma).
+
+**Summary of absorption steps:**
+
+```
+Dietary Fe³⁺  →[DcytB]→  Fe²⁺  →[DMT1]→  Enterocyte
+  → stored in Ferritin  OR
+  → exported by Ferroportin  →[Hephaestin]→  Fe³⁺  →  bound to Transferrin  →  circulation
+```
+
+### 2.2 Iron-Containing Proteins
+
+Iron in the body is distributed across three main pools:
+
+<Table>
+
+| Pool | Proportion | Key Proteins | Function |
 |---|---|---|---|
-| LT4 | bias −0.13 m/s, LoA ≈ 8 % | bias +0.02 m/s, LoA ≈ 9 % | bias −19.8 W, LoA ≈ 14 % |
-| IAT (Keul) | bias −0.20 m/s, LoA ≈ 9 % | bias +0.06 m/s, LoA ≈ 8 % | bias −21.0 W, LoA ≈ 11 % |
-| IAT (Stegmann) | bias −0.03 m/s, LoA ≈ 12 % | bias −0.03 m/s, LoA ≈ 9 % | bias −15.0 W, LoA ≈ 18 % |
-| IAT (Bunc) | bias −0.33 m/s, LoA ≈ 8 % | bias −0.14 m/s, LoA ≈ 9 % | bias −71.4 W, LoA ≈ 27 % |
+| **Functional** | ~74 % | Haemoglobin (erythrocytes), Myoglobin (muscle), Enzymes (cytochromes, catalases, peroxidases) | O₂ transport, O₂ storage, redox catalysis |
+| **Storage** | ~26 % | Ferritin, Haemosiderin | Iron reserve, buffering excess |
+| **Transport** | ~0.1 % | Serum iron (Fe³⁺ bound to Transferrin) | Bridge between storage and functional pool |
 
 <Fragment slot="caption">
-Agreement of threshold concepts across exercise protocols (bias and 95 % limits of agreement).
+Distribution of body iron across functional, storage and transport pools.
 </Fragment>
 </Table>
 
-**Interpretation:** even when the mean bias is small, the 95 % LoA can reach 10–20 % of the MLSS. For any individual subject the difference between a single LT estimate and the true MLSS may therefore be substantial — particularly on the cycle ergometer.
+**Transferrin saturation** (the proportion of transferrin binding sites occupied by iron) is therefore a sensitive marker of iron availability. Under physiological conditions, transferrin is approximately 30 % saturated, leaving substantial reserve binding capacity to buffer any transient rise in free iron.
 
-> **Key take-away.** The anaerobic threshold is best defined functionally as the MLSS — the highest constant workload at which lactate is still in steady state. The widely used 4 mmol/L value is an average, not a biological constant. Individualised concepts narrow the bias but do not eliminate substantial 95 % LoA.
+### 2.3 Regulation of Iron Homeostasis: Hepcidin
 
-### 1.5 The anaerobic threshold as a metabolic, hormonal and immunological breakpoint
+**Hepcidin – the systemic regulator.** **Hepcidin** is a 25-amino-acid peptide hormone produced predominantly by hepatocytes. It functions as the major systemic regulator of iron homeostasis by inhibiting the expression of DMT1 and inactivating ferroportin:
 
-Although the transition between aerobic and anaerobic metabolism is gradual, **clearly identifiable changes** in several physiological systems coincide with the anaerobic threshold (Kindermann 2004; Faude et al. 2009):
+- Inhibited DMT1-expression → Inhibition of intestinal iron absorption
+- Loss of ferroportin inhibits iron export from enterocytes, macrophages, and hepatocytes
+- Net result: **decreased circulating iron**
 
-- **Metabolic.** Above the IAT, lactate concentration rises continuously during constant-load exercise; bicarbonate-buffered H⁺ ions can no longer be fully compensated and pH falls, additionally stimulating ventilation. The respiratory compensation point (VT2) marks this ventilatory consequence and lies in the region of the anaerobic lactate threshold.
-- **Hormonal.** Plasma catecholamines (**adrenaline and noradrenaline**) rise **disproportionately** when the anaerobic threshold is exceeded. Faude et al. (2009) summarise: "exercise above the MLSS is associated with an over-proportional excretion of stress hormones […] during constant-load exercise."
-- **Immunological.** Above the anaerobic threshold, immunological parameters such as **natural killer (NK) cells** and the **oxidative burst** of neutrophils show significant quantitative changes (Kindermann 2004).
-- **Neuromuscular.** Lucia et al. observed changes in EMG activity of vastus lateralis and rectus femoris that coincided with the aerobic–anaerobic transition in elite male cyclists (cited in Faude et al. 2009).
+**Regulation of hepcidin production.** Hepcidin expression is upregulated by:
 
-These convergent breakpoints justify the concept even though "threshold" is, strictly speaking, a didactic simplification of a continuous process.
+- **Elevated body iron stores** (via BMP/SMAD signalling)
+- **Inflammation** – in particular **IL-6** acts as the dominant hepcidin-inducing cytokine via the JAK/STAT3 pathway
+- **Infection** (part of the hypoferraemia of inflammation, limiting iron availability for pathogens)
 
-> **Key take-away.** The anaerobic threshold marks an intensity at which not only lactate kinetics but also stress-hormone responses, immune-cell behaviour and neuromuscular activation patterns change qualitatively. It is therefore far more than a "lactate phenomenon".
+Hepcidin expression is downregulated by:
 
-### One-Minute-Paper Topics
-<Note>
-  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
-</Note>
-- Define the anaerobic threshold in terms of the maximal lactate steady state (MLSS) and explain why it represents the upper border of the aerobic–anaerobic transition rather than a single switching point.
-- What MLSS criterion (in mmol/L over which time window) is most commonly used to identify the highest workload at which lactate production and elimination are still in equilibrium?
-- Why is the fixed 4 mmol/L threshold (LT4 / OBLA) considered only a population average rather than a biological constant? Cite the reported between-subject range of MLSS lactate concentrations.
-- Why does Faude et al. (2009) recommend reporting Bland–Altman 95 % limits of agreement (LoA) rather than only Pearson correlations when comparing LT concepts against the MLSS?
-- Name three physiological systems other than lactate kinetics that show qualitative breakpoints at the anaerobic threshold.
+- Iron deficiency and anaemia
+- Hypoxia (erythropoietic demand)
+- Increased erythropoiesis
 
-### Key References
-- Faude O, Kindermann W, Meyer T. *Lactate Threshold Concepts — How Valid Are They?* Sports Medicine 39 (6), 2009: 469–490.
-- Kindermann W. *Anaerobe Schwelle.* Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.
+**Relevance for exercise.** Because strenuous exercise drives an acute phase response with significant IL-6 release from contracting muscle, **exercise is itself a stimulus for hepcidin elevation** – transiently impairing iron absorption and mobilisation. This is the central mechanism underlying **functional iron deficiency in athletes**.
 
----
+### 2.4 Interactions with Other Trace Elements
 
-## 2 Measuring It — the Stegmann Worked Example
+Iron homeostasis does not operate in isolation. Two other essential trace elements – copper and zinc – modulate iron availability through distinct mechanisms:
 
-**Learning objectives:**
-- Explain the rationale of the Stegmann et al. 1981 method: why the incremental exercise curve alone cannot locate the steady-state limit (the test is too short for steady state), and why the recovery-lactate curve adds the missing information about how the organism clears the accumulated net lactate load.
-- Specify a compliant incremental protocol: recreational subject, treadmill at 1 % incline, 3-min stages (Stegmann's original duration), +0.5 m·s⁻¹ increments, capillary earlobe sampling at end of each stage and at min 1, 3, 5, 8, 10 of passive recovery.
-- Execute the tangent construction step by step: (1) read L_end at end of exercise; (2) locate the anchor — the point on the descending recovery curve where lactate returns to L_end — by linear interpolation on the time axis; (3) draw the tangent from that anchor to the ascending exercise curve; (4) read v_IAT and L_IAT at the tangent contact; (5) interpolate HR_IAT between the bracketing stages.
-- Reproduce the worked result: L_end = 9.0 mmol·L⁻¹, anchor at ≈ 2.7 min post-exercise, v_IAT ≈ 3.7 m·s⁻¹ (13.4 km·h⁻¹), L_IAT ≈ 3.2 mmol·L⁻¹, HR_IAT ≈ 164 bpm; and read the aerobic threshold from the same test (v ≈ 3.0 m·s⁻¹, HR ≈ 145 bpm, L ≈ 1.8 mmol·L⁻¹).
-- Perform the interpolation arithmetic independently — e.g. locate t\* where recovery lactate crosses L_end, and interpolate HR at a fractional stage velocity — and state the assumptions (local linearity) that make it valid.
-- Convert the three threshold numbers into a first training prescription (the payoff that §3 generalises), and apply the coach's notes: heart rate as the online control parameter, work-velocity ± rest for intervals, and 6–8-week re-testing to detect a rightward shift.
+**Copper.** Copper is required as an essential cofactor for both **hephaestin** and **ceruloplasmin**. These ferroxidases are indispensable for the Fe²⁺ → Fe³⁺ oxidation step necessary before iron can bind to transferrin.
 
-### 2.1 Rationale of the method
+*Consequence of copper deficiency:*
+- Ferroxidase activity ↓ → iron cannot be loaded onto transferrin
+- Iron accumulates in storage sites (ferritin, hepatocytes)
+- Serum iron decreases despite normal or elevated ferritin
+- **Functional iron deficiency in the absence of absolute iron depletion**
 
-The individual anaerobic threshold (IAT) after **Stegmann, Kindermann and Schnabel (1981)** is one of the best-validated approaches and the one most consistently shown to track the MLSS (see §1.4 and Faude et al. 2009). Its idea is elegant:
+**Zinc.** Excess zinc induces synthesis of **metallothionein** in enterocytes. Metallothionein has high affinity for both zinc and copper; elevated metallothionein sequesters copper intracellularly and reduces its systemic availability.
 
-- The lactate curve during incremental exercise alone cannot tell us where the steady-state limit lies, because the test is too short for steady state to develop.
-- The recovery lactate curve, however, contains additional information: it reflects how the organism handles the **net lactate load** accumulated during the last exercise stages.
-- A tangent constructed from the **descending recovery curve at the point where blood lactate has returned to its end-of-exercise value (L_end)** to the **ascending exercise curve** identifies the intensity at which lactate production and elimination are still in equilibrium.
+*Possible consequence (evidence for the entire cascade is lacking):*  
+Zinc excess → metallothionein ↑ → copper sequestration → functional copper deficiency → impaired ferroxidase activity → functional iron deficiency
 
-The tangent contact on the exercise curve is the IAT.
+This cascade illustrates why indiscriminate zinc supplementation without attention to copper balance can paradoxically impair iron utilisation, even when absolute iron stores are normal.
 
-### 2.2 Sample protocol — incremental treadmill test
+### 2.5 Iron Deficiency in Sports
 
-The following example uses a standard protocol that meets Stegmann's original methodology (Faude et al. 2009).
+**Functional iron deficiency.**
 
 <Table>
 
-| Parameter | Specification |
+| Marker | Finding |
 |---|---|
-| Subject | Recreational male runner, 30 yr, 72 kg |
-| Ergometer | Motorised treadmill, 1 % incline |
-| Warm-up | 10 min jogging at ≈ 2.0 m/s |
-| Stages | 6 incremental stages of **3 min** each (Stegmann's original duration) |
-| Initial velocity | 2.0 m/s (7.2 km/h) |
-| Increment | +0.5 m/s per stage |
-| Termination | Volitional exhaustion |
-| Blood sampling | 20 μL capillary blood from hyperaemised earlobe at the end of each stage and at min 1, 3, 5, 8, 10 of passive recovery |
-| Analysis | Enzymatic-amperometric lactate analyser (haemolysed whole blood) |
+| Ferritin | Normal or **elevated** (acute phase protein) |
+| Serum iron | **Low** |
+| Transferrin saturation | **Low** |
+| Haemoglobin | **Normal** |
 
 <Fragment slot="caption">
-Protocol specification for the worked lactate example.
+Marker profile in functional iron deficiency (inflammation present).
 </Fragment>
 </Table>
 
-### 2.3 Measured data
+**Key principle:** Iron is *present* in the body but *unavailable* for functional use.
+
+Primary driver:
+- Exercise-driven acute phase reaction → **IL-6 ↑ → Hepcidin ↑** → ferroportin degradation and inhibited DMT1-expression → impaired iron release and intestinal absorption
+
+Contributing factors:
+- Copper deficiency or functional copper deficiency (via zinc excess → metallothionein ↑)  
+→ leads to impaired Fe²⁺ → Fe³⁺ oxidation (hephaestin/ceruloplasmin insufficiency)
+
+**Manifested (absolute) iron deficiency.**
 
 <Table>
 
-| Stage | t (min) | v (m/s) | v (km/h) | HR (bpm) | Lactate (mmol·L⁻¹) |
-|---|---|---|---|---|---|
-| 1 | 3 | 2.0 | 7.2 | 118 | 1.0 |
-| 2 | 6 | 2.5 | 9.0 | 132 | 1.3 |
-| 3 | 9 | 3.0 | 10.8 | 145 | 1.8 |
-| 4 | 12 | 3.5 | 12.6 | 158 | 2.6 |
-| 5 | 15 | 4.0 | 14.4 | 172 | 4.4 |
-| 6 (end) | 18 | 4.5 | 16.2 | 188 | **9.0 = L_end** |
-
-<Fragment slot="caption">
-Incremental stage data: velocity, heart rate and lactate.
-</Fragment>
-</Table>
-
-<Table>
-
-| Recovery sample | t after exercise (min) | Lactate (mmol·L⁻¹) |
-|---|---|---|
-| R1 | 1 | 10.0 (= L_max) |
-| R2 | 3 | 8.8 |
-| R3 | 5 | 7.0 |
-| R4 | 8 | 5.0 |
-| R5 | 10 | 3.5 |
-
-<Fragment slot="caption">
-Post-exercise lactate recovery samples.
-</Fragment>
-</Table>
-
-### 2.4 Construction of the IAT
-
-<Figure src={fig2} srcDark={fig2Dark} alt="Determination of the IAT after Stegmann et al. (1981)">
-Lactate–velocity curve during incremental exercise (red) and lactate–time curve during recovery (blue). The dashed grey line marks L_end. The descending recovery curve crosses L_end at ≈ 2.7 min post-exercise (linear interpolation between R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min → L = 9.0 at t ≈ 2.7 min): this is the **anchor**. The dashed green line is the tangent from the anchor to the ascending exercise curve; the **tangent contact** on the exercise curve is the IAT. Vertical and horizontal projections give v_IAT and L_IAT respectively.
-</Figure>
-
-**Step-by-step:**
-
-1. **End-of-exercise lactate.** L_end = 9.0 mmol·L⁻¹ at v_end = 4.5 m/s, HR_end = 188 bpm.
-2. **Anchor on recovery curve.** Find t\* where the recovery lactate has decreased back to L_end. With R1 = 10.0 mmol/L at 1 min and R2 = 8.8 mmol/L at 3 min, linear interpolation gives:
-   - t\* = 1 + (10.0 − 9.0)/(10.0 − 8.8) × (3 − 1) = **1 + 1.7 ≈ 2.7 min post-exercise**.
-3. **Draw tangent.** From the anchor at (2.7 min post, 9.0 mmol/L) draw the line tangent to the ascending exercise lactate curve.
-4. **Read off the IAT.** The tangent touches the exercise curve at approximately:
-   - **v_IAT ≈ 3.7 m/s (13.4 km/h)**
-   - **L_IAT ≈ 3.2 mmol/L**
-5. **Interpolate the threshold heart rate.** Linear interpolation between stage 4 (v = 3.5, HR = 158 bpm) and stage 5 (v = 4.0, HR = 172 bpm) at v = 3.72 m/s:
-   - HR_IAT ≈ 158 + (3.72 − 3.5)/(4.0 − 3.5) × (172 − 158) = 158 + 0.44 × 14 = **≈ 164 bpm**.
-
-The aerobic threshold (AeS) in the same test would be read off as the first systematic rise of lactate above baseline — in this subject between stages 3 and 4. Conventionally, this is set at v ≈ 3.0 m/s, HR ≈ 145 bpm, L ≈ 1.8 mmol/L.
-
-### 2.5 Derived training prescription
-
-Using the IAT values for this subject as the anchor (Kindermann 2004; see also §3 below):
-
-<Table>
-
-| Training zone | % IAT velocity | Target velocity | Target HR | Typical lactate | Example session |
-|---|---|---|---|---|---|
-| **Regenerative** | < 70 % | < 2.6 m/s  (< 9.4 km/h) | < 115 bpm | < 1.5 mmol/L | 30–45 min easy jog at 2.3 m/s (8.3 km/h) |
-| **Extensive endurance (GA I)** | 70 – 90 % | 2.6 – 3.35 m/s (9.4 – 12.1 km/h) | 115 – 148 bpm | 1.5 – 3 mmol/L | 60–90 min steady run at 3.0 m/s (10.8 km/h), HR ~140 bpm |
-| **Intensive endurance (GA II / TDL)** | 90 – 100 % | 3.35 – 3.72 m/s (12.1 – 13.4 km/h) | 148 – 164 bpm | 3 – 5 mmol/L | 30–45 min tempo run at 3.5 m/s (12.6 km/h), HR ~156 bpm |
-| **Interval training (IVT)** | > 100 % | > 3.72 m/s (> 13.4 km/h) | > 164 bpm (HR drifts during the interval) | typically > 5 mmol/L | 6 × 1000 m at 4.0 m/s (14.4 km/h), 3 min jog rest |
-
-<Fragment slot="caption">
-Training zones derived from the individual anaerobic threshold.
-</Fragment>
-</Table>
-
-**Notes for the coach.**
-
-- Use **heart rate** as the primary online control parameter (it tracks workload well, is unaffected by beta-blockers, and is far more practical than repeated lactate sampling).
-- For interval sessions, target HR is reached during the work bout, not from the start: prescription is normally given as work velocity ± rest interval rather than as HR.
-- Re-test every 6–8 weeks of focused training. A higher v_IAT at the same HR_IAT — or the same v_IAT at a lower HR — indicates positive adaptation.
-
-> **Key take-away.** A single 18-minute incremental test plus 10 minutes of recovery sampling yields, via the Stegmann tangent, an individual threshold velocity, lactate concentration and heart rate. From these three numbers a complete training-zone prescription can be derived.
-
-### One-Minute-Paper Topics
-<Note>
-  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
-</Note>
-- Explain the rationale of the Stegmann tangent method: why does the recovery-lactate curve provide information that the incremental exercise curve alone cannot?
-- In the Stegmann construction, what does the anchor point on the recovery curve represent, and how is it located on the time axis?
-- Given an end-of-exercise lactate of 9.2 mmol/L with recovery values of 10.2 mmol/L at 1 min and 8.6 mmol/L at 3 min, calculate by linear interpolation the time at which the recovery curve crosses L_end.
-
-### Key References
-- Faude O, Kindermann W, Meyer T. *Lactate Threshold Concepts — How Valid Are They?* Sports Medicine 39 (6), 2009: 469–490.
-- Kindermann W. *Anaerobe Schwelle.* Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.
-- Stegmann H, Kindermann W, Schnabel A. *Lactate kinetics and individual anaerobic threshold.* International Journal of Sports Medicine 2, 1981: 160–165.
-
----
-
-## 3 Prescribing From the Threshold
-
-**Learning objectives:**
-- Derive the four endurance-training zones from the IAT (Kindermann 2004) — regenerative (< AeS), extensive endurance GA I (≈ 70–90 % IAT), intensive endurance GA II/TDL (90–100 % IAT), interval > 100 % IAT — with their lactate guidance, and prescribe a session in each from a subject's threshold numbers.
-- Apply the practical examples: marathon runners race at ≈ 95–100 % of IAT velocity; maximal fat oxidation (55–72 % VO₂max ≈ 68–79 % HRmax) coincides with ≈ 90 % IAT; preventive/rehabilitative sport stays between AeS and IAT with suprathreshold work avoided.
-- Place the IAT within the ACSM/ESSA five-category framework (Bishop et al. 2025): MT1 ≈ first lactate threshold/AeS, MT2 ≈ MLSS/critical power, and the very-low/low/moderate/high/very-high bands anchored on MT1, MT2 and Wmax, and defend direct threshold measurement as the preferred way to equalise physiological stress across individuals.
-- Contrast trained and untrained subjects: the whole lactate–performance curve shifts right, absolute power/velocity at MLSS is higher, MLSS lactate concentration is *lower* in endurance-trained athletes, the IAT sits at ≈ 60–85 % VO₂max, and the IAT discriminates performance where VO₂max cannot.
-- Justify why the IAT is a more sensitive marker of training adaptation than VO₂max — mitochondrial density, oxidative enzymes, capillarisation and fibre-type shifts move the curve before VO₂max changes — especially in already-trained populations.
-- Explain why fixed %VO₂max/%HRmax prescriptions produce unequal metabolic strain — the IAT spans a wide range of these percentages, a 40-fold between-subject range in muscle-lactate rise at 70 % VO₂max, half the subjects above and half below MT1 at 80 % HRmax — and conclude with Bishop et al. that maximal-anchor percentages are inadequate individual prescription tools.
-
-### 3.1 Training zones derived from the aerobic–anaerobic transition (Kindermann 2004)
-
-<Table>
-
-| Zone (German terminology) | Intensity prescription | Lactate guidance |
-|---|---|---|
-| Regenerative training | < AeS | At/below first lactate rise |
-| Extensive endurance (GA I) | ≈ 70 – < 90 % of IAT | between AeS and just below IAT |
-| Intensive endurance (GA II, "Tempodauerlauf") | 90 – 100 % of IAT | up to MLSS, typically 3–5 mmol/L in trained runners |
-| Interval training (IVT) | > 100 % of IAT | suprathreshold, lactate dependent on work/rest ratio |
-
-<Fragment slot="caption">
-Endurance training zones and lactate guidance (German terminology).
-</Fragment>
-</Table>
-
-<Figure src={fig3} srcDark={fig3Dark} alt="Training zones as % of IAS">
-Typical blood-lactate ranges encountered during the four endurance-training zones, expressed as a percentage of the individual anaerobic threshold (IAS). Redrawn after Kindermann (2004).
-</Figure>
-
-**Heart-rate prescription** is preferred in practice, because heart rate is easy to monitor and lactate response is not affected by beta-blockers — exact heart-rate targets at the IAT can therefore be given even to cardiac patients on beta-blockade.
-
-### 3.2 Application examples (Kindermann 2004)
-
-- Good marathon runners race **at the IAT**. Marathon time can be predicted from running speed at the threshold. Regional-class runners (~3 h) run at ~95 % of IAT speed; elite runners ~100 %.
-- **Fat oxidation** is maximal in absolute terms at 55–72 % VO₂max, corresponding to 68–79 % HRmax — i.e. within the aerobic–anaerobic transition. Training around **~90 % of the IAT** therefore also elicits maximal fat oxidation.
-- **Preventive / rehabilitative sport.** Short sessions can be performed between 90 and 100 % of the IAT, longer sessions close to the AeS. Suprathreshold work is not relevant for health sport and may be risky for patients.
-
-### 3.3 The ACSM/ESSA framework (Bishop et al. 2025)
-
-The recent joint ACSM/ESSA expert statement proposes five intensity categories anchored on metabolic thresholds — the first metabolic threshold (MT1) being approximated by the first lactate threshold/AeS, and the second metabolic threshold (MT2) being approximated by the MLSS or critical power/speed:
-
-<Table>
-
-| Category | Cardiorespiratory exercise reference |
+| Marker | Finding |
 |---|---|
-| Very low | no current physiological marker |
-| Low | below MT1 |
-| Moderate | above MT1 but below MT2 |
-| High | above MT2 but below Wmax (work rate at VO₂max) |
-| Very high | above Wmax |
+| Ferritin | **Low** |
+| Serum iron | **Low** |
+| Transferrin saturation | **Low** |
+| Haemoglobin | **Low** (iron-deficiency anaemia) |
 
 <Fragment slot="caption">
-Cardiorespiratory intensity categories by physiological marker.
+Marker profile in absolute iron deficiency.
 </Fragment>
 </Table>
 
-Bishop et al. (2025) state that the **direct measurement of metabolic thresholds** plus Wmax is "the best and preferred method to define exercise-intensity categories that will produce similar physiological stresses in individuals with different exercise capacities."
+Manifested deficiency can develop when functional deficiency persists or is additionally exacerbated due to:
 
-> **Key take-away.** The anaerobic threshold subdivides the endurance-training continuum into physiologically distinct zones. Heart-rate-controlled prescription anchored on the IAT (or on MT1/MT2) yields more comparable metabolic stress between individuals than work-rate or %VO₂max prescription.
+- Chronic physical training load
+- Inadequate dietary iron intake (particularly in vegetarian/vegan athletes)
+- Persistent low-grade inflammation
+- Menstrual iron loss (female athletes)
 
-### 3.4 Trained versus untrained subjects
+**Trajectory:**
 
-The anaerobic threshold is more sensitive to training than VO₂max (Kindermann 2004; Faude et al. 2009):
+```
+Functional deficiency (stores intact, transport impaired)
+    ↓  [prolonged negative balance]
+Depletion of storage reserves (ferritin ↓)
+    ↓
+Impaired haemoglobin synthesis (Hb ↓)
+    ↓
+Iron-deficiency anaemia
+```
 
-- **Absolute power/velocity at MLSS** is markedly higher in trained subjects — the entire lactate–performance curve shifts to the right.
-- **Relative to VO₂max**, the IAT lies between roughly **60 and 85 % VO₂max**, depending on sport and training state (AeS roughly 40–65 % VO₂max). Highly trained endurance athletes operate at the upper end of this range.
-- **Lactate concentration at the MLSS** is **lower in endurance-trained athletes** than in untrained subjects. Faude et al. (2009) explicitly warn that the LT4 (4 mmol/L) "may frequently underestimate (particularly in anaerobically trained subjects) or overestimate (in aerobically trained athletes) real endurance capacity."
-- **VO₂max alone fails to discriminate** between subjects of homogeneous performance level (e.g. between elite endurance runners). The threshold, however, retains discriminatory power and correlates strongly with competition performance.
-- **Training adaptations** (mitochondrial density, oxidative enzymes, capillarisation, fibre-type shifts) shift the curve to the right — this is detected sensitively by changes at the IAT, often before VO₂max changes.
-
-> **Key take-away.** Training shifts the IAT to higher absolute workloads and tends to lower the lactate concentration at which the MLSS occurs. The IAT is a more sensitive marker of endurance training adaptations than VO₂max — especially in already-trained populations.
-
-### 3.5 Typical values as percentages of VO₂max / HRmax
-
-Across studies summarised by Kindermann (2004):
-
-- **AeS:** ~40 – 65 % VO₂max
-- **IAT:** ~60 – 85 % VO₂max
-- **Maximum fat oxidation:** 55 – 72 % VO₂max ≈ 68 – 79 % HRmax (within the aerobic–anaerobic transition)
-
-### 3.6 Why %VO₂max / %HRmax are *not* a reliable prescription tool
-
-Although these percentages are convenient, all three reviewed papers stress that a fixed percentage of VO₂max or HRmax does **not** produce the same metabolic strain in different people:
-
-- Kindermann (2004) summarises evidence that exercise-intensity prescriptions based on %VO₂max or %HRmax are inadequate, because the IAT corresponds to a wide range of these percentages.
-- Bishop et al. (2025) cite a study reporting a **40-fold range** in the increase of muscle lactate between subjects at 70 % of VO₂max. At 80 % of HRmax, approximately half the participants were above their first metabolic threshold and approximately half were below.
-- Faude et al. (2009) likewise note that LTs are superior to VO₂max for assessing endurance performance in homogeneous groups of athletes.
-- Bishop et al. (2025) conclude that "prescribing exercise intensity based on a fixed percentage of maximal anchors (e.g., %VO₂max, %VO₂R, %HRmax, or %HRR) will cause individuals to exercise in different training intensity categories and to experience large variations in metabolic stress."
-
-> **Key take-away.** %VO₂max and %HRmax are practical *descriptors* of where the threshold tends to lie in a population, but they are not adequate *prescription anchors* for individuals. Threshold-based prescription (heart rate at the IAT, or thresholds derived from a GXT) achieves more comparable physiological strain.
+Understanding this continuum is critical for sports medicine diagnostics: ferritin must be interpreted in the context of CRP/inflammation status, as an acute phase response can maintain or even elevate ferritin despite depleted functional iron.
 
 ### One-Minute-Paper Topics
 <Note>
   A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
 </Note>
-- List the four endurance-training zones derived from the IAT and give their approximate percentage range of IAT velocity.
-- Why is heart rate preferred over repeated blood-lactate sampling as the online control parameter for endurance training prescription in the field?
-- Explain in one sentence each how the MLSS lactate concentration and the absolute MLSS workload typically differ between endurance-trained and untrained subjects.
-- Why is the IAT a more sensitive marker of endurance-training adaptation than VO₂max — especially in already-trained populations?
-- Why does prescribing exercise at a fixed %VO₂max or %HRmax produce unequal metabolic stress between individuals? Cite one quantitative example from Bishop et al. (2025).
-- Distinguish MT1 and MT2 in the ACSM/ESSA framework and name the physiological markers each approximates.
-- A recreational runner has v_IAT = 3.8 m/s, HR_IAT = 166 bpm, L_IAT = 4.0 mmol/L. Prescribe a 60-minute extensive endurance (GA I) session with appropriate velocity, target HR, and expected lactate range.
-- Why are threshold-based heart-rate prescriptions still valid in cardiac patients on beta-blockers, while %HRmax prescriptions are not?
-- Maximal fat oxidation occurs at approximately 55–72 % VO₂max, which corresponds to roughly 90 % of the IAT. Use this to justify the training-zone choice for a client whose primary goal is weight management, and explain why prescription at the IAT itself or above would be counter-productive for this goal.
+- Explain why dietary Fe³⁺ cannot be directly absorbed, and name the transporter responsible for intestinal iron uptake.
+- What is the role of ferroportin, and why is it described as the "only known iron exporter" in mammals?
+- Why must iron be oxidised before binding to transferrin, and which enzymes catalyse this step?
+- Describe the three iron compartments (functional, storage, transport) and give the approximate proportion of total body iron in each.
+- What is hepcidin, where is it produced, and which cytokine is its dominant upstream regulator?
+- Explain the molecular mechanism by which hepcidin reduces circulating iron levels.
+- How does hepcidin regulate iron availability during inflammation?
+- What is the role of ceruloplasmin in copper biology, and how does it behave in inflammation?
+- Distinguish functional iron deficiency from manifested iron deficiency using laboratory criteria (ferritin, serum iron, transferrin saturation, haemoglobin).
+- What is the difference between functional iron deficiency and absolute iron deficiency in athletes?
+- Explain how copper deficiency leads to functional iron deficiency even when iron stores are replete.
+- Trace the pathway from excess zinc intake to functional iron deficiency, naming each intermediate step.
+- Name four factors that can cause a functional iron deficiency to progress to manifested iron deficiency in athletes.
 
 ### Key References
-- Bishop DJ et al. *Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.* Journal of Science and Medicine in Sport 28, 2025: 980–991.
-- Faude O, Kindermann W, Meyer T. *Lactate Threshold Concepts — How Valid Are They?* Sports Medicine 39 (6), 2009: 469–490.
-- Kindermann W. *Anaerobe Schwelle.* Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.
+- Looker AC et al. (1997) Prevalence of iron deficiency in the United States. *JAMA* 277(12):973–976.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
+- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+- Zaitseva IP et al. (2018) Hepcidin and the regulation of iron metabolism. *Human Physiology* 44:501–509.
 
 ---
 
-## 4 Strengths, Weaknesses and the Limits of the Concept
+## 3 What a Blood Sample Says After Exercise
 
 **Learning objectives:**
-- Marshal the concept's strengths: strong correlation with endurance performance (r ≈ 0.7–0.98 across 32 studies, 55–85 % common variance), sensitivity to training, independence from maximal effort (usable in patients), high test–retest reliability (r > 0.9 for velocity/power at LTs), multi-system biological plausibility, and robustness to beta-blockade.
-- Explain why threshold heart-rate prescriptions remain valid in cardiac patients on beta-blockers while %HRmax prescriptions do not — the lactate–performance curve is unaffected by beta-blockade.
-- Confront the definitional problem: Faude et al. located 25 different LT concepts whose values are generally not comparable, and articulate the practical difficulty this creates for coaches and clinicians comparing results across laboratories.
-- List the methodological factors that systematically move a threshold — test protocol (stage duration, increment, ramp vs step), sampling site (earlobe vs fingertip), blood medium (plasma/whole blood/capillary), analyser and ambient conditions, and nutritional/glycogen state — and explain how glycogen depletion can masquerade as improvement in a re-test and how to control for it.
-- State the residual uncertainty even for the best concepts: 95 % LoA with the MLSS of ≈ 10 % (treadmill) to ≈ 27 % (cycle) for some methods, MLSS lactate spanning 2–10 mmol·L⁻¹, and the absence of good data on MLSS's own reproducibility.
-- Acknowledge the scope limits — strong validation in running, heterogeneous in cycling, sparse elsewhere; and the population-scale impracticality (equipment, time, blood, expertise) raised by Bishop et al. — and synthesise the summary paragraph's balanced verdict.
+- Describe the design of Simon et al. 2026 — 20 healthy participants (10 women, 10 men, aged 21–28 yr), a standardised 1-minute sit-to-stand test averaging 60 repetitions, capillary sampling 10 min before, immediately after, and 30 and 60 min post-exercise — and explain why a short, standardised whole-body challenge is a useful experimental model.
+- Quantify the haemodynamic response: heart rate 67 → 138 bpm, a significant rise in haemoglobin and haematocrit, blood volume ≈ −6 % and plasma volume ≈ −10 %, and explain why these numbers make an uncorrected trace-element result uninterpretable.
+- Explain why every serum parameter must be adjusted for haemoconcentration before it can be interpreted, and state what an uncorrected post-exercise value would falsely suggest about a trace element.
+- State the direction and time course of each element after correction: Cu and Se (and SELENOP) fall immediately and return to baseline; total Zn unchanged; fZn rises then declines; Fe rises immediately and is significantly higher at 60 min.
+- Explain exercise-induced haemolysis as the dominant acute mechanism raising serum iron — mechanical trauma (foot-strike, muscle compression), osmotic and oxidative stress, complement activation — and distinguish it from the haemoconcentration artefact (Lippi & Sanchis-Gomar 2019).
+- Read the divergent kinetics of the cellular inflammation indices: NLR and SII fall immediately post-exercise and then rise above baseline, while SIRI rises continuously and peaks at 60 min — and relate this pattern to the biphasic immune-cell response.
+- Propose mechanisms for each direction: consumption by antioxidant enzymes and redistribution to metabolically active tissue for Cu/Se; release from proteins plus a transient pH fall for fZn; haemolysis, ferritin release and the acute phase response for Fe.
+- Contrast the acute picture with the long-term balance: adaptive pressures (erythropoietic expansion → EPO ↑ → hepcidin suppression; upregulated duodenal transporters) against depleting pressures (repeated IL-6 spikes → chronic hepcidin elevation, cumulative haemolysis, sweat losses, gastrointestinal micro-bleeding, inadequate dietary compensation) — and account for the 15–35 % prevalence of iron deficiency in endurance athletes.
 
-### 4.1 Strengths
+### 3.1 Study Design
 
-- **High correlation with endurance performance.** Of 32 studies reviewed by Faude et al. (2009), the overwhelming majority reported strong linear correlations of LTs with running competition performance, with r-values typically between 0.7 and 0.98 and common variance of 55 – 85 %.
-- **Sensitivity to training.** Threshold-based parameters change earlier and more clearly than VO₂max, especially in trained athletes (Kindermann 2004).
-- **Independence of motivation / exhaustion.** Unlike VO₂max, the IAT does not require an all-out effort and can therefore be used safely in patients and recreational subjects (Kindermann 2004; Bishop et al. 2025).
-- **Reproducibility.** Test–retest reliability for velocity or power at LTs is high (r > 0.9 across LTfix, LTAer and LTAn concepts); VO₂ at LT is slightly lower (r ≈ 0.8 – 0.9) (Faude et al. 2009).
-- **Practical, multi-system breakpoint.** Metabolic, hormonal, immunological and neuromuscular changes converge at this intensity, giving the concept biological plausibility.
-- **Robust against beta-blockade.** Lactate–performance curves are not influenced by beta-blockers, so threshold-based heart-rate prescriptions remain valid in cardiac patients (Kindermann 2004).
+20 healthy subjects (10 women, 10 men, aged 21--28 years) performed a standardized 1-minute sit-to-stand test (STST) (averaging 60 repetitions). Capillary blood samples were collected 10 min before, immediately after, and 30 and 60 min after exercise. Trace element concentrations, free zinc (fZn), selenoprotein P (SELENOP), and cellular inflammation markers (SII, SIRI, NLR) were analyzed. Serum parameters were adjusted for hemoconcentration (Simon et al. 2026).
 
-### 4.2 Weaknesses
+### 3.2 Results
 
-- **Definitional confusion.** Faude et al. (2009) located **25 different LT concepts** in the literature. Threshold values obtained by different methods are generally **not comparable**. Many concepts are insufficiently validated.
-- **The term "threshold" is misleading.** Aerobic and anaerobic pathways always contribute simultaneously; the transition is continuous, not abrupt. The model is appropriate didactically and practically but should not be reified.
-- **Methodological dependence.** Threshold values depend on:
-  - test protocol (stage duration, work-rate increment, ramp vs step);
-  - blood-sampling site (earlobe vs fingertip);
-  - blood medium analysed (plasma vs whole blood vs capillary);
-  - lactate analyser type and ambient conditions;
-  - nutritional state — glycogen depletion shifts the lactate curve down and can be misread as an improvement (Faude et al. 2009).
-- **Substantial individual differences from MLSS.** Even for the best-validated concepts, 95 % LoA between an LT estimate and the MLSS reach ~10 % on a treadmill and up to ~27 % on a cycle ergometer for some methods (Faude et al. 2009).
-- **MLSS lactate concentration varies between 2 and 10 mmol/L** across individuals — fixed values such as 4 mmol/L are at best a population average.
-- **MLSS reproducibility itself is not well established.** Faude et al. (2009) explicitly note "no scientific data" on the basic variability of MLSS, which limits how strictly LTs can be judged.
-- **Limited evidence outside running.** Validation against competition performance is strong for running but more heterogeneous in cycling and sparse in other endurance sports.
-- **Limited applicability to large populations.** Bishop et al. (2025) note that threshold-based testing requires expensive equipment, time-consuming protocols, blood sampling and expert interpretation — not realistic for population-level prescription.
+**Hematological changes:** Heart rate increased significantly immediately after the STST (67 to 138 bpm, *p* < 0.001). Hemoglobin and hematocrit rose significantly, and an average decrease in blood volume of 6% and plasma volume of 10% was observed.
 
-> **Key take-away.** The anaerobic-threshold concept is a powerful, valid and reliable instrument when (1) the chosen LT concept matches the question, (2) the test protocol is standardised, and (3) results are interpreted on the level of individuals with appropriate confidence intervals — not as point estimates carved in stone.
+**Copper and selenium:** Concentrations decreased significantly immediately after the STST and subsequently returned to baseline values. SELENOP levels showed a similar pattern.
 
-### 4.3 Summary in one paragraph
+**Zinc:** No changes in total zinc concentrations. Free zinc (fZn) increased significantly immediately after the STST and then declined. Possibly due to exercise-induced release from proteins and transient pH decrease.
 
-The anaerobic threshold is the **upper border of the aerobic–anaerobic transition** and, functionally, corresponds to the **maximal lactate steady state**. Although it averages around 4 mmol/L of blood lactate, the actual MLSS concentration varies between 2 and 10 mmol/L between individuals, making individualised threshold concepts preferable to fixed values; even so, 95 % limits of agreement with the gold-standard MLSS reach 10–20 %. The threshold is more than a metabolic marker: catecholamines, NK-cell activity and oxidative burst all change disproportionately above this intensity, so it is best regarded as a **multi-system breakpoint**. It is the central anchor for endurance-training prescription, with regenerative, extensive (GA I, ~70–90 % IAT), intensive (GA II / TDL, ~90–100 % IAT) and interval (>100 % IAT) zones derived from it. Trained subjects reach the threshold at higher absolute workloads and often at lower lactate concentrations than untrained subjects, and the threshold is a more sensitive marker of training adaptation than VO₂max. Although it tends to fall between 60 and 85 % VO₂max (or 68–79 % HRmax for maximal fat oxidation), fixed percentages of these maximal anchors should not be used to prescribe individual training, because identical %VO₂max or %HRmax produce widely different metabolic strains. The main strengths of the concept are reliability, independence from maximal effort, and strong correlation with endurance performance; the main weaknesses are the proliferation of incompatible definitions, methodological sensitivity, and the fact that the underlying transition is, strictly speaking, continuous.
+**Iron:** Levels were elevated immediately after the STST and increased significantly at 60 min. Possible causes: exercise-induced hemolysis, release from ferritin stores, and acute phase response.
+
+**Cellular inflammation markers:** NLR and SII decreased significantly immediately post-exercise and then rose above pre-exercise values. SIRI increased continuously and reached significantly higher values at 60 min -- consistent with the known biphasic immune cell response (Simon et al. 2026).
+
+[→ Interactive Dashboard](/dashboards/exercise-effects) - Exercise Effects on Blood & Serum Parameters
+
+### 3.3 Integration: Trace Elements and Post-Exercise Immune Regulation
+
+The observed changes are potentially related to the known exercise-induced immune alterations. The initial decrease in copper and selenium may be attributable to their consumption by antioxidant enzymes and redistribution to metabolically active tissues. The increase in iron and free zinc reflects the acute phase response and metabolic adaptations (Simon et al. 2026).
+
+### 3.4 Exercise Effects on Iron Status
+
+**Short-term (acute) effects.** **Exercise-induced haemolysis** – the rupture and destruction of erythrocytes during physical exercise – is the predominant acute mechanism (Lippi & Sanchis-Gomar, *Ann Transl Med*, 2019):
+
+- Mechanical trauma (foot-strike haemolysis, muscle compression)
+- Osmotic and oxidative stress
+- Complement activation
+
+Haemolysis releases haemoglobin and its iron content into plasma, transiently elevating serum iron immediately post-exercise. Data from the CoSmo-S / Simon et al. (*J Trace Elem Med Biol*, 2026) standardised sit-to-stand test cohort confirm that serum iron is elevated immediately after exercise and increases further at 60 minutes post-exercise.
+
+**Interpretation caveat:** Plasma volume contraction (hemoconcentration) also contributes to elevated post-exercise concentrations of multiple analytes; haemoconcentration correction is essential for accurate interpretation (Simon et al. 2026).
+
+**Long-term effects.** The long-term iron response to regular training reflects competing adaptive and maladaptive pressures:
+
+*Adaptive responses* (promoting iron availability):
+- Erythropoietic expansion (increased O₂ delivery demand) → EPO ↑ → hepcidin suppression
+- Upregulation of duodenal iron transporters in response to increased demand
+
+*Maladaptive / depleting pressures:*
+- Chronic hepcidin elevation from repeated IL-6 spikes (each training session)
+- Cumulative haemolytic iron loss
+- Sweat iron losses (minor, but significant in high-volume training)
+- Gastrointestinal micro-bleeding (distance running)
+- Inadequate dietary compensation
+
+The net long-term outcome depends on training volume, nutritional strategy, and individual iron status – explaining the high prevalence of iron deficiency in endurance athletes, with estimates ranging from 15–35 % depending on sex, sport, and diagnostic criteria.
 
 ### One-Minute-Paper Topics
 <Note>
   A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
 </Note>
-- List three methodological factors (test protocol, blood sampling, analysis, nutritional state) that systematically influence the position of a lactate threshold on the lactate–performance curve.
-- Why can glycogen depletion lead to a misleadingly "improved" lactate–performance curve in a follow-up test, and how should this be controlled in re-testing?
-- Faude et al. (2009) located 25 different LT concepts in the literature. What practical problem does this proliferation create for coaches and clinicians comparing test results across labs?
+- Describe the sit-to-stand test and explain why it is a useful standardised challenge.
+- How do haemodynamic shifts during exercise affect plasma trace element concentrations?
+- Why must trace element results always be corrected for plasma volume changes?
+- Why can serum iron drop within hours of strenuous exercise?
+- Why does acute strenuous exercise transiently elevate hepcidin, and what are the downstream consequences for iron availability?
+- How would you interpret a low zinc value in a sample drawn 30 minutes after intense exercise?
+- What was the most surprising finding from today's data?
+- How would you design a study to disentangle haemodynamic vs. inflammatory effects on trace elements?
 
 ### Key References
-- Bishop DJ et al. *Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.* Journal of Science and Medicine in Sport 28, 2025: 980–991.
-- Faude O, Kindermann W, Meyer T. *Lactate Threshold Concepts — How Valid Are They?* Sports Medicine 39 (6), 2009: 469–490.
-- Kindermann W. *Anaerobe Schwelle.* Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.
+- Lippi G, Sanchis-Gomar F (2019) An update on the mechanisms of exercise-induced hemolysis. *Ann Transl Med* 7(12):270.
+- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+
+---
+
+## 4 Reading Iron Status in the Athlete
+
+**Learning objectives:**
+- Explain why serum iron and haemoglobin are insufficient screening markers: serum iron fluctuates diurnally, rises acutely after exercise-induced haemolysis, and falls only late; haemoglobin falls later still, once storage and transport reserves are exhausted.
+- Apply **Pathway A** (pre-anaemic) in order — ferritin first, then CRP, then sTfR if ambiguous — and justify the sequence on grounds of sensitivity, cost and availability (Thomas & Thomas 2002; Dignass et al. 2018).
+- Interpret the four ferritin/CRP scenarios and state the action that follows from each: low/normal → deficiency probable; normal/normal → unlikely; normal/elevated → ambiguous, add sTfR; elevated/elevated → inflammatory anaemia, iron trapped not replete.
+- Explain the physiological basis of sTfR — TfR1 upregulation under cellular iron restriction, proteolytic shedding into plasma — and why, unlike ferritin, it is **not** an acute phase protein and is therefore unaffected by inflammation.
+- Use the ferritin index / Thomas plot, sTfR / log(ferritin), to separate iron-deficiency anaemia, functional iron deficiency and anaemia of chronic disease.
+- Apply **Pathway B** (confirmed anaemia, Hb ↓ and Hkt ↓): classify by MCV and MCH into microcytic hypochromic (< 80 fL, < 27 pg), normocytic normochromic (80–100 fL, 27–33 pg) and macrocytic (> 100 fL, > 33 pg), and name the leading diagnoses in each band.
+- Differentiate iron-deficiency anaemia from thalassaemia trait using RBC count and RDW, and calculate the Mentzer index (MCV / RBC; < 13 suggests thalassaemia, > 13 suggests IDA).
+- Differentiate anaemia of chronic disease, mixed IDA + ACD, and haemolysis in the normocytic band using ferritin, CRP, sTfR, reticulocytes, haptoglobin and LDH; recognise the haemolysis triad — reticulocytes ↑, haptoglobin ↓, LDH ↑.
+- Work up macrocytic anaemia: serum B12 and folate, homocysteine and methylmalonic acid for functional B12 deficiency at borderline B12, TSH for thyroid dysfunction.
+- Position Pathways A and B as sequential stages of one continuum and justify early detection via Pathway A as the preferred sports-medicine strategy.
+- Convert all of it into practice: sample ≥ 24–48 h after the last strenuous session; always pair ferritin with CRP; screen the full minimum panel rather than a single marker; assess copper and zinc in refractory cases; treat diet as the primary intervention with supplementation guided by laboratory confirmation; treat female athletes in weight-sensitive sports as an elevated-risk group with menstrual and contraceptive status as covariates (Simon et al. 2026; Puta et al. 2026; Goddard et al. 2011).
+
+Iron deficiency is frequently **missed** in routine laboratory panels because the two most commonly requested markers — serum iron and haemoglobin — can remain within the reference range despite significant impairment of iron availability at the cellular level. A structured, stepwise approach to laboratory interpretation is therefore essential.
+
+### 4.1 Why Serum Iron and Haemoglobin Are Insufficient
+
+Serum iron reflects the momentarily circulating fraction bound to transferrin. It fluctuates substantially within the day, rises acutely after exercise-induced haemolysis, and falls only late in the deficiency cascade. Haemoglobin drops even later — only once storage and transport reserves are exhausted. A patient who is **fatigued, exhausted, and lacking drive** may thus present with entirely unremarkable serum iron and haemoglobin, yet harbour a clinically significant iron deficiency.
+
+### 4.2 Step 1 — Measure Ferritin
+
+Ferritin is the first-line marker for iron stores. Low ferritin is highly specific for depleted storage iron and should prompt further evaluation and intervention.
+
+**However, ferritin has a critical limitation:** it is also an **acute phase protein**. During inflammation, infection, or strenuous exercise, ferritin synthesis is upregulated — ferritin can appear normal or even *elevated* despite functionally empty iron stores. A normal ferritin value in an athlete or a patient with subclinical inflammation is therefore **not necessarily reassuring**.
+
+### 4.3 Step 2 — Assess Inflammation Status (CRP)
+
+To contextualise the ferritin result, the **C-reactive protein (CRP)** should be measured simultaneously. CRP is a sensitive, rapidly responding acute phase protein and a reliable proxy for systemic inflammation.
+
+The combined interpretation of ferritin and CRP creates four diagnostic scenarios:
+
+<Table>
+
+| Ferritin | CRP | Interpretation |
+|---|---|---|
+| ↓ Low | Normal | **Iron deficiency highly probable** — stores depleted |
+| Normal | Normal | **Iron deficiency unlikely** — stores intact, no confounding inflammation |
+| Normal | ↑ Elevated | **Ambiguous** — ferritin may be falsely elevated by acute phase response; stores could be depleted despite normal ferritin |
+| ↑ Elevated | ↑ Elevated | **Inflammatory anaemia / anaemia of chronic disease** — iron trapped, not truly replete |
+
+<Fragment slot="caption">
+Interpreting ferritin against CRP.
+</Fragment>
+</Table>
+
+The critical scenario is **normal ferritin + elevated CRP**: here, ferritin cannot be trusted as a reliable indicator of iron stores and a supplementary marker is required.
+
+### 4.4 Step 3 — Soluble Transferrin Receptor (sTfR)
+
+When the ferritin/CRP combination leaves the situation ambiguous, the **soluble transferrin receptor (sTfR)** provides decisive additional information.
+
+**Physiological basis:** When intracellular iron availability falls below the threshold required for normal cellular function, cells upregulate surface expression of **transferrin receptor 1 (TfR1)** to maximise iron uptake from circulating transferrin. A proteolytic cleavage product of TfR1 is shed into the plasma, forming sTfR. Elevated sTfR therefore reflects **increased cellular iron demand** — indicative of iron-restricted erythropoiesis and functional deficiency at the tissue level.
+
+**Key advantage over ferritin:** sTfR is **not an acute phase protein** and does not rise during inflammation. Its concentration is therefore unaffected by the confounding inflammatory response that renders ferritin unreliable in athletes and patients with chronic disease.
+
+**Derived index — sTfR/log(Ferritin):** The **Thomas plot** or ferritin index (sTfR / log ferritin) integrates both markers and is the most sensitive tool for distinguishing iron deficiency anaemia, functional iron deficiency, and anaemia of chronic disease.
+
+### 4.5 Integrated Diagnostic Pathway
+
+The following decision pathway summarises the stepwise approach:
+
+```
+Patient symptomatic (fatigue, exhaustion, impaired performance)
+│
+├─ Serum iron normal AND Hb normal
+│   └─ Iron deficiency NOT excluded → proceed
+│
+├─ STEP 1: Measure Ferritin
+│   ├─ Ferritin LOW
+│   │   └─ Iron deficiency highly probable (prelatent iron deficiency) → treat / supplement
+│   │
+│   └─ Ferritin NORMAL or ELEVATED
+│       └─ STEP 2: Measure CRP
+│           ├─ CRP NORMAL
+│           │   └─ Iron deficiency unlikely
+│           │
+│           └─ CRP ELEVATED (acute phase confounding)
+│               └─ STEP 3: Measure sTfR
+│                   ├─ sTfR NORMAL
+│                   │   └─ Anaemia of chronic disease / inflammation
+│                   │       (iron trapped, not deficient)
+│                   │
+│                   └─ sTfR ELEVATED
+│                       └─ Functional iron deficiency confirmed
+│                           (cellular iron demand ↑, stores depleted
+│                            despite normal ferritin)
+```
+
+### 4.6 Why Not Measure sTfR Routinely From the Start?
+
+Ferritin remains the first-line marker because it **detects deficiency earlier** in the cascade — before sTfR rises (which requires progression to iron-restricted erythropoiesis). The recommended strategy is thus:
+
+- **Ferritin first** — high sensitivity for depleted stores, low cost, widely available
+- **sTfR as second-line** — resolves ambiguity when ferritin is confounded by inflammation
+
+This two-step approach balances sensitivity, specificity, clinical utility, and cost-effectiveness (Thomas and Thomas 2002; Dignass et al. 2018).
+
+### 4.7 Pathway B — Confirmed Anaemia: Hb ↓ and Hkt ↓
+
+When haemoglobin **and** haematocrit are both below the reference range, anaemia is confirmed. This is a distinct clinical entry point from Pathway A (which addresses pre-anaemic iron deficiency with normal Hb). Once anaemia is established, the diagnostic question shifts: **what type of anaemia, and what is the underlying cause?**
+
+#### Step 1 — Characterise Erythrocyte Morphology: MCV and MCH
+
+The **mean corpuscular volume (MCV)** and **mean corpuscular haemoglobin (MCH)** define the morphological subtype and immediately narrow the differential diagnosis:
+
+<Table>
+
+| MCV | MCH | Morphology | Leading diagnoses |
+|---|---|---|---|
+| **< 80 fL** | **< 27 pg** | Microcytic hypochromic | Iron deficiency anaemia (IDA); thalassaemia trait; lead toxicity |
+| **80–100 fL** | **27–33 pg** | Normocytic normochromic | Anaemia of chronic disease (ACD); haemolysis; acute blood loss; early mixed deficiency |
+| **> 100 fL** | **> 33 pg** | Macrocytic | Vitamin B12 deficiency; folate deficiency; hypothyroidism; alcohol; myelodysplasia |
+
+<Fragment slot="caption">
+Anaemia classification by red-cell indices (MCV/MCH).
+</Fragment>
+</Table>
+
+In **sports medicine**, microcytic hypochromic anaemia is the dominant pattern in iron deficiency. Normocytic anaemia is common in athletes with chronic inflammation (e.g. persistent infections, IBD, post-COVID) or in the early stage of IDA before microcytosis develops.
+
+#### Step 2 — Microcytic Anaemia Workup (MCV < 80 fL)
+
+Confirm iron status with the full panel and differentiate IDA from thalassaemia trait:
+
+<Table>
+
+| Marker | IDA | Thalassaemia trait |
+|---|---|---|
+| Ferritin | **↓ Low** | Normal or ↑ |
+| Serum iron | **↓ Low** | Normal or ↓ |
+| Transferrin saturation | **↓ Low** | Normal |
+| sTfR | **↑ High** | Normal or mildly ↑ |
+| RBC count | ↓ or normal | **↑ Elevated** (characteristic) |
+| RDW | **↑ Elevated** | Normal (uniform small cells) |
+
+<Fragment slot="caption">
+Distinguishing iron-deficiency anaemia from thalassaemia trait.
+</Fragment>
+</Table>
+
+**Key discriminator:** In thalassaemia trait, the RBC count is characteristically elevated despite low MCV (many small cells), whereas in IDA the RBC count is reduced alongside microcytosis. The **Mentzer Index** (MCV / RBC count) provides a simple bedside calculation: < 13 suggests thalassaemia; > 13 suggests IDA.
+
+#### Step 3 — Normocytic Anaemia Workup (MCV 80–100 fL)
+
+The normocytic pattern requires differentiation between ACD and mixed-aetiology anaemia using ferritin, CRP, sTfR, and reticulocyte count:
+
+<Table>
+
+| Marker | ACD only | IDA + ACD (mixed) | Haemolysis |
+|---|---|---|---|
+| Ferritin | Normal / **↑** | Low–normal (masked by inflammation) | Normal / ↑ |
+| CRP | **↑ Elevated** | **↑ Elevated** | Normal |
+| sTfR | Normal | **↑ Elevated** | ↑ |
+| Reticulocytes | ↓ Low | ↓ Low | **↑ Elevated** |
+| Haptoglobin | Normal | Normal | **↓ Low** |
+| LDH | Normal | Normal | **↑ Elevated** |
+
+<Fragment slot="caption">
+Marker patterns across anaemia of chronic disease, mixed deficiency and haemolysis.
+</Fragment>
+</Table>
+
+In athletes, normocytic anaemia with low reticulocytes, elevated CRP, and normal sTfR points to **ACD** (iron trapped by hepcidin, adequate stores). Mixed IDA + ACD is identified by elevated sTfR alongside elevated CRP — the sTfR signal indicates cellular iron restriction that cannot be explained by inflammation alone.
+
+Haemolysis (exercise-induced or immune-mediated) is flagged by the triad of **elevated reticulocytes + low haptoglobin + elevated LDH**.
+
+#### Step 4 — Macrocytic Anaemia Workup (MCV > 100 fL)
+
+Macrocytic anaemia is less common in athletes but must not be missed, particularly in those following highly restrictive diets:
+
+- Measure **serum vitamin B12** and **folate** (serum and/or erythrocyte folate)
+- Measure **homocysteine** and **methylmalonic acid (MMA)** for functional B12 deficiency even when serum B12 is borderline
+- Screen for **thyroid dysfunction** (TSH)
+- Consider bone marrow assessment if no nutritional cause identified
+
+#### Integrated Pathway B — Confirmed Anaemia (Hb ↓ + Hkt ↓)
+
+```
+Hb LOW + Hkt LOW  →  Anaemia confirmed
+│
+├─ STEP 1: MCV + MCH
+│
+├─ MCV < 80 fL  (Microcytic hypochromic)
+│   ├─ Ferritin ↓, TfSat ↓, sTfR ↑, RDW ↑
+│   │   └─ Iron Deficiency Anaemia (IDA)  →  treat
+│   └─ Ferritin normal, RBC ↑, RDW normal
+│       └─ Thalassaemia trait  →  haematology referral
+│           (Mentzer Index = MCV/RBC: <13 = thalassaemia, >13 = IDA)
+│
+├─ MCV 80–100 fL  (Normocytic)
+│   ├─ CRP ↑, Ferritin normal/↑, sTfR normal, Retic ↓
+│   │   └─ Anaemia of Chronic Disease (ACD)
+│   │       →  treat underlying inflammation
+│   ├─ CRP ↑, Ferritin normal/↑, sTfR ↑, Retic ↓
+│   │   └─ Mixed: IDA + ACD  →  iron supplementation + treat inflammation
+│   └─ CRP normal, Retic ↑, Haptoglobin ↓, LDH ↑
+│       └─ Haemolytic anaemia
+│           →  haematology referral; exclude exercise-induced haemolysis,
+│              autoimmune, G6PD deficiency
+│
+└─ MCV > 100 fL  (Macrocytic)
+    ├─ B12 ↓ / MMA ↑
+    │   └─ Vitamin B12 deficiency  →  supplement / investigate cause
+    ├─ Folate ↓
+    │   └─ Folate deficiency  →  supplement; review diet
+    └─ B12 + Folate normal
+        └─ TSH (hypothyroidism), alcohol, myelodysplasia
+            →  further specialist workup
+```
+
+#### Relationship Between Pathway A and Pathway B
+
+The two pathways are sequential stages of the **same iron deficiency continuum**:
+
+```
+Normal Hb/Hkt  ←─────────────────────────────────────────── Hb/Hkt LOW
+(Pathway A)                                                  (Pathway B)
+Pre-anaemic:                                                 Manifest:
+• Functional iron deficiency                                 • IDA
+• Depleted stores + normal Hb                                • ACD / mixed
+→ Act early to prevent progression                           → Characterise type,
+                                                               treat cause
+```
+
+Early detection via Pathway A (ferritin + CRP + sTfR before Hb falls) is the preferred sports medicine strategy, as anaemia represents a late and performance-limiting stage of iron depletion.
+
+### 4.8 Practical Implications
+
+1. **Timing of blood sampling:** Serum iron, transferrin saturation, and inflammatory markers are acutely altered by exercise. Blood draws for iron status assessment should ideally be performed ≥ 24–48 h after the last strenuous session.
+
+2. **Interpret ferritin in context of inflammation:** CRP should always accompany ferritin measurement. Elevated ferritin in the context of elevated CRP may reflect acute phase response rather than iron repletion.
+
+3. **Screen the full profile:** The diagnostic pathway (§4.1–4.7) requires ferritin, CRP, serum iron, transferrin saturation, and haemoglobin as a minimum panel. In ambiguous cases (normal ferritin + elevated CRP), add sTfR. Single-marker screening (e.g. haemoglobin alone) misses the earliest stages.
+
+4. **Assess copper and zinc status in refractory cases:** Unexplained functional iron deficiency with normal hepcidin should prompt evaluation of copper status and zinc intake, particularly in athletes using zinc supplements.
+
+5. **Dietary first:** Adequate total energy intake with iron-rich foods (haem iron from meat; non-haem iron enhanced by vitamin C co-ingestion) remains the primary intervention. Supplementation should be guided by laboratory confirmation of deficiency, not symptoms alone, to avoid excess.
+
+6. **Sex differences:** Female athletes, particularly in weight-sensitive and aesthetic sports, carry substantially elevated risk. Menstrual status and contraceptive history are relevant covariates in any iron assessment.
+
+The same reasoning applies to the other trace elements: acute changes in trace element concentrations must be considered when interpreting laboratory values in the sports medicine context, blood sampling should ideally not be performed immediately after exercise, and a wholesome diet with adequate energy intake remains the primary recommendation (Simon et al. 2026; Puta et al. 2026).
+
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- What is the clinical significance of measuring CRP alongside ferritin in athletes?
+- Why might a long-distance runner with "normal" haemoglobin still have impaired exercise capacity due to iron?
+- Explain the four diagnostic scenarios that arise from combining ferritin and CRP, and state what clinical action follows from each.
+- Why is sTfR not affected by inflammation, while ferritin is? Explain the physiological basis of each marker.
+- A marathon runner presents with normal ferritin (45 µg/L) but elevated CRP (12 mg/L) and performance decline. Which marker should be added, and what result would confirm functional iron deficiency?
+- When Hb and Hkt are both low, which single erythrocyte index should be checked first, and what three morphological subtypes does it reveal?
+- A normocytic anaemic athlete has elevated CRP, normal ferritin, and elevated sTfR. What diagnosis does this suggest, and how does it differ from pure ACD?
+- Which preanalytical errors most commonly distort trace element measurements?
+- Name one practical implication of today's lecture for sports medicine laboratories.
+
+### Key References
+- Dignass AU et al. (2018) European consensus on the diagnosis and management of iron deficiency and anaemia in inflammatory bowel diseases. *J Crohn's Colitis* 12(2):238–252.
+- Goddard AF et al. (2011) Guidelines for the management of iron deficiency anaemia. *Gut* 60(10):1309–1316.
+- Looker AC et al. (1997) Prevalence of iron deficiency in the United States. *JAMA* 277(12):973–976.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
+- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+- Thomas C, Thomas L (2002) Biochemical markers and hematologic indices in the diagnosis of functional iron deficiency. *Clin Chem* 48(7):1066–1076.
 
 ---
 
 ## References
 
-- Bishop DJ et al. *Physical Activity and Exercise Intensity Terminology — ACSM/ESSA Joint Expert Statement.* Journal of Science and Medicine in Sport 28, 2025: 980–991.
-- Faude O, Kindermann W, Meyer T. *Lactate Threshold Concepts — How Valid Are They?* Sports Medicine 39 (6), 2009: 469–490.
-- Heck H, Mader A, Hess G, Mücke S, Müller R, Hollmann W. *Justification of the 4-mmol/l Lactate Threshold.* International Journal of Sports Medicine 6 (3), 1985: 117–130.
-- Kindermann W. *Anaerobe Schwelle.* Deutsche Zeitschrift für Sportmedizin 55 (6), 2004: 161–162.
-- Kindermann W, Simon G, Keul J. *The significance of the aerobic-anaerobic transition for the determination of work load intensities during endurance training.* European Journal of Applied Physiology and Occupational Physiology 42, 1979: 25–34.
-- Mader A, Liesen H, Heck H, Philippi H, Rost R, Schürch W, Hollmann W. *Zur Beurteilung der sportartspezifischen Ausdauerleistungsfähigkeit im Labor.* Sportarzt und Sportmedizin 27, 1976: 80–88 und 109–112.
-- Stegmann H, Kindermann W, Schnabel A. *Lactate kinetics and individual anaerobic threshold.* International Journal of Sports Medicine 2, 1981: 160–165.
+- Dignass AU et al. (2018) European consensus on the diagnosis and management of iron deficiency and anaemia in inflammatory bowel diseases. *J Crohn's Colitis* 12(2):238–252.
+- Frieden E (1985) New perspectives on the essential trace elements. *J Chem Educ* 62(11):917–923.
+- Goddard AF et al. (2011) Guidelines for the management of iron deficiency anaemia. *Gut* 60(10):1309–1316.
+- Lippi G, Sanchis-Gomar F (2019) An update on the mechanisms of exercise-induced hemolysis. *Ann Transl Med* 7(12):270.
+- Looker AC et al. (1997) Prevalence of iron deficiency in the United States. *JAMA* 277(12):973–976.
+- Mehri A (2020) Trace elements in human nutrition (II) – an update. *Int J Prev Med* 11:2.
+- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
+- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+- Thomas C, Thomas L (2002) Biochemical markers and hematologic indices in the diagnosis of functional iron deficiency. *Clin Chem* 48(7):1066–1076.
+- Zaitseva IP et al. (2018) Hepcidin and the regulation of iron metabolism. *Human Physiology* 44:501–509.

@@ -1,283 +1,499 @@
 ---
-title: Standardised Evaluation of Symptoms and Signs of Exercise-Induced and Infection-Based Immunological Stress Regulation
-description: Develops a framework for the *standardised evaluation of symptoms and signs* of both exercise-induced and infection-based immunological stress regulation — providing validated assessment instruments, diagnostic algorithms, and practical decision tools for clinical and field application.
+title: Lactate – From Metabolic Waste Product to Central Metabolite
+description: Traces the evolution of lactate from a metabolic byproduct to a central regulator of human physiology, highlighting its continuous aerobic production, role as a primary fuel source, and function as a signaling molecule across cellular and systemic levels. It also introduces lactate-based performance diagnostics, emphasizing individualized thresholds and curve analysis to assess training adaptation, endurance capacity, and metabolic dysfunction in conditions such as Long COVID and ME/CFS.
 draft: false
 ---
 
+import Quote from '../../../components/Quote.astro';
 import { Note } from '../../../components/MarginNote/index.js';
 import Table from '../../../components/Table.astro';
 
 
 ## Table of Contents
 
-1. [Two Pathways of Immunological Stress](#1-two-pathways-of-immunological-stress)
-2. [The Assessment Toolkit — Symptoms, Signs, Laboratory](#2-the-assessment-toolkit--symptoms-signs-laboratory)
-3. [Decision Algorithms and Integration](#3-decision-algorithms-and-integration)
+1. [The Paradigm Shift and the Shuttle Architecture](#1-the-paradigm-shift-and-the-shuttle-architecture)
+2. [Lactate as Fuel and as Metabolic Switch](#2-lactate-as-fuel-and-as-metabolic-switch)
+3. [Lactate as Dietary Carbon — and the Nutrition Payoff](#3-lactate-as-dietary-carbon--and-the-nutrition-payoff)
+4. [The Lactate Curve in Practice — Threshold, Zones and the Clinical Shift](#4-the-lactate-curve-in-practice--threshold-zones-and-the-clinical-shift)
 
 ---
 
-## 1 Two Pathways of Immunological Stress
+## 1 The Paradigm Shift and the Shuttle Architecture
 
 **Learning objectives:**
-- State the clinical need for a standardised framework: the two stress sources co-occur, interact, and are frequently indistinguishable without systematic evaluation, and the framework must differentiate them, track their temporal dynamics, flag early warnings, and guide training/referral/return decisions (Puta et al. 2026; Schwellnus et al. 2022).
-- Contrast exercise-induced and infection-based stress across all seven dimensions of the framework table — primary trigger, onset, temporal profile, hallmark immune change, key hormones, performance impact, resolution — and reproduce the table from memory.
-- Distinguish a *symptom* (subjective, reported) from a *sign* (objective, observed), and explain why both are needed.
-- Apply the "neck check" heuristic: above-neck symptoms without systemic features → reduced-intensity exercise may continue; below-neck or systemic features (fever ≥ 38.5 °C, myalgia, malaise, dyspnoea, lymphadenopathy, GI symptoms) → cessation and medical evaluation (Puta et al. 2026; Nieman and Wentz 2019).
-- Read the eight-row differentiation table (muscle soreness, fatigue, resting HR, fever, CRP, lymphocyte count, NLR, performance loss) and assign a given presentation to the more likely pathway.
-- Explain why the *temporal pattern* is often the decisive discriminator — exercise stress resolves within ≈ 24 h, infection persists and worsens with exertion — and connect this to post-exertional malaise as a red flag.
+- State the paradigm shift: lactate is not a waste product of anaerobic glycolysis but is formed continuously under fully aerobic conditions, and name its three established roles — oxidative fuel (heart, brain, liver, red muscle), gluconeogenic precursor (Cori cycle), and signalling molecule (myokine/exerkine, "lactormone") (Brooks 2018).
+- Quantify continuous aerobic production: ≈ 50 % of lactate is oxidatively used at rest, rising to ≈ 75–80 % during intense exercise (Brooks 2018).
+- Distinguish the three nested shuttle systems — cell–cell (CCLS, glycolytic → oxidative cells along gradients), intracellular (ILS, cytosol → mitochondrial matrix within a cell), and organ–organ (systemic, muscle → liver/brain via blood) (Brooks 2018).
+- Describe the transport machinery: monocarboxylate transporters MCT1 and MCT4 with the co-factor CD147, and the mitochondrial lactate-oxidation complex (LDH + MCT1 + CD147) that enables direct intracellular oxidation (Brooks 2018).
+- Explain how isotope-tracer studies (¹³C-lactate) and arterial–venous difference measurements document continuous shuttling, and how the mitochondrial reticulum generates the gradients that drive intracellular flux; name histone lactylation and CREB signalling as novel epigenetic routes (Brooks et al. 2022).
+- Restate the clinical translation: lactataemia as a "strain" (load) biomarker rather than a pathology marker; therapeutic lactate infusions (traumatic brain injury, heart failure, inflammation); training-induced MCT upregulation and clearance capacity (Brooks 2018).
 
-### 1.1 Rationale and Clinical Need
+### 1.1 Historical Context and Paradigm Shift
 
-Immune system stress in physically active individuals arises from two partially overlapping but mechanistically distinct sources: **exercise-induced immunological stress** (acute biphasic responses, overtraining, intensity-dependent suppression, trace element redistribution) and **infection-based immunological stress** (innate and adaptive immune activation, systemic inflammation, post-infectious sequelae). In clinical and field practice, these two sources frequently co-occur, interact, and may be clinically indistinguishable without systematic evaluation.
+For decades, lactate was regarded as a toxic end-product of anaerobic glycolysis — the cause of muscle fatigue and performance decline. This view is now obsolete. Building on the **Lactate Shuttle Theory**, first proposed by Brooks in 1985 and consolidated in his 2018 review (Brooks 2018), a fundamental paradigm shift has occurred: lactate is not the problem, but part of the solution.
 
-A standardised, multi-dimensional assessment framework is therefore required that can:
+<Quote 
+  author="Brooks"
+  cite="2018, Cell Metabolism"
+  quote="Once thought to be a waste product of anaerobic metabolism, lactate is now known to form continuously under aerobic conditions." 
+/>
 
-1. Reliably differentiate exercise-induced from infection-driven immunological changes
-2. Track the temporal dynamics of symptom and sign development
-3. Identify early warning signals of overtraining, infection risk, or post-infectious complications
-4. Guide evidence-based decisions on training continuation, medical referral, and return-to-sport clearance (Puta et al. 2026; Schwellnus et al. 2022)
+Three core functions are now well established:
 
-### 1.2 Conceptual Framework: Two Pathways of Immunological Stress
+1. **Energy substrate** – preferred oxidative fuel in the heart, brain, liver, and red skeletal muscle
+2. **Gluconeogenic precursor** – primary source for hepatic glucose synthesis (Cori cycle and beyond)
+3. **Signaling molecule** – autocrine, paracrine, and endocrine functions (myokine/exerkine)
 
-<Table>
+### 1.2 Brooks (2018) — *The Science and Translation of Lactate Shuttle Theory*
 
-| Dimension | Exercise-Induced Stress | Infection-Based Stress |
-|---|---|---|
-| **Primary trigger** | Mechanical load, metabolic demand, catecholamines, cortisol | Pathogen recognition (PRRs/PAMPs), cytokine cascade |
-| **Onset** | Acute, load-dependent, reproducible | Variable, often insidious |
-| **Temporal profile** | Biphasic; resolves within ~24 h (acute) or adapts over weeks (chronic) | Phase-dependent; days to weeks |
-| **Hallmark immune change** | Lymphocytosis → lymphopenia; neutrophilia; ↑ NK cytotoxicity | Fever, neutrophilia, lymphocytopenia, ↑ CRP/IL-6 |
-| **Key hormones** | Adrenaline (SNS), cortisol (HPA) | IL-1, IL-6, TNF, IFN-α/β, cortisol |
-| **Performance impact** | Transient; functional; resolves with recovery | Systemic; potentially organ-specific |
-| **Resolution** | Adequate rest and nutrition | Pathogen clearance, immunological memory |
+**Cell Metabolism, 27, 757–785**
 
-<Fragment slot="caption">
-Exercise-induced versus infection-based stress across key dimensions.
-</Fragment>
-</Table>
-
-### 1.3 Symptom Differentiation: Exercise-Induced vs. Infection-Based
-
-The classic **"neck check" heuristic** remains a practical first-line decision tool:
-- Symptoms **above the neck** (nasal congestion, mild sore throat, sneezing) without systemic features → light exercise may be continued with reduced intensity
-- Symptoms **below the neck** or systemic features (fever ≥ 38.5 °C, myalgia, pronounced malaise, dyspnoea, lymphadenopathy, gastrointestinal symptoms) → training cessation; medical evaluation required (Puta et al. 2026; Nieman and Wentz 2019)
+This comprehensive review synthesizes four decades of research from the Brooks Lab (UC Berkeley) and describes three nested shuttle systems:
 
 <Table>
 
-| Symptom / Sign | Exercise-Induced (likely) | Infection-Based (likely) |
-|---|---|---|
-| Muscle soreness | Focal, load-specific onset | Diffuse, without load relation |
-| Fatigue | Post-exertional, resolves with rest | Persistent; worsened by exertion |
-| Elevated resting HR | Mild, training-load dependent | ≥ 7 bpm above individual baseline |
-| Fever | Absent | ≥ 37.5–38.5 °C |
-| CRP | < 5 mg/L (normal after moderate exercise) | ↑↑ (often > 20 mg/L in ARTI) |
-| Lymphocyte count | ↓ post-exercise (transient, normalises < 24 h) | ↓↓ persistent; shift in differential |
-| NLR | Transiently elevated post-exercise | Persistently elevated |
-| Performance loss | Functional, reversible | Systemic, prolonged |
+| Shuttle Level | Description |
+|---|---|
+| **Cell-Cell Lactate Shuttle (CCLS)** | Lactate transfer between producing cells (e.g., glycolytic muscle fibers) and consuming cells (heart, brain, liver) along concentration gradients |
+| **Intracellular Lactate Shuttle (ILS)** | Intracellular transfer of cytosolically produced lactate to the mitochondrial matrix for oxidative metabolism within the same cell |
+| **Organ-Organ Lactate Shuttle** | Systemic redistribution between organs (muscle → liver, muscle → brain) via the bloodstream |
 
 <Fragment slot="caption">
-Differentiating exercise-induced from infection-based symptoms.
+The three lactate shuttle systems.
 </Fragment>
 </Table>
+
+**Key Findings:**
+- Lactate is produced **continuously under fully aerobic conditions** — not only during oxygen deficiency
+- At rest, approximately 50% of produced lactate is **oxidatively utilized**
+- During intense exercise, this fraction increases to approximately **75–80%**
+- Monocarboxylate transporters (MCT1, MCT4) and the co-factor **CD147** mediate transcellular lactate transport
+- A mitochondrial **lactate oxidation complex** (LDH + MCT1 + CD147) enables direct intracellular oxidation
+
+**Clinical Translation:**
+- Lactatemia as a **"strain" biomarker** (load response), not a pathological stress marker
+- Therapeutic lactate infusions in traumatic brain injury, heart failure, and systemic inflammation
+- Endurance training increases MCT expression and thereby lactate clearance capacity
+
+### 1.3 Brooks et al. (2022) — *Tracing the Lactate Shuttle to the Mitochondrial Reticulum*
+
+**Experimental & Molecular Medicine, 54, 1332–1347**
+
+This review deepens the mechanistic understanding of the **intracellular lactate shuttle** and describes the role of the mitochondrial reticulum:
+
+- Isotope tracer studies (¹³C-lactate infusions) provide unambiguous documentation of **continuous organ-organ, cell-cell, and intracellular shuttling**
+- Lactate is considered the **preferred substrate over glucose** in heart and brain
+- The mitochondrial reticulum (an interconnected mitochondrial network) generates the concentration and redox gradients that drive intracellular lactate flux
+- **Histone lactylation** and CREB-dependent signaling pathways have been identified as novel epigenetic signaling routes
+- Introduction of the **Postprandial Lactate Shuttle (PLS)** as a new category: dietary carbohydrates pass through a lactate intermediate before storage or oxidation
+
+**Methodological note:** Isotope tracer infusions combined with arterial-venous difference measurements across muscle, heart, and brain yield quantitative flux rates at rest and during exercise, before and after endurance training, at sea level and altitude.
 
 ### One-Minute-Paper Topics
 <Note>
   A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
 </Note>
-- Why is standardisation essential when assessing immunological stress in athletes?
-- Define the difference between a "symptom" and a "sign" in clinical reasoning.
-- Why is the temporal pattern of symptoms (e.g., delayed worsening) clinically meaningful?
-- How does post-exertional malaise (PEM) differ from normal post-exercise fatigue?
-- Which signs suggest exercise-induced immunological stress rather than ordinary fatigue?
+- In one sentence, why is the idea that "lactate is a waste product" considered outdated?
+- Explain the concept of continuous aerobic lactate production at rest.
+- Describe the lactate shuttle hypothesis in your own words.
+- Which tissues are major lactate consumers, and which are major producers?
+- How does the monocarboxylate transporter (MCT) family enable lactate exchange between cells?
 
 ### Key References
-- Nieman DC, Wentz LM (2019) The compelling link between physical activity and the body's defense system. *J Sport Health Sci* 8(3):201-217.
-- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
-- Schwellnus M et al. (2022) IOC consensus statement on acute respiratory illness in athletes. *Br J Sports Med*.
+- Brooks GA (2018). The Science and Translation of Lactate Shuttle Theory. *Cell Metabolism*, 27, 757–785. [10.1016/j.cmet.2018.03.008](https://doi.org/10.1016/j.cmet.2018.03.008)
+- Brooks GA et al. (2022). Tracing the lactate shuttle to the mitochondrial reticulum. *Experimental & Molecular Medicine*, 54, 1332–1347. [10.1038/s12276-022-00802-3](https://doi.org/10.1038/s12276-022-00802-3)
 
 ---
 
-## 2 The Assessment Toolkit — Symptoms, Signs, Laboratory
+## 2 Lactate as Fuel and as Metabolic Switch
 
 **Learning objectives:**
-- Describe the WURSS-21/WURSS-11 for quantitative URTI-symptom monitoring (0–7 severity across sneezing, congestion, sore throat, cough, headache, myalgia, plus functional impact) and its role in supporting the neck check (Barrett et al. 2002, 2005).
-- Describe the DALDA questionnaire as a composite stress-and-recovery index spanning training load, sleep, nutrition, soreness and mood.
-- Apply the training-load and recovery instruments — TQR, session-RPE (RPE × duration), and POMS/brief POMS — and explain how the overtraining psychological cluster overlaps the prodrome of acute infection.
-- Perform the five-domain physical examination: vital parameters (resting tachycardia ≥ 7 bpm above baseline as a sensitive early marker), lymphatic palpation (tenderness/enlargement → infection; splenomegaly must be excluded before contact-sport clearance), upper-airway inspection (tonsillar exudate + lymphadenopathy + fever → streptococcal/EBV), cardiopulmonary auscultation (friction rubs, arrhythmia, murmurs → myocarditis exclusion), and neuromuscular proxies (grip, balance, reaction time) (Halle et al. 2021; Puta et al. 2026).
-- Apply the tiered laboratory ladder: **Level 1** screening (differential count with NLR/SII/SIRI, CRP/ESR, resting HRV, urinalysis); **Level 2** extended (trace-element panel adjusted for haemoconcentration, pathogen serology/PCR, CK/AST/ALT/creatinine/LDH, TSH); **Level 3** specialised immunology (NK count and cytotoxicity, T-cell subsets, complement C3/C4, salivary IgA, oxidative burst and proliferation assays) (Simon et al. 2026).
-- Justify the escalation logic: why Level 2 is triggered by Level 1 abnormalities and Level 3 reserved for persistent or severe/recurrent presentations.
+- Explain the Hui et al. 2017 reinterpretation of aerobic metabolism: systemic ¹³C tracing shows lactate turnover flux exceeds glucose (×1.1 fed, ×2.5 fasted), lactate labels TCA intermediates extensively in all tissues, and glucose feeds the TCA cycle *indirectly* via circulating lactate in every tissue except the brain.
+- State the central conclusion — glycolysis and the TCA cycle are decoupled at the level of lactate, allowing independent regulation of ATP production and glucose catabolism — and note the tumour finding (lactate exceeds glucose as TCA substrate in lung and pancreatic tumours).
+- Describe the Cai et al. 2023 breakthrough: lactate enters the mitochondrial matrix and directly stimulates ETC activity *independently of its own metabolism*, shown because both L-lactate (LDH-metabolisable) and D-lactate (not) activate the ETC, and D-lactate reversibly, ATP-dependently suppresses the Warburg effect.
+- Lay out the mechanism: lactate → matrix entry → complex-independent ETC activation → ↑ OXPHOS ATP → ATP-mediated suppression of glycolysis → ↑ pyruvate/alternative-substrate use, and explain why this lets trained athletes oxidise efficiently at high lactate concentrations.
+- State the immunological result — in primary T cells, D-lactate enhanced proliferation and effector function — and connect it to immune-cell activation after exercise.
 
-### 2.1 Upper Respiratory Tract Infection Screening
+### 2.1 Hui et al. (2017) — *Glucose Feeds the TCA Cycle via Circulating Lactate*
 
-The **Wisconsin Upper Respiratory Symptom Survey (WURSS-21)** and its abbreviated version (WURSS-11) are validated instruments for the quantitative assessment of cold and respiratory infection symptoms. They capture symptom severity (sneezing, nasal congestion, sore throat, cough, headache, myalgia) on a 0–7 scale and functional impact on daily activities and sport performance. In athletes, the WURSS enables objective symptom monitoring and supports the "neck check" decision rule (Barrett et al. 2002, 2005).
+**Nature, 551, 115–118**
 
-The validated **Daily Analysis of Life Demands for Athletes (DALDA)** questionnaire assesses sources of stress and symptoms of distress across training load, sleep, nutrition, muscle soreness, and mood — providing a composite index of general stress load that encompasses both exercise and infection-related components.
+This landmark study using systemic ¹³C isotope tracing in mice delivers a fundamental reinterpretation of aerobic metabolism:
 
-### 2.2 Training Load and Recovery Monitoring
+**Background:** Under aerobic conditions, glucose was assumed to be the primary input to the TCA cycle. This assumption has been refuted.
 
-The **Total Quality of Recovery (TQR)** scale and the **Rating of Perceived Exertion (RPE) × Session Duration** method (session-RPE) provide athlete-reported indices of recovery status and internal training load. When systematically collected, these allow detection of accumulating fatigue that may signal immunological vulnerability.
+**Method:** Intravenous infusions of [U-¹³C]glucose, [U-¹³C]lactate, and [U-¹³C]glutamine in fed and fasted mice; measurement of isotope labeling fractions in TCA intermediates across multiple tissues.
 
-The **Profile of Mood States (POMS)** or its brief version identifies the characteristic psychological symptom cluster of overreaching and overtraining (chronic fatigue, depressive mood, concentration disturbances, loss of motivation) — which overlaps substantially with the prodromal phase of acute infections.
+**Main Findings:**
 
-### 2.3 Clinical Signs Relevant to Immunological Stress Evaluation
+<Table>
 
-The physical examination of the athlete with suspected immunological stress should address the following domains:
+| Parameter | Result |
+|---|---|
+| Molar turnover flux of lactate vs. glucose (fed) | Lactate exceeds glucose by a **factor of 1.1** |
+| Molar turnover flux of lactate vs. glucose (fasted) | Lactate exceeds glucose by a **factor of 2.5** |
+| TCA labeling by ¹³C-lactate | Extensive in **all tissues** (fed and fasted) |
+| Glucose contribution to TCA cycle (fasted) | Primarily **indirect** — via circulating lactate — in all tissues except the brain |
+| Situation in tumors (lung, pancreas) | Lactate exceeds glucose as TCA substrate; in pancreatic tumors, glutamine contributes even more |
 
-**Vital parameters:** Resting heart rate (morning measurement), blood pressure, body temperature, respiratory rate. Persistent resting tachycardia (≥ 7 bpm above individual baseline) is a sensitive early marker of both inadequate recovery and subclinical infection.
+<Fragment slot="caption">
+Lactate turnover flux relative to glucose (tracer study).
+</Fragment>
+</Table>
 
-**Lymphatic system:** Palpation of cervical, axillary, and inguinal lymph nodes — tenderness and enlargement indicate active infection rather than exercise stress. Splenomegaly requires exclusion before clearance for contact sports.
+**Conclusion:** Glycolysis and the TCA cycle are **decoupled at the level of lactate**. Glucose can make its TCA contribution predominantly via the detour of circulating lactate, without entering the mitochondria directly as pyruvate. This enables independent regulation of ATP production and glucose catabolism.
 
-**Upper airways:** Inspection of pharynx and tonsils (erythema, exudate), assessment of nasal congestion and sinus tenderness. Tonsillar exudate in combination with lymphadenopathy and fever is a clinical indicator for streptococcal or EBV infection.
+<Quote 
+  author="Hui et al."
+  cite="2017, Nature"
+  quote="Glycolysis and the TCA cycle are uncoupled at the level of lactate, which is a primary circulating TCA substrate in most tissues and tumours." 
+/>
 
-**Cardiopulmonary signs:** Auscultation for pericardial friction rubs, arrhythmias, or new murmurs; evaluation of dyspnoea at rest or on minimal exertion — critical for exclusion of myocarditis or pulmonary involvement (Halle et al. 2021; Puta et al. 2026).
+### 2.2 Cai et al. (2023) — *Lactate Activates the Mitochondrial Electron Transport Chain Independently of Its Metabolism*
 
-**Neuromuscular assessment:** Grip strength, balance tests, and reaction time can be used as objective performance proxies; significant bilateral reductions are indicative of systemic illness rather than localised training fatigue.
+**Molecular Cell, 83, 3904–3920**
 
-### 2.4 Laboratory Diagnostics: A Tiered Approach
+This work from the Thompson Lab at Memorial Sloan Kettering Cancer Center (New York) represents a conceptual breakthrough: lactate acts not only as a fuel, but as a **direct activator of the mitochondrial electron transport chain (ETC)** — independently of its own metabolism.
 
-The following tiered approach is proposed for the standardised evaluation of immunological stress, escalating from field-applicable screening to specialised immunology:
+**Core Findings:**
 
-**Level 1 — Screening (applicable in field and practice settings):**
+1. **Lactate enters the mitochondrial matrix** and directly stimulates ETC activity.
 
-- Differential blood count (WBC, granulocytes, lymphocytes, monocytes, NLR, SII, SIRI)
-- C-reactive protein (CRP) and erythrocyte sedimentation rate (ESR)
-- Resting heart rate variability (HRV) as an index of autonomic–immune tone
-- Urinalysis
+2. **The ability to enhance OXPHOS does not depend on lactate metabolism:**
+   - Both **L-lactate** (the biologically active stereoisomer) and **D-lactate** (not metabolizable by LDH) activate the ETC
+   - D-lactate suppressed aerobic glycolysis (Warburg effect) **reversibly** and in an ATP-dependent manner
 
-**Level 2 — Extended diagnostics (indicated by Level 1 abnormalities):**
+3. **Mechanism:** ATP production via OXPHOS suppresses glycolysis; lactate acts as a **mitochondrial messenger** that switches cells toward oxidative metabolism.
 
-- Trace element panel: serum selenium, SELENOP, total zinc, free zinc (fZn), copper, iron, ferritin, transferrin saturation — adjusted for haemoconcentration where exercise has occurred within the preceding 2 h (Simon et al. 2026)
-- Pathogen-specific serology and PCR where clinically indicated
-- CK, transaminases (AST, ALT), creatinine, LDH — to differentiate muscular from hepatic and renal involvement
-- Thyroid function (TSH) when chronic fatigue is the predominant complaint
+4. **Immunological relevance:** In primary T cells, D-lactate enhanced:
+   - Cell proliferation
+   - Effector function
 
-**Level 3 — Specialised immunological diagnostics (in cases of persistent symptoms or severe/recurrent infections):**
+5. **Oncological significance:** D-lactate suppressed the Warburg effect in tumor cell lines and enabled cell growth on respiration-dependent bioenergetic substrates.
 
-- NK cell counts and cytotoxic function (CD56⁺, CD16⁺ subpopulations)
-- T cell subpopulations (CD4⁺/CD8⁺ ratio, memory and senescent subsets)
-- Complement factors (C3, C4)
-- Salivary IgA as a mucosal immunity index (validated marker of upper respiratory infection susceptibility in athletes)
-- In vitro functional tests: oxidative burst, lymphocyte proliferation assay
-
-### One-Minute-Paper Topics
-<Note>
-  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
-</Note>
-- Name one validated questionnaire for monitoring training stress and explain its core dimensions.
-- How does a symptom score complement biomarker data in decision-making?
-- Name two practical field tools for assessing autonomic recovery.
-- How can wearable HR/HRV data complement standardised symptom scales?
-- What are the limitations of self-report instruments, and how can they be mitigated?
-
-### Key References
-- Barrett B, Locken K, Maberry R, Schwamman J, Brown R et al. (2002) The Wisconsin upper respiratory symptom survey (WURSS): a new research instrument for assessing the common cold. *J Fam Pract* 51:265.
-- Barrett B, Brown R, Mundt M, Safdar N, Dye L et al. (2005) The Wisconsin upper respiratory symptom survey is responsive, reliable, and valid. *J Clin Epidemiol* 58:609-617.
-- Halle M et al. (2021) Exercise and sports after COVID-19. *Transl Sports Med* 4:310-318.
-- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
-- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
-
----
-
-## 3 Decision Algorithms and Integration
-
-**Learning objectives:**
-- Define a diagnostic algorithm and justify its value for reproducible, defensible return-to-play decisions.
-- Execute **Algorithm A** (acute symptom onset): fever ≥ 37.5 °C or below-neck symptoms → stop and evaluate; above-neck only → reduce to ≤ 60 % V̇O₂max and monitor 24–48 h → symptom-free at 48 h → graded return, else Level 1 diagnostics.
-- Execute **Algorithm B** (return-to-sport after confirmed infection): ≥ 10 days post-diagnosis with ≥ 3 symptom-free days; clinical examination; Level 1 labs (+ troponin if myocardial involvement suspected); the 5-step graded return (rest → light aerobic → moderate aerobic → sport-specific → full training → competition), each step ≥ 24 h.
-- Apply the three trace-element interpretation principles in the post-exercise setting: no sampling within 2 h for selenium, copper and free zinc (and account for acute haemolysis in iron); haemoconcentration correction against resting reference ranges; and read NLR/SII/SIRI in temporal context so their biphasic post-exercise pattern is not misread as infection or overtraining (Simon et al. 2026).
-- Operate the standardised evaluation checklist end to end — TQR < 13, WURSS-11 ≥ 7/session, session-RPE acute:chronic > 1.5, resting HR ≥ +7 bpm, POMS iceberg inversion, temperature ≥ 37.5 / ≥ 38.5 °C, CRP > 5 mg·L⁻¹ with symptoms, the trace-element timing rule, any new cardiopulmonary finding — and state the action each threshold triggers.
-- Argue why a multi-domain assessment outperforms any single marker, and identify a scenario where a standardised algorithm should override clinical intuition and one where it should not.
-
-### 3.1 Algorithm A: Acute Symptom Onset in Athletes
+**Schematic summary of the mechanism:**
 
 ```
-Acute symptoms during training or competition period
-        │
-        ▼
-Fever ≥ 37.5 °C OR below-neck symptoms? ──YES──► STOP training · Medical evaluation
-        │
-       NO
-        ▼
-Symptoms above neck only + no systemic signs?
-        │
-       YES
-        ▼
-Reduce intensity ≤ 60% VO₂max · Monitor for 24–48 h
-        │
-Symptom-free after 48 h? ──YES──► Gradual return to normal training
-        │
-       NO ──► Medical evaluation · Level 1 diagnostics
+Extracellular lactate ↑
+        ↓
+Entry into mitochondrial matrix (via MCT + membrane transport)
+        ↓
+ETC activation (complex-independent signaling)
+        ↓
+↑ Mitochondrial ATP synthesis (OXPHOS)
+        ↓
+ATP-mediated suppression of glycolysis
+        ↓
+↑ Pyruvate and alternative substrate utilization
 ```
 
-### 3.2 Algorithm B: Return-to-Sport Clearance After Confirmed Infection
-
-Return-to-sport clearance integrates four elements:
-
-1. **Minimum rest period:** 10 days post-diagnosis including ≥ 3 consecutive symptom-free days
-2. **Clinical examination:** Vital signs, lymphatic, cardiopulmonary, and neuromuscular assessment
-3. **Level 1 laboratory:** Differential blood count, CRP, CK, troponin if myocardial involvement suspected
-4. **Graded return protocol:** 5-step graduated return (rest → light aerobic → moderate aerobic → sport-specific → full training → competition), each step minimum 24 h
-
-### 3.3 Integration: Immunological Biomarkers in the Context of Trace Elements
-
-The standardised laboratory evaluation in the post-exercise setting must account for the acute redistribution of trace elements. Key principles for interpretation:
-
-- **Blood sampling timing:** Avoid collection within 2 h of exercise for selenium, copper, and free zinc; iron measurements should also account for acute haemolysis
-- **Hemoconcentration correction:** Adjust serum values for exercise-induced plasma volume reduction (Alis et al. method) when comparing against reference ranges established at rest
-- **NLR/SII/SIRI interpretation:** These cellular inflammation indices display a characteristic biphasic pattern post-exercise (decrease → increase above baseline over 60 min) that must not be misattributed to infection or overtraining without temporal context (Simon et al. 2026)
-
-### 3.4 Practical Summary: Standardised Evaluation Checklist
-
-The following checklist integrates the preceding sections into a field-applicable tool:
-
-<Table>
-
-| Domain | Assessment Tool | Threshold / Action |
-|---|---|---|
-| **Subjective wellbeing** | TQR scale (1–20) | TQR < 13 → reduce load |
-| **Upper airway symptoms** | WURSS-11 | Score ≥ 7 per session → medical review |
-| **Training load** | Session-RPE × duration | Acute:chronic ratio > 1.5 → caution |
-| **Resting heart rate** | Morning measurement | ≥ +7 bpm above baseline → reduce/rest |
-| **Mood disturbance** | POMS brief | Iceberg profile inversion → overreaching alert |
-| **Core temperature** | Oral/tympanic | ≥ 37.5 °C → rest; ≥ 38.5 °C → medical evaluation |
-| **Laboratory Level 1** | CBC, CRP, CK | CRP > 5 mg/L + symptoms → medical evaluation |
-| **Trace elements** | Se, Zn, Cu, Fe panel | Interpret relative to sampling timing post-exercise |
-| **Cardiopulmonary exam** | Auscultation, ECG | Any new finding → cardiology referral pre-return |
-
-<Fragment slot="caption">
-Monitoring toolbox with thresholds and actions for return-to-training.
-</Fragment>
-</Table>
-
-[→ Interactive Dashboard](/dashboards/evaluation) - Differentiation, Assessment, Diagnostics — Exercise and Infection
+**Relevance for exercise and immunology:**
+- Lactate accumulation during exercise directly activates OXPHOS — independent of substrate delivery
+- Explains why trained athletes can oxidize efficiently even at high lactate concentrations
+- Opens new perspectives on the role of lactate in the activation of immune cells following exercise
 
 ### One-Minute-Paper Topics
 <Note>
   A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
 </Note>
-- What is a diagnostic algorithm, and why is it useful for return-to-play decisions?
-- Describe one decision tool you would use to clear an athlete after a viral infection.
-- Explain why an integrative (multi-domain) assessment outperforms single-marker approaches.
-- Describe a clinical scenario where a standardised algorithm would override clinical intuition — and one where it would not.
-- How would you document immunological stress in a structured medical record?
-- How would you train coaches to use these standardised tools correctly?
-- Name one ethical concern when monitoring athletes with continuous symptom tracking.
+- How does lactate function as a signaling molecule (lactormone)?
+- Describe one role of lactate in the immune system.
 
 ### Key References
-- Halle M et al. (2021) Exercise and sports after COVID-19. *Transl Sports Med* 4:310-318.
-- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
-- Schwellnus M et al. (2022) IOC consensus statement on acute respiratory illness in athletes. *Br J Sports Med*.
-- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+- Cai X et al. (2023). Lactate activates the mitochondrial electron transport chain independently of its metabolism. *Molecular Cell*, 83, 3904–3920. [10.1016/j.molcel.2023.09.034](https://doi.org/10.1016/j.molcel.2023.09.034)
+- Hui S et al. (2017). Glucose feeds the TCA cycle via circulating lactate. *Nature*, 551, 115–118. [10.1038/nature24057](https://doi.org/10.1038/nature24057)
+
+---
+
+## 3 Lactate as Dietary Carbon — and the Nutrition Payoff
+
+**Learning objectives:**
+- Describe the Leija et al. 2024 design (first human in-vivo evidence for the postprandial lactate shuttle): overnight-fasted adults, 75-g OGTT, arterialised sampling, [3-¹³C]lactate and deuterated glucose tracers.
+- Name and temporally sequence the two PLS phases: the **enteric** phase (blood lactate rises *before* glucose — intestinal epithelium metabolises glucose to lactate, gut → portal vein → liver/systemic) and the **systemic** phase (a second lactate rise synchronous with glucose — hepatic glucose release → peripheral glycolysis → lactate).
+- State the quantitative significance: ≈ 38 % of the 75-g glucose load appears in the circulation as lactate, making lactate a carbon carrier of magnitude comparable to glucose itself; and the conclusions — lactate production is not a hypoxia phenomenon, dietary carbohydrate is routinely distributed via the shuttle, lactate buffers the postprandial glucose surge, and the intestinal epithelium is the first actor in systemic carbohydrate carbon flux.
+- Derive the sports-nutrition implications (Brooks 2023): systemic carbohydrate flux follows hexose → lactate → oxidation or liver-glycogen storage, so carbohydrate *form* is secondary (all pass through lactate); lactate salts are GRAS and buffer acidosis; training raises MCT expression and thus carbohydrate tolerance without hyperlactataemia; fructose enters the circulation largely as lactate; ketones offer no advantage when carbohydrate is available.
+- Connect the nutrition argument to training: endurance training increases simultaneous production and clearance capacity, so Pro-Tour cyclists sustain power for hours at which untrained individuals would already be hyperlactataemic.
+
+### 3.1 Leija et al. (2024) — *Enteric and Systemic Postprandial Lactate Shuttle Phases and Dietary Carbohydrate Carbon Flow in Humans*
+
+**Nature Metabolism, 6, 670–677**
+
+This human study provides the first direct in vivo evidence for the Postprandial Lactate Shuttle (PLS) in humans — with a striking temporal sequence.
+
+**Study population:** Healthy young men and women (overnight fasted); oral glucose tolerance test (OGTT, 75 g glucose); arterialized blood samples; stable isotope tracers ([3-¹³C]lactate, deuterium-labeled glucose).
+
+**Main Findings – Two Phases of the PLS:**
+
+<Table>
+
+| Phase | Timing | Mechanism | Interpretation |
+|---|---|---|---|
+| **Enteric PLS** | Blood lactate rises **before** blood glucose | Intestinal epithelial cells immediately metabolize glucose to lactate | Gut lumen → portal vein → liver/systemic circulation |
+| **Systemic PLS** | Second lactate rise, synchronous with glucose rise | Hepatic glucose release → peripheral glycolysis → lactate | Liver → muscle/organs → lactate redistribution |
+
+<Fragment slot="caption">
+The two phases of the postprandial lactate shuttle.
+</Fragment>
+</Table>
+
+**Quantitative Significance:**
+- The systemic PLS represents approximately **38% of the 75-g glucose load** appearing as lactate in the circulation
+- Following a carbohydrate-containing meal, lactate is a **carbon carrier of similar magnitude as glucose itself**
+
+**Conclusions:**
+- Lactate production is **not a consequence of hypoxia** in skeletal muscles; it occurs in fully aerobic tissues
+- Dietary carbohydrates are routinely distributed and utilized via the lactate shuttle
+- Lactate **buffers** the postprandial glucose surge (together with insulin)
+- The intestinal epithelium is identified as the **first actor** in systemic carbohydrate carbon flux
+
+<Quote 
+  author="Brooks"
+  cite="2024, cited in Berkeley News"
+  quote="Instead of a big glucose surge, we have a lactate and glucose surge after eating." 
+/>
+
+### 3.2 Brooks (2023) — *What the Lactate Shuttle Means for Sports Nutrition*
+
+**Nutrients, 15(9), 2178**
+
+This review draws practical conclusions from the lactate shuttle concept for sports nutrition:
+
+**Central argument:** Regardless of carbohydrate form (glucose, maltodextrin, starch, fructose), the **systemic carbohydrate energy flux** in the body ultimately follows:
+
+```
+Hexose (glucose/glycogen) → Lactate → oxidative utilization OR liver glycogen storage
+```
+
+**Practical Implications:**
+
+<Table>
+
+| Question | Answer Based on the Lactate Shuttle Concept |
+|---|---|
+| Which carbohydrate form is optimal? | The form plays a secondary role; all carbohydrates pass through lactate as an intermediate |
+| Is lactate supplementation sensible? | Lactate salts (e.g., polylactate/calcium lactate) are GRAS-classified; buffer acidosis and provide direct substrate |
+| Why does training increase carbohydrate tolerance? | Increased MCT expression → improved lactate clearance without lactatemia |
+| What is the role of fructose? | Converted to lactate and glucose in the gut; enters systemic circulation primarily as lactate |
+| Ketones as an alternative to lactate? | No advantage when carbohydrates are sufficiently available; lactate and carbohydrates are more efficiently and directly available |
+
+<Fragment slot="caption">
+Sports-nutrition questions answered through the lactate shuttle concept.
+</Fragment>
+</Table>
+
+**Training-Specific Aspects:**
+- Endurance training increases the capacity for simultaneous lactate production and clearance → higher performance without hyperlactatemia
+- Pro Tour cyclists can sustain power outputs for hours at which untrained individuals would already develop hyperlactatemia
+- Lactate threshold training targets a shift in the equilibrium point between production and clearance
+
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- Blood lactate rises *before* blood glucose after a 75-g oral glucose load. Name the tissue responsible and explain why this refutes the idea that lactate production signals oxygen deficiency.
+- An athlete asks whether glucose, maltodextrin or fructose is the "best" carbohydrate for a long session. Answer using the lactate shuttle, and say what actually limits how much carbohydrate they can tolerate.
+
+### Key References
+- Brooks GA (2023). What the Lactate Shuttle Means for Sports Nutrition. *Nutrients*, 15(9), 2178. [10.3390/nu15092178](https://doi.org/10.3390/nu15092178)
+- Leija RG et al. (2024). Enteric and systemic postprandial lactate shuttle phases and dietary carbohydrate carbon flow in humans. *Nature Metabolism*, 6, 670–677. [10.1038/s42255-024-00993-1](https://doi.org/10.1038/s42255-024-00993-1)
+
+---
+
+## 4 The Lactate Curve in Practice — Threshold, Zones and the Clinical Shift
+
+**Learning objectives:**
+- Define the aerobic threshold (AeS = first lactate rise above baseline ≈ VT1) and the individual anaerobic threshold (IAS ≈ MLSS ≈ VT2/RCP), and state their %VO₂max positions (AeS ≈ 40–65 %, IAS ≈ 60–85 %) (Kindermann 2004).
+- Explain why individual thresholds outperform the fixed 4 mmol·L⁻¹ criterion, and why the Stegmann et al. 1981 method — which uses recovery lactate kinetics — is reliable, robust to glycogen depletion, and validated against the MLSS.
+- Read a lactate-performance curve: the dual lactate/HR axes, the operational LT and IAS definitions (Wasserman & McIlroy 1964), and the four colour-coded training zones (KB/regenerative, GA1, GA2, EB/threshold).
+- Interpret longitudinal curve shifts: a **right shift** (higher wattage at the same lactate) marks improved mitochondrial capacity, MCT1/MCT4 upregulation and clearance; a **left shift** (lactate at lower workloads) marks detraining, overreaching, infection or post-infectious deconditioning.
+- Apply the clinical case: in ME/CFS and Long COVID the curve left-shifts even after minimal effort, the IAS can fall below 100 W, and conventional zone-based prescription can be harmful without individualised lactate-guided assessment — and connect this to the post-exertional-malaise physiology of these conditions.
+- Integrate curve and shuttle: the exponential rise above IAS is the point where production (fast-glycolytic fibres) outstrips oxidative consumption via the intracellular and cell–cell shuttles, and above IAS lactate acts both as substrate and as lactormone (PGC-1α, VEGF, BDNF, fat-oxidation programs) (Brooks 2018).
+- State the key methodological caveats: protocol/modality specificity, resting-lactate variability affecting LT more than IAS, the need for replicated confidence bands, and the HR–lactate bridge to wearable monitoring.
+
+### 4.1 Background and rationale
+
+Classical exercise testing in the laboratory has long relied on spirometry and the measurement of maximal oxygen uptake (VO₂max) as the gold standard for cardiorespiratory fitness. However, a well-documented discrepancy exists between improvements in sport-specific endurance performance and increases in VO₂max — a limitation that became apparent already in the 1960s and 70s, when elite endurance athletes already exhibited VO₂max values of around or above 80 ml/min/kg. This ceiling effect prompted the development of submaximal performance concepts, particularly those based on blood lactate concentrations and ventilatory responses during graded exercise. Since the 1970s, the anaerobic threshold has become an established construct in international sports science, with firmly recognized roles in performance diagnostics and training load management.
+
+*Based on: Kindermann W (2004). Anaerobe Schwelle. Deutsche Zeitschrift für Sportmedizin, 55(6), 161–162.*
+
+### 4.2 Definitions: aerobic and anaerobic threshold
+
+From a training-physiological perspective, the aerobic-anaerobic transition zone is of particular significance. This zone is demarcated by two distinct thresholds:
+
+**Aerobic Threshold (AeS)**
+Defined as the point of the first lactate rise above resting levels during incremental exercise. It represents the lower boundary of the aerobic-anaerobic transition and corresponds to the first ventilatory threshold (VT1). At this point, accumulated lactic acid begins to be buffered by bicarbonate, releasing excess CO₂ and stimulating a disproportionate increase in ventilation — a phenomenon described by Hollmann as the point of optimal respiratory efficiency.
+
+**Anaerobic Threshold / Individual Anaerobic Threshold (IAS)**
+Represents the upper boundary of the aerobic-anaerobic transition zone and corresponds to the maximal lactate steady state (MLSS) — the highest exercise intensity at which blood lactate remains stable despite constant effort. On average, the anaerobic threshold is observed around 4 mmol/l blood lactate, though in trained endurance athletes it is typically lower. The corresponding ventilatory marker is the second ventilatory threshold (VT2), also termed the respiratory compensation point (RCP), where hydrogen ions from lactic acid can no longer be fully buffered, driving further stimulation of ventilation via pH-mediated mechanisms. While VT2 and the lactate-derived anaerobic threshold are conceptually related, they are not numerically identical.
+
+### 4.3 Methodological aspects and quality criteria
+
+A wide variety of threshold determination methods exist, and the resulting threshold values are generally not interchangeable between methods, as most threshold models remain inadequately validated. A key methodological distinction concerns fixed versus individual thresholds:
+
+**Fixed lactate thresholds** (e.g., the 4 mmol/l criterion) are straightforward to apply but fail to account for interindividual variation — identical lactate concentrations can reflect markedly different metabolic states in different athletes.
+
+**Individual anaerobic thresholds** are therefore preferable, as they account for sport-specific and training-state-dependent variation in threshold lactate concentrations. The method developed by Stegmann et al. (1981) additionally incorporates lactate kinetics during early recovery, and has been validated as reflecting the MLSS. This approach demonstrates high reliability (test-retest consistency) and is robust to glycogen depletion. Importantly, step duration prolongation does not significantly affect the determined threshold, whereas reducing step height leads to an upward shift — a key consideration in test design.
+
+For ventilatory threshold determination, ramp protocols are recommended over stepwise increments, as abrupt step transitions can introduce artifacts that mimic threshold responses. Lactate thresholds, by contrast, are typically determined using stepwise protocols.
+
+### 4.4 Physiological significance as a breakpoint
+
+The anaerobic threshold is not merely a metabolic marker but represents a genuine physiological breakpoint with multi-system implications. Exceeding the anaerobic threshold triggers disproportionate increases in plasma catecholamines (epinephrine and norepinephrine) and elicits significant changes in immunological parameters — including natural killer cell mobilization and oxidative burst activity. This has direct relevance to exercise immunology, underscoring that intensity relative to the anaerobic threshold is a critical determinant of immune responses to exercise.
+
+The anaerobic threshold is a reliable, motivation-independent marker of endurance capacity. Performance at the anaerobic threshold typically corresponds to approximately 60–85% VO₂max (sport- and training-state dependent), while the aerobic threshold corresponds to approximately 40–65% VO₂max.
+
+### 4.5 Training intensity prescription: the two-threshold model
+
+The dual-threshold model (Kindermann, Simon & Keul, 1979) provides a practical framework for training intensity zonation based on the aerobic-anaerobic transition. Key zones are defined as follows:
+
+<Table>
+
+| Zone | Intensity (% IAS) | Lactate (mmol/l) | Description |
+|---|---|---|---|
+| Regenerative training | < 70% | < 2 | Below aerobic threshold; recovery-oriented |
+| Basic Endurance I (GA I) | 70–90% | ~1.5–2.5 | Extensive aerobic training |
+| Basic Endurance II (GA II) / Tempo runs (TDL) | 90–100% | ~3–5 | Intensive aerobic with anaerobic contribution |
+| Interval Training (IVT) | > 100% | Variable | Supra-threshold; varies with intensity and recovery |
+
+<Fragment slot="caption">
+Endurance training zones by lactate and % IAS.
+</Fragment>
+</Table>
+
+In applied sport contexts, elite marathon runners compete at approximately their anaerobic threshold, and regional-level marathon athletes (~3:00 h finish time) run at roughly 95% of threshold speed. Training intensity recommendations should be expressed as heart rate targets. Notably, beta-blocker use does not influence the lactate-power curve, enabling accurate training prescription even in this clinical population.
+
+### 4.6 Anaerobic threshold and fat oxidation
+
+Maximum absolute fat oxidation occurs at approximately 55–72% VO₂max (68–79% HRmax), which corresponds to the aerobic-anaerobic transition zone. Only above the anaerobic threshold does the relative contribution of fat to total energy supply decline substantially. This means that training at approximately 90% of IAS simultaneously achieves maximal fat oxidation — a finding with implications for both athletic performance and preventive/therapeutic exercise programming.
+
+### 4.7 Preventive and rehabilitative applications
+
+In preventive and rehabilitative exercise medicine, training intensity recommendations are similarly anchored to the aerobic-anaerobic transition. Shorter training sessions may be conducted at 90–100% IAS, while longer sessions should remain near the aerobic threshold. Supra-threshold exercise — i.e., above the anaerobic threshold — is not relevant for health-oriented training and carries risks in patient populations. Lactate-based training targets should be validated under field conditions given the potential for biomechanical and coordinative differences between laboratory ergometry and sport-specific movement.
+
+### 4.8 Summary of the threshold concept
+
+The anaerobic threshold — particularly when determined as the individual anaerobic threshold (IAS) corresponding to the maximal lactate steady state — is a reliable, clinically meaningful, and motivation-independent indicator of endurance capacity. It outperforms fixed lactate concentrations (e.g., 4 mmol/l) by accounting for interindividual metabolic variation. The two-threshold model provides a validated framework for training intensity prescription across competitive sport, preventive, and rehabilitative contexts. Its physiological significance extends beyond metabolism to encompass autonomic, hormonal, and immune system responses — the latter being of direct relevance to exercise immunology and research on post-infectious conditions such as ME/CFS and Long COVID.
+
+### 4.9 The lactate performance curve
+
+Fig. 1 of Kindermann (2004) shows a representative lactate performance curve derived from five serial cycle ergometer tests in a single subject (starting at 100 W, incremental steps of 20 W every 3 minutes). Two physiologically distinct thresholds are identified.  
+Link: https://www.germanjournalsportsmedicine.com/fileadmin/content/archiv2004/heft06/Standards_Kindermann.pdf
+
+<Table>
+
+| Threshold | Abbreviation | Operational Definition |
+|---|---|---|
+| Lactate Threshold | **LT** | First systematic rise in blood lactate above resting baseline; aerobic–anaerobic transition (Wasserman & McIlroy 1964) |
+| Individual Anaerobic Threshold | **IAS** | Maximal lactate steady-state power; highest workload at which lactate production and clearance remain in dynamic equilibrium |
+
+<Fragment slot="caption">
+Operational definitions of the lactate and individual anaerobic thresholds.
+</Fragment>
+</Table>
+
+In this individual, **LT occurred at 200 W** and **IAS at 250 W**, both determined on 22.12.2013.
+
+### 4.10 Dual-axis presentation: lactate and heart rate
+
+The figure employs a dual y-axis layout characteristic of lactate diagnostics in German-speaking sports medicine:
+
+- **Lower curves (red, squares):** Blood lactate in mmol/l — the primary diagnostic variable. The characteristic J-shaped curve (flat aerobic baseline, exponential rise above IAS) is clearly visible, with confidence bands from repeated testing highlighting within-subject variability.
+- **Upper curves (blue, squares):** Heart rate in beats/min — used for transfer of laboratory thresholds into field-based training intensity prescription. Because heart rate is measurable continuously during training, it serves as the *operationalization* of metabolically defined zones.
+
+The simultaneous capture of both signals is considered standard practice in threshold diagnostics and allows real-time training steering via HR-based target ranges.
+
+### 4.11 Training zone architecture
+
+The colored background zones map metabolic states to practical training categories:
+
+<Table>
+
+| Zone | German Label | Physiological Basis |
+|---|---|---|
+| Light green | **Regeneratives Training (KB)** | Below aerobic threshold; active recovery; lactate ≈ 1.5–2.0 mmol/l |
+| Yellow | **Extensive Grundlagen (GA1)** | Aerobic base development; LT to mid-aerobic range; lactate 2–3 mmol/l |
+| Orange | **Intensive Grundlagen (GA2)** | Approach to IAS; highest tolerable steady-state intensity; lactate 3–4 mmol/l |
+| Pale red | **Schwellentraining (EB)** | At or near IAS; maximal lactate steady state; lactate ~4 mmol/l (interindividual variation ±1–2 mmol/l) |
+
+<Fragment slot="caption">
+Colour-coded training zones and their physiological basis.
+</Fragment>
+</Table>
+
+Training above the EB zone leads to progressive lactate accumulation and cannot be sustained beyond minutes — this is the domain of interval and competition training, not base endurance development.
+
+### 4.12 Longitudinal interpretation: right vs. left shift
+
+The core diagnostic value of serial testing lies in detecting **curve shift** as a marker of adaptation:
+
+- **Rechtsverschiebung (right shift, green arrow):** The lactate curve shifts to higher wattage at the same lactate concentration → improved mitochondrial capacity, enhanced lactate clearance (MCT1/MCT4 upregulation), increased fat oxidation at submaximal intensity. Physiologically equivalent to increased capillarization and Type I fiber oxidative capacity. Indicates **improved aerobic endurance performance**.
+- **Linksverschiebung (left shift, red arrow):** The curve shifts leftward → lactate accumulates at lower workloads → detraining, overreaching, infection, or post-infectious deconditioning. In ME/CFS and Long COVID research contexts, persistent left shift patterns at low absolute workloads are consistent with impaired oxidative metabolism and post-exertional malaise (PEM) physiology.
+
+**Clinical note:** In patients with post-infectious syndromes (ME/CFS, Long COVID), lactate curve left-shifts may occur even after minimal effort. The IAS in these populations can fall below 100 W — or even below resting-normalized aerobic threshold — making conventional zone-based training prescription potentially harmful without individualized lactate-guided assessment.
+
+### 4.13 Methodological considerations
+
+1. **Protocol specificity:** The 3-minute step protocol shown here is ergometer-specific. Biomechanical and coordinative differences between cycling and running mean that thresholds cannot be transferred across modalities without sport-specific re-testing.
+2. **Resting lactate variability:** Pre-test resting lactate (baseline) can vary substantially (0.8–2.0 mmol/l) due to prior activity, nutritional status, psychological stress, and circadian effects. This affects the absolute position of the LT but has less influence on the IAS.
+3. **Confidence bands:** The dotted boundary curves in the figure illustrate test-retest variability across five sessions, emphasizing that threshold diagnostics require replication to establish stable reference values for training prescription.
+4. **Wearable integration:** In research contexts using continuous physiological monitoring (e.g., Firstbeat Bodyguard 3, Polar H10, Oura Ring), heart rate–lactate relationships derived from ergometry can be used to approximate metabolic intensity zones from HR alone — a key methodological bridge between laboratory diagnostics and free-living monitoring in studies on training load and recovery.
+
+### 4.14 Integration with lactate shuttle theory (Brooks)
+
+The exponential lactate rise above IAS visible in Fig. 1 of Kindermann (2004) reflects the transition from net lactate *clearance* to net lactate *accumulation* — the point at which production (primarily fast-glycolytic fibers, cytoplasmic) exceeds the oxidative capacity of mitochondria-rich slow-twitch fibers and cardiac muscle to consume lactate via the intracellular and cell-to-cell lactate shuttles (MCT1-mediated import, mitochondrial lactate oxidation complex). Above IAS, circulating lactate serves both as a metabolic substrate (oxidized in heart, liver, slow-twitch muscle) and as a **signaling molecule** (lactormone) — activating PGC-1α, VEGF, BDNF, and fat oxidation gene programs — consistent with the updated lactate shuttle framework described by Brooks (2018, 2022, 2023).
+
+### 4.15 Conceptual overview
+
+```
+Dietary carbohydrates
+        ↓ [Enteric PLS – Leija 2024]
+Lactate (gut/portal vein)
+        ↓
+Systemic circulation
+        ↓ [Hui 2017 – primary TCA substrate]
+TCA cycle (heart, brain, muscle, liver)
+        ↓
+OXPHOS activation
+        ↓ [Cai 2023 – direct ETC activation, independent of metabolism]
+ATP synthesis + suppression of glycolysis
+        ↑
+Exercise-induced lactate
+        ↓ [Brooks 2018/2022 – Cell-Cell, Intracellular, Organ-Organ Shuttle]
+Redistribution via MCT → consumer organs
+```
+
+### One-Minute-Paper Topics
+<Note>
+  A **One-Minute-Paper** (OMP) is a short, focused prompt that students answer in ~60 seconds at the end of a session to consolidate learning, surface misconceptions, and provide formative feedback.  When answering, be concise, specific, and use terminology from today's session.
+</Note>
+- Define the lactate threshold and explain why it is individualised.
+- Compare maximal lactate steady state (MLSS) and the second lactate threshold (LT2).
+- What does a left- vs. right-shifted lactate curve tell you about training adaptation?
+- Why can resting lactate be elevated in patients with mitochondrial dysfunction?
+- How might lactate kinetics differ between healthy controls and ME/CFS patients?
+- What does delayed lactate clearance suggest about oxidative metabolism?
+- Which methodological factors (sampling site, analyser, protocol) most influence lactate values?
+- Explain why blood lactate alone is insufficient to characterise an athlete's metabolic profile.
+- How would you design a lactate-based diagnostic protocol for a Long COVID patient?
+- Name one limitation of using lactate thresholds in untrained or clinical populations.
+
+### Key References
+- Brooks GA (2018). The Science and Translation of Lactate Shuttle Theory. *Cell Metabolism*, 27, 757–785. [10.1016/j.cmet.2018.03.008](https://doi.org/10.1016/j.cmet.2018.03.008)
+- Kindermann W (2004). Anaerobe Schwelle. *Deutsche Zeitschrift für Sportmedizin*, 55(6), 161–162.
+- Stegmann H, Kindermann W, Schnabel A (1981). Lactate kinetics and individual anaerobic threshold. *International Journal of Sports Medicine*, 2, 160–165.
+- Wasserman K & McIlroy MB (1964). Detecting the threshold of anaerobic metabolism in cardiac patients during exercise. *American Journal of Cardiology*, 14, 844–852. [10.1016/0002-9149(64)90012-8](https://doi.org/10.1016/0002-9149(64)90012-8)
 
 ---
 
 ## References
 
-- Alis R et al. (2015) Hemoconcentration induced by exercise: revisiting the Dill and Costill equation. *Scand J Med Sci Sports* 25(6):e630–e637.
-- Barrett B, Locken K, Maberry R, Schwamman J, Brown R et al. (2002) The Wisconsin upper respiratory symptom survey (WURSS): a new research instrument for assessing the common cold. *J Fam Pract* 51:265.
-- Barrett B, Brown R, Mundt M, Safdar N, Dye L et al. (2005) The Wisconsin upper respiratory symptom survey is responsive, reliable, and valid. *J Clin Epidemiol* 58:609-617.
-- Halle M et al. (2021) Exercise and sports after COVID-19. *Transl Sports Med* 4:310-318.
-- Nieman DC, Wentz LM (2019) The compelling link between physical activity and the body's defense system. *J Sport Health Sci* 8(3):201-217.
-- Puta C, Haunhorst S, Gabriel HHW (2026) Sport und Immunsystem. In: Wonisch M et al. (eds) *Kompendium der Sportmedizin*. Springer.
-- Schwellnus M et al. (2022) IOC consensus statement on acute respiratory illness in athletes. *Br J Sports Med*.
-- Simon R et al. (2026) Acute effects of physical exercise on biomarkers of the trace elements selenium, zinc, copper, and iron. *J Trace Elem Med Biol* 94:127828.
+- Brooks GA (2018). The Science and Translation of Lactate Shuttle Theory. *Cell Metabolism*, 27, 757–785. [10.1016/j.cmet.2018.03.008](https://doi.org/10.1016/j.cmet.2018.03.008)
+- Brooks GA et al. (2022). Tracing the lactate shuttle to the mitochondrial reticulum. *Experimental & Molecular Medicine*, 54, 1332–1347. [10.1038/s12276-022-00802-3](https://doi.org/10.1038/s12276-022-00802-3)
+- Brooks GA (2023). What the Lactate Shuttle Means for Sports Nutrition. *Nutrients*, 15(9), 2178. [10.3390/nu15092178](https://doi.org/10.3390/nu15092178)
+- Cai X et al. (2023). Lactate activates the mitochondrial electron transport chain independently of its metabolism. *Molecular Cell*, 83, 3904–3920. [10.1016/j.molcel.2023.09.034](https://doi.org/10.1016/j.molcel.2023.09.034)
+- Hui S et al. (2017). Glucose feeds the TCA cycle via circulating lactate. *Nature*, 551, 115–118. [10.1038/nature24057](https://doi.org/10.1038/nature24057)
+- Kindermann W (2004). Anaerobe Schwelle. *Deutsche Zeitschrift für Sportmedizin*, 55(6), 161–162.
+- Kindermann W, Simon G, Keul J (1979). The significance of the aerobic-anaerobic transition for the determination of work load intensities during endurance training. *European Journal of Applied Physiology and Occupational Physiology*, 42, 25–34. [10.1007/BF00421101](https://doi.org/10.1007/BF00421101)
+- Leija RG et al. (2024). Enteric and systemic postprandial lactate shuttle phases and dietary carbohydrate carbon flow in humans. *Nature Metabolism*, 6, 670–677. [10.1038/s42255-024-00993-1](https://doi.org/10.1038/s42255-024-00993-1)
+- Stegmann H, Kindermann W, Schnabel A (1981). Lactate kinetics and individual anaerobic threshold. *International Journal of Sports Medicine*, 2, 160–165.
+- Wasserman K & McIlroy MB (1964). Detecting the threshold of anaerobic metabolism in cardiac patients during exercise. *American Journal of Cardiology*, 14, 844–852. [10.1016/0002-9149(64)90012-8](https://doi.org/10.1016/0002-9149(64)90012-8)
