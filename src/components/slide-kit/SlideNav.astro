@@ -22,10 +22,10 @@ const { backHref, backLabel = 'Lecture', startHref, prevHref, nextHref, class: c
   aria-label="Slide controls"
 >
   {isDraft && import.meta.env.DEV ? (
-    <span class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg bg-red-600 text-white font-semibold uppercase tracking-wide">Draft</span>
+    <span class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg bg-signal text-white font-semibold uppercase tracking-wide">Draft</span>
   ) : null}
   {isHidden && import.meta.env.DEV ? (
-    <span class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg bg-pink-600 text-white font-semibold uppercase tracking-wide">Hidden</span>
+    <span class="slide-nav-btn px-4 py-3 md:px-3 md:py-2 rounded-lg border border-signal text-signal font-semibold uppercase tracking-wide">Hidden</span>
   ) : null}
   <a
     id="lecture-link"

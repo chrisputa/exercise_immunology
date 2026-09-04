@@ -22,16 +22,18 @@
     --border-main: #171717;
     --accent: #1f2937;       /* near-black slate for links */
     --accent-hover: #000000;
+    --signal: #d0202a;
     --weight-heading: 400;
 }
 html.dark {
-    --text-main: #f2f1ec;
-    --text-muted: #ede8e8;
-    --bg-main: #171717;
-    --bg-muted: #242424;
-    --border-main: #f2f1ec;
-    --accent: #e8e8e8;
-    --accent-hover: #ffffff;
+    --text-main: #eef3f5;
+    --text-muted: #7e8992;
+    --bg-main: #0a1014;
+    --bg-muted: #0f171d;
+    --border-main: #d0d9dd;
+    --accent: #d0d9dd;
+    --accent-hover: #eef3f5;
+    --signal: #f5454d;
 }
 
 @theme inline {
@@ -46,6 +48,7 @@ html.dark {
     --border-color-main: var(--border-main);
     --color-accent: var(--accent);
     --color-accent-hover: var(--accent-hover);
+    --color-signal: var(--signal);
 }
 
 /* Declare cascade order so @layer slides comes last */
@@ -168,6 +171,10 @@ html.dark {
         font-variant: small-caps;
         font-size: 1.08em;
         letter-spacing: 0.02em;
+    }
+
+    .prose .signal {
+        color: var(--signal);
     }
 
     .prose pre {
