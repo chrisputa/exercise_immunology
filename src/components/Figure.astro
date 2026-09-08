@@ -5,21 +5,33 @@ import { getNextFigureNumber } from '../utils/figure-registry.js';
 // `panels` lets one caption cover several stacked images (e.g. two related
 // panels sharing a description). Each entry is { src, srcDark?, alt } and gets
 // its own figure number, so the label collapses to a range: "Figure 2 & 3."
-const { src, alt, srcDark, margin = false, panels = [] } = Astro.props;
-
-// Reserve one number per image so physical figure order stays correct.
-const startNum = getNextFigureNumber();
-let endNum = startNum;
-for (let i = 0; i < panels.length; i++) endNum = getNextFigureNumber();
+//
+// `label` replaces the auto-generated one and, crucially, leaves the per-page
+// registry untouched — the figure index reuses this component to re-display
+// figures under the number they carry in their own lecture, and must not
+// disturb any numbering on the page it renders into.
+const { src, alt, srcDark, margin = false, panels = [], label } = Astro.props;
 
 const hasCaption = Astro.slots.has('default');
-const figLabel = !hasCaption
-    ? undefined
-    : endNum === startNum
-        ? `Figure ${startNum}`
-        : endNum === startNum + 1
-            ? `Figure ${startNum} & ${endNum}`
-            : `Figure ${startNum}–${endNum}`;
+
+let figLabel = label;
+
+if (!label) {
+    // Reserve one number per image so physical figure order stays correct.
+    const startNum = getNextFigureNumber();
+    let endNum = startNum;
+    for (let i = 0; i < panels.length; i++) endNum = getNextFigureNumber();
+
+    figLabel = !hasCaption
+        ? undefined
+        : endNum === startNum
+            ? `Figure ${startNum}`
+            : endNum === startNum + 1
+                ? `Figure ${startNum} & ${endNum}`
+                : `Figure ${startNum}–${endNum}`;
+}
+
+if (!hasCaption) figLabel = undefined;
 
 const images = [{ src, srcDark, alt }, ...panels];
 ---

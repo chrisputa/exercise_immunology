@@ -1,28 +1,55 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import FigureIndex from '../../components/FigureIndex.astro';
 import Link from '../../components/Link.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getFigureIndexConfig } from '../../utils/figure-index-page';
 
 export async function getStaticPaths() {
     const lectures = await getCollection('lectures');
 
-    return lectures.map((lecture) => ({
+    const paths = lectures.map((lecture) => ({
         params: { lecture: lecture.id },
-        props: {
-            lecture
-        }
+        props: { lecture }
     }));
+
+    // The figure index is synthesised, not a content folder, so it rides along
+    // on this route instead of getting its own: a second dynamic route at this
+    // level would collide with [lecture]. Disabled in frontmatter, it is simply
+    // never emitted.
+    const figureIndex = await getFigureIndexConfig();
+
+    if (figureIndex && !lectures.some((lecture) => lecture.id === figureIndex.slug)) {
+        paths.push({
+            params: { lecture: figureIndex.slug },
+            props: { figureIndex } as any
+        });
+    }
+
+    return paths;
 }
 
 type Props = {
-    lecture: CollectionEntry<'lectures'>;
+    lecture?: CollectionEntry<'lectures'>;
+    figureIndex?: { slug: string; title: string; description?: string };
 };
 
-const { lecture } = Astro.props;
-const { title, seo } = lecture.data;
-const { Content } = await render(lecture);
+const { lecture, figureIndex } = Astro.props;
+
+const title = figureIndex ? figureIndex.title : lecture!.data.title;
+const seo = figureIndex ? undefined : lecture!.data.seo;
+const { Content } = lecture ? await render(lecture) : { Content: null };
 ---
 
 <PageLayout title={title} seo={seo} showHeader={false}>
-    <Content components={{ a: Link }} />
+    {
+        figureIndex ? (
+            <>
+                {figureIndex.description && <p>{figureIndex.description}</p>}
+                <FigureIndex />
+            </>
+        ) : (
+            <Content components={{ a: Link }} />
+        )
+    }
 </PageLayout>

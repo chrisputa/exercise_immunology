@@ -24,6 +24,18 @@ const subcategorySchema = z.object({
     description: z.string().optional()
 });
 
+// An auto-generated listing entry that collects every figure of every
+// non-draft lecture onto one page. It is not a content folder: the page is
+// synthesised at build time from the lecture sources (see utils/figure-index).
+// Omit the field, or set `enabled: false`, and the page is never built.
+const figureIndexSchema = z.object({
+    enabled: z.boolean().default(true),
+    /** URL segment under /lectures/; must not collide with a lecture folder. */
+    slug: z.string().default('figures'),
+    title: z.string().default('Figure Index'),
+    description: z.string().optional()
+});
+
 const pages = defineCollection({
     loader: glob({pattern: '**/*.{md,mdx}', base: './src/content/pages'}),
     schema: z.object({
@@ -31,6 +43,7 @@ const pages = defineCollection({
         seo: seoSchema.optional(),
         showHeader: z.boolean().default(false),
         subcategories: z.array(subcategorySchema).optional(),
+        figureIndex: figureIndexSchema.optional(),
         // Optional iframe embed: when set, the page is rendered with DashboardLayout
         // instead of PageLayout (see src/pages/[...id].astro).
         iframeSrc: z.string().optional(),

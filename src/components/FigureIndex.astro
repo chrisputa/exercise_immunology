@@ -1,0 +1,94 @@
+---
+import { marked } from 'marked';
+import Figure from './Figure.astro';
+import Link from './Link.astro';
+import { figureLabel, getFigureIndexSections } from '../utils/figure-index-page';
+
+// Captions are rendered here rather than in the template because marked's
+// return type is sync-or-async and Astro templates cannot await inline.
+// They are plain inline markdown in every lecture, so a full parse is enough.
+const sections = await Promise.all(
+    (await getFigureIndexSections()).map(async (section) => ({
+        ...section,
+        figures: await Promise.all(
+            section.figures.map(async (figure) => ({
+                ...figure,
+                label: figureLabel(section.displayName, figure),
+                captionHtml: figure.caption ? await marked.parse(figure.caption) : ''
+            }))
+        )
+    }))
+);
+
+const total = sections.reduce((sum, section) => sum + section.figures.length, 0);
+---
+
+{
+    sections.length === 0 ? (
+        <p>No figures found.</p>
+    ) : (
+        <>
+            <p class="text-muted">
+                {total} figures from {sections.length} lectures.
+            </p>
+
+            {sections.map((section) => (
+                <section>
+                    <h2>
+                        <Link href={`/lectures/${section.lectureId}/`}>
+                            {section.displayName}: {section.title}
+                        </Link>
+                    </h2>
+
+                    {section.figures.map((figure) =>
+                        figure.captionHtml ? (
+                            <Figure
+                                src={figure.src}
+                                srcDark={figure.srcDark}
+                                alt={figure.alt}
+                                panels={figure.panels}
+                                margin={figure.margin}
+                                label={figure.label}
+                            >
+                                <Fragment set:html={figure.captionHtml} />
+                            </Figure>
+                        ) : (
+                            <Figure
+                                src={figure.src}
+                                srcDark={figure.srcDark}
+                                alt={figure.alt}
+                                panels={figure.panels}
+                                margin={figure.margin}
+                            />
+                        )
+                    )}
+                </section>
+            ))}
+        </>
+    )
+}
+
+<style>
+    /* Figures sit back-to-back here instead of being separated by body text,
+       so they need the breathing room the prose flow would otherwise supply. */
+    section :global(figure) {
+        margin-block: 2.5rem;
+    }
+
+    section + section {
+        margin-top: 4rem;
+    }
+
+    /* On md+ the caption is a right float, which does not contribute to its
+       figure's height — so a caption taller than its image would overhang into
+       the next figure, whose own caption then has to clear it and drifts out of
+       line with its image. A block formatting context makes each figure enclose
+       its caption, so the next one starts below both.
+       Scoped to this page on purpose: in a lecture the overhang is the intended
+       Tufte behaviour, with body text flowing alongside a long margin caption. */
+    @media (min-width: 768px) {
+        section :global(figure) {
+            display: flow-root;
+        }
+    }
+</style>

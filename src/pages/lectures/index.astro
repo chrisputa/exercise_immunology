@@ -4,6 +4,7 @@ import Link from '../../components/Link.astro';
 import LecturePreview from '../../components/LecturePreview.astro';
 import ListLayout from '../../layouts/ListLayout.astro';
 import { groupEntries } from '../../utils/collection-groups';
+import { getFigureIndexConfig } from '../../utils/figure-index-page';
 
 const lectures = (await getCollection('lectures')).filter((lecture) => !lecture.data.draft);
 const preamble = await getEntry('pages', 'lectures');
@@ -15,6 +16,10 @@ const { Content } = preamble ? await render(preamble) : { Content: () => '' };
 // Without `subcategories` in the page frontmatter this yields a single
 // unlabelled group, i.e. the plain numbered list.
 const groups = groupEntries(lectures, preamble?.data?.subcategories, { defaultLabel: 'Lecture' });
+
+// Rendered after every group and without a running number: it is generated
+// from the lectures rather than being one of them. Null when switched off.
+const figureIndex = await getFigureIndexConfig();
 ---
 
 <ListLayout title={title} image={image} showHeader={showHeader}>
@@ -48,5 +53,17 @@ const groups = groupEntries(lectures, preamble?.data?.subcategories, { defaultLa
                 ))}
             </section>
         ))}
+
+        {figureIndex && (
+            <section>
+                <LecturePreview
+                    lecture={{
+                        id: figureIndex.slug,
+                        data: { title: figureIndex.title, description: figureIndex.description }
+                    } as any}
+                    class="mt-16 border-t border-[var(--text-main)] pt-6 sm:mt-20"
+                />
+            </section>
+        )}
     </div>
 </ListLayout>
