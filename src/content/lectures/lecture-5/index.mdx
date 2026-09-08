@@ -7,6 +7,11 @@ draft: false
 
 import { Note } from '../../../components/MarginNote/index.js';
 import Table from '../../../components/Table.astro';
+import Figure from '../../../components/Figure.astro';
+import fig1 from '../../../assets/overtraining_01_continuum.png';
+import fig1Dark from '../../../assets/overtraining_01_continuum_dark.png';
+import fig2 from '../../../assets/overtraining_02_lactate_signature_ots_vs_pais.png';
+import fig2Dark from '../../../assets/overtraining_02_lactate_signature_ots_vs_pais_dark.png';
 
 
 ## Table of Contents
@@ -43,6 +48,10 @@ Exercise follows a **biphasic dose–response** (Radak 2008): sedentary and chro
 The overtraining continuum and typical recovery timeframes.
 </Fragment>
 </Table>
+
+<Figure src={fig1} srcDark={fig1Dark} alt="The overtraining continuum on a logarithmic recovery axis">
+On a logarithmic recovery axis the three states stop looking like neighbours: every step down the continuum multiplies the cost by roughly ten, and only OTS has no defined end. The lower band contrasts the two autonomic forms after Israel. Terminology and recovery windows after the ECSS/ACSM consensus statement (Meeusen et al. 2013).
+</Figure>
 
 **Prevalence** (Meeusen 2013): 7–21% per season; career rate ~60% in elite endurance athletes; **91% relapse** after a first OTS episode.
 
@@ -320,6 +329,10 @@ Underperformance ≥ 2 weeks
 Lactate and metabolic signatures distinguishing OTS from ME/CFS and Long COVID.
 </Fragment>
 </Table>
+
+<Figure src={fig2} srcDark={fig2Dark} alt="Lactate–power curves in OTS versus ME/CFS and Long COVID">
+Both conditions lower maximal lactate, but only one moves the curve. Overtraining reproduces the healthy lactate–power curve under a lower ceiling — the defect is reduced production. ME/CFS and Long COVID shift the whole curve left and up, and 4 mmol·L⁻¹ arrives 44 percentage points earlier — a clearance defect. Schematic curves; discriminating features after Lien et al. (2019), Snell et al. (2013) and Haunhorst et al. (2022).
+</Figure>
 
 **Mechanism in post-infectious syndromes** (Haunhorst 2022, 2024; Joseph 2023; Singh 2022):
 

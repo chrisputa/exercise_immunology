@@ -6,6 +6,11 @@ draft: false
 
 import { Note } from '../../../components/MarginNote/index.js';
 import Table from '../../../components/Table.astro';
+import Figure from '../../../components/Figure.astro';
+import discriminators from '../../../assets/symptoms_01_exercise_vs_infection_discriminators.png';
+import discriminatorsDark from '../../../assets/symptoms_01_exercise_vs_infection_discriminators_dark.png';
+import algorithmA from '../../../assets/symptoms_02_acute_symptom_algorithm.png';
+import algorithmADark from '../../../assets/symptoms_02_acute_symptom_algorithm_dark.png';
 
 
 ## Table of Contents
@@ -78,6 +83,10 @@ The classic **"neck check" heuristic** remains a practical first-line decision t
 Differentiating exercise-induced from infection-based symptoms.
 </Fragment>
 </Table>
+
+<Figure src={discriminators} srcDark={discriminatorsDark} alt="The eight signs ordered by discriminating power">
+The same eight signs, ordered by the distance they put between the two causes — the length of each line is its discriminating power. Fever decides the question without a laboratory, CRP separates almost as sharply but needs a blood sample, and muscle soreness, performance loss and heart rate hardly separate the two at all. Positions are a clinical judgement of typical deviation, not measurements.
+</Figure>
 
 ### One-Minute-Paper Topics
 <Note>
@@ -187,24 +196,9 @@ The following tiered approach is proposed for the standardised evaluation of imm
 
 ### 3.1 Algorithm A: Acute Symptom Onset in Athletes
 
-```
-Acute symptoms during training or competition period
-        │
-        ▼
-Fever ≥ 37.5 °C OR below-neck symptoms? ──YES──► STOP training · Medical evaluation
-        │
-       NO
-        ▼
-Symptoms above neck only + no systemic signs?
-        │
-       YES
-        ▼
-Reduce intensity ≤ 60% VO₂max · Monitor for 24–48 h
-        │
-Symptom-free after 48 h? ──YES──► Gradual return to normal training
-        │
-       NO ──► Medical evaluation · Level 1 diagnostics
-```
+<Figure src={algorithmA} srcDark={algorithmADark} alt="Algorithm A — acute symptom onset in athletes">
+Every acute presentation runs through the same two gates. Fever or any symptom below the neck ends the session; only symptoms above the neck, without systemic signs, permit reduced training under observation, and even then a 48-hour review has to confirm it. Outlined boxes are decisions, filled boxes actions.
+</Figure>
 
 ### 3.2 Algorithm B: Return-to-Sport Clearance After Confirmed Infection
 

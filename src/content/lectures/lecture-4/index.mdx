@@ -6,24 +6,24 @@ draft: false
 
 import Figure from '../../../components/Figure.astro';
 import Table from '../../../components/Table.astro';
-import fig1 from '../../../assets/fig7-1_gk97_biphasic_kinetics_bw.png';
-import fig1Dark from '../../../assets/generated/fig7-1_gk97_biphasic_kinetics_bw_dark.png';
-import fig2 from '../../../assets/fig7-2_gk97_exercise_vs_infection_bw.png';
-import fig2Dark from '../../../assets/generated/fig7-2_gk97_exercise_vs_infection_bw_dark.png';
-import fig3 from '../../../assets/fig7-3_gk97_monocyte_maturation_bw.png';
-import fig3Dark from '../../../assets/generated/fig7-3_gk97_monocyte_maturation_bw_dark.png';
-import fig4 from '../../../assets/fig7-4_gab03_leukocytes_bw.png';
-import fig4Dark from '../../../assets/generated/fig7-4_gab03_leukocytes_bw_dark.png';
-import fig5 from '../../../assets/fig7-5_gab03_two_waves_bw.png';
-import fig5Dark from '../../../assets/generated/fig7-5_gab03_two_waves_bw_dark.png';
-import fig6 from '../../../assets/fig7-6_gab03_monocyte_subsets_bw.png';
-import fig6Dark from '../../../assets/generated/fig7-6_gab03_monocyte_subsets_bw_dark.png';
-import fig7 from '../../../assets/fig7-7_gab98_nk_cells_bw.png';
-import fig7Dark from '../../../assets/generated/fig7-7_gab98_nk_cells_bw_dark.png';
-import fig8 from '../../../assets/fig7-8_gab98_cytotoxic_tcells_bw.png';
-import fig8Dark from '../../../assets/generated/fig7-8_gab98_cytotoxic_tcells_bw_dark.png';
-import fig9 from '../../../assets/fig7-9_gab98_tcell_subsets_bw.png';
-import fig9Dark from '../../../assets/generated/fig7-9_gab98_tcell_subsets_bw_dark.png';
+import fig1 from '../../../assets/acuteresponse_01_gk97_biphasic_kinetics.png';
+import fig1Dark from '../../../assets/acuteresponse_01_gk97_biphasic_kinetics_dark.png';
+import fig2 from '../../../assets/acuteresponse_02_gab03_leukocytes.png';
+import fig2Dark from '../../../assets/acuteresponse_02_gab03_leukocytes_dark.png';
+import fig3 from '../../../assets/acuteresponse_03_gab03_two_waves.png';
+import fig3Dark from '../../../assets/acuteresponse_03_gab03_two_waves_dark.png';
+import fig4 from '../../../assets/acuteresponse_04_gab03_monocyte_subsets.png';
+import fig4Dark from '../../../assets/acuteresponse_04_gab03_monocyte_subsets_dark.png';
+import fig5 from '../../../assets/acuteresponse_05_gk97_monocyte_maturation.png';
+import fig5Dark from '../../../assets/acuteresponse_05_gk97_monocyte_maturation_dark.png';
+import fig6 from '../../../assets/acuteresponse_06_gk97_exercise_vs_infection.png';
+import fig6Dark from '../../../assets/acuteresponse_06_gk97_exercise_vs_infection_dark.png';
+import fig7 from '../../../assets/acuteresponse_07_gab98_nk_cells.png';
+import fig7Dark from '../../../assets/acuteresponse_07_gab98_nk_cells_dark.png';
+import fig8 from '../../../assets/acuteresponse_08_gab98_cytotoxic_tcells.png';
+import fig8Dark from '../../../assets/acuteresponse_08_gab98_cytotoxic_tcells_dark.png';
+import fig9 from '../../../assets/acuteresponse_09_gab98_tcell_subsets.png';
+import fig9Dark from '../../../assets/acuteresponse_09_gab98_tcell_subsets_dark.png';
 import { Note } from '../../../components/MarginNote/index.js';
 
 
@@ -98,13 +98,13 @@ This section synthesises Figs. 3–8 of Gabriel & Kindermann (1997), Figs. 2–4
 <Figure src={fig1} srcDark={fig1Dark} alt="Biphasic kinetics of the exercise leukocytosis">
 Absolute blood concentrations of four leukocyte populations before, during and after a single endurance bout. **(A)** neutrophils, **(B)** total lymphocytes including NK cells, **(C)** CD14⁺⁺CD16⁻ regular monocytes, **(D)** CD14⁺CD16⁺⁺ mature monocytes (premacrophages). Eight regional-class triathletes (26 ± 2 yr; V̇O₂max 60 ± 3 mL·min⁻¹·kg⁻¹) cycled for 70 ± 12 min at 100 % of the individual anaerobic threshold. Sampling: at rest, after 30 min of exercise, during the last 2 min of exercise (End), then 30 min, 2 h, 6 h and 24 h post-exercise; the shaded band marks the exercise period and the axis break precedes the 24-h sample. Medians and quartiles; (+)/+/++/+++ p < 0.1 / 0.05 / 0.01 / 0.001 vs. before exercise. Note the opposite post-exercise trajectories of neutrophils (delayed second rise peaking at 2 h) and lymphocytes (fall below baseline within 30 min), and the divergence of the two monocyte subsets. *Redrawn after Gabriel & Kindermann 1997, Fig. 1.*
 </Figure>
-<Figure src={fig4} srcDark={fig4Dark} alt="The immediate leukocytosis after a single anaerobic bout">
+<Figure src={fig2} srcDark={fig2Dark} alt="The immediate leukocytosis after a single anaerobic bout">
 Absolute leukocyte concentration before and after a 60-s all-out cycle-ergometer test. Eight healthy male athletes (29 ± 4 yr, 74 ± 5 kg, 178 ± 7 cm) performed a single 60-s maximal test (489 ± 34 W; peak lactate 14.1 mmol·l⁻¹, reached in the 6th minute post-exercise). Blood was sampled before (pre), within the first minute after (0), and 2, 4, 8, 16, 32 and 48 min after the end of the test; the shaded band marks the test. Values are corrected for plasma-volume shifts. Means and SD (upper bar only); \*\*\* p < 0.001 vs. pre (analysis of variance, Newman-Keuls post-hoc test). Leukocytes peak at 8 min post (≈ +57 %) and have returned to baseline by 32 min — a time course far too fast for *de novo* production, and therefore indicative of reversible mobilisation from the marginal pool. *Redrawn after Gabriel et al. 2003, Fig. 2.*
 </Figure>
-<Figure src={fig5} srcDark={fig5Dark} alt="Two consecutive waves of the immediate leukocytosis">
+<Figure src={fig3} srcDark={fig3Dark} alt="Two consecutive waves of the immediate leukocytosis">
 The immediate leukocytosis resolved by subpopulation. **(A)** CD3⁻CD16⁺ NK cells, **(B)** CD3⁺CD4⁻ T cytotoxic/suppressor cells, **(C)** neutrophils, **(D)** CD3⁺CD4⁺ T helper/inducer cells and CD19⁺ B cells. Subjects, protocol, sampling scheme, plasma-volume correction and statistics as in Figure 2; dashed vertical lines mark the peak of each wave. **Early wave** (red): NK cells rise +411 % immediately after the test and peak at 2 min post (+521 %) — the largest increase of any subpopulation; T cytotoxic/suppressor cells belong to this wave but rise more slowly (+70 % already at 1 min, maximum +95 % at 8 min). **Late wave** (blue, green): neutrophils (+26 %), T helper/inducer cells (+43 %) and B cells (+70 %) peak at 8–16 min post. All populations have returned to pre-exercise values within 32 min. *Redrawn after Gabriel et al. 2003, Fig. 3.*
 </Figure>
-<Figure src={fig6} srcDark={fig6Dark} alt="Regular monocytes demarginate early — premacrophages arrive late">
+<Figure src={fig4} srcDark={fig4Dark} alt="Regular monocytes demarginate early — premacrophages arrive late">
 Divergent mobilisation of the two monocyte subpopulations after a 60-s all-out test. Filled symbols: CD14⁺CD16⁻ regular monocytes; open symbols: CD14⁺CD16⁺ mature monocytes (premacrophages). Subjects, protocol, sampling and statistics as in Figure 2; error bars are drawn in one direction per series for legibility. Regular monocytes rise modestly (+33 %) immediately after the test and are back at baseline by 4 min. Premacrophages rise later and disproportionately, peaking at 8 min post at roughly 4.7 times the resting value (+372 %); at that point they make up ≈ 50 % of all circulating monocytes, against 10–15 % at rest. The premacrophage therefore resides preferentially in the marginal pool, which can be read as a standing reserve of activated cells poised to migrate into tissue. *Redrawn after Gabriel et al. 2003, Fig. 4.*
 </Figure>
 
@@ -178,7 +178,7 @@ The relevance for exercise:
 In long-term endurance exercise, the same machinery delivers neutrophils and monocytes into muscle tissue, where local cytokine release sustains the APR. The leukocytes that *leave* the circulation by diapedesis are not the same cells that *enter* it by demargination, which is why functional measurements before and after exercise sample different cell populations and must be interpreted accordingly.
 
 ### 2.4 Figures
-<Figure src={fig3} srcDark={fig3Dark} alt="Cell-surface receptor expression during monocyte–macrophage maturation">
+<Figure src={fig5} srcDark={fig5Dark} alt="Cell-surface receptor expression during monocyte–macrophage maturation">
 Schematic of cell-surface receptor expression along the monocyte–macrophage maturation axis. Cells mature from the promonocyte (bone marrow) through the regular monocyte (CD14⁺CD16⁻) and the premacrophage (CD14⁺CD16⁺) in blood to the tissue macrophage. LPS-R (CD14), FcγR1 (CD64) and CR3 (CD11b) are progressively **down**regulated; LFA-1 (CD11a/CD18), LCA (CD45), HLA-DR and FcγR3 (CD16) are progressively **up**regulated; wedge width indicates relative expression. Dashed circles mark the compartments not accessible to peripheral-blood sampling. The high LFA-1 density of the premacrophage accounts both for its residence in the marginal pool and for its rapid re-adhesion during recovery, and CD16 (FcγR3) is the marker that defines it. *Redrawn after Gabriel & Kindermann 1997, Fig. 11.*
 </Figure>
 
@@ -289,7 +289,7 @@ Mechanistic interpretation (Simon et al. 2026, Discussion):
 **Why measure these?** Trace-element status influences immune cell function: zinc supports chemotaxis, phagocytosis, monocyte/macrophage development and T- and B-cell function; selenium supports T-, B- and NK-cell proliferation; copper modulates T cells and granulocyte function; iron is required for proliferation/differentiation/activation of immune cells and for ROS generation via the Fenton reaction (Simon et al. 2026, Introduction). Acute exercise therefore not only redistributes immune cells but also redistributes the micronutrients that maintain their effector capacity — a missing piece in the classical exercise-immunology picture.
 
 ### 3.4 Figures
-<Figure src={fig2} srcDark={fig2Dark} alt="The same neutrophil count means something different">
+<Figure src={fig6} srcDark={fig6Dark} alt="The same neutrophil count means something different">
 Neutrophil count, oxidative burst and phagocytotic activity after exercise and during bacterial infection. **(A)** neutrophil cell counts; **(B)** fMLP-stimulated (0.1 µM) oxidative burst, measured as the percentage of rhodamine-123-positive neutrophils; **(C)** phagocytotic activity, measured as intracellular FITC-conjugated *E. coli* fluorescence. Open bars: 8 athletes cycling 60 min at 100 % of the individual anaerobic threshold, sampled before, 2 h and 1 day post-exercise. Filled bars: 8 patients (18–32 yr) with bacterial upper-respiratory-tract infection — sinusitis, angina tonsillaris, tonsillitis — sampled before and 2 and 10 days after symptom onset. Means and SD; † p < 0.01 vs. the corresponding value before exercise or before infection (two-tailed t-test for dependent variables). Exercise and infection produce comparable neutrocytosis **(A)** but opposite functional profiles: burst is unchanged or reduced after exercise and strongly primed in infection **(B)**, and phagocytosis is unchanged after exercise but grossly increased in infection **(C)**. *Redrawn after Gabriel & Kindermann 1997, Fig. 10.*
 </Figure>
 

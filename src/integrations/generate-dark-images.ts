@@ -1,6 +1,6 @@
 import type {AstroIntegration} from 'astro';
 import fs, {readdirSync, statSync} from 'fs';
-import {basename, extname, join} from 'path';
+import {basename, dirname, extname, join} from 'path';
 import sharp from 'sharp';
 import {excludeFromDarkImageProcessing} from '../config/images.config';
 
@@ -36,38 +36,38 @@ async function generateImages() {
         const fileName = basename(filePath);
         if (
             fileName.includes('_dark') ||
-            fileName.includes('_transparent') ||
             fileName.includes('_noinvert') ||
             excludeFromDarkImageProcessing.includes(fileName)
         ) continue;
 
+        const base = basename(filePath, ext); // Use original base for output names
+        const darkPath = join(generatedDir, `${base}_dark.png`);
+
+        // A hand-made dark variant next to the light original always wins. Drop
+        // any stale auto-generated one so only the manual file is left to import.
+        if (fileExists(join(dirname(filePath), `${base}_dark.png`))) {
+            if (fileExists(darkPath)) {
+                fs.unlinkSync(darkPath);
+                console.log(`🧹 Removed ${darkPath.replace(process.cwd() + '/', '')} (manual dark variant exists)`);
+            }
+            continue;
+        }
+
+        if (!forceMode && fileExists(darkPath)) continue;
+
         let processPath = filePath;
-        let processExt = ext;
         let tempPngPath = '';
         // If JPG/JPEG, convert to PNG first
         if (ext === '.jpg' || ext === '.jpeg') {
-            const base = basename(filePath, ext);
             tempPngPath = join(generatedDir, `${base}_temp.png`);
             await sharp(filePath).png().toFile(tempPngPath);
             processPath = tempPngPath;
-            processExt = '.png';
         }
-
-        const base = basename(filePath, ext); // Use original base for output names
-        const transparentName = `${base}_transparent.png`;
-        const darkName = `${base}_dark.png`;
-        const transparentPath = join(generatedDir, transparentName);
-        const darkPath = join(generatedDir, darkName);
-
-        const supportsAlpha = true; // Now always true, since we process as PNG
-        const needsTransparent = forceMode || !fileExists(transparentPath);
-        const needsDark = forceMode || !fileExists(darkPath);
 
         try {
             const image = sharp(processPath);
             const {data, info} = await image.ensureAlpha().raw().toBuffer({resolveWithObject: true});
 
-            const transparentData = Buffer.from(new Uint8Array(data));
             const darkData = Buffer.from(new Uint8Array(data));
 
             for (let i = 0; i < data.length; i += info.channels) {
@@ -79,7 +79,6 @@ async function generateImages() {
                 const isWhite = r > threshold && g > threshold && b > threshold;
 
                 if (isWhite) {
-                    transparentData[i + 3] = 0;
                     darkData[i + 3] = 0;
                 } else {
                     darkData[i] = 255 - r;
@@ -89,31 +88,16 @@ async function generateImages() {
                 }
             }
 
-            if (needsTransparent) {
-                await sharp(transparentData, {
-                    raw: {
-                        width: info.width,
-                        height: info.height,
-                        channels: info.channels
-                    }
-                })
-                    .toFormat('png')
-                    .toFile(transparentPath);
-                console.log(`✅ Created ${transparentPath.replace(process.cwd() + '/', '')}`);
-            }
-
-            if (needsDark) {
-                await sharp(darkData, {
-                    raw: {
-                        width: info.width,
-                        height: info.height,
-                        channels: info.channels
-                    }
-                })
-                    .toFormat('png')
-                    .toFile(darkPath);
-                console.log(`✅ Created ${darkPath.replace(process.cwd() + '/', '')}`);
-            }
+            await sharp(darkData, {
+                raw: {
+                    width: info.width,
+                    height: info.height,
+                    channels: info.channels
+                }
+            })
+                .toFormat('png')
+                .toFile(darkPath);
+            console.log(`✅ Created ${darkPath.replace(process.cwd() + '/', '')}`);
 
             // Clean up temp PNG if created
             if (tempPngPath) {

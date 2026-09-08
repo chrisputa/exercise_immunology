@@ -41,9 +41,12 @@ const images = [{ src, srcDark, alt }, ...panels];
             // Give every panel after the first some breathing room so stacked,
             // related images don't touch (the first image keeps py-0).
             const gap = i > 0 ? ' mt-6!' : '';
+            // Without a dark variant the light image has to stay visible in dark
+            // mode too — otherwise the figure disappears there entirely.
+            const lightVisibility = img.srcDark ? 'block dark:hidden' : 'block';
             return (
                 <Fragment>
-                    <Image src={img.src} alt={img.alt} class={`w-full h-auto py-0 block dark:hidden${gap}`} />
+                    <Image src={img.src} alt={img.alt} class={`w-full h-auto py-0 ${lightVisibility}${gap}`} />
                     {img.srcDark && (
                         <Image src={img.srcDark} alt={img.alt} class={`w-full h-auto py-0 hidden dark:block${gap}`} />
                     )}

@@ -7,6 +7,11 @@ draft: false
 import Quote from '../../../components/Quote.astro';
 import { Note } from '../../../components/MarginNote/index.js';
 import Table from '../../../components/Table.astro';
+import Figure from '../../../components/Figure.astro';
+import fig1 from '../../../assets/lactate_01_lactate_turnover_flux.png';
+import fig1Dark from '../../../assets/lactate_01_lactate_turnover_flux_dark.png';
+import fig2 from '../../../assets/lactate_02_postprandial_lactate_shuttle.png';
+import fig2Dark from '../../../assets/lactate_02_postprandial_lactate_shuttle_dark.png';
 
 
 ## Table of Contents
@@ -140,6 +145,10 @@ Lactate turnover flux relative to glucose (tracer study).
 </Fragment>
 </Table>
 
+<Figure src={fig1} srcDark={fig1Dark} alt="Lactate turnover flux relative to glucose, fed versus fasted">
+Both bars sit above the line at which the two fluxes would be equal — lactate, not glucose, is the primary circulating carbohydrate fuel. Feeding brings the two close together; fasting pulls them apart, and lactate then turns over two and a half times as fast as glucose. After Hui et al., Nature 551: 115–118 (2017).
+</Figure>
+
 **Conclusion:** Glycolysis and the TCA cycle are **decoupled at the level of lactate**. Glucose can make its TCA contribution predominantly via the detour of circulating lactate, without entering the mitochondria directly as pyruvate. This enables independent regulation of ATP production and glucose catabolism.
 
 <Quote 
@@ -234,6 +243,10 @@ This human study provides the first direct in vivo evidence for the Postprandial
 The two phases of the postprandial lactate shuttle.
 </Fragment>
 </Table>
+
+<Figure src={fig2} srcDark={fig2Dark} alt="Blood lactate and glucose after a 75 g oral glucose load">
+The enteric rise from intestinal metabolism of the ingested carbohydrate appears while blood glucose is still at its fasting value; the larger systemic rise follows, synchronous with the glucose peak, and accounts for roughly 38 % of the 75 g load. Glycolysis is not the emergency route — it is the ordinary one. Schematic after Leija et al. (2024); the ordering and timing of the two rises are the finding.
+</Figure>
 
 **Quantitative Significance:**
 - The systemic PLS represents approximately **38% of the 75-g glucose load** appearing as lactate in the circulation
