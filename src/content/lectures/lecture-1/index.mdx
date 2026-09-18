@@ -12,14 +12,18 @@ import Figure from '../../../components/Figure.astro';
 import Table from '../../../components/Table.astro';
 import fig1 from '../../../assets/homeostasis_01_control_loop.png';
 import fig1Dark from '../../../assets/homeostasis_01_control_loop_dark.png';
-import fig2 from '../../../assets/homeostasis_02_heart_rate_timecourse.png';
-import fig2Dark from '../../../assets/homeostasis_02_heart_rate_timecourse_dark.png';
-import fig3 from '../../../assets/homeostasis_03_ventilation_timecourse.png';
-import fig3Dark from '../../../assets/homeostasis_03_ventilation_timecourse_dark.png';
-import fig4 from '../../../assets/homeostasis_04_timecourse.png';
-import fig4Dark from '../../../assets/homeostasis_04_timecourse_dark.png';
-import fig5 from '../../../assets/homeostasis_05_hormesis_dose_response.png';
-import fig5Dark from '../../../assets/homeostasis_05_hormesis_dose_response_dark.png';
+import fig2 from '../../../assets/homeostasis_02_cardiorespiratory_response.png';
+import fig2Dark from '../../../assets/homeostasis_02_cardiorespiratory_response_dark.png';
+import fig3 from '../../../assets/homeostasis_03_cardiac_autonomic_response.png';
+import fig3Dark from '../../../assets/homeostasis_03_cardiac_autonomic_response_dark.png';
+import fig4 from '../../../assets/homeostasis_04_breathing_frequency.png';
+import fig4Dark from '../../../assets/homeostasis_04_breathing_frequency_dark.png';
+import fig5 from '../../../assets/homeostasis_05_oxygen_uptake_rer.png';
+import fig5Dark from '../../../assets/homeostasis_05_oxygen_uptake_rer_dark.png';
+import fig6 from '../../../assets/homeostasis_06_timecourse.png';
+import fig6Dark from '../../../assets/homeostasis_06_timecourse_dark.png';
+import fig7 from '../../../assets/homeostasis_07_hormesis_dose_response.png';
+import fig7Dark from '../../../assets/homeostasis_07_hormesis_dose_response_dark.png';
 import { Note } from '../../../components/MarginNote/index.js';
 
 
@@ -316,7 +320,55 @@ to increased oxygen intake in the organism. Ventilation and duration of heart be
 physiological parameters to describe the functions of the respiratory and cardiovascular
 system
 
-When the organism engages in physical activity, multiple physiological systems are activated simultaneously:
+When the organism engages in physical activity, multiple physiological systems are activated simultaneously.
+
+The figures in this section follow one such disturbance through a single measurement.
+A healthy male recreational athlete (23 years, 176 cm, 69 kg, BMI 22.3 kg · m⁻²,
+general training background) performed a maximal incremental step test on a cycle
+ergometer, with the external work rate incremented by 50 W every three minutes from
+50 W to a final 300 W stage that was terminated after 30 s at volitional exhaustion
+(peak 4.3 W · kg⁻¹). The lactate-based reference loads for this test are an aerobic
+threshold of 117 W and an individual anaerobic threshold of 145 W. Every recording is
+structured as an **ABA protocol**: phase A1 baseline rest, phase B the step test, and
+phase A2 passive recovery — the perturbation → correction → recovery loop made
+measurable.
+
+<Figure src={fig2} srcDark={fig2Dark} alt="Cardiorespiratory response to a maximal incremental step test">
+Cardiorespiratory response to a maximal incremental step test, with mass-related oxygen uptake. Top strip: external work rate, incremented by 50 W every three minutes from 50 W to a final 300 W stage terminated after 30 s at volitional exhaustion. Phases are A1 baseline rest, B step test (red) and A2 passive recovery; vertical hairlines mark the two transitions. **(A)** Heart rate, beat-to-beat recording averaged in 10-s bins, rising from 51 to 187 bpm. **(B)** Ventilation (V̇E), rising from about 6 l · min⁻¹ at rest to 122.8 l · min⁻¹ at the end of the final stage, with a peak of 127.8 l · min⁻¹ ten seconds after load offset. **(C)** Mass-related oxygen uptake, V̇O₂ per body mass (69 kg), in ml · min⁻¹ · kg⁻¹. All three series are 10-s averages (197 samples, recording started 6.8 min before load onset).
+</Figure>
+
+Resting V̇O₂ is 2.8 ml · min⁻¹ · kg⁻¹, roughly four fifths of one metabolic equivalent.
+End-of-stage values rise steeply and almost linearly to 200 W —
+11.7 → 19.4 → 27.7 → 36.5 ml · min⁻¹ · kg⁻¹ — and then flatten at 37.4 and 39.7 over the
+two final stages. The peak of 40.7 ml · min⁻¹ · kg⁻¹ falls in the first recovery sample,
+ten seconds after load offset, the usual consequence of 10-s averaging and gas-transport
+delay; it is therefore the peak value of the test, not a steady-state value of the 300 W
+stage.
+
+The ventilation and oxygen-uptake panels separate below and above the threshold region:
+while V̇O₂ stops rising proportionally from 200 W onward, V̇E keeps accelerating
+(84.8 → 109.0 → 122.8 l · min⁻¹), so the ventilatory equivalent for oxygen rises from
+about 31 at rest to 45 at peak. This disproportionate ventilatory rise sets in above the
+individual anaerobic threshold of 145 W. Values are uncorrected 10-s averages; no plateau
+criterion is applied.
+
+<Table>
+
+| Load [W] | Time [min] | HR [bpm] | V̇E [l · min⁻¹] | V̇O₂ [ml · min⁻¹ · kg⁻¹] |
+|---:|---:|---:|---:|---:|
+| rest (A1) | −6.8 – 0.0 | 58 | 6.4 | 2.8 |
+| 50 | 0.2 – 3.0 | 85 | 18.8 | 11.7 |
+| 100 | 3.2 – 6.0 | 103 | 33.2 | 19.4 |
+| 150 | 6.2 – 9.0 | 129 | 51.8 | 27.7 |
+| 200 | 9.2 – 12.0 | 160 | 84.8 | 36.5 |
+| 250 | 12.2 – 15.0 | 179 | 109.0 | 37.4 |
+| 300 | 15.2 – 15.5 | 187 | 122.8 | 39.7 |
+| peak (A2, +10 s) | 15.7 | — | 127.8 | 40.7 |
+
+<Fragment slot="caption">
+Heart rate, ventilation and mass-related oxygen uptake at the end of each stage of the maximal incremental step test.
+</Fragment>
+</Table>
 
 #### 2.2.1 Cardiovascular Response
 - **Heart rate increases** to deliver more oxygen and nutrients to working muscles.
@@ -324,14 +376,21 @@ When the organism engages in physical activity, multiple physiological systems a
 - **Blood pressure rises** — systolic increases more than diastolic.
 - **Blood flow redistribution** — 20–25 % of cardiac output at rest goes to muscles; during exercise, this increases to 85–90 %.
 
-<Figure
-	src={fig2}
-	srcDark={fig2Dark}
-	alt="Heart rate"
-	panels={[{ src: fig3, srcDark: fig3Dark, alt: 'Ventilation' }]}
->
-Example for acute disturbance of the homeostasis by acute physical stress. Heart rate and ventilation increase during exercise and return after the end of the exercise. Light blue lines: Physical rest before exercise, red lines: Incremental graded maximal cycle ergometer exercise, dark blue lines: physical rest after the end of exercise.
+The rise in heart rate is only the visible half of the cardiac response. Underlying it is
+a shift in **cardiac autonomic control** — withdrawal of vagal (parasympathetic) activity
+and increasing sympathetic drive — which shows itself not in the level of the signal but
+in its beat-to-beat variability.
+
+<Figure src={fig3} srcDark={fig3Dark} alt="Beat-to-beat cardiac autonomic response across an ABA exercise protocol">
+Beat-to-beat cardiac autonomic response across the ABA exercise protocol. Top strip: external work rate, stepped by 50 W every three minutes from 50 to 300 W. Phases are A1 baseline rest (5.0 min, 293 beats), B CPET (15.5 min, 2059 beats, red), and A2 recovery (10.1 min, 1070 beats); vertical hairlines mark the two transitions. **(A)** Beat-to-beat RR interval (n = 3422 beats). Mean RR falls from 1029 ms at rest to 452 ms under load and reaches its minimum of 316 ms at exhaustion. **(B)** Heart rate, the same recording averaged in 10-s bins, rising from 51 to 187 bpm. **(C)** Successive RR differences (ΔRR), the beat-to-beat change that panel A carries only implicitly. The scatter collapses from ±330 ms at rest to a near-flat band during the ramp — root mean square of successive differences 102 ms in A1, 16.9 ms across B, and 2.6 ms over the final five minutes of loading — and the large excursions return within the first minutes of A2, where isolated beats again differ by more than 300 ms.
 </Figure>
+
+The ΔRR panel makes vagal withdrawal and its reinstatement legible as a change in
+variability rather than in level: respiratory sinus arrhythmia dominates the resting
+signal, disappears under sympathetic drive, and reappears abruptly once the load is
+removed. The RR interval and ΔRR values are single-beat measurements without artefact
+correction; the root-mean-square figures are descriptive summaries of these
+non-stationary phases, not HRV indices in the conventional short-term-stationary sense.
 
 #### 2.2.2 Respiratory Response
 - **Breathing frequency increases** to enhance gas exchange.
@@ -339,11 +398,84 @@ Example for acute disturbance of the homeostasis by acute physical stress. Heart
 - **Minute ventilation (V̇E) increases** proportionally to exercise intensity.
 - **V̇O₂ increases** — more oxygen is extracted from inhaled air.
 
+Minute ventilation is the product of breathing frequency and tidal volume, and the two
+contribute unequally across the intensity range.
+
+<Figure src={fig4} srcDark={fig4Dark} alt="Breathing frequency across a maximal incremental step test">
+Breathing frequency across the maximal incremental step test. Top strip: external work rate, incremented by 50 W every three minutes from 50 W to a final 300 W stage terminated after 30 s at volitional exhaustion. Lactate-based reference loads: aerobic threshold 117 W, individual anaerobic threshold 145 W. Phases are A1 baseline rest, B step test (red) and A2 passive recovery; vertical hairlines mark the two transitions. Breathing frequency (fb) as 10-s averages from the metabolic cart, 196 samples.
+</Figure>
+
+Resting fb is about 18 min⁻¹ and varies between 13 and 23 min⁻¹ without a trend.
+End-of-stage values rise slowly through the first three stages (20 → 26 → 29 min⁻¹ at 50,
+100 and 150 W) and then steeply: 39 min⁻¹ at 200 W, 56 min⁻¹ at 250 W and 59 min⁻¹ in the
+final stage, the peak of the test. Almost half of the total rise therefore occurs in the
+last two stages, above the individual anaerobic threshold. In recovery fb falls to about
+30 min⁻¹ within three minutes and then stays well above the resting level for the
+remaining seven minutes. The steep late rise is the frequency component of the
+ventilatory response: tidal volume has stopped rising by the 250 W stage, so from there
+on ventilation is increased almost entirely by breathing faster. Values are uncorrected
+10-s averages; the peak is a single 10-s sample, not a steady-state value.
+
+<Table>
+
+| Load [W] | Time [min] | fb [min⁻¹] |
+|---:|---:|---:|
+| rest (A1) | −6.8 – 0.0 | 16 (median 18) |
+| 50 | 0.2 – 3.0 | 20 |
+| 100 | 3.2 – 6.0 | 26 |
+| 150 | 6.2 – 9.0 | 29 |
+| 200 | 9.2 – 12.0 | 39 |
+| 250 | 12.2 – 15.0 | 56 |
+| 300 | 15.2 – 15.5 | 59 (peak) |
+| recovery end (A2) | 25.7 | 29 |
+
+<Fragment slot="caption">
+Breathing frequency at the end of each stage of the maximal incremental step test.
+</Fragment>
+</Table>
+
 #### 2.2.3 Metabolic Response
 - **ATP demand increases** — muscle contractions require rapid ATP regeneration.
 - **Substrate utilization shifts** — at low intensities, fats dominate; at high intensities, carbohydrates predominate.
 - **Lactate production increases** — anaerobic metabolism becomes significant above the anaerobic threshold.
 - **Hormone secretion increases** — catecholamines, cortisol, and glucagon mobilize energy substrates.
+
+The shift in substrate utilisation can be read directly from gas exchange. The
+**respiratory exchange ratio (RER = V̇CO₂/V̇O₂)** approximates the respiratory quotient of
+the oxidised substrates: about 0.7 for pure fat oxidation, 1.0 for pure carbohydrate
+oxidation, and — above 1.0 — the signature of non-metabolic CO₂ released by bicarbonate
+buffering of accumulating lactate.
+
+<Figure src={fig5} srcDark={fig5Dark} alt="Mass-related oxygen uptake and respiratory exchange ratio">
+Mass-related oxygen uptake and respiratory exchange ratio across the maximal incremental step test. Top strip: external work rate, incremented by 50 W every three minutes from 50 W to a final 300 W stage terminated after 30 s at volitional exhaustion. Lactate-based reference loads: aerobic threshold 117 W, individual anaerobic threshold 145 W. Phases are A1 baseline rest, B step test (red) and A2 passive recovery; vertical hairlines mark the two transitions. Both series are 10-s averages from the metabolic cart, 196 samples. **(A)** Mass-related oxygen uptake, V̇O₂ per body mass (69 kg), in ml · min⁻¹ · kg⁻¹, rising from 2.8 at rest to a peak of 40.7 in the first recovery sample. **(B)** Respiratory exchange ratio (RER), with a hairline at 1.00.
+</Figure>
+
+RER sits near 0.89 at rest, drops to 0.76 in the first minute of loading — the usual lag
+of CO₂ output behind O₂ uptake at exercise onset — and then rises steadily. It crosses
+1.00 at 5.8 min, inside the 100 W stage, at a V̇O₂ of 20.0 ml · min⁻¹ · kg⁻¹, that is at
+about half of the peak value. At the end of the test RER reaches 1.29, so the criterion
+of RER ≥ 1.15 at maximum is clearly met. The highest value of the whole recording, 1.51,
+falls at 17.0 min in recovery, when bicarbonate buffering of the accumulated lactate
+continues to release CO₂ while oxygen uptake has already fallen; RER stays above 1.0 for
+the entire ten minutes of recovery.
+
+<Table>
+
+| Load [W] | Time [min] | V̇O₂ [ml · min⁻¹ · kg⁻¹] | RER |
+|---:|---:|---:|---:|
+| rest (A1) | −6.8 – 0.0 | 2.8 | 0.96 (median 0.89) |
+| 50 | 0.2 – 3.0 | 11.7 | 0.86 |
+| 100 | 3.2 – 6.0 | 19.4 | 1.01 |
+| 150 | 6.2 – 9.0 | 27.7 | 1.11 |
+| 200 | 9.2 – 12.0 | 36.5 | 1.21 |
+| 250 | 12.2 – 15.0 | 37.4 | 1.27 |
+| 300 | 15.2 – 15.5 | 39.7 | 1.29 |
+| peak (A2) | 15.7 / 17.0 | 40.7 | 1.51 |
+
+<Fragment slot="caption">
+Mass-related oxygen uptake and respiratory exchange ratio at the end of each stage of the maximal incremental step test.
+</Fragment>
+</Table>
 
 #### 2.2.4 Temperature Regulation
 - **Core body temperature rises** due to metabolic heat production.
@@ -432,11 +564,11 @@ More formally, "hormesis refers to adaptive responses of biological systems to m
 
 Skeletal muscle and the broader physiological system perpetually encounter intrinsic mechanical and metabolic challenges imposed by physical activity. To cope with exercise-induced stressors — including mechanical loading, metabolic perturbation, oxidative stress, hypoxia, muscle damage, and thermal stress arising from sustained exertion — living organisms have evolved adaptive, protective training responses. At the molecular, cellular, and whole-organism levels, these responses share common regulatory features collectively termed 'exercise stress' and rely on evolutionarily conserved, exercise-responsive transcriptional networks (Bauer et al., 2024). The pattern of exercise-induced adaptations is dictated not only by the specific type of training stimulus (e.g., resistance, endurance, or concurrent exercise) but also by its intensity, frequency, and duration — variables central to exercise programming. Each of these factors, alone or in combination, can transiently disrupt physiological homeostasis and impair functional capacity. Sub-maximal training loads, however, elicit beneficial adaptive responses — including muscle hypertrophy, mitochondrial biogenesis, and improved cardiovascular function — that attenuate the physiological cost of subsequent bouts of the same or related exercise stress. This dose-dependent, biphasic adaptive property is known as 'hormesis' (Calabrese & Mattson, 2017; Bauer et al., 2024). A hallmark of exercise-induced hormesis is that the adaptive response to a given exercise stressor can extend cross-protective effects against future, and apparently unrelated, forms of physiological stress. The architecture of the exercise-responsive transcriptional network, whereby distinct modes of training regulate overlapping profiles of effector genes — including those encoding heat shock proteins, pro- and anti-inflammatory immune responses, antioxidant enzymes, and angiogenic factors — provides a compelling mechanistic explanation for this phenomenon (Bauer et al., 2024).
 
-<Figure src={fig4} srcDark={fig4Dark} alt="Homeostasis time-course">
+<Figure src={fig6} srcDark={fig6Dark} alt="Homeostasis time-course">
 Homeostasis time-course: the IL-6 peak, delayed IL-10/IL-1Ra counter-response, functional capacity dip, and the set-point reference line, with annotated phase zones.
 </Figure>
 
-<Figure src={fig5} srcDark={fig5Dark} alt="Hormesis dose-response">
+<Figure src={fig7} srcDark={fig7Dark} alt="Hormesis dose-response">
 Hormesis dose-response: the full J-curve (URTI risk), bell-shaped adaptive benefit, and monotonically rising inflammatory load, with the three dose zones (sub-threshold / hormetic / overload) shaded.
 </Figure>
 
@@ -570,7 +702,7 @@ Sleep serves multiple critical functions:
 - List two mechanisms by which regular physical activity improves sleep quality, and two mechanisms by which sleep deprivation impairs exercise performance. What does "bidirectional" mean here?
 - The lecture describes exercise-induced temperature regulation as a facilitator of sleep onset. Explain the thermodynamic mechanism: how does a post-exercise drop in core body temperature promote sleep?
 - Distinguish between "restoration of baseline" (homeostatic outcome) and "set-point elevation / supercompensation" (hormetic outcome). What molecular memory processes make supercompensation possible?
-- For a healthy recreational runner and a patient with Long COVID, how would you use the homeostasis–hormesis table (Table 6) to justify different exercise prescriptions? Which framework is most relevant for each, and why?
+- For a healthy recreational runner and a patient with Long COVID, how would you use the homeostasis–hormesis comparison table in Section 3.6 to justify different exercise prescriptions? Which framework is most relevant for each, and why?
 
 ### Key References
 - Bauer M, Ermolaeva M, Singer M, Wetzker R, Soares MP. Hormesis as an adaptive response to infection. *Trends in Molecular Medicine*. 2024;30(7):633–642. doi:10.1016/j.molmed.2024.04.012.
@@ -635,7 +767,7 @@ Threshold concepts at T1 and T2 across metabolic, gas-exchange and ventilatory m
 
 ### 4.4 How to Determine and Monitor the Different Exercise Intensities
 
-There is currently no consensus regarding which of the many commonly used methods to establish different exercise intensities for different populations is best (Bishop et al., 2025). Traditional methods for determining exercise intensity include: (a) threshold-based approaches, using the first and second metabolic thresholds (MT1 and MT2) to demarcate exercise domains; (b) percentages of different anchor measurements, such as %VO₂max, %HRmax, or %HRR, which — despite widespread use — do not achieve category-specific cardiovascular and metabolic responses in all individuals; (c) fixed values, such as metabolic equivalents (METs), which do not adequately consider individual differences in age, sex, body mass, and fitness; and (d) perceptual measures, most notably the Rating of Perceived Exertion (RPE), which integrates feelings of effort, strain, and fatigue from peripheral muscles, the cardiopulmonary system, and the central nervous system (Bishop et al., 2025). A joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sports Science Australia (ESSA) Consensus Statement proposed a standardised five-level exercise intensity terminology — Very Low, Low, Moderate, High, and Very High — applicable to both cardiorespiratory and resistance exercise, together with five corresponding perception-of-effort descriptors: very easy, easy, somewhat hard, hard, and very hard (Bishop et al., 2025). The preferred method for prescribing cardiorespiratory exercise intensity is the direct measurement of metabolic thresholds and the work rate associated with the attainment of VO₂max during a graded exercise test (GXT), as this produces similar physiological stresses across individuals with different exercise capacities (Bishop et al., 2025). For resistance exercise, the statement recommends prescribing intensity via repetitions in reserve (RIR) rather than percentage of one-repetition maximum (%1-RM), since RIR better captures both load and proximity to neuromuscular failure (Bishop et al., 2025). RPE is recommended as a useful adjunct method to help monitor both cardiorespiratory and resistance exercise, particularly when laboratory-based assessments are not available (Bishop et al., 2025). Tables 8 and 9 summarise the current descriptors and criteria from leading organisations, while Table 10 presents the proposed standardised classifications anchored to metabolic thresholds, RIR, and RPE scales (Bishop et al., 2025).
+There is currently no consensus regarding which of the many commonly used methods to establish different exercise intensities for different populations is best (Bishop et al., 2025). Traditional methods for determining exercise intensity include: (a) threshold-based approaches, using the first and second metabolic thresholds (MT1 and MT2) to demarcate exercise domains; (b) percentages of different anchor measurements, such as %VO₂max, %HRmax, or %HRR, which — despite widespread use — do not achieve category-specific cardiovascular and metabolic responses in all individuals; (c) fixed values, such as metabolic equivalents (METs), which do not adequately consider individual differences in age, sex, body mass, and fitness; and (d) perceptual measures, most notably the Rating of Perceived Exertion (RPE), which integrates feelings of effort, strain, and fatigue from peripheral muscles, the cardiopulmonary system, and the central nervous system (Bishop et al., 2025). A joint American College of Sports Medicine (ACSM) Expert Statement and Exercise and Sports Science Australia (ESSA) Consensus Statement proposed a standardised five-level exercise intensity terminology — Very Low, Low, Moderate, High, and Very High — applicable to both cardiorespiratory and resistance exercise, together with five corresponding perception-of-effort descriptors: very easy, easy, somewhat hard, hard, and very hard (Bishop et al., 2025). The preferred method for prescribing cardiorespiratory exercise intensity is the direct measurement of metabolic thresholds and the work rate associated with the attainment of VO₂max during a graded exercise test (GXT), as this produces similar physiological stresses across individuals with different exercise capacities (Bishop et al., 2025). For resistance exercise, the statement recommends prescribing intensity via repetitions in reserve (RIR) rather than percentage of one-repetition maximum (%1-RM), since RIR better captures both load and proximity to neuromuscular failure (Bishop et al., 2025). RPE is recommended as a useful adjunct method to help monitor both cardiorespiratory and resistance exercise, particularly when laboratory-based assessments are not available (Bishop et al., 2025). The first two tables below summarise the current descriptors and criteria from leading organisations, while the third presents the proposed standardised classifications anchored to metabolic thresholds, RIR, and RPE scales (Bishop et al., 2025).
 
 <Table>
 
