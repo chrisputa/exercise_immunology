@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FigureIndex from '../../components/FigureIndex.astro';
 import Link from '../../components/Link.astro';
+import ReadAloud from '../../components/ReadAloud.astro';
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getFigureIndexConfig } from '../../utils/figure-index-page';
 
@@ -42,6 +43,7 @@ const { Content } = lecture ? await render(lecture) : { Content: null };
 ---
 
 <PageLayout title={title} seo={seo} showHeader={false}>
+    {lecture && <ReadAloud slot="header-actions" id={lecture.id} />}
     {
         figureIndex ? (
             <>

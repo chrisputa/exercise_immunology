@@ -1,0 +1,1025 @@
+---
+// Read-aloud player for long-form pages. The audio is pre-generated with
+// Kokoro TTS by `npm run tts` (scripts/tts/), so it sounds the same in every
+// browser. Per page there is public/tts/<id>/manifest.json with the voices,
+// their MP3 and the start/end time of every sentence.
+//
+// UI: a launch button where the component is placed (below the title); a
+// player bar fixed to the bottom of the viewport while listening (section
+// menu, previous/next section, play/pause, speed, close); a "read from here"
+// button at every h2/h3 — in the side margin on wide screens, as an icon in
+// the heading on narrow ones; lock-screen / headphone controls via the Media
+// Session API; and the listening position is remembered per page.
+//
+// The player stays hidden unless the manifest exists AND its fingerprint
+// matches the text on the page — audio for an older version of the text is
+// never played. Text extraction (what is read, what is skipped) lives in
+// src/utils/tts-extract.js and is shared with the generator.
+
+export type Props = {
+    /** Page id; audio is looked up under public/tts/<id>/. */
+    id: string;
+    /** CSS selector of the element whose content is read. */
+    target?: string;
+};
+
+const { id, target = '[data-tts-content]' } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const src = `${base}tts/${id}/`;
+const rates = [0.75, 1, 1.25, 1.5];
+const uid = `tts-${id.replace(/[^a-z0-9-]/gi, '')}`;
+---
+
+<div
+    class="tts not-prose print:hidden"
+    data-tts
+    data-tts-skip
+    data-tts-id={id}
+    data-tts-target={target}
+    data-tts-src={src}
+>
+    <!-- Launch: where the component sits in the page -->
+    <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-serif text-base" data-tts-launch hidden>
+        <button type="button" class="tts-btn" data-tts-main>
+            <svg class="tts-i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                <path d="M8 5v14l11-7z" fill="currentColor"></path>
+            </svg>
+            <svg class="tts-i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" hidden>
+                <path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"></path>
+            </svg>
+            <span data-tts-main-label>Listen</span>
+        </button>
+        <button type="button" class="tts-textbtn" data-tts-restart hidden>Start from the beginning</button>
+    </div>
+
+    <!-- Player bar, fixed to the bottom of the viewport while open -->
+    <section class="tts-bar font-serif" data-tts-bar aria-label="Audio player" hidden>
+        <div class="tts-bar-section">
+            <button
+                type="button"
+                class="tts-section-btn"
+                data-tts-section
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls={`${uid}-menu`}
+            >
+                <span class="sr-only">Choose section, current: </span>
+                <span class="tts-section-title" data-tts-section-title></span>
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+                    <path d="M7 14l5-5 5 5z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <div class="tts-menu" id={`${uid}-menu`} role="menu" aria-label="Sections" data-tts-menu hidden></div>
+        </div>
+
+        <div class="tts-bar-controls">
+            <button type="button" class="tts-icon-btn" data-tts-prev aria-label="Restart section, or previous section">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path d="M6 6h2v12H6zM9.5 12l8.5 6V6z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <button type="button" class="tts-icon-btn tts-play" data-tts-play aria-label="Pause">
+                <svg class="tts-i-play" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" hidden>
+                    <path d="M8 5v14l11-7z" fill="currentColor"></path>
+                </svg>
+                <svg class="tts-i-pause" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                    <path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <button type="button" class="tts-icon-btn" data-tts-next aria-label="Next section">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <span class="tts-time tabular-nums" aria-hidden="true"
+                ><span data-tts-time></span><span class="tts-total" data-tts-total></span></span
+            >
+            <button
+                type="button"
+                class="tts-icon-btn tts-toggle"
+                data-tts-follow
+                aria-pressed="true"
+                aria-label="Scroll along with the text"
+                title="Scroll along with the text"
+            >
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path d="M3 5h10v2H3zM3 9h7v2H3zM3 13h10v2H3zM3 17h7v2H3z" fill="currentColor"></path>
+                    <path d="M17 5h2v10.2l1.6-1.6 1.4 1.4-4 4-4-4 1.4-1.4 1.6 1.6z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <select class="tts-select" data-tts-rate aria-label="Playback speed">
+                {rates.map((r) => <option value={r} selected={r === 1}>{`${r}×`}</option>)}
+            </select>
+            <select class="tts-select tts-voice" data-tts-voice aria-label="Voice" hidden></select>
+            <button type="button" class="tts-icon-btn" data-tts-close aria-label="Stop and close player">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                    <path d="M6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4 17.6 5 12 10.6z" fill="currentColor"></path>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <span class="sr-only" role="status" aria-live="polite" data-tts-status></span>
+    <audio preload="none" data-tts-audio></audio>
+</div>
+
+<style>
+    .tts-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.85rem;
+        border: 1px solid var(--border-main);
+        border-radius: 9999px;
+        background: var(--bg-main);
+        color: var(--text-main);
+        cursor: pointer;
+        line-height: 1.2;
+        transition: background-color 150ms;
+    }
+    .tts-btn:hover {
+        background: var(--bg-muted);
+    }
+    .tts-textbtn {
+        color: var(--text-muted);
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+    .tts-textbtn:hover {
+        color: var(--text-main);
+    }
+
+    /* ── bar ─────────────────────────────────────────────────────────── */
+    /* The bar (and its section menu) is always dark, so it stands apart from
+       the text as its own layer: near-black on the light page, a lifted grey
+       on the dark page — never a bright slab in dark mode. */
+    .tts-bar {
+        --tts-bar-bg: var(--text-main);
+        --tts-bar-fg: var(--bg-main);
+        --tts-bar-muted: color-mix(in srgb, var(--bg-main) 65%, var(--text-main));
+        --tts-bar-line: color-mix(in srgb, var(--bg-main) 45%, var(--text-main));
+        --tts-bar-hover: color-mix(in srgb, var(--bg-main) 14%, var(--text-main));
+        --tts-bar-border: var(--text-main);
+        --tts-bar-shadow: 0 6px 24px rgb(0 0 0 / 0.22);
+        color-scheme: dark; /* native select popups and scrollbars to match */
+        position: fixed;
+        z-index: 50;
+        left: 0;
+        right: 0;
+        bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+        margin: 0 auto;
+        width: min(56rem, calc(100% - 1rem));
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.25rem 0.75rem;
+        padding: 0.4rem 0.6rem;
+        border: 1px solid var(--tts-bar-border);
+        border-radius: 0.75rem;
+        background: var(--tts-bar-bg);
+        color: var(--tts-bar-fg);
+        box-shadow: var(--tts-bar-shadow);
+        font-size: 1rem;
+    }
+    :global(html.dark) .tts-bar {
+        --tts-bar-bg: color-mix(in srgb, var(--text-main) 11%, var(--bg-main));
+        --tts-bar-fg: var(--text-main);
+        --tts-bar-muted: color-mix(in srgb, var(--text-main) 62%, var(--bg-main));
+        --tts-bar-line: color-mix(in srgb, var(--text-main) 45%, var(--bg-main));
+        --tts-bar-hover: color-mix(in srgb, var(--text-main) 20%, var(--bg-main));
+        --tts-bar-border: color-mix(in srgb, var(--text-main) 30%, var(--bg-main));
+        --tts-bar-shadow: 0 8px 28px rgb(0 0 0 / 0.6);
+    }
+    .tts-bar[hidden] {
+        display: none;
+    }
+    .tts-bar-section {
+        position: relative;
+        flex: 1 1 14rem;
+        min-width: 0;
+    }
+    /* Controls sit at equal distances from each other. */
+    .tts-bar-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex: 0 1 auto;
+    }
+    /* On/off toggle: filled while on. */
+    .tts-bar .tts-toggle {
+        color: var(--tts-bar-muted);
+    }
+    .tts-bar .tts-toggle[aria-pressed='true'] {
+        color: var(--tts-bar-bg);
+        background: var(--tts-bar-fg);
+    }
+    .tts-bar .tts-toggle[aria-pressed='true']:hover {
+        background: var(--tts-bar-muted);
+    }
+    /* Narrow screens: section on its own row, the controls below spread
+       across the full width with equal space between them. */
+    @media (max-width: 40rem) {
+        .tts-bar-section,
+        .tts-bar-controls {
+            flex-basis: 100%;
+        }
+        .tts-bar .tts-bar-controls {
+            justify-content: space-between;
+            gap: 0;
+        }
+        .tts-bar .tts-icon-btn {
+            width: 2.15rem;
+            height: 2.15rem;
+        }
+        .tts-bar .tts-time {
+            font-size: 0.8rem;
+        }
+        .tts-bar .tts-select {
+            padding: 0.2rem 0.2rem;
+            font-size: 0.85rem;
+        }
+    }
+    /* Very narrow phones: current time only. */
+    @media (max-width: 23rem) {
+        .tts-total {
+            display: none;
+        }
+    }
+    .tts-section-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        width: 100%;
+        max-width: 100%;
+        padding: 0.3rem 0.4rem;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        text-align: left;
+    }
+    .tts-section-btn:hover {
+        background: var(--tts-bar-hover);
+    }
+    .tts-section-btn svg {
+        flex: none;
+    }
+    .tts-section-title {
+        flex: 0 1 auto;
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .tts-icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 9999px;
+        cursor: pointer;
+    }
+    .tts-icon-btn:hover {
+        background: var(--tts-bar-hover);
+    }
+    .tts-play {
+        border: 1px solid var(--tts-bar-fg);
+    }
+    .tts-time {
+        font-size: 0.9rem;
+        color: var(--tts-bar-muted);
+        white-space: nowrap;
+    }
+    .tts-select {
+        padding: 0.2rem 0.35rem;
+        border: 1px solid var(--tts-bar-line);
+        border-radius: 0.375rem;
+        background: var(--tts-bar-bg);
+        color: var(--tts-bar-fg);
+        font-size: 0.9rem;
+    }
+    .tts-voice {
+        max-width: 9rem;
+        text-overflow: ellipsis;
+    }
+
+    /* ── section menu (opens upwards) ────────────────────────────────── */
+    .tts-menu {
+        position: absolute;
+        left: 0;
+        bottom: calc(100% + 0.6rem);
+        width: min(34rem, calc(100vw - 1.5rem));
+        max-height: min(60vh, 30rem);
+        overflow-y: auto;
+        padding: 0.35rem;
+        border: 1px solid var(--tts-bar-border);
+        border-radius: 0.6rem;
+        background: var(--tts-bar-bg);
+        color: var(--tts-bar-fg);
+        box-shadow: var(--tts-bar-shadow);
+    }
+    .tts-menu[hidden] {
+        display: none;
+    }
+    /* Narrow screens: exactly as wide as the bar. */
+    @media (max-width: 40rem) {
+        .tts-menu {
+            left: calc(-0.6rem - 1px);
+            width: calc(100% + 1.2rem + 2px);
+        }
+    }
+    .tts-menu :global(.tts-item) {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.35rem;
+        text-align: left;
+        cursor: pointer;
+        line-height: 1.3;
+    }
+    .tts-menu :global(.tts-item:hover),
+    .tts-menu :global(.tts-item:focus-visible) {
+        background: var(--tts-bar-hover);
+    }
+    .tts-menu :global(.tts-item[data-level='3']) {
+        padding-left: 1.6rem;
+        color: var(--tts-bar-muted);
+    }
+    .tts-menu :global(.tts-item[aria-current='true']) {
+        font-weight: 640;
+        color: var(--tts-bar-fg);
+    }
+    .tts-menu :global(.tts-item-time) {
+        margin-left: auto;
+        font-size: 0.85rem;
+        color: var(--tts-bar-muted);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .tts button:focus-visible,
+    .tts select:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+    }
+    /* On the dark bar the page's accent would vanish. */
+    .tts-bar button:focus-visible,
+    .tts-bar select:focus-visible {
+        outline-color: var(--tts-bar-fg);
+    }
+
+    /* ── outside the component ───────────────────────────────────────── */
+    /* Room at the bottom of the page so the bar never covers the last lines. */
+    :global(html.tts-bar-open body) {
+        padding-bottom: var(--tts-bar-space, 6rem);
+    }
+
+    /* Block currently being read: a tint of the text colour over the page
+       background, stronger in dark mode, where the muted background is almost
+       indistinguishable from the page. */
+    :global(:root) {
+        --tts-highlight: color-mix(in srgb, var(--text-main) 9%, var(--bg-main));
+    }
+    :global(html.dark) {
+        --tts-highlight: color-mix(in srgb, var(--text-main) 17%, var(--bg-main));
+    }
+    :global(.tts-active) {
+        background-color: var(--tts-highlight);
+        box-shadow: 0 0 0 0.35em var(--tts-highlight);
+        border-radius: 0.15em;
+        transition: background-color 200ms;
+    }
+
+    /* "Read from here" at each h2/h3. Narrow screens: an icon floated to the
+       right inside the heading. Wide screens: a line in the side margin, using
+       the same float geometry as figure captions and margin notes, so it lines
+       up with them and stacks below a note instead of overlapping it. */
+    :global(.tts-from) {
+        float: right;
+        margin: 0.15rem 0 0.25rem 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid var(--border-main);
+        border-radius: 9999px;
+        background: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-serif);
+        font-size: 0.95rem;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 1.2;
+        cursor: pointer;
+    }
+    :global(.tts-from-label) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+    @media (min-width: 48rem) {
+        :global(.tts-from) {
+            clear: right;
+            width: 53%;
+            height: auto;
+            margin: 0.35rem -53% 0.5rem 0;
+            padding: 0 1.5rem;
+            justify-content: flex-start;
+            gap: 0.4rem;
+            border: 0;
+            border-radius: 0;
+            background: none;
+            color: var(--text-muted);
+        }
+        :global(.tts-from:hover) {
+            color: var(--text-main);
+        }
+        :global(.tts-from:hover .tts-from-label) {
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+        :global(.tts-from-label) {
+            position: static;
+            width: auto;
+            height: auto;
+            overflow: visible;
+            clip: auto;
+        }
+    }
+    :global(.tts-from:focus-visible) {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+    }
+</style>
+
+<script>
+    import { blocksFingerprint, extractBlocks, highlightTarget } from '../utils/tts-extract.js';
+
+    const STORAGE_VOICE = 'tts-voice';
+    const STORAGE_RATE = 'tts-rate';
+    const STORAGE_FOLLOW = 'tts-follow';
+    const STORAGE_RESUME = 'tts-resume:'; // + page id
+    const SKIP_SECONDS = 15;
+    /** ⏮ within this many seconds of a section start goes to the previous one. */
+    const PREV_THRESHOLD = 3;
+    /** Headings that get no "read from here" button. */
+    const NO_BUTTON_TITLES = /^\s*(table of contents|contents|inhalt|inhaltsverzeichnis)\s*$/i;
+
+    type Voice = { id: string; label: string; file: string; duration: number; timings: [number, number][] };
+    type Manifest = {
+        version: number;
+        extract?: { skipSections?: string[] };
+        fingerprint: string;
+        sentences: number[];
+        voices: Voice[];
+    };
+    type Section = { title: string; level: number; sentence: number; heading: Element | null };
+
+    function storageGet(key: string): string | null {
+        try {
+            return window.localStorage.getItem(key);
+        } catch {
+            return null;
+        }
+    }
+    function storageSet(key: string, value: string) {
+        try {
+            window.localStorage.setItem(key, value);
+        } catch {
+            /* storage blocked (private mode, policy) — just not remembered */
+        }
+    }
+    function storageRemove(key: string) {
+        try {
+            window.localStorage.removeItem(key);
+        } catch {
+            /* ignore */
+        }
+    }
+
+    function formatTime(s: number) {
+        const t = Math.max(0, Math.floor(s));
+        const h = Math.floor(t / 3600);
+        const m = Math.floor((t % 3600) / 60);
+        const sec = String(t % 60).padStart(2, '0');
+        return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
+    }
+    const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s);
+
+    async function initReadAloud(container: HTMLElement) {
+        const root = document.querySelector(container.dataset.ttsTarget || '[data-tts-content]');
+        if (!root) return;
+
+        let manifest: Manifest;
+        try {
+            const res = await fetch(`${container.dataset.ttsSrc}manifest.json`, { cache: 'no-cache' });
+            if (!res.ok) return; // no audio generated for this page (yet)
+            manifest = await res.json();
+        } catch {
+            return;
+        }
+        if (manifest.version !== 1 || !manifest.voices?.length) return;
+
+        const blocks = extractBlocks(root, manifest.extract);
+        if (blocksFingerprint(blocks) !== manifest.fingerprint) {
+            console.info('[ReadAloud] Audio belongs to an older version of this text — run `npm run tts`.');
+            return;
+        }
+
+        const q = <T extends Element>(sel: string) => container.querySelector<T>(sel)!;
+        const audio = q<HTMLAudioElement>('[data-tts-audio]');
+        const launch = q<HTMLElement>('[data-tts-launch]');
+        const mainBtn = q<HTMLButtonElement>('[data-tts-main]');
+        const mainLabel = q<HTMLElement>('[data-tts-main-label]');
+        const restartBtn = q<HTMLButtonElement>('[data-tts-restart]');
+        const bar = q<HTMLElement>('[data-tts-bar]');
+        const sectionBtn = q<HTMLButtonElement>('[data-tts-section]');
+        const sectionTitle = q<HTMLElement>('[data-tts-section-title]');
+        const menu = q<HTMLElement>('[data-tts-menu]');
+        const prevBtn = q<HTMLButtonElement>('[data-tts-prev]');
+        const playBtn = q<HTMLButtonElement>('[data-tts-play]');
+        const nextBtn = q<HTMLButtonElement>('[data-tts-next]');
+        const timeEl = q<HTMLElement>('[data-tts-time]');
+        const totalEl = q<HTMLElement>('[data-tts-total]');
+        const rateSel = q<HTMLSelectElement>('[data-tts-rate]');
+        const followBtn = q<HTMLButtonElement>('[data-tts-follow]');
+        const voiceSel = q<HTMLSelectElement>('[data-tts-voice]');
+        const closeBtn = q<HTMLButtonElement>('[data-tts-close]');
+        const status = q<HTMLElement>('[data-tts-status]');
+
+        const pageId = container.dataset.ttsId!;
+        const lectureTitle = (root.querySelector('h1')?.textContent ?? document.title).trim();
+
+        let state: 'idle' | 'playing' | 'paused' = 'idle';
+        let activeEl: Element | null = null;
+        let currentSection = -1;
+        let voice = manifest.voices.find((v) => v.id === storageGet(STORAGE_VOICE)) ?? manifest.voices[0];
+
+        // ── sections: every h2/h3 that is read, plus the start ──────────
+        const firstSentence = new Map<number, number>();
+        manifest.sentences.forEach((b, i) => {
+            if (!firstSentence.has(b)) firstSentence.set(b, i);
+        });
+        const sections: Section[] = [];
+        blocks.forEach((block, b) => {
+            const level = Number(block.el.tagName[1]);
+            if (block.kind !== 'heading' || (level !== 2 && level !== 3) || !firstSentence.has(b)) return;
+            sections.push({ title: block.text, level, sentence: firstSentence.get(b)!, heading: block.el });
+        });
+        if (!sections.length || sections[0].sentence > 0) {
+            sections.unshift({ title: lectureTitle || 'Beginning', level: 2, sentence: 0, heading: null });
+        }
+
+        /** Index of the sentence playing at time t (last one that started). */
+        function sentenceAt(t: number) {
+            const timings = voice.timings;
+            let lo = 0;
+            let hi = timings.length - 1;
+            while (lo < hi) {
+                const mid = (lo + hi + 1) >> 1;
+                if (timings[mid][0] <= t + 0.01) lo = mid;
+                else hi = mid - 1;
+            }
+            return lo;
+        }
+        function sectionOf(sentence: number) {
+            let i = 0;
+            while (i + 1 < sections.length && sections[i + 1].sentence <= sentence) i++;
+            return i;
+        }
+        const startOf = (sentence: number) => voice.timings[sentence]?.[0] ?? 0;
+
+        // ── remembered position ─────────────────────────────────────────
+        type Resume = { fp: string; s: number };
+        function loadResume(): number {
+            try {
+                const r: Resume = JSON.parse(storageGet(STORAGE_RESUME + pageId) ?? 'null');
+                if (r && r.fp === manifest.fingerprint && r.s > 0 && r.s < manifest.sentences.length - 2) return r.s;
+            } catch {
+                /* malformed */
+            }
+            return 0;
+        }
+        let resumeSentence = loadResume();
+        let lastSaved = 0;
+        function saveResume(force = false) {
+            if (!audio.src) return;
+            const now = Date.now();
+            if (!force && now - lastSaved < 5000) return;
+            lastSaved = now;
+            resumeSentence = sentenceAt(audio.currentTime);
+            storageSet(STORAGE_RESUME + pageId, JSON.stringify({ fp: manifest.fingerprint, s: resumeSentence }));
+        }
+
+        // ── rendering ───────────────────────────────────────────────────
+        const announce = (msg: string) => (status.textContent = msg);
+
+        function setIcons(btn: Element, playing: boolean) {
+            btn.querySelector('.tts-i-play')?.toggleAttribute('hidden', playing);
+            btn.querySelector('.tts-i-pause')?.toggleAttribute('hidden', !playing);
+        }
+
+        function renderLaunch() {
+            const total = `${Math.round(voice.duration / 60)} min`;
+            let label: string;
+            let aria: string;
+            if (state === 'playing') {
+                label = 'Pause';
+                aria = 'Pause';
+            } else if (state === 'paused') {
+                label = 'Resume';
+                aria = 'Resume';
+            } else if (resumeSentence > 0) {
+                const title = sections[sectionOf(resumeSentence)].title;
+                label = `Continue from “${clip(title, 42)}”`;
+                aria = `Continue listening from “${title}”`;
+            } else {
+                label = `Listen · ${total}`;
+                aria = `Listen to this lecture, ${total}`;
+            }
+            mainLabel.textContent = label;
+            mainBtn.setAttribute('aria-label', aria);
+            setIcons(mainBtn, state === 'playing');
+            restartBtn.hidden = !(state === 'idle' && resumeSentence > 0);
+        }
+
+        function renderBar() {
+            const playing = state === 'playing';
+            playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Resume');
+            setIcons(playBtn, playing);
+            const t = audio.src ? audio.currentTime : startOf(resumeSentence);
+            timeEl.textContent = formatTime(t);
+            totalEl.textContent = ` / ${formatTime(voice.duration)}`;
+            const sec = sectionOf(audio.src ? sentenceAt(t) : resumeSentence);
+            if (sec !== currentSection) {
+                currentSection = sec;
+                sectionTitle.textContent = sections[sec].title;
+                sectionBtn.title = sections[sec].title;
+                for (const item of menu.querySelectorAll('.tts-item')) {
+                    item.setAttribute('aria-current', String(Number((item as HTMLElement).dataset.index) === sec));
+                }
+                updateMediaMetadata();
+            }
+            prevBtn.disabled = false;
+            nextBtn.disabled = sec >= sections.length - 1;
+        }
+
+        function render() {
+            renderLaunch();
+            if (!bar.hidden) renderBar();
+        }
+
+        // ── section menu ────────────────────────────────────────────────
+        function buildMenu() {
+            menu.replaceChildren(
+                ...sections.map((s, i) => {
+                    const item = document.createElement('button');
+                    item.type = 'button';
+                    item.className = 'tts-item';
+                    item.setAttribute('role', 'menuitem');
+                    item.tabIndex = -1;
+                    item.dataset.index = String(i);
+                    item.dataset.level = String(s.level);
+                    const label = document.createElement('span');
+                    label.textContent = s.title;
+                    const time = document.createElement('span');
+                    time.className = 'tts-item-time';
+                    time.textContent = formatTime(startOf(s.sentence));
+                    item.append(label, time);
+                    item.addEventListener('click', () => {
+                        closeMenu(false);
+                        playFrom(s.sentence, true);
+                        playBtn.focus({ preventScroll: true });
+                    });
+                    return item;
+                })
+            );
+            currentSection = -1;
+        }
+        const menuItems = () => Array.from(menu.querySelectorAll<HTMLButtonElement>('.tts-item'));
+
+        function openMenu(focusLast = false) {
+            menu.hidden = false;
+            sectionBtn.setAttribute('aria-expanded', 'true');
+            const items = menuItems();
+            const current = items[Math.max(0, currentSection)] ?? items[0];
+            const target = focusLast ? items[items.length - 1] : current;
+            current?.scrollIntoView({ block: 'nearest' });
+            target?.focus({ preventScroll: focusLast ? false : true });
+        }
+        function closeMenu(restoreFocus = true) {
+            if (menu.hidden) return;
+            menu.hidden = true;
+            sectionBtn.setAttribute('aria-expanded', 'false');
+            if (restoreFocus) sectionBtn.focus({ preventScroll: true });
+        }
+
+        sectionBtn.addEventListener('click', () => (menu.hidden ? openMenu() : closeMenu()));
+        sectionBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                openMenu();
+            }
+        });
+        menu.addEventListener('keydown', (e) => {
+            const items = menuItems();
+            const i = items.indexOf(document.activeElement as HTMLButtonElement);
+            const move = (j: number) => items[(j + items.length) % items.length]?.focus();
+            if (e.key === 'ArrowDown') move(i + 1);
+            else if (e.key === 'ArrowUp') move(i - 1);
+            else if (e.key === 'Home') move(0);
+            else if (e.key === 'End') move(items.length - 1);
+            else if (e.key === 'Escape') closeMenu();
+            else if (e.key === 'Tab') {
+                closeMenu(false);
+                return;
+            } else return;
+            e.preventDefault();
+        });
+        document.addEventListener('pointerdown', (e) => {
+            if (!menu.hidden && !menu.contains(e.target as Node) && !sectionBtn.contains(e.target as Node)) closeMenu(false);
+        });
+
+        // ── bar visibility ──────────────────────────────────────────────
+        const barSpace = new ResizeObserver(() => {
+            document.documentElement.style.setProperty('--tts-bar-space', `${bar.offsetHeight + 24}px`);
+        });
+        function openBar() {
+            if (!bar.hidden) return;
+            bar.hidden = false;
+            document.documentElement.classList.add('tts-bar-open');
+            barSpace.observe(bar);
+            currentSection = -1;
+            renderBar();
+        }
+        function closeBar() {
+            saveResume(true);
+            closeMenu(false);
+            const hadFocus = bar.contains(document.activeElement);
+            audio.pause();
+            state = 'idle';
+            highlight(null);
+            bar.hidden = true;
+            barSpace.disconnect();
+            document.documentElement.classList.remove('tts-bar-open');
+            setMediaState('none');
+            render();
+            announce('Playback stopped.');
+            if (hadFocus) mainBtn.focus({ preventScroll: true });
+        }
+
+        // ── highlighting ────────────────────────────────────────────────
+        const visibleBottom = () => window.innerHeight - (bar.hidden ? 0 : bar.offsetHeight + 24);
+        const inView = (el: Element) => {
+            const r = el.getBoundingClientRect();
+            return r.bottom > 0 && r.top < visibleBottom();
+        };
+        let forceScroll = false;
+        // "Scroll along" toggle in the bar, remembered across pages.
+        let follow = storageGet(STORAGE_FOLLOW) !== 'off';
+
+        function scrollTo(el: Element) {
+            const r = el.getBoundingClientRect();
+            if (r.top >= 0 && r.bottom <= visibleBottom()) return;
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            el.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+        }
+
+        function highlight(el: Element | null) {
+            if (activeEl === el) return;
+            // With scrolling on, follow the reading position only while the
+            // reader is following it: after scrolling elsewhere (to look at a
+            // figure, say) the page stays put until the highlight is back in view.
+            const following = follow && (forceScroll || !activeEl || inView(activeEl));
+            activeEl?.classList.remove('tts-active');
+            activeEl = el;
+            forceScroll = false;
+            if (!el) return;
+            el.classList.add('tts-active');
+            if (following) scrollTo(el);
+        }
+
+        function renderFollow() {
+            followBtn.setAttribute('aria-pressed', String(follow));
+            const label = follow ? 'Scroll along with the text: on' : 'Scroll along with the text: off';
+            followBtn.title = label;
+        }
+        followBtn.addEventListener('click', () => {
+            follow = !follow;
+            storageSet(STORAGE_FOLLOW, follow ? 'on' : 'off');
+            renderFollow();
+            announce(follow ? 'Scrolling along with the text.' : 'No longer scrolling along with the text.');
+            if (follow && activeEl) scrollTo(activeEl);
+        });
+        renderFollow();
+
+        function sync() {
+            if (state === 'idle') return;
+            const block = blocks[manifest.sentences[sentenceAt(audio.currentTime)]];
+            highlight(block ? highlightTarget(block) : null);
+            renderBar();
+            updatePosition();
+            saveResume();
+        }
+
+        // ── playback ────────────────────────────────────────────────────
+        const rate = () => parseFloat(rateSel.value) || 1;
+        function load(v: Voice) {
+            audio.src = `${container.dataset.ttsSrc}${v.file}`;
+            // A new src resets playbackRate to defaultPlaybackRate.
+            audio.defaultPlaybackRate = audio.playbackRate = rate();
+        }
+        function seek(t: number) {
+            if (audio.readyState >= 1) audio.currentTime = t;
+            else audio.addEventListener('loadedmetadata', () => (audio.currentTime = t), { once: true });
+        }
+        async function play() {
+            if (!audio.src) {
+                load(voice);
+                seek(startOf(resumeSentence));
+            }
+            openBar();
+            setupMediaSession();
+            try {
+                await audio.play();
+            } catch (err) {
+                if ((err as DOMException).name !== 'AbortError') announce('Playback could not be started.');
+            }
+        }
+        /** Jump to a sentence and play from there. */
+        function playFrom(sentence: number, scroll = false) {
+            if (!audio.src) load(voice);
+            forceScroll = scroll;
+            seek(startOf(sentence));
+            play();
+        }
+        function prev() {
+            const s = audio.src ? sentenceAt(audio.currentTime) : resumeSentence;
+            const sec = sectionOf(s);
+            const into = (audio.src ? audio.currentTime : 0) - startOf(sections[sec].sentence);
+            playFrom(sections[into > PREV_THRESHOLD || sec === 0 ? sec : sec - 1].sentence, true);
+        }
+        function next() {
+            const sec = sectionOf(audio.src ? sentenceAt(audio.currentTime) : resumeSentence);
+            if (sec + 1 < sections.length) playFrom(sections[sec + 1].sentence, true);
+        }
+
+        audio.addEventListener('play', () => {
+            const resumed = state === 'paused';
+            state = 'playing';
+            setMediaState('playing');
+            render();
+            announce(resumed ? 'Playback resumed.' : 'Playing.');
+        });
+        audio.addEventListener('pause', () => {
+            if (state !== 'playing' || audio.ended) return;
+            state = 'paused';
+            saveResume(true);
+            setMediaState('paused');
+            render();
+            announce('Paused.');
+        });
+        audio.addEventListener('ended', () => {
+            state = 'paused';
+            resumeSentence = 0;
+            storageRemove(STORAGE_RESUME + pageId);
+            highlight(null);
+            setMediaState('paused');
+            render();
+            announce('Finished.');
+        });
+        audio.addEventListener('timeupdate', sync);
+        audio.addEventListener('seeked', sync);
+        audio.addEventListener('error', () => {
+            if (!audio.src) return;
+            state = 'paused';
+            render();
+            announce('The audio could not be loaded.');
+        });
+
+        // ── lock screen / headphones (Media Session API) ────────────────
+        const ms = 'mediaSession' in navigator ? navigator.mediaSession : null;
+        let mediaReady = false;
+        function setupMediaSession() {
+            if (!ms || mediaReady) return;
+            mediaReady = true;
+            const handlers: [MediaSessionAction, MediaSessionActionHandler][] = [
+                ['play', () => play()],
+                ['pause', () => audio.pause()],
+                ['stop', () => closeBar()],
+                ['previoustrack', () => prev()],
+                ['nexttrack', () => next()],
+                ['seekbackward', (d) => (audio.currentTime = Math.max(0, audio.currentTime - (d.seekOffset ?? SKIP_SECONDS)))],
+                ['seekforward', (d) => (audio.currentTime = Math.min(voice.duration, audio.currentTime + (d.seekOffset ?? SKIP_SECONDS)))],
+                ['seekto', (d) => d.seekTime != null && (audio.currentTime = d.seekTime)]
+            ];
+            for (const [action, handler] of handlers) {
+                try {
+                    ms.setActionHandler(action, handler);
+                } catch {
+                    /* action not supported by this browser */
+                }
+            }
+            updateMediaMetadata();
+        }
+        function updateMediaMetadata() {
+            if (!ms || !mediaReady || typeof MediaMetadata === 'undefined' || currentSection < 0) return;
+            ms.metadata = new MediaMetadata({ title: sections[currentSection].title, artist: lectureTitle, album: document.title });
+        }
+        function setMediaState(s: MediaSessionPlaybackState) {
+            if (ms && mediaReady) ms.playbackState = s;
+        }
+        let lastPosition = 0;
+        function updatePosition() {
+            if (!ms || !mediaReady || !ms.setPositionState || !isFinite(audio.duration)) return;
+            const now = Date.now();
+            if (now - lastPosition < 1000) return;
+            lastPosition = now;
+            try {
+                ms.setPositionState({ duration: audio.duration, playbackRate: audio.playbackRate, position: Math.min(audio.currentTime, audio.duration) });
+            } catch {
+                /* ignore */
+            }
+        }
+
+        // ── "read from here" buttons at the headings ────────────────────
+        // Not on the table of contents, and not on the first subsection of a
+        // chapter: it starts right after the chapter heading, which has one.
+        sections.forEach((s, i) => {
+            if (!s.heading || NO_BUTTON_TITLES.test(s.title)) return;
+            if (s.level === 3 && sections[i - 1]?.level === 2 && sections[i - 1].heading) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'tts-from';
+            btn.setAttribute('data-tts-skip', '');
+            btn.setAttribute('aria-label', `Listen from “${s.title}”`);
+            btn.innerHTML =
+                '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg>' +
+                '<span class="tts-from-label">Listen from here</span>';
+            btn.addEventListener('click', () => playFrom(s.sentence));
+            // The button sits inside the heading (keeps the page's sibling-based
+            // spacing intact); naming the heading explicitly keeps its accessible
+            // name the plain heading text.
+            if (!s.heading.hasAttribute('aria-label')) s.heading.setAttribute('aria-label', s.title);
+            s.heading.prepend(btn);
+        });
+
+        // ── wiring ──────────────────────────────────────────────────────
+        mainBtn.addEventListener('click', () => (state === 'playing' ? audio.pause() : play()));
+        restartBtn.addEventListener('click', () => playFrom(0, true));
+        playBtn.addEventListener('click', () => (state === 'playing' ? audio.pause() : play()));
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+        closeBtn.addEventListener('click', closeBar);
+
+        const storedRate = parseFloat(storageGet(STORAGE_RATE) ?? '');
+        if (Array.from(rateSel.options).some((o) => parseFloat(o.value) === storedRate)) rateSel.value = String(storedRate);
+        rateSel.addEventListener('change', () => {
+            storageSet(STORAGE_RATE, rateSel.value);
+            audio.defaultPlaybackRate = audio.playbackRate = rate();
+        });
+
+        voiceSel.replaceChildren(
+            ...manifest.voices.map((v) => {
+                const opt = document.createElement('option');
+                opt.value = v.id;
+                opt.textContent = v.label;
+                return opt;
+            })
+        );
+        voiceSel.value = voice.id;
+        voiceSel.hidden = manifest.voices.length < 2;
+        // Switching voice continues at the start of the current sentence.
+        voiceSel.addEventListener('change', () => {
+            const nextVoice = manifest.voices.find((v) => v.id === voiceSel.value);
+            if (!nextVoice || nextVoice === voice) return;
+            storageSet(STORAGE_VOICE, nextVoice.id);
+            const sentence = audio.src ? sentenceAt(audio.currentTime) : resumeSentence;
+            const resume = state === 'playing';
+            voice = nextVoice;
+            buildMenu();
+            if (!audio.src) return render();
+            load(voice);
+            seek(startOf(sentence));
+            if (resume) play();
+            render();
+        });
+
+        window.addEventListener('pagehide', () => {
+            saveResume(true);
+            audio.pause();
+        });
+
+        buildMenu();
+        render();
+        launch.hidden = false;
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-tts]').forEach((el) => void initReadAloud(el));
+</script>

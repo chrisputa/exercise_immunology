@@ -12,7 +12,7 @@ const publishDate = Astro.props.publishDate ?? Astro.props.frontmatter?.publishD
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={showHeader}>
-    <article class="mb-16 sm:mb-24">
+    <article class="mb-16 sm:mb-24" data-tts-content>
         <header class="mb-8">
             <h1 class="text-3xl leading-tight font-display font-normal tracking-[0.005em] sm:text-[2.625rem] sm:leading-tight">{seo?.title ?? title}</h1>
             {publishDate && (
@@ -20,6 +20,7 @@ const publishDate = Astro.props.publishDate ?? Astro.props.frontmatter?.publishD
                     <FormattedDate date={publishDate} />
                 </div>
             )}
+            <slot name="header-actions" />
         </header>
         <div class="max-w-none prose sm:prose-lg">
             <slot />

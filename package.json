@@ -16,10 +16,12 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "deploy": "astro build && gh-pages -d dist --dotfiles",
+        "deploy": "astro build && gh-pages -d dist --dotfiles --no-history",
+        "tts": "node scripts/tts/build-audio.mjs",
+        "tts:setup": "bash scripts/tts/setup.sh",
         "commit": "git add -A && git commit -m \"chore: update $(date -u +'%Y-%m-%dT%H:%M:%SZ')\" || echo 'Nothing to commit'",
         "push": "npm run commit && git push origin main",
-        "publish": "npm run push && npm run deploy"
+        "publish": "npm run tts && npm run push && npm run deploy"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.6",
@@ -55,6 +57,7 @@
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.16",
         "gh-pages": "^6.3.0",
+        "linkedom": "^0.18.15",
         "prettier": "^3.5.3",
         "prettier-plugin-tailwindcss": "^0.6.11"
     }
