@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Immune Effects of Exercise — Fiuza-Luces et al. 2023 / Puta et al. 2025</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family:'Segoe UI',Arial,sans-serif;
+      background:#f5f7fb;
+      color:#1a2340;
+      padding:28px 32px 40px;
+    }
+    /* ── Header ── */
+    .fig-title{
+      text-align:center; font-size:1.10rem; font-weight:700;
+      color:#1a2340; margin-bottom:4px;
+    }
+    .fig-subtitle{
+      text-align:center; font-size:0.80rem; color:#6b7a99;
+      font-style:italic; margin-bottom:6px;
+    }
+    .fig-source{
+      text-align:center; font-size:0.74rem; color:#8896b3; margin-bottom:22px;
+    }
+    /* ── Tabs ── */
+    .tabs{
+      display:flex; gap:0; justify-content:center;
+      margin-bottom:22px; border-bottom:2px solid #cbd5e0;
+    }
+    .tab{
+      padding:9px 26px; font-size:0.83rem; font-weight:600;
+      border:none; background:transparent; cursor:pointer;
+      color:#8896b3; border-bottom:3px solid transparent;
+      margin-bottom:-2px; transition:all 0.2s; font-family:inherit;
+      white-space:nowrap;
+    }
+    .tab.active{ color:#2b6cb0; border-bottom-color:#2b6cb0; }
+    .tab:hover:not(.active){ color:#4a5568; }
+    /* ── Panels ── */
+    .panel{ display:none; }
+    .panel.active{ display:block; }
+    /* ── Card ── */
+    .card{
+      background:#fff; border-radius:14px;
+      box-shadow:0 3px 18px rgba(0,0,0,0.09);
+      padding:26px 30px 18px; margin-bottom:18px;
+      max-width:1100px; margin-left:auto; margin-right:auto;
+    }
+    .card-title{
+      font-size:0.88rem; font-weight:700; color:#1a2340;
+      margin-bottom:14px; border-bottom:2px solid #e2e8f0; padding-bottom:7px;
+    }
+    /* ── Biphasic curve section ── */
+    .curve-section{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    @media(max-width:700px){ .curve-section{ grid-template-columns:1fr; } }
+    /* ── Mechanism grid ── */
+    .mech-grid{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:12px; margin-top:4px;
+    }
+    .mech-card{
+      border-radius:10px; padding:12px 14px; border-left:4px solid;
+      cursor:pointer; transition:transform 0.15s, box-shadow 0.15s;
+      position:relative;
+    }
+    .mech-card:hover{ transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.12); }
+    .mech-card.open .mech-detail{ display:block; }
+    .mech-title{ font-size:0.82rem; font-weight:700; margin-bottom:3px; }
+    .mech-value{ font-size:1.05rem; font-weight:800; }
+    .mech-detail{
+      display:none; font-size:0.74rem; color:#4a5568;
+      margin-top:8px; line-height:1.5; border-top:1px solid #e2e8f0;
+      padding-top:7px;
+    }
+    .mech-arrow{ font-size:0.68rem; color:#8896b3; position:absolute; top:10px; right:12px; }
+    /* ── Cell type chips ── */
+    .chip-row{ display:flex; flex-wrap:wrap; gap:7px; margin-top:6px; }
+    .chip{
+      display:inline-flex; align-items:center; gap:5px;
+      padding:5px 11px; border-radius:20px; font-size:0.76rem;
+      font-weight:600; cursor:pointer; transition:all 0.17s;
+      border:2px solid;
+    }
+    .chip:hover{ opacity:0.82; }
+    .chip .chip-dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+    /* ── Regular exercise grid ── */
+    .reg-grid{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+      gap:14px;
+    }
+    .reg-card{
+      border-radius:10px; padding:14px 16px;
+      border-top:4px solid; cursor:pointer;
+      transition:transform 0.15s, box-shadow 0.15s;
+    }
+    .reg-card:hover{ transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.12); }
+    .reg-card.open .reg-detail{ display:block; }
+    .reg-icon{ font-size:1.6rem; margin-bottom:6px; }
+    .reg-title{ font-size:0.84rem; font-weight:700; margin-bottom:2px; }
+    .reg-summary{ font-size:0.77rem; color:#5a6785; }
+    .reg-detail{
+      display:none; font-size:0.74rem; color:#4a5568;
+      margin-top:9px; line-height:1.6; border-top:1px solid #e2e8f0;
+      padding-top:8px;
+    }
+    /* ── Tooltip overlay ── */
+    #tooltip{
+      position:fixed; display:none; background:rgba(26,35,64,0.93);
+      color:#fff; padding:10px 14px; border-radius:10px;
+      font-size:0.76rem; max-width:280px; line-height:1.55;
+      pointer-events:none; z-index:9999; box-shadow:0 4px 20px rgba(0,0,0,0.3);
+    }
+    /* ── Text panel ── */
+    .text-block{
+      font-size:0.83rem; line-height:1.72; color:#2d3748;
+    }
+    .text-block h3{
+      font-size:0.90rem; color:#2b6cb0; font-weight:700;
+      margin:16px 0 6px; border-left:3px solid #2b6cb0;
+      padding-left:9px;
+    }
+    .text-block p{ margin-bottom:10px; }
+    .text-block .hl{ background:#ebf8ff; border-radius:3px; padding:1px 4px; }
+    /* ── Caption ── */
+    .caption{
+      font-size:0.73rem; color:#718096; line-height:1.6;
+      border-top:1px solid #e2e8f0; padding-top:10px; margin-top:10px;
+    }
+    /* ── Phase badge ── */
+    .phase-badge{
+      display:inline-block; padding:2px 9px; border-radius:12px;
+      font-size:0.72rem; font-weight:700; margin-right:5px;
+    }
+    /* ── Timeline row ── */
+    .timeline{
+      display:flex; align-items:stretch; gap:0;
+      margin:14px 0 8px; border-radius:10px; overflow:hidden;
+    }
+    .tl-seg{
+      flex:1; padding:10px 8px; text-align:center;
+      font-size:0.75rem; font-weight:600;
+    }
+    /* compare table */
+    .compare-table{ width:100%; border-collapse:collapse; font-size:0.80rem; }
+    .compare-table th{
+      background:#edf2f7; padding:7px 10px; font-size:0.76rem;
+      font-weight:700; text-align:left; color:#4a5568;
+    }
+    .compare-table td{ padding:7px 10px; border-bottom:1px solid #f0f4f8; vertical-align:top; }
+    .compare-table tr:hover td{ background:#f7fafc; }
+    .up{ color:#276749; font-weight:700; }
+    .down{ color:#c53030; font-weight:700; }
+    .neutral{ color:#5a6785; }
+  </style>
+</head>
+<body>
+
+<p class="fig-title">Immune Effects of Acute and Regular Exercise</p>
+<p class="fig-subtitle">Biphasic lymphocyte response, mechanisms, and anticancer implications</p>
+<p class="fig-source">
+  Fiuza-Luces C et al. (2023). <em>The effect of physical exercise on anticancer immunity.</em>
+  Nature Reviews Immunology. <a href="https://doi.org/10.1038/s41577-023-00943-0" target="_blank" style="color:#2b6cb0">doi:10.1038/s41577-023-00943-0</a>
+  &nbsp;|&nbsp;
+  Puta C et al. (2025). <em>Kompendium der Sportmedizin.</em>
+  <a href="https://doi.org/10.1007/978-3-662-68883-0" target="_blank" style="color:#2b6cb0">doi:10.1007/978-3-662-68883-0</a>
+  (Abb. 22.4). Created with BioRender.
+</p>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab active" onclick="showPanel('acute')">Acute Exercise</button>
+  <button class="tab" onclick="showPanel('regular')">Regular Exercise</button>
+  <button class="tab" onclick="showPanel('cells')">Cell Types & Fold-Changes</button>
+  <button class="tab" onclick="showPanel('text')">Key Evidence</button>
+</div>
+
+<!-- ══════════════════ PANEL 1: ACUTE ══════════════════ -->
+<div class="panel active" id="panel-acute">
+
+  <!-- Biphasic curve chart -->
+  <div class="card">
+    <div class="card-title">Fig. 1 — Biphasic Immune Cell Response to Acute Dynamic Exercise (Fiuza-Luces et al. 2023 / Abb. 22.4 Puta et al. 2025)</div>
+    <canvas id="biphasicChart"></canvas>
+    <div class="caption">
+      <strong>During exercise (amber zone):</strong> All cell types increase — lymphocytes (composite), NK cells (×8–10), CD8⁺ T / γδ T cells (×2–3), and neutrophils — driven by ↑blood pressure + shear stress (demargination) and ↑adrenaline → β₂-adrenergic receptors.
+      <strong>Post-exercise (same time window, ~1–2 h):</strong> Lymphocytes (including NK cells, CD8⁺ T cells, γδ T cells) decrease <em>below</em> pre-exercise baseline (lymphopenia, ~50–70% of baseline). Simultaneously, neutrophils <em>continue to rise</em> driven by the HPA axis → cortisol (neutrophilia, ~200–230%). Both phases resolve within ~24 h.
+      Lymphopenia reflects enhanced immunosurveillance (redeployment to target tissues), <em>not</em> immunosuppression. NK cell cytotoxic activity ↑~60% at 1 h post-exercise (↓CD158b, ↑NKG2C).
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card">
+    <div class="card-title">Temporal Timeline of the Biphasic Response</div>
+    <div class="timeline">
+      <div class="tl-seg" style="background:#ebf8ff;color:#2b6cb0;border-radius:8px 0 0 8px;">
+        <div>Exercise</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">All cells ↑</div>
+      </div>
+      <div class="tl-seg" style="background:#c6f6d5;color:#276749;">
+        <div>Lymphocytosis</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">NK/CD8⁺/γδ/Neutrophils ↑</div>
+      </div>
+      <div class="tl-seg" style="background:#fef3c7;color:#92400e;">
+        <div>End of exercise</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">↓ SNS stimulus</div>
+      </div>
+      <div class="tl-seg" style="background:#fed7d7;color:#c53030;">
+        <div>Lymphopenia</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">Below baseline ~1–2 h</div>
+      </div>
+      <div class="tl-seg" style="background:#feebc8;color:#c05621;">
+        <div>Neutrophilia</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">Same window — HPA/cortisol</div>
+      </div>
+      <div class="tl-seg" style="background:#e9d8fd;color:#553c9a;">
+        <div>↑ Immunosurveillance</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">Redeployment to tissues</div>
+      </div>
+      <div class="tl-seg" style="background:#f7fafc;color:#4a5568;border-radius:0 8px 8px 0;">
+        <div>Return to baseline</div>
+        <div style="font-size:0.68rem;font-weight:400;color:#4a5568">Within ~24 h</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mechanisms -->
+  <div class="card">
+    <div class="card-title">Mechanisms of Exercise-Induced Lymphocyte Mobilisation — click cards for detail</div>
+    <div class="mech-grid">
+
+      <div class="mech-card" style="background:#ebf8ff;border-color:#2b6cb0;" onclick="toggleCard(this)">
+        <span class="mech-arrow">▼</span>
+        <div class="mech-title" style="color:#2b6cb0">↑ Blood Pressure</div>
+        <div class="mech-value" style="color:#2b6cb0">Shear Stress</div>
+        <div class="mech-detail">
+          During exercise, increased cardiac output raises blood pressure and shear forces against vessel walls. This physically dislodges lymphocytes that are marginating (adhering) to the endothelium — a process called <strong>demargination</strong>. Blood from the lungs, liver, and spleen is redistributed into central circulation, boosting the number of circulating leucocytes. This mechanical mechanism is rapid and accounts for a major portion of the early lymphocytosis.
+        </div>
+      </div>
+
+      <div class="mech-card" style="background:#f0fff4;border-color:#276749;" onclick="toggleCard(this)">
+        <span class="mech-arrow">▼</span>
+        <div class="mech-title" style="color:#276749">↑ Adrenaline (SNS)</div>
+        <div class="mech-value" style="color:#276749">β₂-Adrenergic Receptors</div>
+        <div class="mech-detail">
+          Sympathetic Nervous System activation releases <strong>adrenaline and noradrenaline</strong> from adrenal medulla and nerve terminals. These catecholamines bind to <strong>β₂-adrenergic receptors</strong> expressed at high density on NK cells, γδ T cells, and CD8⁺ T cells, triggering endothelial detachment and rapid recirculation into the bloodstream. NK cells have the highest β₂-receptor expression, explaining their preferential and dramatic mobilisation (8–10×). Shedding of adhesion molecule ICAM-1 from the lymphocyte surface may also be involved.
+        </div>
+      </div>
+
+      <div class="mech-card" style="background:#fff5f5;border-color:#c53030;" onclick="toggleCard(this)">
+        <span class="mech-arrow">▼</span>
+        <div class="mech-title" style="color:#c53030">Lymphopenia (Delayed)</div>
+        <div class="mech-value" style="color:#c53030">~30–50% below baseline</div>
+        <div class="mech-detail">
+          After exercise ends, the mobilised lymphocytes are <strong>redeployed to target tissues</strong> — the lung, bone marrow, gut, lymph nodes, and tumour-draining tissues. This is reflected in a transient fall in circulating lymphocyte counts, with a nadir 1–2 hours post-exercise and return to baseline within 24 hours. The lymphopenia preferentially affects NK cells and CD8⁺ T cells. Fluorescent cell-tracking studies in rodents confirmed cells travel from spleen to target organs. This redistribution likely <em>improves</em> immunosurveillance rather than representing immunosuppression.
+        </div>
+      </div>
+
+      <div class="mech-card" style="background:#faf5ff;border-color:#805ad5;" onclick="toggleCard(this)">
+        <span class="mech-arrow">▼</span>
+        <div class="mech-title" style="color:#805ad5">HPA Axis → Cortisol</div>
+        <div class="mech-value" style="color:#805ad5">Neutrophilia</div>
+        <div class="mech-detail">
+          Prolonged or high-intensity exercise activates the <strong>Hypothalamic–Pituitary–Adrenal (HPA) axis</strong>, releasing <strong>cortisol</strong> from the adrenal cortex. Cortisol drives a secondary <strong>neutrophilia</strong> — a rise in circulating neutrophils that can persist for hours after exercise. This is the delayed phase (distinct from the immediate sympathetic lymphocytosis). Combined with the lymphopenia, the neutrophilia explains the classically observed post-exercise rise in neutrophil-to-lymphocyte ratio (NLR).
+        </div>
+      </div>
+
+      <div class="mech-card" style="background:#fffaf0;border-color:#c05621;" onclick="toggleCard(this)">
+        <span class="mech-arrow">▼</span>
+        <div class="mech-title" style="color:#c05621">NK Cell Activation</div>
+        <div class="mech-value" style="color:#c05621">Post-exercise window</div>
+        <div class="mech-detail">
+          During the post-exercise window, NK cell cytotoxic capacity is enhanced against tumour cells. This is associated with:
+          <ul style="margin:4px 0 0 14px;">
+            <li><strong>↓ CD158b</strong> (inhibitory receptor KIR2DL2/L3) — less inhibition</li>
+            <li><strong>↑ NKG2C</strong> (activating receptor) — more activation</li>
+          </ul>
+          NK cell cytotoxic activity against lymphoma and multiple myeloma cells increased by <strong>60% at 1 hour post-exercise</strong>. This suggests a clinical window for blood collection for adoptive immunotherapy.
+        </div>
+      </div>
+
+      <div class="mech-card" style="background:#f0fff4;border-color:#52b788;" onclick="toggleCard(this)">
+        <span class="mech-arrow">▼</span>
+        <div class="mech-title" style="color:#276749">Senescent T Cells</div>
+        <div class="mech-value" style="color:#276749">Apoptosis & Renewal</div>
+        <div class="mech-detail">
+          Acute exercise preferentially mobilises <strong>highly differentiated / senescent T cells</strong> (with phenotypes of exhaustion and terminal differentiation). During the subsequent lymphopenia, these cells are redeployed and may undergo <strong>apoptosis</strong>, creating 'vacant space' in the T cell compartment for new naive T cells. With repeated exercise bouts, this mechanism may gradually <em>reshape the T cell repertoire</em> toward a more naive, anti-tumour-reactive profile (↑naive T cells, ↓senescent T cells).
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Monocytes / Neutrophils separate -->
+  <div class="card">
+    <div class="card-title">Additional Immune Cells Mobilised by Acute Exercise</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div style="background:#fffaf0;border-radius:9px;padding:12px 14px;border-left:4px solid #c05621;">
+        <div style="font-weight:700;color:#c05621;font-size:0.84rem;">CD14⁺CD16⁺ Monocytes</div>
+        <div style="font-size:0.77rem;color:#4a5568;margin-top:4px;line-height:1.5;">
+          Classical CD14⁺ monocytes are mobilised alongside lymphocytes. Exercise preferentially mobilises the pro-inflammatory <strong>CD14⁺CD16⁺</strong> subpopulation (non-classical monocytes), which have enhanced cytotoxic and antigen-presenting capacity. This may contribute to tumour immunosurveillance.
+        </div>
+      </div>
+      <div style="background:#f0f4f8;border-radius:9px;padding:12px 14px;border-left:4px solid #4a5568;">
+        <div style="font-weight:700;color:#4a5568;font-size:0.84rem;">Neutrophils (~2× rise)</div>
+        <div style="font-size:0.77rem;color:#4a5568;margin-top:4px;line-height:1.5;">
+          Neutrophils increase approximately <strong>2-fold</strong> during acute exercise (early phase via SNS), with a larger sustained neutrophilia in the recovery phase (HPA axis / cortisol). CD16⁻ neutrophils are preferentially mobilised. The post-exercise neutrophilia contributes to elevated NLR observed in recovery.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /panel-acute -->
+
+
+<!-- ══════════════════ PANEL 2: REGULAR EXERCISE ══════════════════ -->
+<div class="panel" id="panel-regular">
+
+  <div class="card">
+    <div class="card-title">Fig. 2 — Immune Cell Response to Regular Exercise (repeated bouts) — Fiuza-Luces et al. 2023</div>
+    <canvas id="regularChart"></canvas>
+    <div class="caption">
+      Each bout of exercise induces lymphocytosis, followed by lymphopenia with enhanced immunosurveillance. Repeated accumulation of these cycles drives long-term immune reshaping. The beneficial effects of regular exercise on immunity reflect the cumulative impact of repeated acute bouts.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Long-Term Immune Effects of Regular Exercise — click cards for detail</div>
+    <div class="reg-grid">
+
+      <div class="reg-card" style="background:#f0fff4;border-color:#276749;" onclick="toggleCard(this)">
+        <div class="reg-title" style="color:#276749">↑ NK Cell Cytotoxic Activity</div>
+        <div class="reg-summary">Enhanced killing of cancer cells</div>
+        <div class="reg-detail">
+          Regular exercise increases NK cell cytotoxic activity against tumour cells (in vitro assays with lymphoma and multiple myeloma cell lines). This is accompanied by changes at the <strong>NK cell proteome level</strong>, including upregulation of:
+          <ul style="margin:4px 0 0 12px;">
+            <li><strong>Nucleoporin 88</strong> — involved in NF-κB transport and immune signalling</li>
+            <li><strong>PIK3R1</strong> — required for NK cell maturation, homing, priming, and function</li>
+          </ul>
+          A 12-week HIIT + resistance training intervention in chronic lymphocytic leukaemia patients showed increased NK cell activity.
+        </div>
+      </div>
+
+      <div class="reg-card" style="background:#ebf8ff;border-color:#2b6cb0;" onclick="toggleCard(this)">
+        <div class="reg-title" style="color:#2b6cb0">T Cell Repertoire Reshaping</div>
+        <div class="reg-summary">↑ Naive T cells, ↓ Senescent T cells</div>
+        <div class="reg-detail">
+          Regular exercise — particularly high aerobic fitness — reshapes the T cell repertoire by:
+          <ul style="margin:4px 0 0 12px;">
+            <li>Reducing the proportion of <strong>senescent/exhausted T cells</strong> (with impaired anti-tumour responses)</li>
+            <li>Increasing the proportion of <strong>naive CD8⁺ T cells</strong> (CD45RA⁺CD27⁺ capable of responding to new antigens)</li>
+          </ul>
+          Repeated mobilisation of senescent cells during each exercise bout, followed by their apoptosis, progressively makes space for new naive T cells.
+        </div>
+      </div>
+
+      <div class="reg-card" style="background:#fff5f5;border-color:#c53030;" onclick="toggleCard(this)">
+        <div class="reg-title" style="color:#c53030">↓ Chronic Systemic Inflammation</div>
+        <div class="reg-summary">Anti-inflammatory adaptation</div>
+        <div class="reg-detail">
+          Chronic low-grade inflammation — characterised by elevated C-reactive protein, IL-6, IL-1β, and TNF — is associated with cancer immune evasion. Regular exercise attenuates systemic inflammation through:
+          <ul style="margin:4px 0 0 12px;">
+            <li>Muscle-derived <strong>IL-6</strong> during exercise acts paradoxically as an <em>anti-inflammatory</em> myokine in the exercise milieu, inducing IL-1RA and IL-10</li>
+            <li>Reduction in visceral adipose tissue (key source of chronic inflammation)</li>
+            <li>Attenuation of <strong>immunosenescence</strong> (age-related immune decline)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reg-card" style="background:#faf5ff;border-color:#805ad5;" onclick="toggleCard(this)">
+        <div class="reg-title" style="color:#805ad5">↑ Gut Microbiome Diversity</div>
+        <div class="reg-summary">↓ Tumour-promoting bacteria</div>
+        <div class="reg-detail">
+          Regular exercise is associated with increased <strong>alpha diversity</strong> of the gut microbiome — a general indicator of good health. Higher microbial diversity correlates with better cancer immunosurveillance. Additionally, exercise increases <em>Faecalibacterium</em> (associated with retarded tumour growth) and reduces tumour-promoting bacterial strains. Data from 179 colorectal cancer patients (WHO physical activity guidelines adherents vs. inactive) support this association.
+        </div>
+      </div>
+
+      <div class="reg-card" style="background:#fffaf0;border-color:#c05621;" onclick="toggleCard(this)">
+        <div class="reg-title" style="color:#c05621">Exercise 'Heats' Cold Tumours</div>
+        <div class="reg-summary">Cold → Hot tumour conversion</div>
+        <div class="reg-detail">
+          Regular exercise promotes <strong>tumour immune infiltration</strong>. 'Cold tumours' (sparse immune infiltrate, immunotherapy-resistant) can be converted to 'hot tumours' (dense immune infiltrate) through exercise-induced recruitment of immune effectors. An 8-week training programme in prostate cancer patients correlated with higher tumour NK cell infiltrates (mean +1.60 cells mm⁻²). Mobilised immune effectors (NK cells, CD8⁺ T cells) travel via the bloodstream to infiltrate the tumour microenvironment, overcoming macrophage barriers.
+        </div>
+      </div>
+
+      <div class="reg-card" style="background:#f0f4f8;border-color:#4a5568;" onclick="toggleCard(this)">
+        <div class="reg-title" style="color:#4a5568">Adoptive Cell Therapy Potential</div>
+        <div class="reg-summary">Exercise-expanded immune cells</div>
+        <div class="reg-detail">
+          Blood collected after an exercise bout is enriched in highly cytotoxic immune cells. Clinical evidence suggests exercise-mobilised T cells and NK cells could be used for <strong>adoptive cell therapy</strong>:
+          <ul style="margin:4px 0 0 12px;">
+            <li>Ex vivo expanded exercise-mobilised cells show enhanced cytotoxic activity (↑NKG2D, ↑NKp30, ↑NKp44)</li>
+            <li>MAGE-A4- and PRAME-specific cells expanded 3.4- to 6.2-fold from post-exercise blood</li>
+            <li>γδ T cells from exercise-mobilised blood showed enhanced cytotoxicity against haematological tumours</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Comparison table: acute vs regular -->
+  <div class="card">
+    <div class="card-title">Acute vs. Regular Exercise — Immune Effects Comparison</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Acute Exercise (single bout)</th>
+          <th>Regular Exercise (training)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>NK cell count (blood)</strong></td><td class="up">↑ 8–10× during exercise</td><td class="neutral">Normalised between sessions</td></tr>
+        <tr><td><strong>NK cell cytotoxicity</strong></td><td class="up">↑ ~60% at 1 h post-exercise</td><td class="up">↑ sustained (training effect)</td></tr>
+        <tr><td><strong>CD8⁺ T cells</strong></td><td class="up">↑ 2–3× during exercise</td><td class="up">↑ naive subsets; ↓ senescent</td></tr>
+        <tr><td><strong>γδ T cells</strong></td><td class="up">↑ 2–3× during exercise</td><td class="up">↑ with high aerobic fitness</td></tr>
+        <tr><td><strong>Lymphocytes (24 h)</strong></td><td class="down">↓ 30–50% (lymphopenia)</td><td class="neutral">Baseline maintained</td></tr>
+        <tr><td><strong>Systemic inflammation</strong></td><td class="neutral">Transient ↑ (IL-6) then anti-inflam.</td><td class="down">↓ chronic inflammation</td></tr>
+        <tr><td><strong>Tumour infiltration</strong></td><td class="neutral">Immediate redistribution</td><td class="up">↑ immune infiltrates over weeks</td></tr>
+        <tr><td><strong>T cell repertoire</strong></td><td class="neutral">Preferential mobilisation of EM/EMRA</td><td class="up">↑ naive; ↓ senescent/exhausted</td></tr>
+        <tr><td><strong>Gut microbiome</strong></td><td class="neutral">Minimal acute change</td><td class="up">↑ alpha diversity; ↓ tumour-promoting bacteria</td></tr>
+        <tr><td><strong>Adoptive therapy potential</strong></td><td class="up">↑ cytotoxic cells in blood (window)</td><td class="up">Sustained pool of fit immune cells</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /panel-regular -->
+
+
+<!-- ══════════════════ PANEL 3: CELL TYPES ══════════════════ -->
+<div class="panel" id="panel-cells">
+  <div class="card">
+    <div class="card-title">Exercise-Induced Changes in Immune Cell Subsets — Fold-Changes & Phenotypes</div>
+    <canvas id="cellChart"></canvas>
+    <div class="caption">
+      Fold-changes during acute dynamic exercise (20–60 min, moderate–vigorous intensity). Data from Fiuza-Luces et al. 2023 (Fig. 1 / main text) and Puta et al. 2025 (Abb. 22.4). Bar height = typical peak fold-change vs. pre-exercise baseline. Error range shown where reported.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Preferentially Mobilised Cell Subpopulations — Hover for detail</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">
+
+      <div style="background:#f0fff4;border-radius:10px;padding:13px 15px;border-left:4px solid #276749;">
+        <div style="font-weight:700;color:#276749;font-size:0.84rem;">KIR⁺ / NKG2A⁻ NK cells <span style="background:#c6f6d5;color:#276749;border-radius:10px;padding:1px 8px;font-size:0.71rem;font-weight:700;margin-left:5px;">↑ 8–10×</span></div>
+        <div style="font-size:0.76rem;color:#4a5568;margin-top:5px;line-height:1.55;">
+          Mature NK cells with the highest β₂-adrenergic receptor density. Express <strong>KIR</strong> (killer-cell Ig-like receptors) and lack NKG2A. Exhibit surface phenotypes KLRG1⁺, CD57⁺, CD28⁻ associated with increased differentiation. Associated with anti-tumour gene expression programmes.
+        </div>
+      </div>
+
+      <div style="background:#ebf8ff;border-radius:10px;padding:13px 15px;border-left:4px solid #2b6cb0;">
+        <div style="font-weight:700;color:#2b6cb0;font-size:0.84rem;">CD8⁺ EM / EMRA T cells <span style="background:#bee3f8;color:#2b6cb0;border-radius:10px;padding:1px 8px;font-size:0.71rem;font-weight:700;margin-left:5px;">↑ 2–3×</span></div>
+        <div style="font-size:0.76rem;color:#4a5568;margin-top:5px;line-height:1.55;">
+          Effector Memory (EM: CD45RA⁻CCR7⁻) and Effector Memory RA (EMRA: CD45RA⁺CCR7⁻) T cells are preferentially mobilised over naive/central memory subsets. Many display phenotypes of exhaustion and terminal differentiation — they undergo apoptosis after redeployment, creating space for renewal.
+        </div>
+      </div>
+
+      <div style="background:#faf5ff;border-radius:10px;padding:13px 15px;border-left:4px solid #805ad5;">
+        <div style="font-weight:700;color:#805ad5;font-size:0.84rem;">CD3⁺CD56⁺ NK T-like cells <span style="background:#e9d8fd;color:#805ad5;border-radius:10px;padding:1px 8px;font-size:0.71rem;font-weight:700;margin-left:5px;">Preferential ↑</span></div>
+        <div style="font-size:0.76rem;color:#4a5568;margin-top:5px;line-height:1.55;">
+          Hybrid cells sharing features of NK cells and T cells. Exercise preferentially mobilises subsets of CD8⁺ T cells and CD3⁺CD56⁺ NK T-like cells with gene expression programmes associated with <strong>antitumour activity</strong> (Fiuza-Luces et al. 2023). Validated primarily in animal models.
+        </div>
+      </div>
+
+      <div style="background:#fffaf0;border-radius:10px;padding:13px 15px;border-left:4px solid #c05621;">
+        <div style="font-weight:700;color:#c05621;font-size:0.84rem;">γδ T cells <span style="background:#feebc8;color:#c05621;border-radius:10px;padding:1px 8px;font-size:0.71rem;font-weight:700;margin-left:5px;">↑ ~3×</span></div>
+        <div style="font-size:0.76rem;color:#4a5568;margin-top:5px;line-height:1.55;">
+          Non-conventional T cells that can use both innate and T-cell receptor-mediated mechanisms. Being investigated as an alternative to NK cells and αβ T cells in adoptive immunotherapy. IL-15 stimulation of exercise-mobilised γδ T cells upregulates NKG2D, NKp30, NKp44, and increases secretion of IFNγ and soluble TRAIL — reflecting enhanced tumouricidal activity.
+        </div>
+      </div>
+
+      <div style="background:#fff5f5;border-radius:10px;padding:13px 15px;border-left:4px solid #c53030;">
+        <div style="font-weight:700;color:#c53030;font-size:0.84rem;">CD14⁺CD16⁺ Monocytes <span style="background:#fed7d7;color:#c53030;border-radius:10px;padding:1px 8px;font-size:0.71rem;font-weight:700;margin-left:5px;">↑ ~1.5×</span></div>
+        <div style="font-size:0.76rem;color:#4a5568;margin-top:5px;line-height:1.55;">
+          Non-classical monocytes with higher inflammatory and cytotoxic capacity are preferentially mobilised over classical CD14⁺CD16⁻ monocytes. They have enhanced antigen presentation potential and may support anti-tumour immune surveillance during the post-exercise window.
+        </div>
+      </div>
+
+      <div style="background:#f0f4f8;border-radius:10px;padding:13px 15px;border-left:4px solid #4a5568;">
+        <div style="font-weight:700;color:#4a5568;font-size:0.84rem;">CD4⁺ T cells & B cells <span style="background:#e2e8f0;color:#4a5568;border-radius:10px;padding:1px 8px;font-size:0.71rem;font-weight:700;margin-left:5px;">↑ lesser extent</span></div>
+        <div style="font-size:0.76rem;color:#4a5568;margin-top:5px;line-height:1.55;">
+          Lymphocyte subtypes not typically involved in cytotoxicity (such as CD4⁺ T cells and B cells) are recruited into the blood to a significantly lesser extent compared to NK cells and CD8⁺ T cells. Their lower β₂-adrenergic receptor density means they are less responsive to catecholamine-driven demargination.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /panel-cells -->
+
+
+<!-- ══════════════════ PANEL 4: TEXT ══════════════════ -->
+<div class="panel" id="panel-text">
+  <div class="card">
+    <div class="card-title">Immune Effects of Acute and Regular Exercise — Key Evidence (Fiuza-Luces et al. 2023)</div>
+    <div class="text-block">
+
+      <h3>Immune Effects of Acute Exercise</h3>
+      <p>In humans, acute dynamic exercise bouts lasting ≥20–60 min induce a <span class="hl">biphasic response in lymphocytes</span>. The initial response is characterised by dramatic lymphocytosis that affects mainly NK cells, which increase several-fold above baseline levels in the blood. The most responsive NK cells are the mature KIR⁺ or NKG2A⁻ NK cells, CD8⁺ T cells and γδ T cells (which increase by approximately twofold and threefold, respectively) are also mobilised in response to acute exercise.</p>
+
+      <p>Acute exercise preferentially mobilises subsets of CD8⁺ T cells and <span class="hl">CD3⁺CD56⁺ NK T-like cells</span> that exhibit surface phenotypes associated with increased differentiation (for example, KLRG1⁺, CD57⁺ and CD28⁻) and gene expression programmes associated with antitumour activity, and also mobilises CD14⁺CD16⁺ monocytes over classical CD14⁺CD16⁻ monocytes. Lymphocyte subtypes that are not typically involved in cytotoxicity (such as CD4⁺ T cells and B cells) are recruited into the blood to a significantly lesser extent.</p>
+
+      <p>Lymphocyte mobilisation during exertion is proportional to effort intensity and is driven by <span class="hl">increased blood pressure and shear forces</span> that cause demargination from the vascular and tissue reservoirs (the lung, liver and spleen), which boosts the number of leucocytes travelling in the main axial blood flow of the peripheral circulation. Mobilisation is also principally promoted by <span class="hl">adrenaline stimulation of β₂-adrenergic receptors</span> on the surface of lymphocytes, leading to endothelial detachment and recirculation of lymphocytes into the bloodstream.</p>
+
+      <p>Blood lymphocyte counts start to decrease during recovery after exercise, with a nadir at approximately 1–2 hours after exertion. Transient lymphopenia below pre-exercise levels is frequent, affecting mostly NK and CD8⁺ T cells and gradually returning to baseline levels, <span class="hl">usually within 24 hours</span>. This acute, transient lymphopenia does not reflect immunosuppression and might occur in the context of an improved immunosurveillance. Indeed, in healthy individuals, NK cell cytotoxic capacity against lymphoma and multiple myeloma cell lines increases by 60% at 1 hour after exertion, which is accompanied by a decrease in the proportion of NK cells that express the inhibitory receptor CD158b and an increase in NK cells that express the activating receptor NKG2C.</p>
+
+      <p>Fluorescent cell tracking studies in rodents revealed that T cells are largely redeployed from the spleen to target organs such as the lung, bone marrow and gut. Additionally, acute physical exercise preferentially mobilises highly differentiated T cells into the circulation, many of which display phenotypes associated with exhaustion and terminal differentiation. Some of these mobilised cells appear to be more susceptible to <span class="hl">exercise-induced apoptosis</span>, which may create 'vacant space' (especially if acute exertion bouts are repeated frequently) for new naive T cells to take occupancy.</p>
+
+      <h3>Immune Effects of Regular Exercise</h3>
+      <p>The long-term beneficial effects of daily regular exercise might be due to the cumulative impact of 'repeated acute exercise bouts' and the subsequent salutary effects during a few hours per day. Since each bout of exercise induces myokine or exerkine secretion and induces the redeployment of massive numbers of lymphocytes, the effects of regular exercise on immune function in general and on antitumour immune function in particular might be linked, at least partly, to the <span class="hl">progressive accumulation of frequent acute episodes</span> of mobilisation or redistribution of effector lymphocytes.</p>
+
+      <p>Regular exercise can increase natural killer (NK) cell cytotoxic activity against tumour cells, which can be accompanied by changes at the NK cell proteome level. Regular exercise might reshape the T cell repertoire by potentially <span class="hl">increasing the proportion of naive CD8⁺ T cells</span> while also increasing immune cell infiltrates in tumours. In addition, regular exercise attenuates chronic systemic inflammation — a condition associated with higher cancer risk — and increases gut microbiota diversity, while also potentially reducing the levels of tumour-promoting bacteria.</p>
+
+      <p>Although a single exercise session mobilises NK cells into the bloodstream, this does not suffice to increase prostate NK cell infiltrates. Yet, a higher number of training sessions over an 8-week period correlated with greater prostate NK cell infiltrates in patients with this malignancy, and good adherence to the programme (up to 4 days a week) led to higher increases in tumour infiltrates at end intervention (mean change of <span class="hl">+1.60 cells mm⁻²</span>) compared with non-exercising controls (+0.44 cells mm⁻²).</p>
+
+      <p>Through its ability to rapidly mobilise and increase circulating T cells, acute exercise has been postulated as a method to enrich T cells in the blood before leukapheresis, which will then be used for adoptive transfer immunotherapies that require ex vivo expansion (such as CAR T cells).</p>
+
+    </div>
+  </div>
+</div><!-- /panel-text -->
+
+<!-- Tooltip -->
+<div id="tooltip"></div>
+
+<script>
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleCard(el) {
+  const wasOpen = el.classList.contains('open');
+  // close all in same grid
+  el.closest('.mech-grid, .reg-grid')?.querySelectorAll('.mech-card.open, .reg-card.open')
+    .forEach(c => c.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+  const arrow = el.querySelector('.mech-arrow');
+  if (arrow) arrow.textContent = el.classList.contains('open') ? '▲' : '▼';
+}
+
+// ── Biphasic curve data  (x = 0 → end of exercise; no exercise duration implied)
+// Coordinate system:  x ∈ [-10, 10]
+//   -10 = pre-exercise baseline
+//   -10 → 0 = exercise phase  (amber zone, no time labels)
+//    0  = end of exercise      (vertical marker)
+//    0 → 4 = post-exercise window (lymphopenia / neutrophilia — same window)
+//    4 → 9 = recovery
+//    9 → 10 = return to baseline
+// All cell types INCREASE during exercise.
+// After exercise: lymphocytes / NK / CD8+/γδ DECREASE BELOW BASELINE.
+//                 Neutrophils CONTINUE TO RISE in the SAME post-exercise window.
+
+function smooth(t, start, end) {
+  // Smooth cosine ramp from 0→1 as t goes start→end
+  if (t <= start) return 0;
+  if (t >= end)   return 1;
+  return 0.5 * (1 - Math.cos(Math.PI * (t - start) / (end - start)));
+}
+
+function bpNK(t) {
+  // During exercise: 100 → 900 (×8–10). After exercise: 900 → 50 (below baseline). Recovery: 50 → 100.
+  if (t <= -10) return 100;
+  if (t <= 0)   return 100 + 800 * smooth(t, -10, 0);
+  if (t <= 4)   return 900 - 850 * smooth(t, 0, 4);
+  if (t <= 9)   return 50  +  50 * smooth(t, 4, 9);
+  return 100;
+}
+function bpCD8(t) {
+  // During exercise: 100 → 300 (×2–3). After exercise: 300 → 60 (below baseline). Recovery: 60 → 100.
+  if (t <= -10) return 100;
+  if (t <= 0)   return 100 + 200 * smooth(t, -10, 0);
+  if (t <= 4)   return 300 - 240 * smooth(t, 0, 4);
+  if (t <= 9)   return 60  +  40 * smooth(t, 4, 9);
+  return 100;
+}
+function bpLym(t) {
+  // Composite lymphocytes: 100 → 220 during exercise. After: 220 → 55 (below baseline). Recovery.
+  if (t <= -10) return 100;
+  if (t <= 0)   return 100 + 120 * smooth(t, -10, 0);
+  if (t <= 4)   return 220 - 165 * smooth(t, 0, 4);
+  if (t <= 9)   return 55  +  45 * smooth(t, 4, 9);
+  return 100;
+}
+function bpNeutro(t) {
+  // Mild rise during exercise (SNS). Post-exercise: CONTINUES to rise to peak ~230% (HPA/cortisol),
+  // peaking at same time as lymphopenia nadir (~1–2h), then returns to baseline.
+  if (t <= -10) return 100;
+  if (t <= 0)   return 100 +  60 * smooth(t, -10, 0);  // 100 → 160 during exercise
+  if (t <= 4)   return 160 +  70 * smooth(t, 0, 4);    // 160 → 230 post-exercise (neutrophilia)
+  if (t <= 9)   return 230 - 130 * smooth(t, 4, 9);    // 230 → 100 recovery
+  return 100;
+}
+
+function makeSeries(fn) {
+  const pts = [];
+  for (let t = -10; t <= 10; t += 0.1) pts.push({ x: +t.toFixed(1), y: fn(t) });
+  return pts;
+}
+
+// ── Plugin: exercise zone (amber) + end-of-exercise marker + phase labels ────
+const biphasicPlugin = {
+  id: 'bp',
+  beforeDatasetsDraw(chart) {
+    const { ctx, chartArea: { top, bottom, left }, scales: { x } } = chart;
+    // Shaded blue exercise zone: x = -10 to 0
+    const xLeft  = x.getPixelForValue(-10);
+    const xEnd   = x.getPixelForValue(0);
+    ctx.save();
+    ctx.fillStyle = 'rgba(43,108,176,0.12)';
+    ctx.fillRect(xLeft, top, xEnd - xLeft, bottom - top);
+    // Left border of exercise zone
+    ctx.beginPath(); ctx.moveTo(xLeft, top); ctx.lineTo(xLeft, bottom);
+    ctx.strokeStyle = 'rgba(43,108,176,0.30)'; ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+    // End-of-exercise vertical marker
+    ctx.beginPath(); ctx.moveTo(xEnd, top); ctx.lineTo(xEnd, bottom);
+    ctx.strokeStyle = 'rgba(43,108,176,0.75)'; ctx.lineWidth = 2;
+    ctx.setLineDash([6, 3]); ctx.stroke(); ctx.setLineDash([]);
+    // "Exercise" zone label (centred, no duration)
+    ctx.font = 'bold 10px Segoe UI, Arial, sans-serif';
+    ctx.fillStyle = '#2b6cb0'; ctx.textAlign = 'center';
+    ctx.fillText('Exercise', (xLeft + xEnd) / 2, top + 14);
+    ctx.restore();
+  },
+  afterDatasetsDraw(chart) {
+    const { ctx, chartArea: { top }, scales: { x, y, y2 } } = chart;
+    ctx.save();
+    ctx.font = 'bold 9.5px Segoe UI, Arial, sans-serif';
+    ctx.textAlign = 'center';
+    // LYMPHOCYTOSIS label — peak of NK curve (using y2 axis for NK scale)
+    ctx.fillStyle = '#276749';
+    ctx.fillText('LYMPHOCYTOSIS', x.getPixelForValue(-5), y2.getPixelForValue(950));
+    // Phase 1 annotation: all cells up
+    ctx.fillStyle = '#276749'; ctx.font = '8px Segoe UI, Arial, sans-serif';
+    ctx.fillText('All cell types ↑', x.getPixelForValue(-5), y2.getPixelForValue(880));
+    // LYMPHOPENIA label — post-exercise trough (x≈4, left y axis)
+    ctx.font = 'bold 9.5px Segoe UI, Arial, sans-serif';
+    ctx.fillStyle = '#c53030';
+    ctx.fillText('LYMPHOPENIA', x.getPixelForValue(4), y.getPixelForValue(20));
+    // NEUTROPHILIA label — post-exercise peak (x≈4, left y axis)
+    ctx.fillStyle = '#c05621';
+    ctx.fillText('NEUTROPHILIA', x.getPixelForValue(4), y.getPixelForValue(260));
+    // bracket / arrow showing "same time window"
+    ctx.font = '7.5px Segoe UI, Arial, sans-serif'; ctx.fillStyle = '#718096';
+    ctx.fillText('← same time window →', x.getPixelForValue(4), y.getPixelForValue(148));
+    ctx.restore();
+  }
+};
+
+const ctx1 = document.getElementById('biphasicChart').getContext('2d');
+new Chart(ctx1, {
+  type: 'line',
+  data: {
+    datasets: [
+      {
+        label: 'NK Cells (↑ ×8–10 / ↓ below baseline)',
+        data: makeSeries(bpNK),
+        borderColor: '#276749', backgroundColor: 'rgba(39,103,73,0.06)',
+        borderWidth: 2.8, pointRadius: 0, tension: 0.3, fill: false,
+        yAxisID: 'y2',
+      },
+      {
+        label: 'CD8⁺ T / γδ T Cells (↑ ×2–3 / ↓ below baseline)',
+        data: makeSeries(bpCD8),
+        borderColor: '#2b6cb0', backgroundColor: 'transparent',
+        borderWidth: 2.2, pointRadius: 0, tension: 0.3,
+      },
+      {
+        label: 'Lymphocytes composite (↑ during / ↓ below baseline post)',
+        data: makeSeries(bpLym),
+        borderColor: '#805ad5', backgroundColor: 'rgba(128,90,213,0.06)',
+        borderWidth: 1.8, pointRadius: 0, tension: 0.3, borderDash: [4, 2], fill: false,
+      },
+      {
+        label: 'Neutrophils (↑ during exercise + ↑↑ post = same window as lymphopenia)',
+        data: makeSeries(bpNeutro),
+        borderColor: '#c05621', backgroundColor: 'transparent',
+        borderWidth: 2.2, pointRadius: 0, tension: 0.3, borderDash: [7, 3],
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 16 / 9,
+    scales: {
+      x: {
+        type: 'linear', min: -10, max: 10,
+        title: {
+          display: true,
+          text: 'Time (schematic; 0 = end of exercise)',
+          font: { size: 10, weight: '600' }, color: '#4a5568'
+        },
+        ticks: {
+          callback: v => ({
+            '-10': 'Pre-\nexercise',
+            '0':   'End of\nexercise',
+            '4':   'Post-exercise\n(~1–2 h)',
+            '9':   'Recovery\n(~24 h)'
+          }[String(v)] || ''),
+          font: { size: 9 }, color: '#4a5568', maxRotation: 0
+        },
+        afterBuildTicks: ax => { ax.ticks = [-10, 0, 4, 9].map(v => ({ value: v })); },
+        grid: { color: 'rgba(160,174,192,0.18)' }
+      },
+      y: {
+        position: 'left',
+        min: 0, max: 350,
+        title: {
+          display: true,
+          text: 'CD8⁺/γδ T, Lymphocytes, Neutrophils (% baseline)',
+          font: { size: 10, weight: '600' }, color: '#4a5568'
+        },
+        ticks: {
+          callback: v => [0, 50, 100, 150, 200, 250, 300, 350].includes(v) ? v + '%' : '',
+          font: { size: 9 }, color: '#8896b3'
+        },
+        afterBuildTicks: ax => { ax.ticks = [0, 50, 100, 150, 200, 250, 300, 350].map(v => ({ value: v })); },
+        grid: {
+          color: ctx => ctx.tick.value === 100 ? 'rgba(74,85,104,0.55)' : 'rgba(160,174,192,0.18)',
+          lineWidth: ctx => ctx.tick.value === 100 ? 2 : 1
+        }
+      },
+      y2: {
+        position: 'right',
+        min: 0, max: 1000,
+        title: {
+          display: true,
+          text: 'NK Cells (% baseline)',
+          font: { size: 10, weight: '600' }, color: '#276749'
+        },
+        ticks: {
+          callback: v => [0, 100, 200, 400, 600, 800, 1000].includes(v) ? v + '%' : '',
+          font: { size: 9 }, color: '#276749'
+        },
+        afterBuildTicks: ax => { ax.ticks = [0, 100, 200, 400, 600, 800, 1000].map(v => ({ value: v })); },
+        grid: { drawOnChartArea: false }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: { font: { size: 9.5 }, boxWidth: 24, padding: 10 }
+      },
+      tooltip: {
+        callbacks: {
+          title: items => {
+            const t = items[0].parsed.x;
+            if (t <= -9.9) return 'Pre-exercise baseline';
+            if (t < 0)     return 'During exercise';
+            if (t === 0)   return 'End of exercise';
+            if (t <= 4)    return 'Post-exercise (~1–2 h window)';
+            return 'Recovery phase (~24 h)';
+          },
+          label: item => ` ${item.dataset.label.split('(')[0].trim()}: ${item.parsed.y.toFixed(0)}% of baseline`
+        }
+      }
+    },
+    interaction: { mode: 'index', intersect: false }
+  },
+  plugins: [biphasicPlugin]
+});
+
+// ── Regular exercise chart ───────────────────────────────────────────────────
+function makeRegularData(offset) {
+  const pts = [];
+  const bouts = [0, 140, 280, 420, 560];
+  for (let t = -10; t <= 660; t += 2) {
+    let val = 100;
+    for (const b of bouts) {
+      const dt = t - b;
+      if (dt >= 0 && dt <= 60)       val += 180 * Math.sin(Math.PI * dt / 60);
+      else if (dt > 60 && dt <= 120) val += -50 * Math.sin(Math.PI * (dt - 60) / 60);
+    }
+    pts.push({ x: t + offset, y: val });
+  }
+  return pts;
+}
+
+const ctx2 = document.getElementById('regularChart').getContext('2d');
+new Chart(ctx2, {
+  type: 'line',
+  data: {
+    datasets: [
+      {
+        label: 'Circulating lymphocytes (repeated bouts)',
+        data: makeRegularData(0),
+        borderColor: '#2b6cb0', backgroundColor: 'rgba(43,108,176,0.08)',
+        borderWidth: 2, pointRadius: 0, tension: 0.4, fill: true
+      },
+      {
+        label: '↑ Immunosurveillance (cumulative)',
+        data: (() => {
+          const pts = [];
+          for (let t = -10; t <= 660; t += 10) {
+            const prog = Math.max(0, (t - 0) / 660);
+            pts.push({ x: t, y: 95 + 25 * prog });
+          }
+          return pts;
+        })(),
+        borderColor: '#276749', backgroundColor: 'transparent',
+        borderWidth: 2, borderDash: [6, 3], pointRadius: 0, tension: 0.3,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 16 / 9,
+    scales: {
+      x: {
+        type: 'linear', min: -10, max: 660,
+        title: { display: true, text: 'Time (arbitrary units — each peak = one exercise bout)', font: { size: 10, weight: '600' }, color: '#4a5568' },
+        ticks: {
+          callback: v => ({
+            '-10': 'Start', 0: 'Bout 1', 140: 'Bout 2', 280: 'Bout 3',
+            420: 'Bout 4', 560: 'Bout 5', 660: 'Weeks later'
+          }[v] || ''),
+          font: { size: 9 }, color: '#4a5568'
+        },
+        afterBuildTicks: ax => { ax.ticks = [-10, 0, 140, 280, 420, 560, 660].map(v => ({ value: v })); },
+        grid: { color: 'rgba(160,174,192,0.2)' }
+      },
+      y: {
+        min: 50, max: 310,
+        title: { display: true, text: 'Circulating lymphocytes (% baseline)', font: { size: 10, weight: '600' }, color: '#4a5568' },
+        ticks: { callback: v => v + '%', font: { size: 9 }, color: '#8896b3' },
+        grid: {
+          color: ctx => ctx.tick.value === 100 ? 'rgba(74,85,104,0.5)' : 'rgba(160,174,192,0.2)',
+          lineWidth: ctx => ctx.tick.value === 100 ? 1.5 : 1
+        }
+      }
+    },
+    plugins: {
+      legend: { labels: { font: { size: 10 }, boxWidth: 22, padding: 12 } },
+      tooltip: {
+        callbacks: {
+          label: item => ` ${item.dataset.label}: ${item.parsed.y.toFixed(0)}%`
+        }
+      }
+    }
+  }
+});
+
+// ── Cell fold-change chart ───────────────────────────────────────────────────
+const cellCtx = document.getElementById('cellChart').getContext('2d');
+new Chart(cellCtx, {
+  type: 'bar',
+  data: {
+    labels: [
+      'NK Cells\n(KIR⁺/NKG2A⁻)',
+      'γδ T Cells',
+      'CD8⁺ T Cells\n(EM/EMRA)',
+      'CD3⁺CD56⁺\nNK T-like',
+      'Neutrophils',
+      'CD14⁺CD16⁺\nMonocytes',
+      'CD4⁺ T Cells',
+      'B Cells'
+    ],
+    datasets: [
+      {
+        label: 'Typical fold-change (acute exercise)',
+        data: [9, 3, 2.5, 2.5, 2, 1.5, 1.2, 1.1],
+        backgroundColor: [
+          'rgba(39,103,73,0.8)',
+          'rgba(196,5,33,0.8)',
+          'rgba(43,108,176,0.8)',
+          'rgba(128,90,213,0.8)',
+          'rgba(192,86,33,0.8)',
+          'rgba(204,122,3,0.8)',
+          'rgba(74,85,104,0.65)',
+          'rgba(74,85,104,0.45)'
+        ],
+        borderColor: [
+          '#276749','#c53030','#2b6cb0','#805ad5','#c05621','#c27803','#4a5568','#4a5568'
+        ],
+        borderWidth: 2,
+        borderRadius: 6,
+      },
+      {
+        label: 'Upper range',
+        data: [10, 3, 3, 3, 2.5, 2, 1.4, 1.2],
+        backgroundColor: 'transparent',
+        borderColor: 'rgba(0,0,0,0)',
+        type: 'line',
+        pointStyle: 'line',
+        pointRadius: 0,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 16 / 9,
+    scales: {
+      x: {
+        ticks: { font: { size: 9 }, color: '#4a5568', maxRotation: 0 },
+        grid: { display: false }
+      },
+      y: {
+        min: 0, max: 11,
+        title: { display: true, text: 'Fold-change vs. pre-exercise baseline', font: { size: 10, weight: '600' }, color: '#4a5568' },
+        ticks: { callback: v => v + '×', font: { size: 9 }, color: '#8896b3' },
+        grid: { color: 'rgba(160,174,192,0.2)' }
+      }
+    },
+    plugins: {
+      legend: { labels: { font: { size: 10 }, boxWidth: 18 } },
+      tooltip: {
+        callbacks: {
+          label: item => ` Fold-change: ~${item.parsed.y.toFixed(1)}×`
+        }
+      }
+    }
+  }
+});
+</script>
+
+<script>
+  const ro = new ResizeObserver(entries => {
+    const h = entries[0].contentRect.height;
+    window.parent.postMessage({ type: 'iframeResize', height: h }, '*');
+  });
+  ro.observe(document.documentElement);
+</script>
+</body>
+</html>

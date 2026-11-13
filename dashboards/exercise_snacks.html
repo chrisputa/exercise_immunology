@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise Snacks — Physiological and Immunological Mechanisms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --text-main: #111111;
+  --bg-main: #fffff8;
+  --bg-muted: #eae9e1;
+  --border-main: #171717;
+  --border-light: rgba(23,23,23,0.15);
+  --border-dashed: rgba(23,23,23,0.25);
+  --ink2: #444;
+  --ink3: #777;
+  --amber: #9a6200;
+  --amber-lt: #fdf5e6;
+  --green: #3b6d11;
+  --green-lt: #eef5e4;
+  --blue: #185fa5;
+  --blue-lt: #e8f0fa;
+  --purple: #534ab7;
+  --purple-lt: #edecfe;
+  --font-serif: 'EB Garamond', 'Georgia', serif;
+  --font-sans: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Menlo', monospace;
+  --max-w: 1024px;
+  --r: 4px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-serif);
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.7;
+  font-size: 21px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0 0.4em;
+}
+
+/* ── Nav ── */
+.site-nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+.site-nav a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+.site-nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* ── Header ── */
+.site-header {
+  max-width: var(--max-w);
+  margin: 0 auto 3rem;
+}
+.site-header h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.site-header h1 em {
+  font-style: italic;
+}
+.site-header .subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--ink2);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 640px;
+  margin-bottom: 1.5rem;
+}
+.domain-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.domain-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  border: 1px dashed var(--border-dashed);
+  border-radius: 2px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-main);
+  transition: background 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+.domain-pill:hover {
+  background: var(--bg-muted);
+  border-color: var(--border-main);
+}
+.domain-pill .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Tab bar ── */
+.tabbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,248,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.tabinner {
+  display: flex;
+  gap: 0;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 18px;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ink3);
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  text-transform: none;
+}
+.tab:hover { color: var(--text-main); }
+.tab.active { color: var(--text-main); font-weight: 600; }
+.tab[data-d="energy"].active { border-color: var(--amber); }
+.tab[data-d="muscle"].active { border-color: var(--green); }
+.tab[data-d="aerobic"].active { border-color: var(--blue); }
+.tab[data-d="immune"].active { border-color: var(--purple); }
+.tdot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* ── Panels ── */
+.panel { display: none; max-width: var(--max-w); margin: 0 auto; padding: 3rem 0; }
+.panel.active { display: block; }
+
+/* ── Domain header ── */
+.dhead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed var(--border-dashed);
+}
+.dkick {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.dtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+.dout { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+.obadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border: 1px dashed var(--border-dashed);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+.ddesc {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink2);
+  line-height: 1.75;
+  font-weight: 400;
+  text-align: justify;
+  hyphens: auto;
+}
+.ddesc strong { font-weight: 600; color: var(--text-main); }
+
+/* ── Pathway ── */
+.pathway { display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem; }
+.pnode { position: relative; width: 100%; max-width: 520px; }
+.pbox {
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r);
+  padding: 14px 20px;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s;
+}
+.pbox::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+.pbox:hover { background: var(--bg-muted); }
+.pbox.root {
+  background: var(--text-main);
+  color: #fff;
+  border-color: var(--text-main);
+  max-width: 440px;
+  margin: 0 auto;
+}
+.pbox.root::before { display: none; }
+.pbt { font-family: var(--font-serif); font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+.pbs { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink3); }
+.pbox.root .pbs { color: rgba(255,255,255,0.5); }
+.parr {
+  width: 1px;
+  height: 32px;
+  background: var(--border-light);
+  margin: 0 auto;
+  position: relative;
+}
+.parr::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--ink3);
+}
+.psplit { display: grid; gap: 14px; width: 100%; }
+.ps2 { grid-template-columns: 1fr 1fr; }
+.ps3 { grid-template-columns: 1fr 1fr 1fr; }
+.pcon { position: relative; height: 48px; width: 100%; margin: 0; }
+.pcon svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* ── Mechanism cards ── */
+.mgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.mcard {
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s;
+}
+.mcard:hover { background: var(--bg-muted); }
+.mcard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+.micon {
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  margin-bottom: 0.75rem;
+}
+.mtitle { font-family: var(--font-serif); font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+.mbody { font-family: var(--font-sans); font-size: 0.78rem; color: var(--ink2); line-height: 1.6; font-weight: 400; }
+.mtag {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border: 1px dashed var(--border-dashed);
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* ── Timeline ── */
+.tl { position: relative; padding-left: 28px; margin-bottom: 3rem; }
+.tl::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  border-left: 1px dashed var(--border-dashed);
+}
+.tli { position: relative; margin-bottom: 2rem; }
+.tli::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-main);
+  box-shadow: 0 0 0 1px var(--border-light);
+}
+.tlt { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; font-weight: 500; }
+.tlh { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.tlb { font-family: var(--font-serif); font-size: 0.9rem; color: var(--ink2); line-height: 1.65; font-weight: 400; }
+
+/* ── Three-axis grid ── */
+.agrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
+.acol { display: flex; flex-direction: column; gap: 0.6rem; }
+.ahead {
+  text-align: center;
+  padding: 12px 14px;
+  border: 1px dashed var(--border-dashed);
+  border-radius: var(--r);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: italic;
+}
+.astep {
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  transition: background 0.15s;
+}
+.astep:hover { background: var(--bg-muted); }
+.astitl { font-family: var(--font-serif); font-weight: 600; margin-bottom: 2px; font-size: 0.82rem; }
+.assub { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink3); }
+.aarr { text-align: center; font-size: 14px; color: var(--ink3); line-height: 1; }
+.aconv {
+  grid-column: 1 / -1;
+  background: var(--text-main);
+  color: #fff;
+  border-radius: var(--r);
+  padding: 16px 20px;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.aconvt { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: 3px; }
+.aconvs { font-family: var(--font-mono); font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+
+/* ── Fick equation ── */
+.fick {
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r);
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.fside-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 500; }
+.fside-title { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+.fside-body { font-family: var(--font-serif); font-size: 0.85rem; color: var(--ink2); font-weight: 400; }
+.feq {
+  text-align: center;
+  background: var(--text-main);
+  border-radius: var(--r);
+  padding: 18px 22px;
+  color: #fff;
+  min-width: 160px;
+}
+.feql { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.feqf { font-family: var(--font-serif); font-size: 1.2rem; color: #fff; letter-spacing: 0.02em; }
+.feqf em { color: var(--amber); font-style: normal; }
+
+/* ── Summary ── */
+.sumwrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3rem 0;
+  border-top: 1px dashed var(--border-dashed);
+}
+.sumtitle {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+.sumtable { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.sumtable th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  color: var(--ink3);
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+.sumtable td {
+  font-family: var(--font-serif);
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  font-weight: 400;
+}
+.sumtable tr:last-child td { border-bottom: none; }
+.sumtable tr:hover td { background: var(--bg-muted); }
+.sdom { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; }
+.sdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.smono { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink2); }
+
+/* ── Footer ── */
+footer {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2rem 0 2.5rem;
+  border-top: 1px dashed var(--border-dashed);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink3);
+}
+footer a { color: var(--text-main); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+footer a:hover { text-decoration-style: dashed; }
+
+/* ── Tooltip ── */
+.tooltip {
+  position: fixed;
+  background: var(--text-main);
+  color: rgba(255,255,255,0.9);
+  padding: 8px 12px;
+  border-radius: var(--r);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  max-width: 240px;
+  line-height: 1.5;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.tooltip.show { opacity: 1; }
+
+/* ── Animation ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.fu { animation: fadeUp 0.4s ease both; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.1s; } .d3 { animation-delay: 0.15s; }
+
+/* ── Domain accent colours ── */
+.de .dkick, .de .tlt { color: var(--amber); }
+.de .pbox::before { background: var(--amber); }
+.de .tli::before { background: var(--amber); }
+.de .mcard::after { background: var(--amber); }
+.de .micon { background: var(--amber-lt); color: var(--amber); }
+.de .mtag { color: var(--amber); }
+.de .obadge { color: var(--amber); }
+
+.dm .dkick, .dm .tlt { color: var(--green); }
+.dm .pbox::before { background: var(--green); }
+.dm .tli::before { background: var(--green); }
+.dm .mcard::after { background: var(--green); }
+.dm .micon { background: var(--green-lt); color: var(--green); }
+.dm .mtag { color: var(--green); }
+.dm .obadge { color: var(--green); }
+
+.da .dkick, .da .tlt { color: var(--blue); }
+.da .pbox::before { background: var(--blue); }
+.da .tli::before { background: var(--blue); }
+.da .mcard::after { background: var(--blue); }
+.da .micon { background: var(--blue-lt); color: var(--blue); }
+.da .mtag { color: var(--blue); }
+.da .obadge { color: var(--blue); }
+
+.di .dkick, .di .tlt { color: var(--purple); }
+.di .pbox::before { background: var(--purple); }
+.di .tli::before { background: var(--purple); }
+.di .mcard::after { background: var(--purple); }
+.di .micon { background: var(--purple-lt); color: var(--purple); }
+.di .mtag { color: var(--purple); }
+.di .obadge { color: var(--purple); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  body { padding: 0 1.25rem; }
+  .dhead { grid-template-columns: 1fr; gap: 1.5rem; }
+  .agrid { grid-template-columns: 1fr; }
+  .fick { grid-template-columns: 1fr; }
+  .tab { padding: 12px 10px; font-size: 0.85rem; }
+  .ps2, .ps3 { grid-template-columns: 1fr; }
+  .mgrid { grid-template-columns: 1fr; }
+  .site-nav { flex-wrap: wrap; padding-bottom: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <p class="subtitle">Brief structured bouts of physical activity (2–10 min) performed multiple times daily. Four domains of adaptation, from energy metabolism to immune reprogramming.</p>
+  <div class="domain-pills">
+    <a class="domain-pill" href="#" onclick="sw('energy');return false;"><span class="dot" style="background:var(--amber)"></span>Energy Metabolism</a>
+    <a class="domain-pill" href="#" onclick="sw('muscle');return false;"><span class="dot" style="background:var(--green)"></span>Muscle Structure</a>
+    <a class="domain-pill" href="#" onclick="sw('aerobic');return false;"><span class="dot" style="background:var(--blue)"></span>Aerobic Capacity</a>
+    <a class="domain-pill" href="#" onclick="sw('immune');return false;"><span class="dot" style="background:var(--purple)"></span>Immune Signalling</a>
+  </div>
+</header>
+
+<div class="tabbar">
+  <div class="tabinner">
+    <button class="tab active" data-d="energy" onclick="sw('energy')"><span class="tdot" style="background:var(--amber)"></span>Energy Metabolism</button>
+    <button class="tab" data-d="muscle" onclick="sw('muscle')"><span class="tdot" style="background:var(--green)"></span>Muscle Structure</button>
+    <button class="tab" data-d="aerobic" onclick="sw('aerobic')"><span class="tdot" style="background:var(--blue)"></span>Aerobic Capacity</button>
+    <button class="tab" data-d="immune" onclick="sw('immune')"><span class="tdot" style="background:var(--purple)"></span>Immune Signalling</button>
+  </div>
+</div>
+
+<!-- PANEL 1: ENERGY -->
+<section class="panel active de" id="pe">
+  <div class="dhead fu">
+    <div>
+      <div class="dkick">Domain 01 · Energy Metabolism</div>
+      <h2 class="dtitle">Glucose &amp; Lipid Regulation</h2>
+      <div class="dout">
+        <span class="obadge">↓ Blood Glucose</span>
+        <span class="obadge">↓ Triglycerides</span>
+        <span class="obadge">↓ VLDL</span>
+      </div>
+    </div>
+    <div class="ddesc fu d1">
+      Short exercise bouts activate two <strong>insulin-independent</strong> metabolic axes via AMPK — the master energy sensor. Both the GLUT4 and LPL pathways engage within minutes, making exercise snacks uniquely effective for postprandial glycaemic control.<br><br>
+      The convergence on reduced <strong>insulin resistance</strong> and lower cardiovascular risk is the core metabolic protective effect — critical for T2DM and insulin-resistant populations.
+    </div>
+  </div>
+
+  <div class="pathway fu d2">
+    <div class="pnode"><div class="pbox root" data-tip="Trigger: mechanical contraction activates metabolic sensing cascades within seconds."><div class="pbt">Muscle Contraction (Exercise Snack)</div><div class="pbs">mechanical stress · metabolic demand</div></div></div>
+    <div class="parr"></div>
+    <div class="pnode"><div class="pbox" style="max-width:440px;margin:0 auto" data-tip="AMPK senses the rise in AMP/ATP ratio and Ca²⁺/calmodulin kinases — activated within 1–2 min of onset."><div class="pbt">AMPK Activation</div><div class="pbs">↑ AMP/ATP ratio · Ca²⁺/CaM kinases · insulin-independent</div></div></div>
+    <div class="pcon">
+      <svg viewBox="0 0 600 48" preserveAspectRatio="none">
+        <defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#777" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <line x1="300" y1="0" x2="150" y2="48" stroke="var(--border-light)" stroke-width="1" marker-end="url(#a1)"/>
+        <line x1="300" y1="0" x2="450" y2="48" stroke="var(--border-light)" stroke-width="1" marker-end="url(#a1)"/>
+        <text x="80" y="34" font-size="10" fill="var(--amber)" font-family="IBM Plex Mono,monospace" font-weight="500">GLUT4 axis</text>
+        <text x="440" y="34" font-size="10" fill="var(--green)" font-family="IBM Plex Mono,monospace" font-weight="500">LPL axis</text>
+      </svg>
+    </div>
+    <div class="psplit ps2" style="max-width:760px;margin:0 auto;gap:14px">
+      <div>
+        <div class="pbox" data-tip="AMPK phosphorylates AS160/TBC1D4, releasing GLUT4 vesicles to the plasma membrane without insulin. Effect persists 1–4 h post-exercise."><div class="pbt">GLUT4 Vesicle Translocation</div><div class="pbs">insulin-independent · onset &lt; 5 min</div></div>
+        <div class="parr" style="background:rgba(154,98,0,0.25)"></div>
+        <div class="pbox" data-tip="Skeletal muscle glucose uptake rises 2–5× within minutes. Postprandial blood glucose spikes are blunted by 30–50% in T2DM studies."><div class="pbt">↓ Blood Glucose</div><div class="pbs">skeletal muscle uptake ↑ · persists 1–4 h</div></div>
+      </div>
+      <div>
+        <div class="pbox" data-tip="LPL on capillary endothelium is activated via AMPK phosphorylation. Enhanced capillary perfusion increases substrate contact surface area."><div class="pbt">LPL Phosphorylation</div><div class="pbs">capillary LPL activity ↑ · perfusion ↑</div></div>
+        <div class="parr" style="background:rgba(59,109,17,0.25)"></div>
+        <div class="pbox" data-tip="VLDL-TG and chylomicron triglycerides are cleaved into free fatty acids for oxidation. Plasma TG can drop 15–30% with regular snack protocols."><div class="pbt">↓ Triglycerides / VLDL</div><div class="pbs">lipolysis from VLDL &amp; chylomicrons</div></div>
+      </div>
+    </div>
+    <div class="pcon">
+      <svg viewBox="0 0 600 48" preserveAspectRatio="none">
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#777" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+        <line x1="150" y1="0" x2="300" y2="48" stroke="var(--border-light)" stroke-width="1" marker-end="url(#a2)"/>
+        <line x1="450" y1="0" x2="300" y2="48" stroke="var(--border-light)" stroke-width="1" marker-end="url(#a2)"/>
+      </svg>
+    </div>
+    <div class="pnode"><div class="pbox root" style="max-width:500px;margin:0 auto" data-tip="Converging effect: both axes are insulin-independent and activate within minutes — ideal for T2DM, insulin resistance, and postprandial intervention."><div class="pbt">Metabolic Protective Effect</div><div class="pbs">↓ insulin resistance · ↓ cardiovascular risk · ↓ HbA1c</div></div></div>
+  </div>
+
+  <div class="mgrid fu d3">
+    <div class="mcard"><div class="micon">⚡</div><div class="mtitle">AMPK — The Master Switch</div><div class="mbody">AMP-activated protein kinase is activated when the AMP/ATP ratio rises and by Ca²⁺/calmodulin kinases during contraction. It is the shared upstream sensor for both metabolic axes.</div><span class="mtag">Energy sensor</span></div>
+    <div class="mcard"><div class="micon">🔓</div><div class="mtitle">Insulin-Independent Glucose Uptake</div><div class="mbody">AMPK phosphorylates AS160, releasing GLUT4 vesicles to the plasma membrane without insulin — valuable when insulin signalling is impaired (T2DM, insulin resistance).</div><span class="mtag">GLUT4 · AS160</span></div>
+    <div class="mcard"><div class="micon">🧬</div><div class="mtitle">Capillary Remodelling</div><div class="mbody">Repeated snacks increase skeletal muscle microvasculature density over weeks. More capillaries mean shorter O₂ and substrate diffusion distances — amplifying both glucose and lipid metabolism.</div><span class="mtag">Microvasculature ↑</span></div>
+    <div class="mcard"><div class="micon">💧</div><div class="mtitle">LPL &amp; Triglyceride Clearance</div><div class="mbody">LPL on capillary endothelium cleaves TG from VLDL and chylomicrons. AMPK activation + enhanced perfusion synergistically reduce plasma triglycerides and VLDL concentration.</div><span class="mtag">LPL · VLDL · TG</span></div>
+  </div>
+</section>
+
+<!-- PANEL 2: MUSCLE -->
+<section class="panel dm" id="pm">
+  <div class="dhead fu">
+    <div>
+      <div class="dkick">Domain 02 · Musculature</div>
+      <h2 class="dtitle">Structural Adaptation Across Three Phases</h2>
+      <div class="dout">
+        <span class="obadge">↑ Maximal Strength</span>
+        <span class="obadge">↑ Muscle CSA</span>
+        <span class="obadge">↑ Fibre Conduction</span>
+      </div>
+    </div>
+    <div class="ddesc fu d1">
+      Muscle adaptations to exercise snacks unfold in <strong>three temporally staggered phases</strong>. The acute AMPK/PGC-1α response occurs with every single bout; structural changes (satellite cells, hypertrophy) accumulate over weeks.<br><br>
+      <strong>Frequency matters more than duration</strong> — the repeated signal drives cumulative structural adaptation more than any single long bout.
+    </div>
+  </div>
+
+  <div class="tl fu d2">
+    <div class="tli"><div class="tlt">Acute · Minutes – Hours</div><div class="tlh">AMPK / PGC-1α Activation</div><div class="tlb">Muscle contractions activate AMPK, which phosphorylates PGC-1α and drives nuclear translocation. PGC-1α co-activates PPARγ, initiating transcription of mitochondrial and myofibrillar genes. Neuromuscular recruitment and fibre conduction velocity improve acutely.</div></div>
+    <div class="tli"><div class="tlt">Subacute · Hours – Days</div><div class="tlh">Myofibrillar Protein Synthesis (mTORC1)</div><div class="tlb">mTORC1 activated via mechanical stress and IGF-1 increases translation of ribosomal mRNAs for myosin heavy chain (MHC) and actin. PPARγ/PGC-1α amplifies this via greater mitochondrial ATP availability. Even brief bouts open the anabolic window if mechanical tension is sufficient.</div></div>
+    <div class="tli"><div class="tlt">Chronic · Weeks – Months</div><div class="tlh">Satellite Cell Activation &amp; Hypertrophy</div><div class="tlb">Cumulative mechanical stress activates satellite cells via Hepatocyte Growth Factor (HGF) and Mechano Growth Factor (MGF). Satellite cells proliferate, differentiate, and fuse with existing fibres, increasing myonuclei number and cross-sectional area. The slowest but most durable adaptation.</div></div>
+  </div>
+
+  <div class="mgrid fu d3">
+    <div class="mcard"><div class="micon">🔋</div><div class="mtitle">PGC-1α — Mitochondrial Master Regulator</div><div class="mbody">Nuclear PGC-1α co-activates PPARγ/δ, NRF1, and TFAM — driving mitochondrial biogenesis, oxidative enzyme expression, and fibre type remodelling toward greater oxidative capacity.</div><span class="mtag">PGC-1α · PPARγ</span></div>
+    <div class="mcard"><div class="micon">🏗</div><div class="mtitle">mTORC1 &amp; Protein Synthesis</div><div class="mbody">Mechanical loading activates mTORC1 independently of IGF-1 through Piezo1/FAK/PI3K. mTORC1 phosphorylates 4E-BP1 and S6K1, accelerating ribosomal translation of structural proteins (MHC, actin, titin).</div><span class="mtag">mTORC1 · MHC · Actin</span></div>
+    <div class="mcard"><div class="micon">🌱</div><div class="mtitle">Satellite Cell Pool</div><div class="mbody">Quiescent satellite cells are activated by HGF and MGF released from deformed extracellular matrix. They self-renew to maintain the pool and donate myonuclei for hypertrophy and repair.</div><span class="mtag">HGF · MGF · Myonuclei</span></div>
+    <div class="mcard"><div class="micon">⚠️</div><div class="mtitle">Clinical Note: ME/CFS &amp; Post-COVID</div><div class="mbody">mTORC1 activation may trigger post-exertional malaise (PEM) instead of hypertrophy in populations with mitochondrial dysfunction and oxidative stress. Wearable-based PEM monitoring is essential before applying exercise snack protocols in these groups.</div><span class="mtag">PEM risk · Monitoring</span></div>
+  </div>
+</section>
+
+<!-- PANEL 3: AEROBIC -->
+<section class="panel da" id="pae">
+  <div class="dhead fu">
+    <div>
+      <div class="dkick">Domain 03 · Aerobic Capacity</div>
+      <h2 class="dtitle">VO₂ Gains via the Fick Equation</h2>
+      <div class="dout">
+        <span class="obadge">↑ VO₂max</span>
+        <span class="obadge">↑ Endurance Performance</span>
+        <span class="obadge">↑ HRV</span>
+      </div>
+    </div>
+    <div class="ddesc fu d1">
+      Exercise snacks improve aerobic capacity by acting on <strong>both sides of the Fick equation</strong> — centrally (cardiac output) and peripherally (a-vO₂ difference). The peripheral component is disproportionately targeted compared to continuous endurance training — relevant for populations with limited cardiac reserve.
+    </div>
+  </div>
+
+  <div class="fick fu d2">
+    <div>
+      <div class="fside-label" style="color:var(--blue)">Central · Cardiac Output</div>
+      <div class="fside-title">↑ Heart Rate + Stroke Volume</div>
+      <div class="fside-body">Repeated bouts train baroreceptors and improve autonomic cardiac regulation. Chronic remodelling yields higher resting stroke volume and improved HRV RMSSD — measurable with Polar H10 / Firstbeat Bodyguard 3.</div>
+    </div>
+    <div class="feq">
+      <div class="feql">Fick equation</div>
+      <div class="feqf">VO₂ = <em>CO</em> × a-vO₂</div>
+    </div>
+    <div>
+      <div class="fside-label" style="color:var(--green)">Peripheral · O₂ Extraction</div>
+      <div class="fside-title">↑ Mitochondria + Capillaries</div>
+      <div class="fside-body">PGC-1α drives mitochondrial biogenesis; VEGF drives capillary angiogenesis; myoglobin concentration rises. Together these widen the a-vO₂ difference — the muscle extracts more O₂ per unit blood flow.</div>
+    </div>
+  </div>
+
+  <div class="mgrid fu d3">
+    <div class="mcard"><div class="micon">🫀</div><div class="mtitle">Cardiac Remodelling</div><div class="mbody">Repeated cardiac preload increases over weeks drive eccentric LV hypertrophy — larger chamber volume, higher stroke volume, lower resting HR. Autonomic regulation (baroreflex sensitivity) improves, reflected in higher HRV RMSSD.</div><span class="mtag">SV ↑ · HRV ↑</span></div>
+    <div class="mcard"><div class="micon">🔬</div><div class="mtitle">Mitochondrial Biogenesis</div><div class="mbody">PGC-1α activates NRF1/2 and TFAM, driving replication of mitochondrial DNA and expression of oxidative phosphorylation complexes. Effective for both Type I and Type II fibre mitochondrial remodelling.</div><span class="mtag">PGC-1α · TFAM · mtDNA</span></div>
+    <div class="mcard"><div class="micon">🩸</div><div class="mtitle">VEGF-Driven Angiogenesis</div><div class="mbody">VEGF is released in response to local hypoxia and shear stress during exercise snacks. New capillary sprouts reduce O₂ diffusion distance, increase surface area for substrate delivery, and enhance waste product clearance.</div><span class="mtag">VEGF · Capillary density ↑</span></div>
+    <div class="mcard"><div class="micon">🧡</div><div class="mtitle">Contrast with Continuous Training</div><div class="mbody">Classic endurance training primarily raises cardiac output (central). Exercise snacks disproportionately develop the peripheral side — critical for populations with limited cardiac reserve (deconditioning, Long COVID autonomic dysfunction).</div><span class="mtag">Peripheral dominance</span></div>
+  </div>
+</section>
+
+<!-- PANEL 4: IMMUNE -->
+<section class="panel di" id="pim">
+  <div class="dhead fu">
+    <div>
+      <div class="dkick">Domain 04 · Immunological Signalling</div>
+      <h2 class="dtitle">Three Axes, One Convergence</h2>
+      <div class="dout">
+        <span class="obadge">↑ Myokines</span>
+        <span class="obadge">M1→M2 Shift</span>
+        <span class="obadge">↑ SCFAs</span>
+        <span class="obadge">↓ NF-κB</span>
+      </div>
+    </div>
+    <div class="ddesc fu d1">
+      The immunological domain connects <strong>muscle, immune system, and gut microbiome</strong> through three parallel signalling axes. All three converge on NF-κB suppression via distinct molecular mechanisms.<br><br>
+      <strong>ME/CFS and Long COVID relevance:</strong> dysbiosis with reduced SCFA producers is consistently documented — creating a direct entry point for exercise snack interventions and EV-associated miRNA biomarker research.
+    </div>
+  </div>
+
+  <div class="agrid fu d2">
+    <div class="acol">
+      <div class="ahead" style="background:var(--purple-lt);color:var(--purple)">Axis 1 — Myokine Secretion</div>
+      <div class="astep"><div class="astitl">Muscle contraction</div><div class="assub">mechanical + metabolic trigger</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">IL-6, IL-15, Irisin release</div><div class="assub">transient peaks = anti-inflam.</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">IL-10 ↑, TNF-α ↓</div><div class="assub">IL-6 → IL-10 via JAK/STAT3</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">NK cell proliferation</div><div class="assub">IL-15 → NK cells, CTLs</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">↓ Pro-inflammatory cytokines</div><div class="assub">TNF-α ↓ · IL-1β ↓ · CRP ↓</div></div>
+    </div>
+    <div class="acol">
+      <div class="ahead" style="background:var(--amber-lt);color:var(--amber)">Axis 2 — Immune Reprogramming</div>
+      <div class="astep"><div class="astitl">Mechanical loading + myokines</div><div class="assub">synergistic input to immune cells</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">NF-κB suppression</div><div class="assub">↓ IκB kinase activation</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">Nrf2 induction · HO-1 ↑</div><div class="assub">competes with NF-κB for CBP</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">M1 → M2 macrophage shift</div><div class="assub">pro-inflam → reparative</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">Treg expansion</div><div class="assub">IL-10 + TGF-β → tolerance ↑</div></div>
+    </div>
+    <div class="acol">
+      <div class="ahead" style="background:var(--green-lt);color:var(--green)">Axis 3 — Microbiome–Immune</div>
+      <div class="astep"><div class="astitl">Exercise-induced gut motility ↑</div><div class="assub">transit time ↓, diversity ↑</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">SCFA producers expand</div><div class="assub">F. prausnitzii · Roseburia ↑</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">Butyrate, Propionate ↑</div><div class="assub">GPR41/43 binding · HDAC-i</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">NF-κB suppression (gut)</div><div class="assub">colonocytes + macrophages</div></div>
+      <div class="aarr">↓</div>
+      <div class="astep"><div class="astitl">↑ Anti-inflammatory metabolites</div><div class="assub">systemic SCFA circulation</div></div>
+    </div>
+    <div class="aconv"><div class="aconvt">Systemic Anti-inflammatory Effect</div><div class="aconvs">↓ chronic inflammation · ↑ immune tolerance · ↑ infection defence · ↓ NF-κB (all three axes)</div></div>
+  </div>
+
+  <div class="mgrid fu d3">
+    <div class="mcard"><div class="micon">💬</div><div class="mtitle">IL-6 Kinetics — Why Transient Is Different</div><div class="mbody">Exercise-induced IL-6 is myokine-driven (muscle-secreted), not macrophage-driven. Transient peaks → IL-10 induction → TNF-α suppression. Chronically elevated IL-6 (as in obesity) has the opposite effect — a critical distinction.</div><span class="mtag">Myokine kinetics</span></div>
+    <div class="mcard"><div class="micon">🔑</div><div class="mtitle">NF-κB as Convergence Point</div><div class="mbody">All three axes suppress NF-κB via different routes: IL-10 via STAT3 (Axis 1), Nrf2 competition for CBP co-activators (Axis 2), and butyrate-mediated HDAC inhibition (Axis 3). Redundancy makes the effect robust.</div><span class="mtag">NF-κB · Nrf2 · HDAC</span></div>
+    <div class="mcard"><div class="micon">🦠</div><div class="mtitle">ME/CFS &amp; Long COVID — Microbiome</div><div class="mbody">Both conditions show dysbiosis with reduced F. prausnitzii and Roseburia. Exercise snacks could rehabilitate SCFA production — but dose-response between brief bouts and SCFA output remains largely uncharacterised.</div><span class="mtag">Dysbiosis · SCFAs · EVs</span></div>
+    <div class="mcard"><div class="micon">🧪</div><div class="mtitle">EV-Associated miRNA Angle</div><div class="mbody">Extracellular vesicles transport miRNAs regulating NF-κB and Nrf2. Exercise snacks may shift EV cargo toward anti-inflammatory miRNA profiles — measurable in plasma and usable as biomarkers of immune adaptation and PEM risk.</div><span class="mtag">EVs · miRNA · Biomarkers</span></div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<div class="sumwrap">
+  <h2 class="sumtitle">Summary Overview</h2>
+  <table class="sumtable">
+    <thead><tr><th>Domain</th><th>Primary Outcomes</th><th>Central Mediators</th><th>Timeframe</th></tr></thead>
+    <tbody>
+      <tr><td><div class="sdom"><span class="sdot" style="background:var(--amber)"></span>Energy Metabolism</div></td><td class="smono">↓ Blood glucose · ↓ Triglycerides · ↓ VLDL</td><td class="smono">AMPK · GLUT4 · LPL · AS160</td><td class="smono">Minutes – Hours</td></tr>
+      <tr><td><div class="sdom"><span class="sdot" style="background:var(--green)"></span>Muscle Structure</div></td><td class="smono">↑ Strength · ↑ CSA · ↑ Conduction velocity</td><td class="smono">AMPK · mTORC1 · PGC-1α · HGF · MGF</td><td class="smono">Hours – Months</td></tr>
+      <tr><td><div class="sdom"><span class="sdot" style="background:var(--blue)"></span>Aerobic Capacity</div></td><td class="smono">↑ VO₂max · ↑ Performance · ↑ HRV</td><td class="smono">PGC-1α · VEGF · Fick: CO × a-vO₂</td><td class="smono">Weeks – Months</td></tr>
+      <tr><td><div class="sdom"><span class="sdot" style="background:var(--purple)"></span>Immune Signalling</div></td><td class="smono">↓ Inflammation · ↑ Tolerance · ↑ NK cells</td><td class="smono">IL-6/IL-10 · Nrf2 · NF-κB · SCFAs · EVs</td><td class="smono">Hours – Weeks</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <span>&copy; 2026 <a href="https://chrisputa.github.io/" target="_blank" rel="noopener">Christian Puta</a>. FSU Jena</span>
+</footer>
+
+<div class="tooltip" id="tt"></div>
+
+<script>
+const DOMAINS = ['energy', 'muscle', 'aerobic', 'immune'];
+const IDS = { energy: 'pe', muscle: 'pm', aerobic: 'pae', immune: 'pim' };
+
+function sw(d) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.d === d));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === IDS[d]));
+  const panel = document.getElementById(IDS[d]);
+  panel.querySelectorAll('.fu').forEach(el => { el.style.animation = 'none'; el.offsetHeight; el.style.animation = ''; });
+  document.querySelector('.tabbar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+const tt = document.getElementById('tt');
+document.querySelectorAll('[data-tip]').forEach(el => {
+  el.addEventListener('mouseenter', () => { tt.textContent = el.dataset.tip; tt.classList.add('show'); });
+  el.addEventListener('mousemove', e => { tt.style.left = (e.clientX + 16) + 'px'; tt.style.top = (e.clientY - 8) + 'px'; });
+  el.addEventListener('mouseleave', () => tt.classList.remove('show'));
+});
+
+document.addEventListener('keydown', e => {
+  const cur = DOMAINS.findIndex(d => document.querySelector('.tab[data-d="' + d + '"]').classList.contains('active'));
+  if (e.key === 'ArrowRight' && cur < 3) sw(DOMAINS[cur + 1]);
+  if (e.key === 'ArrowLeft' && cur > 0) sw(DOMAINS[cur - 1]);
+});
+</script>
+</body>
+</html>
